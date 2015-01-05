@@ -1,5 +1,7 @@
 # MEWS Translator Guide
 
+**Do not use Microsoft Word or anything similar.**
+
 Localization of the system and applications works like this:
 
 1. Whenever we (as developers) need to display some text to the user, e.g. "Hello there stranger", we define a key for that text - e.g. "WelcomeText".
@@ -8,7 +10,9 @@ Localization of the system and applications works like this:
 
 ## Localization files
 
-The task for a translator is to fill in those localization tables. We'll provide them to you in form of plain text files, e.g. `es-ES.resjson`. Note that name of the file is a combination of language name and culture name. That's necessary in order to differentiate for example between american english `en-US` and british english `en-UK`. But most other languages need no such differentiation. For viewing and editation, use some simple text editor (we recommend [Notepad++](http://notepad-plus-plus.org/) (only Windows) or [Sublime Text](http://www.sublimetext.com/)). **Do not** use Microsoft Word or anything similar.
+The task for a translator is to fill in those localization tables. We'll provide them to you in form of plain text files, e.g. `es-ES.resjson`. Note that name of the file is a combination of language name and culture name. That's necessary in order to differentiate for example between american english `en-US` and british english `en-UK`. But most other languages need no such differentiation. For viewing and editation, use some simple text editor (we recommend [Notepad++](http://notepad-plus-plus.org/) (only Windows) or [Sublime Text](http://www.sublimetext.com/)).
+
+**Do not use Microsoft Word or anything similar.**
 
 The contents of a localization may look this (taken from french localization table):
 
