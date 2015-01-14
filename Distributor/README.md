@@ -43,13 +43,13 @@ Provided css styles are optional and can be completely replaced with custom css.
 <link rel="stylesheet" href="https://www.mews.li/distributor/current/distributor.css" />
 
 <!-- Current overlay css -->
-<link rel="stylesheet" href="https://www.mews.li/distributor/current/distributor-overlay.css.css" />
+<link rel="stylesheet" href="https://www.mews.li/distributor/current/distributor-overlay.css" />
 
 <!-- Edge basic css -->
 <link rel="stylesheet" href="https://www.mews.li/distributor/edge/distributor.css" />
 
 <!-- Edge overlay css -->
-<link rel="stylesheet" href="https://www.mews.li/distributor/edge/distributor-overlay.css.css" />
+<link rel="stylesheet" href="https://www.mews.li/distributor/edge/distributor-overlay.css" />
 ```
 
 <a name="usage"></a>
