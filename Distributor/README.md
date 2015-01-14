@@ -1,7 +1,5 @@
 # MEWS Distributor Guide
 
-> a booking engine
-
 - [Install](#install)
 - [Usage](#usage)
     - [Braintree](#braintree)
