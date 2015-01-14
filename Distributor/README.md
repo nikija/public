@@ -6,7 +6,6 @@
     - [Google Analytics](#google-analytics)
 - [Options](#options)
 - [API](#api)
-- [Changelog](#changelog)
 
 <a name="install"></a>
 ## Install
