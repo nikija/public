@@ -12,8 +12,8 @@
 
 The MEWS Distributor is available in two versions:
 
-- **current** - latest stable version for production usage.
-- **edge** - the most up-to-date development version for staging of new features. **Use at your own risk.**
+- **Current** - Latest stable version for production usage.
+- **Edge** - The most up-to-date development version for staging of new features. **Use at your own risk.**
 
 ### Script
 
