@@ -1,10 +1,15 @@
 # MEWS Distributor Release Notes
 
+### 1.4.0 
+- Added support for Mews Payments
+- Braintree api updated to v2
+- Improved validation of credit cards data in order form
+
 ### 1.3.6
 - Fixed issue with Distributor not getting opened after deeplinked from other pages
 - Added ticks to product selection checkboxes
 - Multiple rooms booking made more clear
-- Added missing Linkedin icon
+- Added missing LinkedIn icon
 - Fixed facebook deeplink
 
 ### 1.3.5
