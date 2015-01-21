@@ -1,9 +1,13 @@
 # MEWS Distributor Release Notes
 
-### 1.4.0 
+### 1.4.0 (edge)
 - Added support for Mews Payments
 - Braintree api updated to v2
 - Improved validation of credit cards data in order form
+
+### 1.3.7
+
+- Added total cost as parameter to `Booking finished` tracking event
 
 ### 1.3.6
 - Fixed issue with Distributor not getting opened after deeplinked from other pages
