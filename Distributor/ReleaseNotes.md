@@ -4,6 +4,7 @@
 - Added support for Mews Payments
 - Braintree api updated to v2
 - Improved validation of credit cards data in order form
+- Added support for localization change through deeplink parameter
 
 ### 1.3.7
 
