@@ -104,6 +104,7 @@ var distributor = new Mews.Distributor({
     closed: function() { },
     onStartDateChanged: function(date) { },
     onEndDateChanged: function(date) { },
+    ecommerce: false,
     // experimental
     fragments: false,
     // development
@@ -138,14 +139,13 @@ PCI Security Standard requires you to use **SSL Certificate** on you website in 
 
 ### Google Analytics
 
-If you have Google Analytics configured on your website using standard naming
-convention for global variable holding its object - `ga` or `_gaq` - then 
-Distributor will use it for sending events. Tracked events are:
+If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` or `_gaq` - then Distributor will use it for sending events. Tracked events are:
 - `Opened` - the Distributor was opened
 - `Dates selected` - both start and end dates were selected
-- `Room selected` - a room was selected by clicking on 'Book now' button, its
-name is send as action argument
+- `Room selected` - a room was selected by clicking on 'Book now' button, its name is send as action argument
 - `Booking finished` - a booking was finished by clicking on 'Finish' button
+
+Also, you can enable ecommerce tracking by setting `ecommerce` option to `true`. Transaction will be send upon finish booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as transaction item, with sku set as room id. Item's price is not added, only transaction total cost is currently supported.
 
 Options
 -------
@@ -243,6 +243,11 @@ Type: `function` Default: `function(date) { }`
 
 Sets callback used when end date of reservation is changed either by selecting in 
 calendar or through `setEndDate(date)` api call.
+
+### ecommerce
+Type: `boolean` Default: `false`
+
+Enables Google Analytics ecommerce tracking
 
 ### fragments (experimental)
 Type: `boolean` Default: `false`

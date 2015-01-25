@@ -7,7 +7,7 @@
 
 ### 1.3.7
 
-- Added total cost as parameter to `Booking finished` tracking event
+- Added support for Google Analytics ecommerce
 
 ### 1.3.6
 - Fixed issue with Distributor not getting opened after deeplinked from other pages
