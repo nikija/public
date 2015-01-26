@@ -1,6 +1,12 @@
 # MEWS Distributor Release Notes
 
-### 1.4.0 (edge)
+### 1.4.2
+- Fixed braintree and GA ecommerce integration with Mews Payments
+
+### 1.4.1
+- Added debounce on order button to avoid multiple submits
+
+### 1.4.0
 - Added support for Mews Payments
 - Braintree api updated to v2
 - Improved validation of credit cards data in order form
