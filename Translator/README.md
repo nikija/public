@@ -39,3 +39,5 @@ Here's a sample of what should be the correct translation result of the table ab
     "DearTemplate": "Cher {name}" // Dear {name}
 }
 ```
+
+If you use TextEdit on MacOS, make sure that you have disabled the following: `Edit > Substitutions > Smart Quotes`
