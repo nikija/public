@@ -123,7 +123,7 @@ When the customer to be charged is known, the client application may actually ch
     "Items": [
         {
             "Name": "Beer",
-            "UnitCount": 10
+            "UnitCount": 10,
             "UnitCost": {
                 "Amount": 3.50,
                 "Currency": "EUR",
@@ -132,7 +132,7 @@ When the customer to be charged is known, the client application may actually ch
         },
         {
             "Name": "Steak",
-            "UnitCount": 1
+            "UnitCount": 1,
             "UnitCost": {
                 "Amount": 12.8,
                 "Currency": "EUR",
@@ -143,7 +143,17 @@ When the customer to be charged is known, the client application may actually ch
 }
 ```
 
-#### Sample Response
+### Response
+
+- `Content-Type` - `application/json`
+
+##### Content
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `ChargeId` | string | required | Identifier of the created charge. |
+
+#### Sample
 
 ```json
 {
