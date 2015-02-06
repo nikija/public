@@ -54,9 +54,8 @@ In order to charge a person, the client application first needs to obtain full i
 
 | Name | Type | | Description |
 | --- | --- | --- | --- |
-| `Customers` | array of [Customer](#Customer) | required | The found customers. |
+| `Customers` | array of [Customer](#customer) | required | The found customers. |
 
-<a name="Customer"></a>
 ##### Customer
 
 | Name | Type | | Description |
@@ -109,19 +108,17 @@ When the customer to be charged is known, the client application may actually us
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Identifier of the customer to be charged. |
-| `Items` | array of [ChargeItem](#ChargeItem) | required | Items of the charge. |
+| `Items` | array of [ChargeItem](#chargeitem) | required | Items of the charge. |
 | `Notes` | string | optional | Additional notes of the charge. |
 
-<a name="ChargeItem"></a>
 ##### ChargeItem
 
 | Name | Type | | Description |
 | --- | --- | --- | --- |
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
-| `UnitCost` | [Cost](#Cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
+| `UnitCost` | [Cost](#cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
 
-<a name="Cost"></a>
 ##### Cost
 
 | Name | Type | | Description |
