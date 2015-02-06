@@ -11,7 +11,8 @@ In order to charge a customer, the client application first needs to obtain info
 - `URI` - `<ApiBase>/customers/search`
 - `Method` - `POST`
 - `Content-Type` - `application/json`
-- `Content` - JSON object with the following structure:
+
+##### Content
 
 | Name | Type | | Description |
 | --- | --- | --- | --- |
@@ -36,19 +37,27 @@ In order to charge a customer, the client application first needs to obtain info
 }
 ```
 
-#### Response
+### Response
 
 - `Content-Type` - `application/json`
-- `Content` - JSON object with property `Customers` that contians customer objects with structure:
+
+##### Content
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `Customers` | array of [Customer](#Customer) | required | The found customers. |
+
+<a name="Customer"></a>
+##### Customer
 
 | Name | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
-| `LastName` | string | optional | Number of room where the customer currently stays. |
+| `RoomNumber` | string | optional | Number of room where the customer currently stays. |
 
-##### Sample
+#### Sample
 
 ```json
 {
@@ -70,7 +79,42 @@ In order to charge a customer, the client application first needs to obtain info
 
 ## Service Charge
 
-#### Sample Request
+When the customer to be charged is known, the client application may actually charge the customer.
+
+### Request
+
+- `URI` - `<ApiBase>/services/charge`
+- `Method` - `POST`
+- `Content-Type` - `application/json`
+
+##### Content
+ 
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Identifier of the customer to be charged. |
+| `Items` | array of [ChargeItem](#ChargeItem) | required | Items of the charge. |
+| `Notes` | string | optional | Additional notes of the charge. |
+
+<a name="ChargeItem"></a>
+##### ChargeItem
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `Name` | string | required | Name of the item. |
+| `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
+| `UnitCost` | [Cost](#Cost) | required | Unit cost, e.g. cost for one beer. So the total cost of the item is `UnitCount` times `UnitCost`. |
+
+<a name="Cost"></a>
+##### Cost
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `Amount` | decimal | required | Amount including tax. |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "CZK", "EUR", "USD". |
+| `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
+
+#### Sample
 
 ```json
 {
