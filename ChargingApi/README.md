@@ -12,8 +12,6 @@ In order to charge a person, the client application first needs to obtain full i
 - `Method` - `POST`
 - `Content-Type` - `application/json`
 
-#### Sample
-
 ```json
 {
     "AccessToken": "...",
@@ -33,8 +31,6 @@ In order to charge a person, the client application first needs to obtain full i
 ### Response
 
 - `Content-Type` - `application/json`
-
-#### Sample
 
 ```json
 {
@@ -79,8 +75,6 @@ When the customer to be charged is known, the client application may actually us
 - `URI` - `<ApiBase>/customers/charge`
 - `Method` - `POST`
 - `Content-Type` - `application/json`
-
-#### Sample
 
 ```json
 {
@@ -139,8 +133,6 @@ When the customer to be charged is known, the client application may actually us
 ### Response
 
 - `Content-Type` - `application/json`
-
-#### Sample
 
 ```json
 {
