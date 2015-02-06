@@ -4,7 +4,7 @@ The ServiceApi allows external applications to charge hotel guests for services 
 
 ## Customer Search
 
-In order to charge a customer, the client application first needs to obtain information about the customers in order to charge the correct one. The customers may be searched by name (or part of the name), room number or both.
+In order to charge a customer, the client application first needs to obtain full information about the customers in order to charge the correct one (in case there are multiple guests with same name). The customers may be searched by name (or part of the name), room number or both.
 
 ### Request
 
@@ -79,7 +79,7 @@ In order to charge a customer, the client application first needs to obtain info
 
 ## Service Charge
 
-When the customer to be charged is known, the client application may actually charge the customer.
+When the customer to be charged is known, the client application may actually use his `Id` to charge him.
 
 ### Request
 
@@ -103,7 +103,7 @@ When the customer to be charged is known, the client application may actually ch
 | --- | --- | --- | --- |
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
-| `UnitCost` | [Cost](#Cost) | required | Unit cost, e.g. cost for one beer. So the total cost of the item is `UnitCount` times `UnitCost`. |
+| `UnitCost` | [Cost](#Cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
 
 <a name="Cost"></a>
 ##### Cost
