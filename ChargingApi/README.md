@@ -1,4 +1,4 @@
-# ServiceApi Draft (Work in progress)
+# ChargingApi Draft (Work in progress)
 
 The ServiceApi allows external applications to charge hotel guests for services that were not provided directly by the hotel or that were managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
 
@@ -77,13 +77,13 @@ In order to charge a customer, the client application first needs to obtain full
 }
 ```
 
-## Service Charge
+## Customer Charge
 
 When the customer to be charged is known, the client application may actually use his `Id` to charge him.
 
 ### Request
 
-- `URI` - `<ApiBase>/services/charge`
+- `URI` - `<ApiBase>/customers/charge`
 - `Method` - `POST`
 - `Content-Type` - `application/json`
 
