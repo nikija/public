@@ -1,10 +1,26 @@
 # ServiceApi Draft (Work in progress)
 
+The ServiceApi allows external applications to charge hotel guests for services that were not provided directly by the hotel or that were managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
+
 ## Customer Search
 
-### Sample
+In order to charge a customer, the client application first needs to obtain information about the customers in order to charge the correct one. The customers may be searched by name (or part of the name), room number or both.
 
-#### Request
+### Request
+
+- `URI` - `<ApiBase>/customers/search`
+- `Method` - `POST`
+- `Content-Type` - `application/json`
+- `Content` - JSON object with the following structure:
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Name` | string | optional | Name or part of the name to search the customers by. |
+| `RoomNumber` | string | optional | Room number to search the current hotel guests by. |
+
+
+#### Sample
 
 ```json
 {
@@ -22,6 +38,18 @@
 
 #### Response
 
+- `Content-Type` - `application/json`
+- `Content` - JSON object with property `Customers` that contians customer objects with structure:
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the customer. |
+| `FirstName` | string | optional | First name of the customer. |
+| `LastName` | string | required | Last name of the customer. |
+| `LastName` | string | optional | Number of room where the customer currently stays. |
+
+##### Sample
+
 ```json
 {
     "Customers": [
@@ -33,7 +61,6 @@
         },
         {
             "Id": "0DB4D808-7953-4D29-ADED-CC716D73A142",
-            "FirstName": "Jane",
             "LastName": "Smith",
             "RoomNumber": "101"
         }
@@ -41,5 +68,41 @@
 }
 ```
 
-
 ## Service Charge
+
+#### Sample Request
+
+```json
+{
+    "AccessToken": "...",
+    "CustomerId": "4AFFC34A-F4B2-4FDF-AF7B-12DB5BD76AF3",
+    "Items": [
+        {
+            "Name": "Beer",
+            "UnitCount": 10
+            "UnitCost": {
+                "Amount": 3.50,
+                "Currency": "EUR",
+                "Tax": 0.21
+            }
+        },
+        {
+            "Name": "Steak",
+            "UnitCount": 1
+            "UnitCost": {
+                "Amount": 12.8,
+                "Currency": "EUR",
+                "Tax": 0.15
+            }
+        }
+    ],
+}
+```
+
+#### Sample Response
+
+```json
+{
+    "ChargeId": "BD94881A-6947-4E2F-BB24-C4EB5C3E7792"
+}
+```
