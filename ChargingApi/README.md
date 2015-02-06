@@ -1,10 +1,10 @@
 # ChargingApi Draft (Work in progress)
 
-The ServiceApi allows external applications to charge hotel guests for services that were not provided directly by the hotel or that were managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
+The ChargingApi allows external applications to charge hotel guests for services that were not provided directly by the hotel or that are managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
 
 ## Customer Search
 
-In order to charge a customer, the client application first needs to obtain full information about the customers in order to charge the correct one (in case there are multiple guests with same name). The customers may be searched by name (or part of the name), room number or both.
+In order to charge a person, the client application first needs to obtain full information about the customers from the hotel system. The customers may be searched by name (or part of the name), room number or both.
 
 ### Request
 
