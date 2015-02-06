@@ -124,7 +124,7 @@ When the customer to be charged is known, the client application may actually us
 | Name | Type | | Description |
 | --- | --- | --- | --- |
 | `Amount` | decimal | required | Amount including tax. |
-| `Currency` | string | required | ISO-4217 currency code, e.g. "CZK", "EUR", "USD". |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
 
 ### Response
