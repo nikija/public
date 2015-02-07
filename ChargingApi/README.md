@@ -125,7 +125,7 @@ When the customer to be charged is known, the client application may actually us
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
 | `UnitCost` | [Cost](#cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
-| `UnitCount` | [Category](#category) | optional | Category of the item, e.g. "Alcoholic Beverage" in case of "Beer" item. |
+| `UnitCount` | [Category](#category) | optional | Category of the item, e.g. "Alcoholic Beverage" category in case of "Beer" item. |
 
 ##### Cost
 
