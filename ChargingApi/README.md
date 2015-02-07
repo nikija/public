@@ -87,6 +87,10 @@ When the customer to be charged is known, the client application may actually us
                 "Amount": 3.50,
                 "Currency": "EUR",
                 "Tax": 0.21
+            },
+            "Category": {
+                "Code": "ABVG",
+                "Name": "Alcoholic Beverage"
             }
         },
         {
@@ -96,6 +100,9 @@ When the customer to be charged is known, the client application may actually us
                 "Amount": 12.8,
                 "Currency": "EUR",
                 "Tax": 0.15
+            },
+            "Category": {
+                "Code": "FOOD"
             }
         }
     ],
@@ -118,6 +125,7 @@ When the customer to be charged is known, the client application may actually us
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
 | `UnitCost` | [Cost](#cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
+| `UnitCount` | [Category](#category) | optional | Category of the item, e.g. "Alcoholic Beverage" in case of "Beer" item. |
 
 ##### Cost
 
@@ -126,6 +134,13 @@ When the customer to be charged is known, the client application may actually us
 | `Amount` | decimal | required | Amount including tax. |
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
+
+##### Category
+
+| Name | Type | | Description |
+| --- | --- | --- | --- |
+| `Code` | string | required | Unique code of the category (can be e.g. used to map POS categories to accounting categories in the hotel system). |
+| `Name` | string | optional | Name of the category.  |
 
 ### Response
 
