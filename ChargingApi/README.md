@@ -169,6 +169,8 @@ When the customer to be charged is known, the client application may actually us
 }
 ```
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `ChargeId` | string | required | Identifier of the created charge. |
 
 ## Environments
