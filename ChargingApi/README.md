@@ -90,7 +90,7 @@ In order to charge a person, the client application first needs to obtain full i
 
 ### Charge Customer
 
-When the customer to be charged is known, the client application may actually use his `Id` to charge him.
+When the customer to be charged is known, the client application should use his `Id` to charge him.
 
 #### Request `<ApiBase>/customers/charge`
 
