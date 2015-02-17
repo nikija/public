@@ -12,7 +12,7 @@ The Charging API allows external applications to charge hotel guests for service
 
 ## General Info
 
-In order to use the API, the client needs to know base address of the API and an access token which allows the client to use the API. Both of those two values depend on the used environment, for further information see section [Environments](#environments).
+In order to use the API, the client needs to know the **API base address** and an **access token** which allows the client to use the API. Both of those two values depend on the used environment, for further information see section [Environments](#environments).
 
 ### Requests
 
@@ -29,8 +29,6 @@ The API responds with `Content-Type` set to `application/json` and JSON content.
 
 In case of any error, the returned JSON object describes the error and has the following properties:
 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `ExceptionTypeFullName` | string | required | Full type of exception that has been thrown on the server. |
 | `Message` | string | required | Description of the error. |
 | `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
@@ -41,11 +39,7 @@ In case of any error, the returned JSON object describes the error and has the f
 
 In order to charge a person, the client application first needs to obtain full information about the customers from the hotel system. The customers may be searched by name (or part of the name), room number or both. If both room number and name are empty, then all chargeable customers are returned.
 
-#### Request
-
-- `URI` - `<ApiBase>/customers/search`
-- `Method` - `POST`
-- `Content-Type` - `application/json`
+#### Request `<ApiBase>/customers/search`
 
 ```json
 {
@@ -55,17 +49,11 @@ In order to charge a person, the client application first needs to obtain full i
 }
 ```
 
-##### Content
-
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Name` | string | optional | Name or part of the name to search the customers by. |
 | `RoomNumber` | string | optional | Room number to search the current hotel guests by. |
 
 #### Response
-
-- `Content-Type` - `application/json`
 
 ```json
 {
@@ -85,16 +73,10 @@ In order to charge a person, the client application first needs to obtain full i
 }
 ```
 
-##### Content
-
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `Customers` | array of [Customer](#customer) | required | The found customers. |
 
 ##### Customer
 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -104,11 +86,7 @@ In order to charge a person, the client application first needs to obtain full i
 
 When the customer to be charged is known, the client application may actually use his `Id` to charge him.
 
-#### Request
-
-- `URI` - `<ApiBase>/customers/charge`
-- `Method` - `POST`
-- `Content-Type` - `application/json`
+#### Request `<ApiBase>/customers/charge`
 
 ```json
 {
@@ -144,19 +122,13 @@ When the customer to be charged is known, the client application may actually us
 }
 ```
 
-##### Content
- 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Identifier of the customer to be charged. |
-| `Items` | array of [ChargeItem](#chargeitem) | required | Items of the charge. |
+| `Items` | array of [Item](#item) | required | Items of the charge. |
 | `Notes` | string | optional | Additional notes of the charge. |
 
-##### ChargeItem
+##### Item
 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
 | `UnitCost` | [Cost](#cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
@@ -164,22 +136,16 @@ When the customer to be charged is known, the client application may actually us
 
 ##### Cost
 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `Amount` | decimal | required | Amount including tax. |
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
 
 ##### Category
 
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `Code` | string | required | Unique code of the category (can be e.g. used to map POS categories to accounting categories in the hotel system). |
 | `Name` | string | optional | Name of the category.  |
 
 #### Response
-
-- `Content-Type` - `application/json`
 
 ```json
 {
@@ -187,22 +153,18 @@ When the customer to be charged is known, the client application may actually us
 }
 ```
 
-##### Content
-
-| Name | Type | | Description |
-| --- | --- | --- | --- |
 | `ChargeId` | string | required | Identifier of the created charge. |
 
 ## Environments
 
-#### Development Environment
+#### Test Environment
 
 This environment is meant to be used during implementation of the client applications, you will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. When you log into the system, you can use the search box on top to find the customer you charged through the API. Then on the customers dashboard, there should be the charge under section "Processed Orders" in case everything went correctly.
 
-- **API Base Address** - `https://mews-demo.azurewebsites.net/api/charging/v1`
+- **API Base Address** - `https://mews-test.azurewebsites.net/api/charging/v1`
 - **API Access Token** - `TODO`
 
-- **System Address** - `https://mews-demo.azurewebsites.net/`
+- **System Address** - `https://mews-test.azurewebsites.net/`
 - **Email** - `TODO`
 - **Password** - `TODO`
 
