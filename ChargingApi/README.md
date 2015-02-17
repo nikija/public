@@ -179,7 +179,6 @@ This environment is meant to be used during implementation of the client applica
 
 - **API Base Address** - `https://mews-test.azurewebsites.net/api/charging/v1`
 - **API Access Token** - `TODO`
-
 - **System Address** - `https://mews-test.azurewebsites.net/`
 - **Email** - `TODO`
 - **Password** - `TODO`
