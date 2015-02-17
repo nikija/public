@@ -12,11 +12,9 @@ The Charging API allows external applications to charge hotel guests for service
 
 ## General Info
 
-In order to use the API, the client needs to know the **API base address** and an **access token** which allows the client to use the API. Both of those two values depend on the used environment, for further information see section [Environments](#environments).
-
 ### Requests
 
-The API accepts only HTTP POST requests with `Content-Type` set to `application/json`.
+In order to use the API, the client needs to know the **API base address** and an **access token** which allows the client to use the API. Both of those two values depend on the used environment, for further information see section [Environments](#environments). The API accepts only HTTP POST requests with `Content-Type` set to `application/json`.
 
 ### Responses
 
