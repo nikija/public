@@ -175,10 +175,11 @@ When the customer to be charged is known, the client application may actually us
 
 #### Test Environment
 
-This environment is meant to be used during implementation of the client applications, you will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. When you log into the system, you can use the search box on top to find the customer you charged through the API. Then on the customers dashboard, there should be the charge under section "Processed Orders" in case everything went correctly.
-
 - **API Base Address** - `https://mews-test.azurewebsites.net/api/charging/v1`
 - **API Access Token** - `TODO`
+
+This environment is meant to be used during implementation of the client applications, you will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. When you log into the system, you can use the search box on top to find the customer you charged through the API. Then on the customers dashboard, there should be the charge under section "Processed Orders" in case everything went correctly.
+
 - **System Address** - `https://mews-test.azurewebsites.net/`
 - **Email** - `TODO`
 - **Password** - `TODO`
