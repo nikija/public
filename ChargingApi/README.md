@@ -29,6 +29,8 @@ The API responds with `Content-Type` set to `application/json` and JSON content.
 
 In case of any error, the returned JSON object describes the error and has the following properties:
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `ExceptionTypeFullName` | string | required | Full type of exception that has been thrown on the server. |
 | `Message` | string | required | Description of the error. |
 | `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
@@ -49,6 +51,8 @@ In order to charge a person, the client application first needs to obtain full i
 }
 ```
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Name` | string | optional | Name or part of the name to search the customers by. |
 | `RoomNumber` | string | optional | Room number to search the current hotel guests by. |
@@ -73,10 +77,14 @@ In order to charge a person, the client application first needs to obtain full i
 }
 ```
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `Customers` | array of [Customer](#customer) | required | The found customers. |
 
 ##### Customer
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
@@ -122,6 +130,8 @@ When the customer to be charged is known, the client application may actually us
 }
 ```
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Identifier of the customer to be charged. |
 | `Items` | array of [Item](#item) | required | Items of the charge. |
@@ -129,6 +139,8 @@ When the customer to be charged is known, the client application may actually us
 
 ##### Item
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | integer | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
 | `UnitCost` | [Cost](#cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
@@ -136,12 +148,16 @@ When the customer to be charged is known, the client application may actually us
 
 ##### Cost
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `Amount` | decimal | required | Amount including tax. |
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
 
 ##### Category
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `Code` | string | required | Unique code of the category (can be e.g. used to map POS categories to accounting categories in the hotel system). |
 | `Name` | string | optional | Name of the category.  |
 
