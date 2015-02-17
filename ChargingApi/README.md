@@ -20,9 +20,12 @@ The API accepts only HTTP POST requests with `Content-Type` set to `application/
 
 ### Responses
 
-The API responds with `Content-Type` set to `application/json`, HTTP status code 200 in case of success and JSON content.
+The API responds with `Content-Type` set to `application/json` and JSON content. In case of success, the HTTP status code is 200 and the content contains result according to the call. In case of error, there are multiple HTTP status codes for different types of errors:
 
-#### Errors
+- **400 Bad Request** - Error caused by the client, e.g. in case of malformed request.
+- **401 Unauthorized** - Error caused by usage of an invalid access token.
+- **403 Forbidden** - Server error that should be reported to the user of the client app. E.g. when charging a customer that is not chargeable or when trying to charge negative cost.
+- **500 Internal Server Error** - Unexpectced error of the server.
 
 In case of any error, the returned JSON object describes the error and has the following properties:
 
@@ -31,13 +34,6 @@ In case of any error, the returned JSON object describes the error and has the f
 | `ExceptionTypeFullName` | string | required | Full type of exception that has been thrown on the server. |
 | `Message` | string | required | Description of the error. |
 | `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
-
-The HTTP status code depends on type of the error:
-
-- **400 Bad Request** - Error caused by the client, e.g. in case of malformed request.
-- **401 Unauthorized** - Error caused by usage of an invalid access token.
-- **403 Forbidden** - Server error that should be reported to the user of the client app. E.g. when charging a customer that is not chargeable or when trying to charge negative cost.
-- **500 Internal Server Error** - Unexpectced error of the server.
 
 ## API Calls
 
