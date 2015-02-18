@@ -61,15 +61,10 @@ In order to charge a person, the client application first needs to obtain full i
 {
     "Customers": [
         {
-            "Id": "4AFFC34A-F4B2-4FDF-AF7B-12DB5BD76AF3",
-            "FirstName": "John",
-            "LastName": "Smith",
-            "RoomNumber": "101"
-        },
-        {
-            "Id": "0DB4D808-7953-4D29-ADED-CC716D73A142",
-            "LastName": "Smith",
-            "RoomNumber": "101"
+            "FirstName": "Nicolas",
+            "Id": "e92f12f3-96ad-449d-a0ff-053fd5e78157",
+            "LastName": "Cage",
+            "RoomNumber": "206"
         }
     ]
 }
@@ -97,15 +92,15 @@ When the customer to be charged is known, the client application should use his 
 ```json
 {
     "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
-    "CustomerId": "4AFFC34A-F4B2-4FDF-AF7B-12DB5BD76AF3",
+    "CustomerId": "e92f12f3-96ad-449d-a0ff-053fd5e78157",
     "Items": [
         {
             "Name": "Beer",
             "UnitCount": 10,
             "UnitCost": {
-                "Amount": 3.50,
-                "Currency": "EUR",
-                "Tax": 0.21
+                "Amount": 2.50,
+                "Currency": "GBP",
+                "Tax": 0.20
             },
             "Category": {
                 "Code": "ABVG",
@@ -117,8 +112,8 @@ When the customer to be charged is known, the client application should use his 
             "UnitCount": 1,
             "UnitCost": {
                 "Amount": 12.8,
-                "Currency": "EUR",
-                "Tax": 0.15
+                "Currency": "GBP",
+                "Tax": 0.05
             },
             "Category": {
                 "Code": "FOOD"
