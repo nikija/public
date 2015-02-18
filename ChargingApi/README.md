@@ -175,16 +175,16 @@ When the customer to be charged is known, the client application should use his 
 
 #### Test Environment
 
-This environment is meant to be used during implementation of the client applications:
+This environment is meant to be used during implementation of the client applications. We have prepared one hotel whose customers you should be able to charge through the API with the following setup:
 
 - **API Base Address** - `https://mews-test.azurewebsites.net/api/charging/v1`
-- **API Access Token** - `TODO`
+- **API Access Token** - `2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20`
 
-You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
+The test hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
 
-- **System Address** - `https://mews-test.azurewebsites.net/`
-- **Email** - `TODO`
-- **Password** - `TODO`
+- **Address** - `https://mews-test.azurewebsites.net/`
+- **Email** - `charging-api@mews.li`
+- **Password** - `charging-api`
 
 When you sign in, you can use the search box on top to find the customer you charged through the API. Then on the customers dashboard, there should be the charge under section "Processed Orders" in case everything went correctly.
 
