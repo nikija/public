@@ -4,14 +4,18 @@ The Charging API allows external applications to charge hotel guests for service
 
 ## Contents
 
-- [General Info](#general-info)
+- [Overview](#overview)
+    - [Requests](#requests)
+    - [Responses](#responses)
 - [API Calls](#api-calls)
     - [Search Customers](#search-customers)
     - [Charge Customer](#charge-customer)
 - [Environments](#environments)
+    - [Test Environment](#test-environment)
+    - [Production Environment](#production-environment)
 - [Use Case](#use-case)
 
-## General Info
+## Overview
 
 ### Requests
 
