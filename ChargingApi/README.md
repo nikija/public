@@ -8,7 +8,8 @@ The Charging API allows external applications to charge hotel guests for service
 - [API Calls](#api-calls)
     - [Search Customers](#search-customers)
     - [Charge Customer](#charge-customer)
-- [Environments](#environments) 
+- [Environments](#environments)
+- [Use Case](#use-case)
 
 ## General Info
 
@@ -187,3 +188,11 @@ When you sign in, you can use the search box on top to find the customer you cha
 
 - **API Base Address** - `https://www.mews.li/api/charging/v1`
 - **API Access Token** - Depends on the hotel, should be provided to you by the hotel administrator.
+
+## Use case
+
+A simple example: there is a restaurant that is used by hotel customers. When a customer wants to pay in this restaurant he asks for the bill. Cash or credit card can be used directly within the restaurant - in that case the API is not used at all.
+
+Or he could say "My name is Smith, I am staying in the hotel in room 123." Or write this information on the bill. In this case the restaurant employee should check on the POS, whether there is a guest named Smith and whether they indeed stay in room 123. The POS asks Mews via the API about the customer and Mews returns a list of all customers in room 123, or all customers with provided name.
+
+If everything is OK and chargeable customers returned from the API contain the guest, restaurant employee can charge the customer's hotel bill and should notify the customer that the bill is closed and added to his hotel account. If no chargeable customer is found, then the guest should be invited to pay in the restaurant.
