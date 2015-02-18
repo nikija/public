@@ -43,7 +43,7 @@ In order to charge a person, the client application first needs to obtain full i
 
 ```json
 {
-    "AccessToken": "...",
+    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
     "Name": "Smith",
     "RoomNumber": "101"
 }
@@ -96,7 +96,7 @@ When the customer to be charged is known, the client application should use his 
 
 ```json
 {
-    "AccessToken": "...",
+    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
     "CustomerId": "4AFFC34A-F4B2-4FDF-AF7B-12DB5BD76AF3",
     "Items": [
         {
