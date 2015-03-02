@@ -1,7 +1,7 @@
 # MEWS Distributor Release Notes
 
 ### 1.4.5
-- Fixed voucher code case-sensitiveness
+- Fixed voucher code case-sensitivenes
 - Fixed localization error
 - Fixed touch scrolling on Mobile Safari
 
