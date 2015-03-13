@@ -1,5 +1,12 @@
 # MEWS Distributor Release Notes
 
+### 1.5.1
+- Fixed order button's debounce when form is invalid
+- Minor UI improvements
+
+### 1.5.0
+- Added support for Adyen payment gateway
+
 ### 1.4.5
 - Fixed voucher code case-sensitiveness
 - Fixed localization error
