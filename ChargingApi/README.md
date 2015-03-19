@@ -34,7 +34,6 @@ In case of any error, the returned JSON object describes the error and has the f
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `ExceptionTypeFullName` | string | required | Full type of exception that has been thrown on the server. |
 | `Message` | string | required | Description of the error. |
 | `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
 
