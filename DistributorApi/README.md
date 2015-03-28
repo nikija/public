@@ -462,10 +462,9 @@ Gives availabilities and pricings for given dates interval with product prices i
     "CustomerId": "7ac6ca0d-7c08-4ab1-8da8-9b44979d8855",
     "Reservations": [{
         "Id": "",
-        "Rate": ...,
-        "Cost": ...,
-        "Number": "",
-        ...
+        "Rate": {},
+        "Cost": {},
+        "Number": ""
     }],
     "TotalCost": {}
 }
