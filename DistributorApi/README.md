@@ -91,9 +91,7 @@ Initial call used to obtain all static data about hotel.
             "en-US": "Very cozy room with nice bed."
         },
         "ImageIds": ["271f3d83-4ea2-4006-baec-065092d11b00"]
-    },
-    ...
-    ],
+    }],
     "Products": [{
         "Id": "22923798-1abd-4bad-83cc-87e82f50d1d6",
         "Name": {
@@ -233,7 +231,7 @@ Gives availabilities and pricings for given dates interval with product prices i
     "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
     "StartUtc": "2015-01-01T00:00:00Z",
     "EndUtc": "2015-01-03T00:00:00Z",
-    "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64", ...],
+    "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64"],
     "VoucherCode": "Discount2042",
     "InformativeCurrencyCode": "CZK"
 }
@@ -260,12 +258,10 @@ Gives availabilities and pricings for given dates interval with product prices i
         "Description": {
             "en-US": "Best rate available."
         },
-    },
-    ...
-    ],
+    }],
     "RoomCategoryAvailabilities": [{
         "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
-        RoomOccupancies: [{
+        "RoomOccupancies": [{
             "NormalBedCount": 2,
             "ExtraBedCount": 1,
             "AdultCount": 1,
@@ -287,9 +283,9 @@ Gives availabilities and pricings for given dates interval with product prices i
                         "CurrencyCode": "USD"
                     }
                 },
-                "MaxPrice": ...
-                "InformativePrice": ...
-                "MaxInformativePrice": ...
+                "MaxPrice": {},
+                "InformativePrice": {},
+                "MaxInformativePrice": {}
             }]
         },
         {
@@ -314,9 +310,9 @@ Gives availabilities and pricings for given dates interval with product prices i
                         "CurrencyCode": "USD"
                     }
                 },
-                "MaxPrice": ...
-                "InformativePrice": ...
-                "MaxInformativePrice": ...
+                "MaxPrice": {},
+                "InformativePrice": {},
+                "MaxInformativePrice": {}
             }]
         },
         ]
@@ -408,11 +404,9 @@ Gives availabilities and pricings for given dates interval with product prices i
         "ChildCount": 0,
         "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64"],
         "Notes": ""
-    },
-    ...
-    ],
+    }],
     "CreditCardData": {
-        "PaymentGatewayData": "..."
+        "PaymentGatewayData": "...",
         "ObfuscatedCreditCardNumber": "..."
     }
 }
