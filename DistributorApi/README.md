@@ -85,26 +85,22 @@ Initial call used to obtain all static data about hotel.
     "RoomCategories": [{
         "Id": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
         "Name": {
-            "en-US": "Room",
-            ...
+            "en-US": "Room"
         },
         "Description": {
-            "en-US": "Very cozy room with nice bed.",
-            ...
+            "en-US": "Very cozy room with nice bed."
         },
-        "ImageIds": ["271f3d83-4ea2-4006-baec-065092d11b00", ...]
+        "ImageIds": ["271f3d83-4ea2-4006-baec-065092d11b00"]
     },
     ...
     ],
     "Products": [{
         "Id": "22923798-1abd-4bad-83cc-87e82f50d1d6",
         "Name": {
-            "en-US": "Breakfast",
-            ...
+            "en-US": "Breakfast"
         },
         "Description": {
-            "en-US": "Continental breakfast served in the morning.",
-            ...
+            "en-US": "Continental breakfast served in the morning."
         },
         "IncludedByDefault": false,
         "AlwaysIncluded": false
@@ -120,7 +116,6 @@ Initial call used to obtain all static data about hotel.
         "Name": "English"
     }],
     "PaymentGateway": {
-        ...
     }
 }
 ```
@@ -260,12 +255,10 @@ Gives availabilities and pricings for given dates interval with product prices i
     "Rates": [{
         "Id": "c1d48c54-9382-4ceb-a820-772bf370573d",
         "Name": {
-            "en-US": "Rate",
-            ...
+            "en-US": "Rate"
         },
         "Description": {
-            "en-US": "Best rate available.",
-            ...
+            "en-US": "Best rate available."
         },
     },
     ...
@@ -297,9 +290,7 @@ Gives availabilities and pricings for given dates interval with product prices i
                 "MaxPrice": ...
                 "InformativePrice": ...
                 "MaxInformativePrice": ...
-            },
-            ...
-            ]
+            }]
         },
         {
             "NormalBedCount": 2,
@@ -326,14 +317,10 @@ Gives availabilities and pricings for given dates interval with product prices i
                 "MaxPrice": ...
                 "InformativePrice": ...
                 "MaxInformativePrice": ...
-            },
-            ...
-            ]
+            }]
         },
         ]
-    },
-    ...
-    ]
+    }]
 }
 ```
 
@@ -419,7 +406,7 @@ Gives availabilities and pricings for given dates interval with product prices i
         "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
         "AdultCount": 3,
         "ChildCount": 0,
-        "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64", ...],
+        "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64"],
         "Notes": ""
     },
     ...
@@ -486,7 +473,7 @@ Gives availabilities and pricings for given dates interval with product prices i
         "Number": "",
         ...
     }],
-    "TotalCost": ...
+    "TotalCost": {}
 }
 ```
 
