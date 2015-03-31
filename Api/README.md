@@ -1,4 +1,4 @@
-# MEWS API Usage Guidelines
+# MEWS API Guidelines
 
 All public APIs provided by the MEWS platform share a set of common properties which are described in the following document.
 
