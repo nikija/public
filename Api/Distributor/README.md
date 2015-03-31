@@ -1,72 +1,29 @@
 # Distributor API (v1)
 
-The Distributor API allows external applications to get information about offered rooms and products for given hotel, to check availability of those rooms for given dates interval and finally to create reservations for those selected.
+The Distributor API allows external applications (generally known as booking widgets) to get information about offered rooms and products for given hotel, to check availability of those rooms and finally to create new reservations.
+
+First of all, please have a look at [MEWS API Guidelines](https://github.com/MewsSystems/public/tree/master/Api) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
-- [Overview](#overview)
-    - [Requests](#requests)
-    - [Responses](#responses)
-    - [Payment Gateways](#responses)
-- [API Calls](#api-calls)
+- [Operations](#operations)
     - [Get Hotel Info](#get-hotel-info)
     - [Validate Voucher](#validate-voucher)
     - [Get Availability](#get-availability)
+    - [Get Braintree Client Token](#get-braintree-client-token)
     - [Create Reservation Group](#create-reservation-group)
     - [Get Reservation Group](#get-reservation-group)
-    - [Get Braintree Client Token](#get-braintree-client-token)
 - [Environments](#environments)
     - [Test Environment](#test-environment)
     - [Production Environment](#production-environment)
-- [Use Case](#use-case)
 
-## Overview
-
-### Requests
-
-In order to use the API, the client needs to know the **API base address** and an **hotel id**. Base address depends on the used environment, for further information see section [Environments](#environments). Hotel id can be obtained in Commander from url of hotel's detail page (under Settings > "Your hotel's name" ). The url is `https://mews.li/Employees/Hotel/Detail/{hotelId}` and guid is the last part of it, i.e. 64ab5cc6-ef1f-4b1d-a421-1b5833645ce4. 
-The API accepts only HTTP POST requests with `Content-Type` set to `application/json`.
-
-### Responses
-
-The API responds with `Content-Type` set to `application/json` and JSON content. In case of success, the HTTP status code is 200 and the content contains result according to the call. In case of error, there are multiple HTTP status codes for different types of errors:
-
-- **400 Bad Request** - Error caused by the client, e.g. in case of malformed request.
-- **403 Forbidden** - Server error that should be reported to the user of the client app. E.g. when creating a reservation that exceeds hotel's availability.
-- **500 Internal Server Error** - Unexpectced error of the server.
-
-In case of any error, the returned JSON object describes the error and has the following properties:
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Message` | string | required | Description of the error. |
-| `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
-
-### Payment Gateways
-
-There are currently 3 payment gateways supported by Distributor API. None of them charges customer upon creating reservation, they only serves as secure way to collect information about their credit card. You can decide to use none of them, in which case reservation are created with note about missing credit card.
-
-#### Mews Payment
-
-Mews Payment is hosted on our website. The url to which redirect is created like this:
-
-```
-https://mews.li/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
-```
-
-Both parameters are obtained as result of [Create Reservation Group](#create-reservation-group) API call.
-
-#### Braintree
-
-#### Adyen
-
-## API Calls
+## Operations
 
 ### Get Hotel Info
 
-Initial call used to obtain all static data about hotel.
+Initial call used to obtain all static data about hotel relevant for a booking widget.
 
-#### Request `<ApiBase>/hotels/getById`
+#### Request `[PlatformAddress]/api/distributor/v1/hotels/get`
 
 ```json
 {
@@ -161,15 +118,26 @@ Initial call used to obtain all static data about hotel.
 | `Code` | string | required | Code of the language in the ISO format. |
 | `Name` | string | required | Lozalized name of the language. |
 
-##### Paymengt Gateway
+##### Payment Gateway
 
 There are currently 3 types of payment gateways and for each different informations are send.
+
+There are currently 3 payment gateways supported by Distributor API. None of them charges customer upon creating reservation, they only serves as secure way to collect information about their credit card. You can decide to use none of them, in which case reservation are created with note about missing credit card.
+
 
 ###### Mews Payment
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `PaymentGatewayType` | string | required | Value is "MewsPayment". |
+
+Mews Payment is hosted on our website. The url to which redirect is created like this:
+
+```
+https://mews.li/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
+```
+
+Both parameters are obtained as result of [Create Reservation Group](#create-reservation-group) API call.
 
 ###### Braintree
 
@@ -194,7 +162,7 @@ A localized text is an object of texts localized into languages supported by hot
 
 Used for validating voucher codes.
 
-#### Request `<ApiBase>/voucher/validate`
+#### Request `[PlatformAddress]/api/distributor/v1/vouchers/validate`
 
 ```json
 {
@@ -224,7 +192,7 @@ Used for validating voucher codes.
 
 Gives availabilities and pricings for given dates interval with product prices included for each room category. Categorized by applicable rates and person counts from 1 to full room. If room category is not available, it is left out from response. 
 
-#### Request `<ApiBase>/availability/get`
+#### Request `[PlatformAddress]/api/distributor/v1/hotels/getAvailability`
 
 ```json
 {
@@ -378,7 +346,8 @@ Gives availabilities and pricings for given dates interval with product prices i
 | `Tax` | int | optional | |
 
 ### Create Reservation Group
-#### Request `<ApiBase>/reservationGroup/create`
+
+#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/create`
 
 ```json
 {
@@ -478,7 +447,7 @@ Gives availabilities and pricings for given dates interval with product prices i
 
 ### Get Reservation Group
 
-#### Request `<ApiBase>/payments/getBraintreeClientToken`
+#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/get`
 
 ```json
 {
@@ -500,7 +469,7 @@ Same as in [Create Reservation Group](#create-reservation-group).
 
 Braintree requires a special client token generated for each transaction. In case you use Braintree as payment gateway, you need to obtain it to before processing payment. 
 
-#### Request `<ApiBase>/hotels/getById`
+#### Request `[PlatformAddress]/api/distributor/v1/payments/getBraintreeClientToken`
 
 ```json
 {
@@ -516,16 +485,21 @@ Braintree requires a special client token generated for each transaction. In cas
 
 ```json
 {
-    "BraintreeClientToken": "..."
+    "ClientToken": "..."
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `BraintreeClientToken` | string | required | Braintree client token generated on server. |
+| `ClientToken` | string | required | Braintree client token generated on server. |
 
 ## Environments
 
+#### Test Environment
+
+TODO, HotelId
+
 #### Production Environment
 
-- **API Base Address** - `https://www.mews.li/api/distributor/v1`
+- **Platform Address** - `https://www.mews.li/api/distributor/v1`
+- **Hotel Id** - Depends on the hotel, should be provided to you by the hotel administrator.
