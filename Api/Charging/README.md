@@ -14,7 +14,7 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
     - [Production Environment](#production-environment)
 - [Use Case](#use-case)
 
-## API Calls
+## Operations
 
 ### Search Customers
 
