@@ -413,7 +413,7 @@ Braintree requires a special client token generated for each transaction. In cas
         "StateCode": "",
         "CountryCode": ""
     },
-    "ReservationOrders": [
+    "Reservations": [
         {
             "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
             "StartUtc": "2015-01-01T00:00:00Z",
@@ -438,7 +438,7 @@ Braintree requires a special client token generated for each transaction. In cas
 | --- | --- | --- | --- |
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
-| `ReservationOrders` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
+| `Reservations` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
 | `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
 
 ##### Customer
