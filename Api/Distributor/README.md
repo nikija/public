@@ -503,7 +503,7 @@ Braintree requires a special client token generated for each transaction. In cas
             "ProductIds": [
                 "d0e88da5-ae64-411c-b773-60ed68954f64"
             ],
-            "Notes": "Quiet room please."
+            "Notes": "Quiet room please.",
             "Cost": {
                 "CurrencyCode": "USD",
                 "Value": 250,
