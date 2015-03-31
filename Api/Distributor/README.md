@@ -484,10 +484,33 @@ Braintree requires a special client token generated for each transaction. In cas
     "CustomerId": "7ac6ca0d-7c08-4ab1-8da8-9b44979d8855",
     "Reservations": [
         {
-            "Id": "",
-            "Rate": { },
-            "Cost": { },
-            "Number": ""
+            "Id": "123456ec-a59d-43f1-9d97-d6c984764e8c",
+            "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
+            "StartUtc": "2015-01-01T00:00:00Z",
+            "EndUtc": "2015-01-03T00:00:00Z",
+            "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
+            "Rate": {
+                "Id": "c1d48c54-9382-4ceb-a820-772bf370573d",
+                "Name": {
+                    "en-US": "Rate"
+                },
+                "Description": {
+                    "en-US": "Best rate available."
+                },
+            },
+            "AdultCount": 3,
+            "ChildCount": 0,
+            "ProductIds": [
+                "d0e88da5-ae64-411c-b773-60ed68954f64"
+            ],
+            "Notes": "Quiet room please."
+            "Cost": {
+                "CurrencyCode": "USD",
+                "Value": 250,
+                "Tax": 0.1,
+                "TaxValue": 25
+            },
+            "Number": "1234"
         }
     ],
     "TotalCost": { }
