@@ -1,13 +1,12 @@
 # Charging API (v1)
 
-The Charging API allows external applications to charge hotel guests for services that were not provided directly by the hotel or that are managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
+The Charging API allows external applications to charge hotel guests for services that were not provided directly by the hotel or that are managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills. 
+
+First of all, please have a look at [MEWS API Guidelines](https://github.com/MewsSystems/public/tree/master/Api) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
-- [Overview](#overview)
-    - [Requests](#requests)
-    - [Responses](#responses)
-- [API Calls](#api-calls)
+- [Operations](#operations)
     - [Search Customers](#search-customers)
     - [Charge Customer](#charge-customer)
 - [Environments](#environments)
@@ -15,35 +14,13 @@ The Charging API allows external applications to charge hotel guests for service
     - [Production Environment](#production-environment)
 - [Use Case](#use-case)
 
-## Overview
-
-### Requests
-
-In order to use the API, the client needs to know the **API base address** and an **access token**. Both of those two values depend on the used environment, for further information see section [Environments](#environments). The API accepts only HTTP POST requests with `Content-Type` set to `application/json`.
-
-### Responses
-
-The API responds with `Content-Type` set to `application/json` and JSON content. In case of success, the HTTP status code is 200 and the content contains result according to the call. In case of error, there are multiple HTTP status codes for different types of errors:
-
-- **400 Bad Request** - Error caused by the client, e.g. in case of malformed request.
-- **401 Unauthorized** - Error caused by usage of an invalid access token.
-- **403 Forbidden** - Server error that should be reported to the user of the client app. E.g. when charging a customer that is not chargeable or when trying to charge negative cost.
-- **500 Internal Server Error** - Unexpectced error of the server.
-
-In case of any error, the returned JSON object describes the error and has the following properties:
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Message` | string | required | Description of the error. |
-| `Details` | string | optional | Additional details about the error (server stack trace, inner exceptions). Only available on development environment. |
-
 ## API Calls
 
 ### Search Customers
 
 In order to charge a person, the client application first needs to obtain full information about the customers from the hotel system. The customers may be searched by name (or part of the name), room number or both. If both room number and name are empty, then all chargeable customers are returned.
 
-#### Request `<ApiBase>/customers/search`
+#### Request `[PlatformAddress]/api/charging/v1/customers/search`
 
 ```json
 {
@@ -91,7 +68,7 @@ In order to charge a person, the client application first needs to obtain full i
 
 When the customer to be charged is known, the client application should use his `Id` to charge him.
 
-#### Request `<ApiBase>/customers/charge`
+#### Request `[PlatformAddress]/api/charging/v1/customers/charge`
 
 ```json
 {
@@ -176,8 +153,8 @@ When the customer to be charged is known, the client application should use his 
 
 This environment is meant to be used during implementation of the client applications. We have prepared one hotel whose customers you should be able to charge through the API with the following setup:
 
-- **API Base Address** - `https://mews-test.azurewebsites.net/api/charging/v1`
-- **API Access Token** - `2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20`
+- **Platform Address** - `https://mews-test.azurewebsites.net`
+- **Access Token** - `2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20`
 
 The test hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
 
@@ -189,8 +166,8 @@ When you sign in, you can use the search box on top to find the customer you cha
 
 #### Production Environment
 
-- **API Base Address** - `https://www.mews.li/api/charging/v1`
-- **API Access Token** - Depends on the hotel, should be provided to you by the hotel administrator.
+- **Platform Address** - `https://www.mews.li`
+- **Access Token** - Depends on the hotel, should be provided to you by the hotel administrator.
 
 ## Use case
 
