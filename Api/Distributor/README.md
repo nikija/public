@@ -97,7 +97,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Code` | string | required | Code of the language in the ISO format. |
-| `Name` | string | required | Lozalized name of the language. |
+| `Name` | string | required | Name of the language. |
 
 ##### Currency
 
@@ -140,7 +140,7 @@ If the hotel does not use any payment gateway, the value is null. If it does, th
 Mews Payments gateway is hosted on our website. After a reservation is created, the customer should be redirected to:
 
 ```
-https://mews.li/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
+[PlatformAddress]/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
 ```
 
 Both parameters are obtained as a result of [Create Reservation Group](#create-reservation-group) operation. The customer will fill the credit card information there and after that will be redirected back. 
@@ -244,7 +244,7 @@ Gives availabilities and pricings for given date interval with product prices in
     "RoomCategoryAvailabilities": [
         {
             "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
-            "RoomOccupancies": [
+            "RoomOccupancyAvailabilities": [
                 {
                     "NormalBedCount": 2,
                     "ExtraBedCount": 1,
@@ -311,8 +311,8 @@ Gives availabilities and pricings for given date interval with product prices in
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Rates` | array of [Rate](#rate) | required | List of information about all available rates. |
-| `RoomCategoryAvailabilites` | array of [RoomCategoryAvailability](#roomcategoryavailability) | required | Availabilities of each room category. If a room category is not available, it is not included. |
+| `Rates` | array of [Rate](#rate) | required | Information about all available rates. |
+| `RoomCategoryAvailabilites` | array of [RoomCategoryAvailability](#roomcategoryavailability) | required | Availabilities of room categories. If a room category is not available, it is not included. |
 
 ##### Rate
 
@@ -327,7 +327,7 @@ Gives availabilities and pricings for given date interval with product prices in
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `RoomCategoryId` | string | required | Unique identifier of the room category. |
-| `RoomOccupancyAvailabilities` | array of [RoomOccupancyAvailability](#roomoccupancyavailability) | required | Availabilities of rooms in the cateogry by the room occupancy. |
+| `RoomOccupancyAvailabilities` | array of [RoomOccupancyAvailability](#roomoccupancyavailability) | required | Availabilities of rooms in the category by the room occupancy. |
 
 ##### RoomOccupancyAvailability
 
@@ -346,7 +346,7 @@ Gives availabilities and pricings for given date interval with product prices in
 | --- | --- | --- | --- |
 | `RateId` | string | required | Unique identifier of a rate. |
 | `Price` | [RoomPrice](#roomprice) | required | Price of the room. |
-| `MaxPrice` | [RoomPrice](#roomprice) | required | Max price of the room with the same parameters and conditions. Can be displayed as a value before discount. |
+| `MaxPrice` | [RoomPrice](#roomprice) | required | Max price of the room with the same parameters and conditions among other rates. Can be understood (and possibly displayed) as the value before discount. |
 | `InformativeCurrencyPrice` | [RoomPrice](#roomprice) | optional | Price of the room in the informative currency. |
 | `MaxInformativeCurrencyPrice` | [RoomPrice](#roomprice) | optional | Max price of the room in the informative currency. |
 
@@ -366,129 +366,9 @@ Gives availabilities and pricings for given date interval with product prices in
 | `Tax` | int | optional | Tax rate (between 0.0 and 1.0). |
 | `TaxValue` | decimal | optional | Value of the tax. |
 
-### Create Reservation Group
-
-#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/create`
-
-```json
-{
-    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
-    "Customer": {
-        "Email": "hiro@snow.com",
-        "FirstName": "Hiro",
-        "LastName": "Protagonist",
-        "Telephone": "",
-        "AddressLine1": "",
-        "AddressLine2": "",
-        "City": "",
-        "PostalCode": "",
-        "StateCode": "",
-        "CountryCode": ""
-    },
-    "ReservationOrders": [{
-        "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
-        "StartUtc": "2015-01-01T00:00:00Z",
-        "EndUtc": "2015-01-03T00:00:00Z",
-        "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
-        "AdultCount": 3,
-        "ChildCount": 0,
-        "ProductIds": ["d0e88da5-ae64-411c-b773-60ed68954f64"],
-        "Notes": ""
-    }],
-    "CreditCardData": {
-        "PaymentGatewayData": "...",
-        "ObfuscatedCreditCardNumber": "..."
-    }
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `HotelId` | string | required | Unique identifier of hotel. |
-| `Customer` | [Customer](#customer) | required | |
-| `ReservationOrders` | array of [Reservation](#reservation) | required | |
-| `CreditCardData` | array of [CreditCardData](#creditcarddata) | required | |
-
-##### Customer
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Email` | string | required | |
-| `FirstName` | string | required | |
-| `LastName` | string | required | |
-| `Telephone` | string | optional | |
-| `AddressLine1` | string | optional | |
-| `AddressLine2` | string | optional | |
-| `City` | string | optional | |
-| `PostalCode` | string | optional | |
-| `StateCode` | string | optional | |
-| `CountryCode` | string | optional | |
-
-##### Reservation
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `RoomCategoryId` | string | required | |
-| `StartUtc` | string | required | |
-| `EndUtc` | string | required | |
-| `RateId` | string | required | |
-| `AdultCount` | string | required | |
-| `ChildCount` | string | required | |
-| `ProductIds` | array of string | optional | |
-| `Notes` | string | optional | |
-
-##### CreditCardData
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `PaymentGatewayData` | string | optional | |
-| `ObfuscatedCreditCardNumber` | string | optional | |
-
-#### Response
-
-```json
-{
-    "ReservationGroupId": "f6fa7e62-eb22-4176-bc49-e521d0524dee",
-    "CustomerId": "7ac6ca0d-7c08-4ab1-8da8-9b44979d8855",
-    "Reservations": [{
-        "Id": "",
-        "Rate": {},
-        "Cost": {},
-        "Number": ""
-    }],
-    "TotalCost": {}
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `ReservationGroupId` | string | required | Unique identifier of reservation group. |
-| `CustomerId` | string | required | Unique identifier of customer who created reservation group. |
-| `Reservations` | array of [Reservation](#reservation) | required | List of reservations in group. |
-
-### Get Reservation Group
-
-#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/get`
-
-```json
-{
-    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
-    "ReservationGroupId": "f6fa7e62-eb22-4176-bc49-e521d0524dee"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `HotelId` | string | required | Unique identifier of hotel. |
-| `ReservationGroupId` | string | required | Unique identifier of reservation group. |
-
-#### Response
-
-Same as in [Create Reservation Group](#create-reservation-group).
-
 ### Get Braintree Client Token
 
-Braintree requires a special client token generated for each transaction. In case you use Braintree as payment gateway, you need to obtain it to before processing payment. 
+Braintree requires a special client token generated for each transaction. In case the hotel uses Braintree as a payment gateway, you need to obtain it to before processing payment. 
 
 #### Request `[PlatformAddress]/api/distributor/v1/payments/getBraintreeClientToken`
 
@@ -514,13 +394,149 @@ Braintree requires a special client token generated for each transaction. In cas
 | --- | --- | --- | --- |
 | `ClientToken` | string | required | Braintree client token generated on server. |
 
+### Create Reservation Group
+
+#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/create`
+
+```json
+{
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "Customer": {
+        "Email": "hiro@snow.com",
+        "FirstName": "Hiro",
+        "LastName": "Protagonist",
+        "Telephone": "",
+        "AddressLine1": "",
+        "AddressLine2": "",
+        "City": "",
+        "PostalCode": "",
+        "StateCode": "",
+        "CountryCode": ""
+    },
+    "ReservationOrders": [
+        {
+            "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
+            "StartUtc": "2015-01-01T00:00:00Z",
+            "EndUtc": "2015-01-03T00:00:00Z",
+            "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
+            "AdultCount": 3,
+            "ChildCount": 0,
+            "ProductIds": [
+                "d0e88da5-ae64-411c-b773-60ed68954f64"
+            ],
+            "Notes": "Quiet room please."
+        }
+    ],
+    "CreditCardData": {
+        "PaymentGatewayData": "...",
+        "ObfuscatedCreditCardNumber": "411111******1111"
+    }
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `HotelId` | string | required | Unique identifier of the hotel. |
+| `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
+| `ReservationOrders` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
+| `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
+
+##### Customer
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Email` | string | required | Email of the customer. |
+| `FirstName` | string | required | First name of the customer. |
+| `LastName` | string | required | Last name of the customer. |
+| `Telephone` | string | optional | Telephone number of the customer. |
+| `AddressLine1` | string | optional | First line of the address. |
+| `AddressLine2` | string | optional | Second line of the address. |
+| `City` | string | optional | City. |
+| `PostalCode` | string | optional | Postal code of the address. |
+| `StateCode` | string | optional | ISO 3166-2 code of the state, e.g. `US-AL`.  |
+| `CountryCode` | string | optional | ISO 3166-1 Aplha-2 code of the country, e.g. `US`.  |
+
+##### Reservation
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `RoomCategoryId` | string | required | Identifier of the requested room category. |
+| `StartUtc` | string | required | Start date of the reservation (arrival date). |
+| `EndUtc` | string | required | End date of the reservation (departure date). |
+| `RateId` | string | required | Identifier of the chosen rate. |
+| `AdultCount` | string | required | Count of adults. |
+| `ChildCount` | string | required | Count of childs. |
+| `ProductIds` | array of string | optional | Identifiers of the requested products. |
+| `Notes` | string | optional | Additional notes. |
+
+##### CreditCardData
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `PaymentGatewayData` | string | optional | Encoded credit card data obtained from the payment gateway specific library. |
+| `ObfuscatedCreditCardNumber` | string | optional | Obfuscated credit card number, e.g. `411111******1111`. |
+
+#### Response
+
+```json
+{
+    "ReservationGroupId": "f6fa7e62-eb22-4176-bc49-e521d0524dee",
+    "CustomerId": "7ac6ca0d-7c08-4ab1-8da8-9b44979d8855",
+    "Reservations": [
+        {
+            "Id": "",
+            "Rate": { },
+            "Cost": { },
+            "Number": ""
+        }
+    ],
+    "TotalCost": { }
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ReservationGroupId` | string | required | Unique identifier of the created reservation group. |
+| `CustomerId` | string | required | Unique identifier of customer who created reservation group. |
+| `Reservations` | array of [Reservation](#reservation) | required | The created reservations in group. |
+| `TotalCost` | [CurrencyValue](#currencyvalue) | required | Total cost of the whole group. |
+
+### Get Reservation Group
+
+#### Request `[PlatformAddress]/api/distributor/v1/reservationGroups/get`
+
+```json
+{
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "ReservationGroupId": "f6fa7e62-eb22-4176-bc49-e521d0524dee"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `HotelId` | string | required | Unique identifier of the hotel. |
+| `ReservationGroupId` | string | required | Unique identifier of the reservation group. |
+
+#### Response
+
+Same as in [Create Reservation Group](#create-reservation-group).
+
 ## Environments
 
-#### Test Environment
+### Test Environment
 
-TODO, fbcebd3d-0ff6-4545-b5cf-c7933d11a3a0
+This environment is meant to be used during implementation of the client applications. We have prepared one hotel where you can fetch availability and create reservation. You can use the following information to access it:
 
-#### Production Environment
+- **Platform Address** - `https://mews-test.azurewebsites.net`
+- **Hotel Id** - `fbcebd3d-0ff6-4545-b5cf-c7933d11a3a0`
 
-- **Platform Address** - `https://www.mews.li/api/distributor/v1`
+You will also have access into the system so it is possible for you to check whether the reservations sent to the API are correctly posted to the system. To sign into the system, use the following credentials:
+
+- **Address** - `https://mews-test.azurewebsites.net`
+- **Email** - `distributor-api@mews.li`
+- **Password** - `distributor-api`
+
+### Production Environment
+
+- **Platform Address** - `https://www.mews.li`
 - **Hotel Id** - Depends on the hotel, should be provided to you by the hotel administrator.
