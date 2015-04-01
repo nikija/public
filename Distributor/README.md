@@ -87,7 +87,7 @@ new Mews.Distributor({
 
 #### Done!
 
-This is all you need for basic setup of Mews Distributor. Any other code snippet in this documentation is for advanced usage.
+This is all you need for the basic setup of Mews Distributor. Any other code snippet in this documentation is for advanced usage.
 
 ### Advanced features (optional)
 
