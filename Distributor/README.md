@@ -73,6 +73,26 @@ new Mews.Distributor({
 </script>
 ```
 
+Example:
+
+Let's assume that you got your hotel ID from Mews and it's `aaaa-bbbb-cccc-dddd-eeeeeeee`. In that case, the code snippet in your page should be:
+
+```
+<script>
+new Mews.Distributor({
+  hotelId: "aaaa-bbbb-cccc-dddd-eeeeeeee"
+});
+</script>
+```
+
+#### Done!
+
+This is all you need for basic setup of Mews Distributor. Any other code snippet in this documentation is for advanced usage.
+
+### Advanced features (optional)
+
+#### Custom style
+
 For using default overlay style, you need to link `distributor-overlay.css` in website and use at least these options:
 
 ```html
@@ -83,6 +103,8 @@ new Mews.Distributor({
 });
 </script>
 ```
+
+#### All possible options
 
 Example with all possible options and their default values:
 ```html
@@ -126,6 +148,9 @@ distributor.setPeopleCount(count);
 distributor.setRoomsList(rooms);
 </script>
 ```
+
+#### Note
+See that you have just one `<script>` tag containing `new Mews.Distributor` in your page.
 
 <a name="braintree"></a>
 ### Braintree (credit card payment gateway)
