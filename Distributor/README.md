@@ -57,7 +57,7 @@ Provided css styles are optional and can be completely replaced with custom css.
 
 Distributor requires at least one element in website, which will serve as its container. Additionaly, you can add multiple banner elements.
 
-Once required files are loaded, you can initialize Distributor with this minimal code:
+Once required files are loaded, you can initialize Distributor with the following minimal code. Do not forget to **use hotelId of your hotel** instead of the sample hotelId `aaaa-bbbb-cccc-dddd-eeeeeeee`.
 
 ```html
 <!-- Distributor's element, insert anywhere in website -->
@@ -66,22 +66,11 @@ Once required files are loaded, you can initialize Distributor with this minimal
 <!-- Distributor's banner, you can have multiple of these -->
 <div class="mews-distributor-banner"></div>
 
+<!-- Distributor initialization script. Use id of your hotel. -->
 <script>
-new Mews.Distributor({
-  hotelId: {your_hotel_id}
-});
-</script>
-```
-
-Example:
-
-Let's assume that you got your hotel ID from Mews and it's `aaaa-bbbb-cccc-dddd-eeeeeeee`. In that case, the code snippet in your page should be:
-
-```
-<script>
-new Mews.Distributor({
-  hotelId: "aaaa-bbbb-cccc-dddd-eeeeeeee"
-});
+    new Mews.Distributor({
+        hotelId: "aaaa-bbbb-cccc-dddd-eeeeeeee"
+    });
 </script>
 ```
 
