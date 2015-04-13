@@ -31,10 +31,8 @@ class MewsDistributor extends WP_Widget
         ?>
         <!-- Distributor's element, insert anywhere in website -->
         <div id="mews-distributor"></div>
-
-        <!-- Distributor's banner, you can have multiple of these -->
-        <div class="mews-distributor-banner"></div>
-
+        <!-- Current version. Make sure that jQuery is already loaded. -->
+        <script src="https://www.mews.li/distributor/current/distributor.js"></script>
         <script>
             new Mews.Distributor({
                 hotelId: '<?php echo $hotelId; ?>'
