@@ -68,7 +68,7 @@ In order to charge a person, the client application first needs to obtain full i
 
 ### Create Customer
 
-In some use cases, the client application has to be able to create customers. For example when the service can be orderable in advance without the customer having yet any reservation or profile in the hotel. This can be case of resellers of the hotel services, e.g. event space resellers, spa treatment resellers etc. Normal POS systems should not need to use this call.
+In some use cases, the client application has to be able to create customers. For example when the service can be ordered in advance without the customer having yet any reservation or profile in the hotel. This can be case of resellers of the hotel services, e.g. event space resellers, spa treatment resellers etc. Normal POS systems should not need to use this call.
 
 In our system, the customers are uniquely identified by emails. If there is already a customer with email equal to email provided in the request, the system actually doesn't create any new customer profile. The response just contains information about the existing customer. The data of existing customer are left intact, since the data in the system are more trustworthy to the hotel than data provided by the client application.
 
@@ -211,7 +211,7 @@ In case of a reseller client application, it is also possible to settle a custom
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Identifier of the customer to be settled. |
-| `PaymentValue` | [PaymentValue](#item) | required | Value of the payment. |
+| `PaymentValue` | [PaymentValue](#paymentvalue) | required | Value of the payment. |
 | `PaymentIdentifier` | string | required | Identifier of the payment (e.g. number of the bank transaction). |
 | `Notes` | string | optional | Additional notes about the payment and what is being settled. |
 
