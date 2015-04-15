@@ -188,6 +188,52 @@ When the customer to be charged is known, the client application should use his 
 | --- | --- | --- | --- |
 | `ChargeId` | string | required | Identifier of the created charge. |
 
+### Settle Customer
+
+In case of a reseller client application, it is also possible to settle a customer by posting information about taken payments into the hotel system. Then the customer wouldn't have to pay anything (or the whole charged amount) during billing in the hotel.
+
+#### Request `[PlatformAddress]/api/charging/v1/customers/settle`
+
+```json
+{
+    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
+    "CustomerId": "c0af3629-e243-4144-86ea-18214f46dcd4",
+    "PaymentValue": {
+        "Amount": 100,
+        "Currency": "EUR"
+    },
+    "PaymentIdentifier": "1234abcd",
+    "Notes": "Order 42"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Identifier of the customer to be settled. |
+| `PaymentValue` | [PaymentValue](#item) | required | Value of the payment. |
+| `PaymentIdentifier` | string | required | Identifier of the payment (e.g. number of the bank transaction). |
+| `Notes` | string | optional | Additional notes about the payment and what is being settled. |
+
+##### PaymentValue
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Amount` | decimal | required | Amount of the payment. |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
+
+#### Response
+
+```json
+{
+    "PaymentId": "8c5cb93d-3a74-4307-99a8-7cf6b9e81e38"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `PaymentId` | string | required | Identifier of the created payment. |
+
 ## Environments
 
 #### Test Environment
