@@ -8,7 +8,9 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
 
 - [Operations](#operations)
     - [Search Customers](#search-customers)
+    - [Create Customer](#create-customer)
     - [Charge Customer](#charge-customer)
+    - [Settle Customer](#settle-customer)
 - [Environments](#environments)
     - [Test Environment](#test-environment)
     - [Production Environment](#production-environment)
@@ -63,6 +65,45 @@ In order to charge a person, the client application first needs to obtain full i
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
 | `RoomNumber` | string | optional | Number of room where the customer currently stays. |
+
+### Create Customer
+
+In some use cases, the client application has to be able to create customers. For example when the service can be orderable in advance without the customer having yet any reservation or profile in the hotel. This can be case of resellers of the hotel services, e.g. event space resellers, spa treatment resellers etc. Normal POS systems should not need to use this call.
+
+In our system, the customers are uniquely identified by emails. If there is already a customer with email equal to email provided in the request, the system actually doesn't create any new customer profile. The response just contains information about the existing customer. The data of existing customer are left intact, since the data in the system are more trustworthy to the hotel than data provided by the client application.
+
+#### Request `[PlatformAddress]/api/charging/v1/customers/create`
+
+```json
+{
+    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
+    "Email": "john@smith.com",
+    "FirstName": "John",
+    "LastName": "Smith",
+    "Telephone": "123456789",
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Email` | string | required | Email of the customer that serves as a unique identifier. |
+| `FirstName` | string | optional | First name of the customer. |
+| `LastName` | string | required | Last name of the customer. |
+| `FirstName` | string | optional | Telephone (or mobile phone) of the customer. |
+
+#### Response
+
+```json
+{
+    "FirstName": "John",
+    "Id": "c0af3629-e243-4144-86ea-18214f46dcd4",
+    "LastName": "Smith",
+    "RoomNumber": null
+}
+```
+
+The [Customer](#customer) object.
 
 ### Charge Customer
 
