@@ -90,7 +90,7 @@ In our system, the customers are uniquely identified by emails. If there is alre
 | `Email` | string | required | Email of the customer that serves as a unique identifier. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
-| `FirstName` | string | optional | Telephone (or mobile phone) of the customer. |
+| `Telephone` | string | optional | Telephone (or mobile phone) of the customer. |
 
 #### Response
 
