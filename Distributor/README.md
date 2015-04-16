@@ -12,5 +12,5 @@ If you don't know which one to use, go with Standalone option. It's the simplest
 
 If you are a developer, you might be interested in more advanced ways of integration of Distributor into your website. Check options below for their own, more detailed documentations.
 
-[Distributor widget](./widget.md)
-[Distributor API](../Api/Distributor/)
+- [Distributor Widget](./widget.md)
+- [Distributor API](../Api/Distributor/)
