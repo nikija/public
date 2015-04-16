@@ -245,7 +245,7 @@ This environment is meant to be used during implementation of the client applica
 
 The test hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
 
-- **Address** - `https://mews-test.azurewebsites.net/`
+- **Address** - `https://mews-test.azurewebsites.net`
 - **Email** - `charging-api@mews.li`
 - **Password** - `charging-api`
 
