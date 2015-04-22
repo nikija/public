@@ -10,6 +10,6 @@ If you're unsure of which one to use, go with the stand-alone option. It's the s
 
 If you are a developer, you might be interested in the more advanced ways of integrating with the Distributor into your website for a more seamless experience for guests. The Distributor widget is an embedable button (UI element) which enables booking directly from the hotel's own website. Please click the links below for the detailed documentation.
 
-JavaScript Widget - [Distributor Widget](./widget.md)
-
-Full Distributor API (please contact sales@mewssystems.com to activate this function) - [Distributor API](../Api/Distributor/)
+- [Distributor JavaScript Widget](./widget.md)
+- [Distributor API](../Api/Distributor/)
+-- Full Distributor API (please contact sales@mewssystems.com to activate this function)
