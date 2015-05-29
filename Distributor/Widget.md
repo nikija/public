@@ -103,6 +103,7 @@ var distributor = new Mews.Distributor({
     onStartDateChanged: function(date) { },
     onEndDateChanged: function(date) { },
     ecommerce: false,
+    orderByLowestPrice: true,
     // experimental
     fragments: false,
     // development
@@ -253,7 +254,12 @@ calendar or through `setEndDate(date)` api call.
 ### ecommerce
 Type: `boolean` Default: `false`
 
-Enables Google Analytics ecommerce tracking
+Enables Google Analytics ecommerce tracking.
+
+### orderByLowestPrice
+Type: `boolean` Default: `true`
+
+Orders available rooms by lowest price first.
 
 ### fragments (experimental)
 Type: `boolean` Default: `false`
