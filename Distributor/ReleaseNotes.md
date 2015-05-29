@@ -1,5 +1,8 @@
 # MEWS Distributor Release Notes
 
+### 1.5.4
+- Fixed rooms ordering by price, added option to turn it off 
+
 ### 1.5.1
 - Fixed order button's debounce when form is invalid
 - Minor UI improvements
