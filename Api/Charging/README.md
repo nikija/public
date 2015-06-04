@@ -80,7 +80,7 @@ In our system, the customers are uniquely identified by emails. If there is alre
     "Email": "john@smith.com",
     "FirstName": "John",
     "LastName": "Smith",
-    "Telephone": "123456789",
+    "Telephone": "123456789"
 }
 ```
 
