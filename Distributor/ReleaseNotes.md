@@ -1,5 +1,8 @@
 # MEWS Distributor Release Notes
 
+### 1.5.5
+- Added option for default value of a voucher code
+
 ### 1.5.4
 - Fixed rooms ordering by price, added option to turn it off 
 
