@@ -93,6 +93,7 @@ var distributor = new Mews.Distributor({
     language: 'en-US',
     peopleCount: 2,
     maxPeopleCount: 0,
+    voucherCode: '',
     rooms: [],
     loadOverlayCss: false,
     loadCss: true,
@@ -190,6 +191,11 @@ Default number of people selected for reservation. Only positive numbers are acc
 Type: `number` Default: `0`
 
 Upper limit to allowed number of people selected for reservation. If set to `0`, upper limit is determined from maximum of number of beds among room types. Only positive numbers are accepted, upper limit is not set.
+
+### voucherCode
+Type: `string` Default: ``
+
+Default value for a voucher code.
 
 ### rooms
 Type: `array` Default: `[]`
