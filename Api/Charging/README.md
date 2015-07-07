@@ -26,9 +26,9 @@ In order to charge a person, the client application first needs to obtain full i
 
 ```json
 {
-    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
+    "AccessToken": "0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA",
     "Name": "Smith",
-    "RoomNumber": "101"
+    "RoomNumber": "203"
 }
 ```
 
@@ -44,10 +44,16 @@ In order to charge a person, the client application first needs to obtain full i
 {
     "Customers": [
         {
-            "FirstName": "Nicolas",
-            "Id": "e92f12f3-96ad-449d-a0ff-053fd5e78157",
-            "LastName": "Cage",
-            "RoomNumber": "206"
+            "FirstName": "Jane",
+            "Id": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
+            "LastName": "Smith",
+            "RoomNumber": "203"
+        },
+        {
+            "FirstName": "John",
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LastName": "Smith",
+            "RoomNumber": "203"
         }
     ]
 }
@@ -76,9 +82,9 @@ In our system, the customers are uniquely identified by emails. If there is alre
 
 ```json
 {
-    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
+    "AccessToken": "0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA",
     "Email": "john@smith.com",
-    "FirstName": "John",
+    "FirstName": "Peter",
     "LastName": "Smith",
     "Telephone": "123456789"
 }
@@ -96,8 +102,8 @@ In our system, the customers are uniquely identified by emails. If there is alre
 
 ```json
 {
-    "FirstName": "John",
-    "Id": "c0af3629-e243-4144-86ea-18214f46dcd4",
+    "FirstName": "Peter",
+    "Id": "794dbb77-0a9a-4170-9fa9-62ea4bf2a56e",
     "LastName": "Smith",
     "RoomNumber": null
 }
@@ -113,8 +119,8 @@ When the customer to be charged is known, the client application should use his 
 
 ```json
 {
-    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
-    "CustomerId": "e92f12f3-96ad-449d-a0ff-053fd5e78157",
+    "AccessToken": "0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA",
+    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
     "Items": [
         {
             "Name": "Beer",
@@ -180,7 +186,7 @@ When the customer to be charged is known, the client application should use his 
 
 ```json
 {
-    "ChargeId": "BD94881A-6947-4E2F-BB24-C4EB5C3E7792"
+    "ChargeId": "bd8d0d30-e213-4166-a081-37916ab8e55f"
 }
 ```
 
@@ -196,8 +202,8 @@ In case of a reseller client application, it is also possible to settle a custom
 
 ```json
 {
-    "AccessToken": "2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20",
-    "CustomerId": "c0af3629-e243-4144-86ea-18214f46dcd4",
+    "AccessToken": "0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA",
+    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
     "PaymentValue": {
         "Amount": 100,
         "Currency": "EUR"
@@ -226,7 +232,7 @@ In case of a reseller client application, it is also possible to settle a custom
 
 ```json
 {
-    "PaymentId": "8c5cb93d-3a74-4307-99a8-7cf6b9e81e38"
+    "PaymentId": "ec1f8523-00dd-425c-a1e7-e4d7b05300b0"
 }
 ```
 
@@ -240,12 +246,12 @@ In case of a reseller client application, it is also possible to settle a custom
 
 This environment is meant to be used during implementation of the client applications. We have prepared one hotel whose customers you should be able to charge through the API with the following setup:
 
-- **Platform Address** - `https://mews-test.azurewebsites.net`
-- **Access Token** - `2BEC1AC810DB4983BA996174827BB259-85AEFF6419BAF4BE76E0270A9FA1E20`
+- **Platform Address** - `https://demo.mews.li`
+- **Access Token** - `0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA`
 
 The test hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
 
-- **Address** - `https://mews-test.azurewebsites.net`
+- **Address** - `https://demo.mews.li`
 - **Email** - `charging-api@mews.li`
 - **Password** - `charging-api`
 
