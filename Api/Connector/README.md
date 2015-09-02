@@ -7,11 +7,11 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
 ## Contents
 
 - [Operations](#operations)
-    - [Sign in](#sing-in)
+    - [Sign in](#sign-in)
     - [Get Active Commands](#get-active-commands)
     - [Update Command](#update-command)
 - [Devices](#devices)
-    - [Printer](#printer)
+    - [Printers](#printers)
 
 ## Operations
 
@@ -29,7 +29,7 @@ Signs in the client application to MEWS using a `ConnectorToken`. Returns `Acces
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `ConnectorToken` | string | required | Unique token identifying the client application. Can be obtained from MEWS from enteprrise settings. |
+| `ConnectorToken` | string | required | Unique token identifying the client application. Can be obtained from MEWS from enterprise settings. |
 
 #### Response
 
@@ -89,11 +89,11 @@ This operation returns all commands the are still active from the client applica
             },
             "Data": {
                 "CopyCount": 1,
-                "DriverName": "",
-                "FileData": "...",
                 "FileType": "application/pdf",
-                "PortName": "",
-                "PrinterName": "Printer"
+                "FileData": "...",
+                "PrinterName": "Printer",
+                "PrinterDriverName": "",
+                "PrinterPortName": ""
             }
         }
     ]
@@ -113,7 +113,7 @@ This operation returns all commands the are still active from the client applica
 | `CreatedUtc` | string | required | Creation date and time of the command. |
 | `Creator` | [User](#user) | optional | Creator of the command. |
 | `Device` | [Device](#device) | required | Device that the command should be executed on. |
-| `Data` | object | optional | Data of the command depending on device type and command type. |
+| `Data` | object | optional | Data of the command depending on device type and command type. Details in the [devices](#devices) section. |
 
 ##### User
 
@@ -150,13 +150,13 @@ Updates state of a command.
 | `AccessToken` | string | required | Access token of the client application. |
 | `CommandId` | string | required | Identifier of the command to be updated. |
 | `State` | string | required | New state of the command. |
-| `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored |
-| `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored |
-| `Notes` | string | optional | Notes about command execution. Only used if the `State` is `Processed`, `Cancelled` or `Error`, otherwise ignored |
+| `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored. |
+| `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored. Details in the [devices](#devices) section. |
+| `Notes` | string | optional | Notes about command execution. Only used if the `State` is `Processed`, `Cancelled` or `Error`, otherwise ignored. |
 
 ## Devices
 
-### Printer (device type `Printer`)
+### Printers (device type `Printer`)
 
 #### Command Data
 
