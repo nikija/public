@@ -19,7 +19,7 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
 
 Signs in the client application to MEWS using a `ConnectorToken`. Returns `AccessToken` that has to be passed to all other operations in order for the application to be authorized. Note that the `AccessToken` is valid only until the `ConnectorToken` is used again. After that, the `AccessToken` returned by the first sign in operation is no longer valid.
 
-#### Request `[PlatformAddress]/api/connector/v1/app/sign-in`
+#### Request `[PlatformAddress]/api/connector/v1/app/signIn`
 
 ```json
 {
