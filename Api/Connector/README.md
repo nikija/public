@@ -156,7 +156,9 @@ Updates state of a command.
 
 ## Devices
 
-### Printers (device type `Printer`)
+### Printers
+
+Device type: `Printer`
 
 #### Command Data
 
