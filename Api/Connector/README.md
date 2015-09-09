@@ -54,7 +54,7 @@ A device command is in one of the following states:
 - `Cancelled` - A command whose execution has been cancelled before (or during) processing.
 - `Error` - A command whose execution was or processing was terminated by an error.
 
-This operation returns all commands the are still active from the client application point of view. That means commands that are in either of `Pending`, `Received` or `Processing` states.
+This operation returns all commands the are still active from the client application point of view. That means commands that are in either `Pending` or `Received` state.
 
 #### Request `[PlatformAddress]/api/connector/v1/commands/getAllActive`
 
