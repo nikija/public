@@ -152,6 +152,8 @@ Also, you can enable ecommerce tracking by setting `ecommerce` option to `true`.
 
 If you have issues with Google Analytics Ecommerce tracking, please consult following troubleshooting guide first: 
 
+* Make sure your google analytics inicialization code does not use named tracker etc. ga("create", "UA-643435310-2", {name: "myTracker"}). Distributor currently does not support named trackers. By sure to remove third parametr otherwise Google Analytics Ecommerce reporting will not work. 
+
 * Ensure, that E-commerce is turned on in Google Analytics - Conversion -> Ecommerce -> Overview should look like picture below
 
 ![schranka-2](https://cloud.githubusercontent.com/assets/13900491/9854066/28bae7c8-5b07-11e5-8e44-e111b4405bf1.jpg)
