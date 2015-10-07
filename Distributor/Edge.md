@@ -21,8 +21,7 @@ There are no dependencies, everything that Distributor Edge needs is bundled int
 Include the following script with embed-ready version of Distributor into your website.
 
 ```html
-<!-- Embed version -->
-<script src="https://www.mews.li/distributor/edge/distributor-embed.js"></script>
+<script src="https://www.mews.li/distributor/edge/distributor.min.js"></script>
 ```
 
 ### Styles
