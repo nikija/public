@@ -37,7 +37,7 @@ The overlay is not visible by default - to actually show it to your users, you s
 ```html
 <!-- Distributor's initialization call, creating new instance of Distributor. Use id of your hotel. -->
 <script>
-    Mews.distributorEmbed({
+    Mews.Distributor({
         hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
         openElements: '.open-distributor-button'
     });
@@ -47,7 +47,7 @@ If you need more specific setup of opening Distributor, or you want to call some
 
 ```
 <script>
-    Mews.distributorEmbed({
+    Mews.Distributor({
         hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee'
     }, function(distributor) {
         // you can call api functions on distributor instance here
