@@ -73,7 +73,7 @@ Example with all possible options and their default values:
 
 ```html
 <script>
-Mews.distributorEmbed({
+Mews.Distributor({
     // required
     hotelId: '',
 
