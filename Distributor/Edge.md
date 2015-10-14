@@ -7,6 +7,7 @@
 - [Options](#options)
     - [Customization](#customization)
 - [API](#api)
+- [Distributor link](#link)
 
 <a name="install"></a>
 Install
@@ -234,3 +235,21 @@ Sets end date for new availability query, currently loaded availability list is 
 - `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
 
 Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
+
+<a name="link"></a>
+## Distributor link
+
+Distributor widget can be also linked to your page by simple `<a>` link. In this mode, browser will open new tab with Distributor or will navigate to Distributor in current tab. In any case user will be redirected from your webpage to `https://mews.li` page. You can change redirection mode of a link by using `target='_blank'` parameter. 
+
+### Example
+
+`<a href='https://mews.li/?id=f7109b0e-4b17-40ba-929e-c1859e8b4392/&language=cs-CZ' target='_blank'> Create new reservation! </a>`
+
+### Customization
+
+Customization of linked Distributor is limited compare to Embeded version. No javascript API calls can provided. You will also not be able to use Google Analytics nor Ecommerce tracking. 
+
+All customizations are provided by URL parameters 
+
+- `?id=aaaa-bbbb-cccc-dddd-eeeeeeee` - required parameter, where `aaaa-bbbb-cccc-dddd-eeeeeeee` is your hotel ID.
+- `&language=en-US` - optional parameter, language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.  
