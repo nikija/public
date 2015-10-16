@@ -88,6 +88,8 @@ Mews.Distributor({
     rooms: null,
     ecommerce: false,
     hashEvents: false,
+    ecommerceTrackerName: null,
+    gaTrackerName: null,
 
     // theme
     theme: {
@@ -133,6 +135,12 @@ If you have Google Analytics configured on your website using standard naming co
 You can use also get those trackings as page views with different url hashes by setting `hashEvents` to `true`. Just be aware that this can actually mess up with your website if you're already using url hashes for routing!
 
 Also, you can enable ecommerce tracking by setting `ecommerce` option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
+
+#### Multiple trackers
+
+When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used. 
+
+Please note, that some Google Analytics applications can set up their own named trackers. If you wish to used them to report GA events, check their configuration for correct name. This is especially important in case Google Tag Manager is in use, but no other default Google Analytics trackers are being setup on page. 
 
 <a name="options"></a>
 Options
@@ -197,6 +205,16 @@ Enables Google Analytics page view tracking with url hashes.
 Type: `object`
 
 Object used for setting custom theme values. See next section for more info.
+
+### ecommerceTrackerName
+Type: `string`
+
+Name of the Google Analytics tracker, that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
+
+### gaTrackerName
+Type: `string`
+
+Name of the Google Analytics tracker, that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
 
 <a name="customization"></a>
 ## Customization
