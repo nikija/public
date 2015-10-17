@@ -7,7 +7,7 @@
 - [Options](#options)
     - [Customization](#customization)
 - [API](#api)
-- [Distributor link](#link)
+- [Standalone Distributor](#link)
 
 <a name="install"></a>
 Install
