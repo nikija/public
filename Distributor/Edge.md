@@ -255,19 +255,18 @@ Sets end date for new availability query, currently loaded availability list is 
 Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
 
 <a name="link"></a>
-## Distributor link
+## Standalone Distributor
 
-Distributor widget can be also linked to your page by simple `<a>` link. In this mode, browser will open new tab with Distributor or will navigate to Distributor in current tab. In any case user will be redirected from your webpage to `https://mews.li` page. You can change redirection mode of a link by using `target='_blank'` parameter. 
+Distributor for your hotel is also available as standalone version, hosted on our servers. You can simply provide a link from your website and don't worry about anything else. However, you can't setup any custom option this way (other than default language). 
 
-### Example
-
-`<a href='https://mews.li/?id=f7109b0e-4b17-40ba-929e-c1859e8b4392/&language=cs-CZ' target='_blank'> Create new reservation! </a>`
+The url address is
+```
+https://www.mews.li/distributor/edge/aaaa-bbbb-cccc-dddd-eeeeeeee
+```
+where `aaaa-bbbb-cccc-dddd-eeeeeeee` is your hotelId.
 
 ### Customization
 
-Customization of linked Distributor is limited compare to Embeded version. No javascript API calls can provided. You will also not be able to use Google Analytics nor Ecommerce tracking. 
+Customization of Standalone Distributor is done by providing url query parameters. Currently it's limited only to setting a default language.
 
-All customizations are provided by URL parameters 
-
-- `?id=aaaa-bbbb-cccc-dddd-eeeeeeee` - required parameter, where `aaaa-bbbb-cccc-dddd-eeeeeeee` is your hotel ID.
-- `&language=en-US` - optional parameter, language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.  
+- `language={language-code}` - Language code of a default language. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.  
