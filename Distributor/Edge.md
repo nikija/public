@@ -101,6 +101,8 @@ Mews.Distributor({
     distributor.open();
     distributor.setStartDate(date);
     distributor.setEndDate(date);
+    distributor.setVoucherCode(code);
+    distributor.setRooms(rooms);
 });
 </script>
 ```
@@ -248,6 +250,11 @@ Sets start date for new availability query, currently loaded availability list i
 - `date` Type: `date` - The end date to set
 
 Sets end date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object, nothing happens.
+
+### setVoucherCode(code)
+- `code` Type: `string` - The voucher code to set
+
+Sets a new voucher code value.
 
 ### setRooms(rooms)
 - `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
