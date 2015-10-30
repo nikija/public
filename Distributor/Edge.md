@@ -90,6 +90,9 @@ Mews.Distributor({
     hashEvents: false,
     ecommerceTrackerName: null,
     gaTrackerName: null,
+    onOpened: function(distributor){ },
+    onClosed: function(distributor){ },
+    onLoaded: function(distributor){ },
 
     // theme
     theme: {
@@ -217,6 +220,21 @@ Name of the Google Analytics tracker, that should be used to report ecommerce tr
 Type: `string`
 
 Name of the Google Analytics tracker, that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
+
+### onOpened
+Type: `function`
+
+Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
+
+### onClosed
+Type: `function`
+
+Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
+
+### onLoaded
+Type: `function`
+
+Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API. 
 
 <a name="customization"></a>
 ## Customization
