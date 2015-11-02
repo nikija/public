@@ -1,4 +1,4 @@
-# MEWS Distributor Edge - The Widget Guide
+# MEWS Distributor - Widget
 
 - [Install](#install)
 - [Advanced Features](#advanced)
@@ -7,7 +7,6 @@
 - [Options](#options)
     - [Customization](#customization)
 - [API](#api)
-- [Standalone Distributor](#link)
 
 <a name="install"></a>
 Install
@@ -280,20 +279,3 @@ Sets a new voucher code value.
 - `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
 
 Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
-
-<a name="link"></a>
-## Standalone Distributor
-
-Distributor for your hotel is also available as standalone version, hosted on our servers. You can simply provide a link from your website and don't worry about anything else. However, you can't setup any custom option this way (other than default language). 
-
-The url address is
-```
-https://www.mews.li/distributor/edge/aaaa-bbbb-cccc-dddd-eeeeeeee
-```
-where `aaaa-bbbb-cccc-dddd-eeeeeeee` is your hotelId.
-
-### Customization
-
-Customization of Standalone Distributor is done by providing url query parameters. Currently it's limited only to setting a default language.
-
-- `language={language-code}` - Language code of a default language. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.  
