@@ -10,6 +10,10 @@ If you're not sure which version to use, go with the standalone option. It's the
 
 If you are a developer, you might be interested in more advanced ways how to integrate the Distributor into your website. For more seamless experience, the Distributor JavaScript widget allows customers to book directly from website of your hotel without being redirected elsewhere. For more information, consult the [Distributor Widget](./Widget.md).
 
+### Migration
+
+Recently, we released a new version of Distributor widget. If you already use the Distributor widget on your hotel website, see the [Migration Guide](./Widget.md) in order to quickly update it.
+
 ## API
 
 In case you'd like to implement your own custom booking engine that would be connected with MEWS, you should have a look at [Distributor API](../Api/Distributor/). Please contact sales@mewssystems.com to activate this function.
