@@ -25,6 +25,8 @@ Include the following script with embed-ready version of Distributor into your w
 <script src="https://www.mews.li/distributor/edge/distributor.min.js"></script>
 ```
 
+Please note, that serving script from our servers ensures seamless release of new features and improvements. Do not therefore pack contains of this script file into your own javascript bundle and be sure to follow recommended way of including script via `<script>` HTML tag. 
+
 ### Styles
 
 Distributor Edge doesn't use separate css files, everything is packed inside the script. For possible customizations, consult [Customization](#customization) section.
