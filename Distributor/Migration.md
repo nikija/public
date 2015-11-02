@@ -1,4 +1,4 @@
-# MEWS Distributor Edge - a migration guide
+# MEWS Distributor - Migration Guide
 
 Migration from the old version can be done in few easy steps:
 
