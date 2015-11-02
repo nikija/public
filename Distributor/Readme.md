@@ -12,7 +12,7 @@ If you are a developer, you might be interested in more advanced ways how to int
 
 ### Migration
 
-Recently, we released a new version of Distributor widget. If you already use the Distributor widget on your hotel website, see the [Migration Guide](./Widget.md) in order to quickly update it.
+Recently, we released a new version of Distributor widget. In order to quickly update your widget to the latest version, please see the [Migration Guide](./Migration.md).
 
 ## API
 
