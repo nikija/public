@@ -117,17 +117,16 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 <a name="payment"></a>
 ### Payment Gateways
 
-<a name="braintree"></a>
-#### Braintree (credit card payment gateway)
+Payement gateway is used to safely collect information about customer's credit card. Currently Distributor supports these gateways:
 
-[Braintree](https://www.braintreepayments.com/) is gateway used by Distributor Edge for making payments for reservations with credit card. This gateway is not used by default, because it must be configured specifically for each hotel. To start using it, you need to obtain *ClientKey* and *MerchantId* and fill both in Commander.
-
-Reservations without using Braintree and providing credit card informations are possible, however these reservation will have note in Commander stating that they have been created with invalid credit card.
+- [Braintree](https://www.braintreepayments.com/)
+- [Adyen](https://www.adyen.com/home)
+- Mews Payments
 
 **Important:**
-PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info. Therefore Braintree can't allow you to send credit card info from order form without using one.
+PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info, which is happening when using Braintree or Adyen gateway.
 
-#### TODO: Adyen ?
+Using payment gateway is not mandatory altough, reservations can be created even without providing credit card information.
 
 <a name="ga"></a>
 ### Google Analytics
