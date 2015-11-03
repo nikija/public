@@ -117,16 +117,16 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 <a name="payment"></a>
 ### Payment Gateways
 
-Payement gateway is used to safely collect information about customer's credit card. Currently Distributor supports these gateways:
+Payement gateway is used to safely collect information about customer's credit card. Configuration is done once, when hotel is set up, and Distributor will use it automatically. Currently Distributor supports these gateways:
 
 - [Braintree](https://www.braintreepayments.com/)
 - [Adyen](https://www.adyen.com/home)
 - Mews Payments
 
+Using payment gateway is not mandatory altough, reservations can be created even without providing credit card information.
+
 **Important:**
 PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info, which is happening when using Braintree or Adyen gateway.
-
-Using payment gateway is not mandatory altough, reservations can be created even without providing credit card information.
 
 <a name="ga"></a>
 ### Google Analytics
