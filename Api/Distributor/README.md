@@ -10,6 +10,7 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
     - [Get Hotel Info](#get-hotel-info)
     - [Validate Voucher](#validate-voucher)
     - [Get Availability](#get-availability)
+    - [Get Reservations Pricing](#get-reservations-pricing)
     - [Get Braintree Client Token](#get-braintree-client-token)
     - [Create Reservation Group](#create-reservation-group)
     - [Get Reservation Group](#get-reservation-group)
@@ -39,65 +40,102 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 
 ```json
 {
-    "Languages": [
+    "Countries": [
         {
-            "Code": "en-US",
-            "Name": "English"
+            "Code": "US",
+            "Name": "United States"
         }
     ],
     "Currencies": [
         {
             "Code": "EUR",
+            "DecimalPlaces": 2,
             "Symbol": "€",
-            "SymbolIsBehindValue": true,
-            "ValueFormat": "#,##0.00 €;-#,##0.00 €"
+            "SymbolIsBehindValue": false,
+            "ValueFormat": "€#,##0.00;- €#,##0.00"
         }
     ],
-    "RoomCategories": [
+    "DefaultCurrencyCode": "EUR",
+    "DefaultLanguageCode": "en-US",
+    "DefaultRateCurrencyCode": "CZK",
+    "IanaTimeZoneIdentifier": "Europe/Prague",
+    "ImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
+    "IntroImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
+    "Languages":[
         {
-            "Id": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
-            "Name": {
-                "en-US": "Room"
+            "Code": "en-US",
+            "DefaultCulture":{
+                "CurrencyDecimalSeparator": ".",
+                "CurrencyGroupSeparator": "."
             },
-            "Description": {
-                "en-US": "Very cozy room with nice bed."
-            },
-            "ImageIds": [
-                "271f3d83-4ea2-4006-baec-065092d11b00"
-            ]
+            "Name": "English (United States)"
         }
     ],
+    "Name":{
+        "en-US": "Sample Hotel"
+    },
+    "PaymentGateway": null,
     "Products": [
         {
-            "Id": "22923798-1abd-4bad-83cc-87e82f50d1d6",
-            "Name": {
-                "en-US": "Breakfast"
-            },
+            "AlwaysIncluded": true,
             "Description": {
                 "en-US": "Continental breakfast served in the morning."
             },
-            "IncludedByDefault": false,
-            "AlwaysIncluded": false
+            "Id": "1627aea5-8e0a-4371-9022-9b504344e724",
+            "ImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
+            "IncludedByDefault": true,
+            "Name":{
+                "en-US": "Breakfast"
+            },
+            "Prices":{
+                "en-US": "Continental breakfast served in the morning."
+            }
         }
     ],
-    "PaymentGateway": null
+    "RoomCategories":[
+        {
+            "Description": {
+                 "en-US": "Very cozy room with nice bed."
+            },
+            "ExtraBedCount": 1,
+            "Id": "1627aea5-8e0a-4371-9022-9b504344e724",
+            "ImageIds": [
+                "1627aea5-8e0a-4371-9022-9b504344e724"
+            ],
+            "Name": {
+                "en-US": "Room"
+            },
+            "NormalBedCount": 2,
+            "SpaceType": "Room"
+        }
+    ],
+    "TermsAndConditionsUrl": "https://website.com/terms-and-conditions.html"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Languages` | array of [Language](#language) | required | Languages supported by the hotel. |
+| `Countries` | array of [Country](#country) | required | Countries supported by hotel. |
 | `Currencies` | array of [Currency](#currency) | required | Currencies accepted by hotel. |
-| `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
-| `Products` | array of [Product](#product) | required | All products orderable with rooms. |
+| `DefaultCurrencyCode` | string | required | Code of hotel's default currency. |
+| `DefaultLanguageCode` | string | required | Code of hotel's default language. |
+| `DefaultRateCurrencyCode` | string | required | Code of currency of hotel's default rate. |
+| `IanaTimezoneIdentifier` | string | required | Iana identifier of hotel's time zone |
+| `ImageId` | string | optional | Unique identifier of hotel's logo image. |
+| `IntroImageId` | string | optional | Unique identifier of hotel's intro image (usable as background image). |
+| `Languages` | array of [Language](#language) | required | Languages supported by the hotel. |
+| `Name` | [LocalizedText](#localizedtext) | required | Name of the hotel. |
 | `PaymentGateway` | one of [PaymentGateway](#paymentgateway) types | optional | Info about payment gateway used by the hotel. |
+| `Products` | array of [Product](#product) | required | All products orderable with rooms. |
+| `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
+| `TermsAndConditionsUrl` | string | optional | URL of hotel's terms and conditions. |
 
-##### Language
+##### Country
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Code` | string | required | Code of the language in the ISO format. |
-| `Name` | string | required | Name of the language. |
+| `Code` | string | required | ISO 3166-1 Aplha-2 code of the country. |
+| `Name` | string | required | Name of the country. |
 
 ##### Currency
 
@@ -106,26 +144,27 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | `Code` | string | required | Code of the currency in the ISO format. |
 | `Symbol` | string | required | Symbol of the currency. |
 | `ValueFormat` | string | required | Format of a currency value (for both positive and negative values, including symbol). |
+| `DecimalPlaces` | number | required | Number of decimal places used with the currency value. |
 | `SymbolIsBehindValue` | boolean | required | Indicates whether the symbol stands behind a value in standard formatting. |
 
-##### RoomCategory
+##### Language
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the room category. |
-| `Name` | [LocalizedText](#localizedtext) | required | Name of the room category localized into all supported languages. |
-| `Description` | [LocalizedText](#localizedtext) | required | Description of the room category localized into all supported languages. |
-| `ImageIds` | array of strings | required | Unique identifiers of images attached with the room category. |
+| `Code` | string | required | Code of the language in the ISO format. |
+| `Name` | string | required | Name of the language. |
+| `DefaultCulture` | [DefaultCulture](#defaultcuture) | required | Specifics of a default culture for the language. |
 
-##### Product
+###### DefaultCulture
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the product. |
-| `Name` | [LocalizedText](#localizedtext) | required | Name of the product localized into all supported languages. |
-| `Description` | [LocalizedText](#localizedtext) | required | Description of the product localized into all supported languages. |
-| `IncludedByDefault` | boolean | required | Indicates whether the product should be added to order by default. |
-| `AlwaysIncluded` | boolean | required | Indicates whether the product is always included (= cannot be removed). |
+| `CurrencyDecimalSeparator` | string | required | Symbol used to separate decimal places in the currency value format. |
+| `CurrencyGroupSeparator` | string | required | Symbol used to separate thousands in the currency value format. |
+
+##### LocalizedText
+
+A localized text is an object of the property values localized into languages supported by hotel, indexed by language codes.
 
 ##### Payment Gateway
 
@@ -143,7 +182,7 @@ Mews Payments gateway is hosted on our website. After a reservation is created, 
 [PlatformAddress]/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
 ```
 
-Both parameters are obtained as a result of [Create Reservation Group](#create-reservation-group) operation. The customer will fill the credit card information there and after that will be redirected back. 
+Both parameters are obtained as a result of [Create Reservation Group](#create-reservation-group) operation. The customer will fill the credit card information there and after that will be redirected back.
 
 ###### Braintree
 
@@ -153,7 +192,7 @@ Both parameters are obtained as a result of [Create Reservation Group](#create-r
 | `MerchantId` | string | required | Braintree MerchantId. |
 | `ClientKey` | string | required | Braintree ClientKey. |
 
-The client app should use the provided information together with Braintree library to obtain credit card information, encode it and send it when creating a reservation. 
+The client app should use the provided information together with Braintree library to obtain credit card information, encode it and send it when creating a reservation.
 
 ###### Adyen
 
@@ -162,11 +201,35 @@ The client app should use the provided information together with Braintree libra
 | `PaymentGatewayType` | string | required | Type of the payment gateway, `Adyen` in this case. |
 | `PublicKey` | string | required | Adyen PublicKey. |
 
-The client app should use the provided information together with Adyen library to obtain credit card information, encode it and send it when creating a reservation. 
+The client app should use the provided information together with Adyen library to obtain credit card information, encode it and send it when creating a reservation.
 
-##### LocalizedText
+##### Product
 
-A localized text is an object of texts localized into languages supported by hotel, indexed by language codes.
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the product. |
+| `Name` | [LocalizedText](#localizedtext) | required | Name of the product localized into all supported languages. |
+| `Description` | [LocalizedText](#localizedtext) | required | Description of the product localized into all supported languages. |
+| `ImageId` | string | optional | Unique identifier of the product's image. |
+| `IncludedByDefault` | boolean | required | Indicates whether the product should be added to order by default. |
+| `AlwaysIncluded` | boolean | required | Indicates whether the product is always included (= cannot be removed). |
+| `Prices` | array of [CurrencyValues](#currencyvalues) | required | Price of the product. |
+
+##### CurrencyValues
+
+A currency value is an object of the entity prices in every currency supported by hotel, indexed by currency codes.
+
+##### RoomCategory
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the room category. |
+| `Name` | [LocalizedText](#localizedtext) | required | Name of the room category localized into all supported languages. |
+| `Description` | [LocalizedText](#localizedtext) | required | Description of the room category localized into all supported languages. |
+| `ImageIds` | array of strings | required | Unique identifiers of images attached with the room category. |
+| `NormalBedCount` | number | required | Number of normal beds in the room category. |
+| `ExtraBedCount` | number | required | Number of extra beds possible in the room category. |
+| `SpaceType` | string | required | Type of the room category - "Room" or "Bed". |
 
 ### Validate Voucher
 
@@ -200,7 +263,7 @@ Can be used to deterimne whether a voucher code is valid.
 
 ### Get Availability
 
-Gives availabilities and pricings for given date interval with product prices included for each room category. Categorized by applicable rates and person counts from 1 to full room. If room category is not available, it is left out from response. 
+Gives availabilities and pricings for given date interval with product prices included for each room category. Categorized by applicable rates and person counts from 1 to full room. If room category is not available, it is left out from response.
 
 #### Request `[PlatformAddress]/api/distributor/v1/hotels/getAvailability`
 
@@ -212,8 +275,7 @@ Gives availabilities and pricings for given date interval with product prices in
     "ProductIds": [
         "d0e88da5-ae64-411c-b773-60ed68954f64"
     ],
-    "VoucherCode": "Discount2042",
-    "InformativeCurrencyCode": "CZK"
+    "VoucherCode": "Discount2042"
 }
 ```
 
@@ -224,7 +286,6 @@ Gives availabilities and pricings for given date interval with product prices in
 | `EndUtc` | string | required | Reservation end date (departure date) in ISO 8601 format. |
 | `ProductIds` | array of string | optional | Ids of products which should be included into pricing calculations. |
 | `VoucherCode` | string | optional | Voucher code enabling special rate offerings. |
-| `InformativeCurrencyCode` | string | optional | One of the currencies accepted by hotel, in which the pricing will be provided as well (besides the pricing currency). It is considered informative because the value is calculated using hotel conversion rates from the pricing currency. And the value may actually change if the exchange rate changes. |
 
 #### Response
 
@@ -244,62 +305,33 @@ Gives availabilities and pricings for given date interval with product prices in
     "RoomCategoryAvailabilities": [
         {
             "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
+            "AvailableRoomCount": 5,
             "RoomOccupancyAvailabilities": [
                 {
-                    "NormalBedCount": 2,
-                    "ExtraBedCount": 1,
                     "AdultCount": 1,
                     "ChildCount": 0,
-                    "AvailableRoomCount": 5,
                     "Pricing": [
                         {
                             "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
-                            "Price": {
-                                "Total": {
-                                    "CurrencyCode": "USD",
-                                    "Value": 200,
-                                    "Tax": 0.1,
-                                    "TaxValue": 20
-                                },
-                                "AveragePerNight": {
-                                    "CurrencyCode": "USD",
-                                    "Value": 100,
-                                    "Tax": 0.1,
-                                    "TaxValue": 10
-                                }
-                            },
+                            "Price": { },
                             "MaxPrice": { },
-                            "InformativePrice": { },
-                            "MaxInformativePrice": { }
                         }
                     ]
                 },
                 {
-                    "NormalBedCount": 2,
-                    "ExtraBedCount": 1,
                     "AdultCount": 2,
                     "ChildCount": 0,
-                    "AvailableRoomCount": 5,
                     "Pricing": [
                         {
                             "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
                             "Price": {
-                                "Total": {
-                                    "CurrencyCode": "USD",
-                                    "Value": 250,
-                                    "Tax": 0.1,
-                                    "TaxValue": 25
-                                },
-                                "AveragePerNight": {
-                                    "CurrencyCode": "USD",
-                                    "Value": 125,
-                                    "Tax": 0.1,
-                                    "TaxValue": 12.5
-                                }
+                                "Total": { },
+                                "AveragePerNight": { }
                             },
-                            "MaxPrice": { },
-                            "InformativePrice": { },
-                            "MaxInformativePrice": { }
+                            "MaxPrice": {
+                                "Total": { },
+                                "AveragePerNight": { }
+                            },
                         }
                     ]
                 }
@@ -328,16 +360,14 @@ Gives availabilities and pricings for given date interval with product prices in
 | --- | --- | --- | --- |
 | `RoomCategoryId` | string | required | Unique identifier of the room category. |
 | `RoomOccupancyAvailabilities` | array of [RoomOccupancyAvailability](#roomoccupancyavailability) | required | Availabilities of rooms in the category by the room occupancy. |
+| `AvailableRoomCount` | number | required | Number of available rooms from the room category. |
 
 ##### RoomOccupancyAvailability
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `NormalBedCount` | int | required | Count of normal beds. |
-| `ExtraBedCount` | int | required | Count of extra beds. |
-| `AdultCount` | int | required | Count of adults. |
-| `ChildCount` | int | required | Count of childs. |
-| `AvailableRoomCount` | int | required | Count of the available rooms. |
+| `AdultCount` | number | required | Number of adults for the associated pricing. |
+| `ChildCount` | number | required | Number of childs for the associated pricing. |
 | `Pricing` | array of [Pricing](#pricing) | required | Pricing information. |
 
 ##### Pricing
@@ -347,28 +377,71 @@ Gives availabilities and pricings for given date interval with product prices in
 | `RateId` | string | required | Unique identifier of a rate. |
 | `Price` | [RoomPrice](#roomprice) | required | Price of the room. |
 | `MaxPrice` | [RoomPrice](#roomprice) | required | Max price of the room with the same parameters and conditions among other rates. Can be understood (and possibly displayed) as the value before discount. |
-| `InformativeCurrencyPrice` | [RoomPrice](#roomprice) | optional | Price of the room in the informative currency. |
-| `MaxInformativeCurrencyPrice` | [RoomPrice](#roomprice) | optional | Max price of the room in the informative currency. |
 
 ##### RoomPrice
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Total` | [CurrencyValue](#currencyvalue) | required | Total price of the room for whole reservation. |
-| `AveragePerNight` | [CurrencyValue](#currencyvalue) | required | Average night price. |
+| `Total` | [CurrencyValues](#currencyvalues) | required | Total price of the room for whole reservation. |
+| `AveragePerNight` | [CurrencyValues](#currencyvalues) | required | Average price per night. |
 
-##### CurrencyValue
+### Get Reservations Pricing
 
+Gives a pricing information for the given configuration.
+
+#### Request `[PlatformAddress]/api/distributor/v1/reservations/getPricing`
+
+```json
+{
+  	"HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+  	"AdultCount": 2,
+  	"ChildCount": 0,
+    "StartUtc": "2015-01-01T00:00:00Z",
+    "EndUtc": "2015-01-03T00:00:00Z",
+    "ProductIds": [
+        "d0e88da5-ae64-411c-b773-60ed68954f64"
+    ],
+  	"RoomCategoryId": "1627aea5-8e0a-4371-9022-9b504344e724",
+  	"VoucherCode":   "Discount2042"
+}
+```
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `CurrencyCode` | string | required | Currency code. |
-| `Value` | decimal | required | Value. |
-| `Tax` | int | optional | Tax rate (between 0.0 and 1.0). |
-| `TaxValue` | decimal | optional | Value of the tax. |
+| `HotelId` | string | required | Unique identifier of the hotel. |
+| `AdultCount` | number | required | Number of adults. |
+| `ChildCount` | number | required | Number of children. |
+| `StartUtc` | string | required | Start date of the reservation (arrival date). |
+| `EndUtc` | string | required | End date of the reservation (departure date). |
+| `ProductIds` | array of string | optional | Identifiers of the requested products. |
+| `RoomCategoryId` | string | required | Identifier of the requested room category. |
+| `VoucherCode` | string | optional | A voucher code. |
+
+#### Response
+
+```json
+{
+    "RatePrices": [
+        {
+  		      "MaxPrice": {
+  			         "AveragePerNight": {},
+  			         "Total": {}
+  			    },
+        		"Price" :{
+  			         "AveragePerNight": {},
+  			         "Total": {}
+  			    },
+  		      "RateId": "1627aea5-8e0a-4371-9022-9b504344e724"
+  	   }
+    ]
+}
+```
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `RatePrices` | array of [Pricing](#pricing) | required | Pricing information. |
 
 ### Get Braintree Client Token
 
-Braintree requires a special client token generated for each transaction. In case the hotel uses Braintree as a payment gateway, you need to obtain it to before processing payment. 
+Braintree requires a special client token to be generated for each transaction. In case the hotel uses Braintree as a payment gateway, you need to obtain it to before processing payment.
 
 #### Request `[PlatformAddress]/api/distributor/v1/payments/getBraintreeClientToken`
 
@@ -411,7 +484,7 @@ Braintree requires a special client token generated for each transaction. In cas
         "City": "",
         "PostalCode": "",
         "StateCode": "",
-        "CountryCode": ""
+        "NationalityCode": ""
     },
     "Reservations": [
         {
@@ -430,7 +503,8 @@ Braintree requires a special client token generated for each transaction. In cas
     "CreditCardData": {
         "PaymentGatewayData": "...",
         "ObfuscatedCreditCardNumber": "411111******1111"
-    }
+    },
+    "VoucherCode": "Discount2042"
 }
 ```
 
@@ -440,6 +514,7 @@ Braintree requires a special client token generated for each transaction. In cas
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
 | `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
+| `VoucherCode` | string | optional | A voucher code. |
 
 ##### Customer
 
@@ -454,7 +529,7 @@ Braintree requires a special client token generated for each transaction. In cas
 | `City` | string | optional | City. |
 | `PostalCode` | string | optional | Postal code of the address. |
 | `StateCode` | string | optional | ISO 3166-2 code of the state, e.g. `US-AL`.  |
-| `CountryCode` | string | optional | ISO 3166-1 Aplha-2 code of the country, e.g. `US`.  |
+| `NationalityCode` | string | optional | ISO 3166-1 Aplha-2 code of the customer's nation country, e.g. `US`.  |
 
 ##### Reservation
 
@@ -464,8 +539,8 @@ Braintree requires a special client token generated for each transaction. In cas
 | `StartUtc` | string | required | Start date of the reservation (arrival date). |
 | `EndUtc` | string | required | End date of the reservation (departure date). |
 | `RateId` | string | required | Identifier of the chosen rate. |
-| `AdultCount` | string | required | Count of adults. |
-| `ChildCount` | string | required | Count of childs. |
+| `AdultCount` | number | required | Number of adults. |
+| `ChildCount` | number | required | Number of children. |
 | `ProductIds` | array of string | optional | Identifiers of the requested products. |
 | `Notes` | string | optional | Additional notes. |
 
@@ -504,12 +579,7 @@ Braintree requires a special client token generated for each transaction. In cas
                 "d0e88da5-ae64-411c-b773-60ed68954f64"
             ],
             "Notes": "Quiet room please.",
-            "Cost": {
-                "CurrencyCode": "USD",
-                "Value": 250,
-                "Tax": 0.1,
-                "TaxValue": 25
-            },
+            "Cost": { },
             "Number": "1234"
         }
     ],
@@ -522,7 +592,7 @@ Braintree requires a special client token generated for each transaction. In cas
 | `ReservationGroupId` | string | required | Unique identifier of the created reservation group. |
 | `CustomerId` | string | required | Unique identifier of customer who created reservation group. |
 | `Reservations` | array of [Reservation](#reservation) | required | The created reservations in group. |
-| `TotalCost` | [CurrencyValue](#currencyvalue) | required | Total cost of the whole group. |
+| `TotalCost` | [CurrencyValues](#currencyvalues) | required | Total cost of the whole group. |
 
 ### Get Reservation Group
 
