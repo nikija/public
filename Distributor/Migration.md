@@ -30,7 +30,7 @@ or
 ```
 whichever you have used.
 
-You can also remove any custom css rules you have added. To see how to customize the new Distributor, check installation guide [here](https://github.com/MewsSystems/public/blob/master/Distributor/Edge.md#customization).
+You can also remove any custom css rules you have added. To see how to customize the new Distributor, check installation guide [here](https://github.com/MewsSystems/public/blob/master/Distributor/Widget.md#customization).
 
 ## 3. Remove any elements used by Distributor
 
@@ -60,5 +60,5 @@ The initialization function remain same, but some of previously used options are
 
 Be noted that reference to created Distributor for api call is no longer returned from initialization call, but is provided as argument to callback function taken as second parameter. 
 
-For more details, check the full installation guide [here](https://github.com/MewsSystems/public/blob/master/Distributor/Edge.md)
+For more details, check the full installation guide [here](https://github.com/MewsSystems/public/blob/master/Distributor/Widget.md)
 
