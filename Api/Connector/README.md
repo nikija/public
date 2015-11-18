@@ -193,7 +193,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 Returns all reservations that collide with the specified interval.
 
-#### Request `[PlatformAddress]/api/connector/v1/spaces/getAll`
+#### Request `[PlatformAddress]/api/connector/v1/reservations/getAll`
 
 ```json
 {
