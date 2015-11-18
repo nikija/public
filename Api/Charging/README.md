@@ -252,8 +252,8 @@ This environment is meant to be used during implementation of the client applica
 The test hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. You will also have access into the system so it is possible for you to check whether the charges sent to the API are correctly posted to customers in the system. To sign into the system, use the following credentials:
 
 - **Address** - `https://demo.mews.li`
-- **Email** - `charging-api@mews.li`
-- **Password** - `charging-api`
+- **Email** - `connector-api@mews.li`
+- **Password** - `connector-api`
 
 When you sign in, you can use the search box on top to find the customer you charged through the API. Then on the customers dashboard, there should be the charge under section "Processed Orders" in case everything went correctly.
 
