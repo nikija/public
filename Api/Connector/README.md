@@ -160,6 +160,23 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 #### Response
 
+```json
+{
+    "Spaces": [
+        {
+            "Id": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "Number": "101",
+            "ParentSpaceId": null
+        },
+        {
+            "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
+            "Number": "102",
+            "ParentSpaceId": null
+        }
+    ]
+}
+```
+
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Spaces` | array of [Space](#space) | required | The spaces of the enterprise. |
@@ -182,7 +199,7 @@ Returns all reservations that collide with the specified interval.
 {
     "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
     "StartUtc": "2016-01-01T00:00:00Z",
-    "EndUtc": "2016-01-07T00:00:00Z",
+    "EndUtc": "2016-01-07T00:00:00Z"
 }
 ```
 
@@ -193,6 +210,43 @@ Returns all reservations that collide with the specified interval.
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 
 #### Response
+
+```json
+{
+    "Reservations": [
+        {
+            "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "Companions": [
+                {
+                    "Email": null,
+                    "FirstName": "Jane",
+                    "Id": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
+                    "LastName": "Smith",
+                    "Phone": null
+                },
+                {
+                    "Email": "john.smith@mews.li",
+                    "FirstName": "John",
+                    "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+                    "LastName": "Smith",
+                    "Phone": null
+                }
+            ],
+            "Customer": {
+                "Email": "john.smith@mews.li",
+                "FirstName": "John",
+                "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+                "LastName": "Smith",
+                "Phone": null
+            },
+            "EndUtc": "2019-12-30T23:00:00Z",
+            "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
+            "StartUtc": "2015-07-07T00:00:00Z",
+            "State": "Started"
+        }
+    ]
+}
+```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
@@ -276,7 +330,7 @@ Not used.
 This environment is meant to be used during implementation of the client applications.
 
 - **Platform Address** - `https://demo.mews.li`
-- **Access Token** - `0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA`
+- **Access Token** - `5F18C5C09ABE3773`
 
 The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
 
