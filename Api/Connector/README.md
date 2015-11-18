@@ -44,7 +44,7 @@ This operation returns all commands the are still active from the client applica
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE"
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
 }
 ```
 
@@ -123,7 +123,7 @@ Updates state of a command.
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "CommandId": "aa20961f-6d9e-4b35-ad25-071213530aec",
     "State": "Processed"
 }
@@ -150,7 +150,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE"
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
 }
 ```
 
@@ -197,7 +197,7 @@ Returns all reservations that collide with the specified interval.
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "StartUtc": "2016-01-01T00:00:00Z",
     "EndUtc": "2016-01-07T00:00:00Z"
 }
@@ -282,7 +282,7 @@ Signs in the client application to MEWS using a token that you would normally us
 
 ```json
 {
-    "ConnectorToken": "0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA"
+    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
 }
 ```
 
@@ -330,7 +330,7 @@ Not used.
 This environment is meant to be used during implementation of the client applications.
 
 - **Platform Address** - `https://demo.mews.li`
-- **Access Token** - `5F18C5C09ABE3773`
+- **Access Token** - `C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D`
 
 The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
 
