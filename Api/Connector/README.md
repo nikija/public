@@ -6,7 +6,7 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
 
 ## Contents
 
-- [Authorization]
+- [Authorization](#authorization)
 - [Operations](#operations)
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
@@ -268,3 +268,24 @@ Device type: `Printer`
 #### Command Result
 
 Not used.
+
+## Environments
+
+#### Demo Environment
+
+This environment is meant to be used during implementation of the client applications.
+
+- **Platform Address** - `https://demo.mews.li`
+- **Access Token** - `0F7F56DBB8B342B08B532DF4C8A87997-D3FFAC0F8E438572A1B142B0203CAEA`
+
+The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
+
+- **Address** - `https://demo.mews.li`
+- **Email** - `connector-api@mews.li`
+- **Password** - `connector-api`
+
+#### Production Environment
+
+- **Platform Address** - `https://www.mews.li`
+- **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
+
