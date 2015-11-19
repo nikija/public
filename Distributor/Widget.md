@@ -24,7 +24,9 @@ Include the following script with embed-ready version of Distributor into your w
 <script src="https://www.mews.li/distributor/edge/distributor.min.js"></script>
 ```
 
-Please note, that serving script from our servers ensures seamless release of new features and improvements. Do not therefore pack contains of this script file into your own javascript bundle and be sure to follow recommended way of including script via `<script>` HTML tag. 
+The script should be included in `<head>` section and without `async` option. Size of the script is keeped as minimal as possible to allow quick initialization. A main widget script is then downloaded asynchronously and inserted automatically into your website afterwards. 
+
+Please note, that serving script from our servers ensures seamless release of new features and improvements. Do not therefore pack contents of this script file into your own javascript bundle and be sure to follow recommended way of including script via `<script>` HTML tag. 
 
 ### Styles
 
@@ -34,7 +36,7 @@ Distributor Edge doesn't use separate css files, everything is packed inside the
 
 Once required script is loaded, you can initialize Distributor Edge with the following minimal code. Do not forget to **use hotelId of your hotel** instead of the sample hotelId `aaaa-bbbb-cccc-dddd-eeeeeeee`. This will create a separate overlay in your website and loads Distributor into it. 
 
-The overlay is not visible by default - to actually show it to your users, you should bind its opening to some action (i.e. clicking on button). Distributor can do it automatically for you if you provide second option - a string of comma separated css selectors of elements, whose click event will be binded with opening of Distributor.
+The overlay is not visible by default - to actually show it to your users, you should bind its opening to some action (i.e. clicking on button). Distributor can do it automatically for you if you provide second option - a string of comma separated css selectors of elements, whose click event will be binded with opening of Distributor. The event is delegated, so you can pass selectors to elements that don't exist in website yet.
 
 ```html
 <!-- Distributor's initialization call, creating new instance of Distributor. Use id of your hotel. -->
@@ -162,6 +164,8 @@ Currently, you can get guid of your hotel from your hotel's detail page in Comma
 Type: `string` Default `''`
 
 List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example.
+
+The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization.
 
 ### language
 Type: `string` Default: `en-US`
