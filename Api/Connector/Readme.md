@@ -166,12 +166,21 @@ Returns all spaces of an enterprise associated with the connector integration.
         {
             "Id": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
             "Number": "101",
-            "ParentSpaceId": null
+            "ParentSpaceId": null,
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
         },
         {
             "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
             "Number": "102",
-            "ParentSpaceId": null
+            "ParentSpaceId": null,
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+        }
+    ],
+    "SpaceCategories": [
+        {
+            "Id": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "Name": "Best Room",
+            "ShortName": "BR"
         }
     ]
 }
