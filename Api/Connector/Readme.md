@@ -180,6 +180,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Spaces` | array of [Space](#space) | required | The spaces of the enterprise. |
+| `SpaceCategories` | array of [Space Category](#space-category) | required | Categories of spaces in the enterprise. |
 
 ##### Space
 
@@ -188,6 +189,15 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Id` | string | required | Unique identifier of the space. |
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
+| `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
+
+##### Space Category
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the category. |
+| `Name` | string | required | Name of the category. |
+| `ShortName` | string | optional | Short name (e.g. code) of the category. |
 
 ### Get All Reservations
 
