@@ -68,6 +68,7 @@ This operation returns all commands the are still active from the client applica
             },
             "Device": {
                 "Id": "63efb573-fc58-4065-b687-9bdd51568529",
+                "EnterpriseName": "Hotel California",
                 "Name": "Test Printer",
                 "Type": "Printer"
             },
@@ -113,6 +114,7 @@ This operation returns all commands the are still active from the client applica
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the device. |
 | `Name` | string | required | Name of the device. |
+| `EnterpriseName` | string | optional | Name of the enterprise, where the device is used. |
 | `Type` | string | optional | Type of the device. |
 
 ### Update Command
