@@ -114,7 +114,6 @@ This operation returns all commands the are still active from the client applica
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the device. |
 | `Name` | string | required | Name of the device. |
-| `EnterpriseName` | string | optional | Name of the enterprise, where the device is used. |
 | `Type` | string | optional | Type of the device. |
 
 ### Update Command
@@ -321,7 +320,16 @@ Signs in the client application to MEWS using a token that you would normally us
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `AccessToken` | string | required | An access token representing the client application session.
+| `AccessToken` | string | required | An access token representing the client application session. |
+| `Enterprise` | [Enterprise](#enterprise) | required | Enterprise whose data the connector client handles. |
+
+
+##### Enterprise
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the enterprise. |
+| `Name` | string | required | Name of the enterprise. |
 
 ## Devices
 
