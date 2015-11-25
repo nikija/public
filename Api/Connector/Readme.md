@@ -314,7 +314,12 @@ Signs in the client application to MEWS using a token that you would normally us
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE"
+    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
+    "Enterprise": 
+    {
+        "Id": "222b5d8a-0492-4271-9941-cd6d89b81d43",
+        "Name": "Test Hotel"
+    }
 }
 ```
 
