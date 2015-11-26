@@ -166,12 +166,14 @@ Returns all spaces of an enterprise associated with the connector integration.
     "Spaces": [
         {
             "Id": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "Type": "Room",
             "Number": "101",
             "ParentSpaceId": null,
             "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
         },
         {
             "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
+            "Type": "Room",
             "Number": "102",
             "ParentSpaceId": null,
             "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
@@ -197,6 +199,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the space. |
+| `Type` | string | required | Type of the space. For example `Room` or `Bed`, other types might be added in the future. |
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
 | `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
