@@ -2,6 +2,7 @@
 
 - [Install](#install)
 - [Advanced Features](#advanced)
+    - [Deeplinks](#deeplinks)
     - [Payment Gateways](#payment)
     - [Google Analytics](#ga)
 - [Options](#options)
@@ -11,10 +12,6 @@
 <a name="install"></a>
 Install
 ---
-
-### Dependencies
-
-There are no dependencies, everything that Distributor Edge needs is bundled into its script. 
 
 ### Script
 
@@ -79,7 +76,7 @@ Example with all possible options and their default values:
 <script>
 Mews.Distributor({
     // required
-    hotelId: '',
+    hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
 
     // optionals
     openElements: '',
@@ -115,6 +112,44 @@ Mews.Distributor({
 
 #### Note
 See that you have just one `<script>` tag containing `Mews.distributorEmbed` call in your page.
+
+### Deeplinks
+
+Distributor recognizes a set of parameteres passed to it in URL query. This allows you to deeplink into booking engine from other websites. Those parameters are:
+
+| Name | Description
+| --- | --- |
+| mewsEnterpriseId | a hotelID - Use the same value that you pass to Distributor initialization. This is used to identify concrete Distributor instance that should receive parameters.
+| mewsStart | an arrival date in ISO 8601 format | 
+| mewsEnd | a departure date in ISO 8601 format | 
+| mewsRoomTypeId | an ID of preselected room (More about those IDs is [here](#rooms))
+| mewsVoucherCode | a voucher code
+| language | a language code
+
+#### Link rules
+
+Deeplinks are validated with bunch of rules, resulting in different results:
+- `mewsStart`, `mewsEnd`, `mewsVoucherCode` and `language` are always parsed and used by every Distributor instance on website, given that passed value is valid.
+- if `mewsEnterpriseId` is provided, corresponding embeded Distributor opens automatically and:
+    - if both `mewsStart` and `mewsEnd` are set and valid, then this Distributor opens on the Rooms step (a list of rooms).
+    - if in addition `mewsRoomTypeId` is also set and valid, then this Distributor opens on the Rates step (a room detail).
+
+#### Examples
+
+- presets start date, voucher code and language, but Distributor stays closed
+```
+http://www.yourwebsite.com/?mewsStart=2015-01-01&mewVoucherCode=special-discount&language=en-US
+```
+
+- opens Distributor and starts on the Rooms step, showing availability for given dates
+```
+http://www.yourwebsite.com/?mewsEnterpriseId=aaaa-bbbb-cccc-dddd-eeeeeeee&mewsStart=2015-01-01&mewsEnd=2015-01-02
+```
+
+- opens Distributors and start on the Rates step, given that RoomTypeId is valid and that room is available for given dates 
+```
+http://www.yourwebsite.com/?mewsEnterpriseId=aaaa-bbbb-cccc-dddd-eeeeeeee&mewsStart=2015-01-01&mewsEnd=2015-01-02&mewsRoomTypeId=mmmm-nnnn-oooo-pppppp
+```
 
 <a name="payment"></a>
 ### Payment Gateways
