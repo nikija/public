@@ -100,12 +100,12 @@ Mews.Distributor({
         primaryColor: null
     }
 }, function(distributor) {
-    // api calls
-    distributor.open();
-    distributor.setStartDate(date);
-    distributor.setEndDate(date);
-    distributor.setVoucherCode(code);
-    distributor.setRooms(rooms);
+    // Possible api calls
+    // distributor.open();
+    // distributor.setStartDate(date);
+    // distributor.setEndDate(date);
+    // distributor.setVoucherCode(code);
+    // distributor.setRooms(rooms);
 });
 </script>
 ```
