@@ -72,6 +72,8 @@ Advanced features (optional)
 
 Example with all possible options and their default values:
 
+**Important: This is just an example, do not copy this directly to your website!**
+
 ```html
 <script>
 Mews.Distributor({
