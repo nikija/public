@@ -36,7 +36,7 @@ All missing (red) data should be filled in during check-in process. If something
 
 *Note:* It is possible to download a report (that would be sent) or send the report directly via email for a selected day. In case a `Daily` report is generated and a larger period than one day is selected, the report is generated for the first day(Start) only.
 
-<a name="incomplete-report"></a>
+<a name="incomplete-reports"></a>
 ### Incomplete report
 
 [Customer Profiles](#report-customer-profiles) report is usually a bit red even after all reservations are checked in, so it should be "whitten" as much as possible. If there is a guest profile missing some information (e.g. first name, nationality, date fo birth, passport number, ...) it should be looked up in the registration card, the guest should have completed during check-in, and fill in the missing data based on the card. If the registration cards is incomplete as well, it means that the reception didn't require it during check-in. The guest should be approached then. And more importatly the reception should be notified to require the whole registration card completed during check-in.
@@ -56,7 +56,7 @@ A bit more difficult (at least for Mews beginners) is to siolve the problem with
 ![Group Modul](../Images/GroupModule.png)
 The screenshot shows how to solve the room `407` case. `Nicolas Cage` is an *Owner* of the reservation (red elipsis). It is required to click on the `>` arrow (red rectangle) to assign him to the reservation. It is up to reception durign check-in to assign the *Owner* to some reservation (make him a *Guest*).
 
-<a name="how all works"></a>
+<a name="how-all-works"></a>
 ## How it all works
 
 Once everything is set up, the automating reporting can begin. There is an operation that runs in Mews on background and every day at 9 am it does:
