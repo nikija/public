@@ -5,3 +5,6 @@
     - [Charging](./Api/Charging)
     - [Connector](./Api/Connector)
     - [Distributor](./Api/Distributor)
+- Foreign Police
+    - [Czech](./ForeignPolice/Czech)
+    - [Swiss](./ForeignPolice/Swiss)
