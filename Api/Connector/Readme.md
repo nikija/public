@@ -263,6 +263,7 @@ Returns all reservations that collide with the specified interval.
             },
             "EndUtc": "2019-12-30T23:00:00Z",
             "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
+            "Number": "123",
             "StartUtc": "2015-07-07T00:00:00Z",
             "State": "Started"
         }
@@ -279,6 +280,7 @@ Returns all reservations that collide with the specified interval.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation. |
+| `Number` | string | required | Confirmation number of the reservation. |
 | `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
