@@ -88,7 +88,8 @@ Initial call used to obtain all static data about hotel relevant for a booking w
                 "en-US": "Breakfast"
             },
             "Prices":{
-                "en-US": "Continental breakfast served in the morning."
+                "EUR": 5,
+                "CZK": 150
             }
         }
     ],
