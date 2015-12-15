@@ -235,9 +235,16 @@ Returns all reservations that collide with the specified interval.
 
 ```json
 {
+    "ReservationGroups": [
+        {
+            "Id": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
+            "Name": "13-12-Smith-F712"
+        }
+    ],
     "Reservations": [
         {
             "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "BusinessSegmentId": "ad42231f-a5b6-466f-b9ef-0bc4d76e8c4c",
             "Companions": [
                 {
                     "Email": null,
@@ -262,7 +269,7 @@ Returns all reservations that collide with the specified interval.
                 "Phone": null
             },
             "EndUtc": "2019-12-30T23:00:00Z",
-            "GroupId": "8ccc5d8a-9941-1234-4271-abcdefcd6d89",
+            "GroupId": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
             "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
             "Number": "123",
             "StartUtc": "2015-07-07T00:00:00Z",
@@ -275,6 +282,7 @@ Returns all reservations that collide with the specified interval.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
+| `ReservationGroups` | array of [ReservationGroup](#reservationgroup) | required | Reservation groups that the reservations are members of. |
 
 ##### Reservation
 
@@ -287,6 +295,7 @@ Returns all reservations that collide with the specified interval.
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
 | `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
+| `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
 
@@ -299,6 +308,13 @@ Returns all reservations that collide with the specified interval.
 | `LastName` | string | required | Last name of the customer. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
+
+##### ReservationGroup
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the reservation group. |
+| `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
 
 ### Sign in
 
