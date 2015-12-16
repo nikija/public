@@ -168,14 +168,16 @@ Returns all spaces of an enterprise associated with the connector integration.
             "Type": "Room",
             "Number": "101",
             "ParentSpaceId": null,
-            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "State": "Dirty"
         },
         {
             "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
             "Type": "Room",
             "Number": "102",
             "ParentSpaceId": null,
-            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "State": "Clean"
         }
     ],
     "SpaceCategories": [
@@ -202,6 +204,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
 | `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
+| `State` | string | required | State of the room. Either `Dirty`, `Clean`, `Inspected` or `OutOfService`. |
 
 ##### Space Category
 
