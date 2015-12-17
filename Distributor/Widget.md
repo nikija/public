@@ -88,6 +88,8 @@ Mews.Distributor({
     startDate: null,
     voucherCode: '',
     rooms: null,
+    showRateCompare: false,
+    competitors: null,
     ecommerce: false,
     hashEvents: false,
     ecommerceTrackerName: null,
@@ -237,6 +239,16 @@ Type: `Array` Default: `null`
 List of guids of room types to display in Distributor. If not set, all rooms are displayed.
 
 Currently, you can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier.
+
+### showRateCompare
+Type: `boolean` Default: `false`
+
+Enables information bar on second page of booking, that lists competitor prices. 
+
+### competitors
+Type: `Array` Default: `null`
+
+String array that allows your to choose competitors shown in information bar on second page of booking. Use competitors names to enable them (e.g. `cometitors: ['Booking.com']`)
 
 ### ecommerce
 Type: `boolean` Default: `false`
