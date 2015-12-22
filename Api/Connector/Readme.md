@@ -254,6 +254,7 @@ Returns all reservations that collide with the specified interval.
                     "FirstName": "Jane",
                     "Id": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
                     "LastName": "Smith",
+                    "NationalityCode": null,
                     "Phone": null
                 },
                 {
@@ -261,14 +262,18 @@ Returns all reservations that collide with the specified interval.
                     "FirstName": "John",
                     "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                     "LastName": "Smith",
+                    "NationalityCode": "US",
                     "Phone": null
                 }
             ],
+            "ChannelNumber": "123456",
+            "ChannelManagerId": "132-456-789",
             "Customer": {
                 "Email": "john.smith@mews.li",
                 "FirstName": "John",
                 "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                 "LastName": "Smith",
+                "NationalityCode": "US",
                 "Phone": null
             },
             "EndUtc": "2019-12-30T23:00:00Z",
@@ -276,7 +281,8 @@ Returns all reservations that collide with the specified interval.
             "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
             "Number": "123",
             "StartUtc": "2015-07-07T00:00:00Z",
-            "State": "Started"
+            "State": "Started",
+            "TravelAgencyId": "ea473215-fe52-4c1a-bd85-3dedc1c4bd56"
         }
     ]
 }
@@ -294,11 +300,14 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the reservation. |
 | `GroupId` | string | required | Unique identifier of the reservation group. |
 | `Number` | string | required | Confirmation number of the reservation. |
+| `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
+| `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
 | `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
 | `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
 | `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
+| `TravelAgencyId` | string | optional | Identifier of the travel agency that mediated the reservation. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
 
@@ -311,6 +320,7 @@ Returns all reservations that collide with the specified interval.
 | `LastName` | string | required | Last name of the customer. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
+| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
 
 ##### ReservationGroup
 
