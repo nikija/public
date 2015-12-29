@@ -4,6 +4,8 @@
 
 - [Úvod](#uvod)
 - [Nastavení](#nastaveni)
+	- [Aktualizace dat](#nastaveni-aktualizace)
+	- [Příklad nastavení](#nastaveni-aktualizace)
 - [Report Profily hostů](#report-profily-hostu)
    - [Neúplný report](#neuplny-report)
 - [Jak automatický reporting funguje](#jak-vse-funguje)
@@ -26,42 +28,60 @@ Hotel musí zařídit sám:
 
 - Získat certifikát (digitální podpis) pro emailovou adresu hotelu - policie tím bude ověřovat přijaté emaily s reporty. Může to být přímo email hotelu, nebo nějakého zaměstnance, nebo speciálně vytvořená adresa (třeba `cizineckapolicie@hotel.com`). Jen je potřeba vzít v potaz, že asi nebude jednoduché adresu změnit v budoucnu.
 - Zaregistrovat se u Cizinecké Policie ČR (viz jejich návod) a získat tak **IDUB** a **krátké IDUB** identifikátory hotelu a propojit hotel s emailovou adresou s digitálním podpisem.
+- Zjistit seriové číslo certifikátu a jméno vydavatele certifikátu (měla by být uvdena v emailu, ve kterém dostanete elektronický podpis). **Tuto informaci je potřebné v Mews aktualizovat s každým novým certifikátem.** 
 
-Mews support pomůže s:
+V Mews v *Integraci s cizineckou policií* je potřeba:
 
-- Zadat do Mews **IDUB** a **krátké IDUB** identifikátory hotelu.
-- Zadat do Mews tuto digitálně podepsanou emailovou adresu, pod kterou je hotel zaregistrován u Policie ČR. Na tento email bude Mews denně posílat kopii odesaného reportu a Policie ČR na tuto adresu bude posílat [Stanoviska](#stanoviska) k jednotlivým odeslaným reportům. **Je proto potřeba tuto emailovou schránku denně kontrolovat!**
-- Zadat do Mews alespoň jednu emailovou adresu, na kterou bude Mews posílat připomínku pro kontrolu reportu [Profily hostů](#report-profily-hostu). **Je proto potřeba tuto emailovou schránku denně kontrolovat!** (Může to tedy být stejný email.)
-- Nahrát do Mews certifikát - digitální podpis - aby jej Mews mohlo posílat Policii pro ověření odeslaného reportu (*My jsme si to nevymysleli :)*).
+- Zadat **IDUB** a **krátké IDUB** identifikátory hotelu.
+- Zadat tuto digitálně podepsanou emailovou adresu, pod kterou je hotel zaregistrován u Policie ČR. Na tento email bude Mews denně posílat kopii odesaného reportu a Policie ČR na tuto adresu bude posílat [Stanoviska](#stanoviska) k jednotlivým odeslaným reportům. **Je proto potřeba tuto emailovou schránku denně kontrolovat!**
+- Zadat alespoň jednu emailovou adresu, na kterou bude Mews posílat připomínku pro kontrolu reportu [Profily hostů](#report-profily-hostu). **Je proto potřeba tuto emailovou schránku denně kontrolovat!** (Může to tedy být stejný email.)
+- Nahrát certifikát - digitální podpis - aby jej Mews mohlo posílat Policii pro ověření odeslaného reportu (*My jsme si to nevymysleli :)*).
+- Zadat seriové číslo certifikátu a jméno vydavatele certifikátu.
+
+<a name="nastaveni-aktualizace"></a>
+### Aktualizace dat
+Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodloužení se řeší vydáním nového certifikátu. Pokud se tak stane, je potřeba nový certifikát nahrát do Mews a aktualizivat jeho seriové číslo. To samé platí, pokud hotel změní vydavatele certifikáty - v tom případě je potřeba správně přenatavit i jméno vydavatele certifikátu.
 
 <a name="nastaveni-priklad"></a>
 ### Příklad nastavení
-- Emailová adresa, na kterou hotel zařídil digitální podpis a pod kterým je hotel zaregistrován v systému Policie ČR je `hotel@hotel.com`.
-- Emailové adresa, na které chodí upozornení na vyplnění hotelu jsou `recepce@hotel.com` a `manager@hotel.com`.
+![Příklad nastavení integrace](../Images/IntegrationDetail_cs.png)
+
+- Emailová adresa, na kterou hotel zařídil digitální podpis a pod kterým je hotel zaregistrován v systému Policie ČR je `cizineckapolicie@hotel.cz`, tento email musi byt uveden v poli `Email odesílatele`.
+- Emailové adresa, na které chodí upozornení na vyplnění hotelu jsou `recepce@hotel.cz` a `manager@hotel.cz`, příjemci této zprávy jsou povini **denně** kontrolovat, že reporty jsou vyplněné.
+- Adresa emailu policie je `ubytovani@pcr.cz`, na tuto adresu bude chodit report cizinců, přidáním emailu `manager@hotel.cz` do pole `Email příjemce`, bude kopie reportu chodit i na tuto adresu. *Pokud v poli `Email příjemce` nebude správná adresa police, email na ní nebude poslán.*
+- Pole `Sériové číslo certifikátu` a `Vydavatel certifikátu` je potřeba nastavit společně s nahráním certifikátu a pravidelně vše aktualizovat.
 
 <a name="report-profily-hostu"></a>
 ## Report Profily hostů v Mews
 Report Profily hostů (*Customer Profiles*) je možné otevřít přímo z úvodní stránky po přihlášení do systému Mews. Report zobrazuje seznam hostů, kteří jsou ubytovaní (či kteří přijedou) ve vybraném časovém intervalu - záleží na zvolených parametrech reportu. Správný filter pro report je období na den a mód "Příjezdy".
 
 ![Report Profily hostů](../Images/Report.png)
-Takto vypadá příklad reportu Profily hostů. Ukazuje, že na pokoji `201` jsou ubytováni `Jane Smith` a `Jason Statham`, na pokoji `407` bydlí `Mena Suvari` a ještě někdo neudevený (rezervace je pro 2 osoby). 
+Takto vypadá příklad reportu Profily hostů. Ukazuje, že na pokoji `203` jsou ubytováni `John Smith` a `Last Name` (host bez křestního jména), na pokoji `106` jsou ubytováni `Nicolas Cage`  a ještě někdo neudevený (rezervace je pro 2 osoby), na pokoji `206` je ubytována `Mena Suvari`. 
 
 Dále report říká, že:
 
-- Všechny potřebné údaje pro `Jane Smith` jsou vyplněny - *profil hosta je kompletně vyplněn, proto je bílý*.
-- U hostů `Jason Statham` a `Mena Suvari` **chybí** zadat *adresa* a *číslo pasu* - *proto je řádek slabě červený a chybějící pole jsou červené*.
-- Společník hosta `Mena Suvari` není uveden vůbec - *tato rezervace je pro 2 hosty, ale v Mews je zadán pouze 1, proto je celý prázdný řádech označen červeně*.
+- Všechny potřebné údaje pro `John Smith` jsou vyplněny - *profil hosta je 100% vyplněn*.
+- U ostatních hostů je potřeba doplnit údaje označenéjako **Required**.
+- Je potřeba zjistit, kdo je ubytován na pokoji 106 z Nicolasem Cagem.
 
-Všechny chybějící (červené) údaje měly být vyplněny již běhěm Check-in procesu. Pokud i po check-inu nějaké údaje chybí, musí být vyplněny do odeslání reportu - viz [Jak automatický reporting funguje](#jak-vse-funguje). Cílem je mít všechny řádky bílé, tedy mít report vyplněn na 100%.
+Všechny chybějící (červené) údaje měly být vyplněny již běhěm Check-in procesu. Pokud i po check-inu nějaké údaje chybí, musí být vyplněny do odeslání reportu - viz [Jak automatický reporting funguje](#jak-vse-funguje). Cílem je mít report vyplněn na 100%. 
+
+### Povinné údaje
+- Jméno a příjmení
+- Datum narození
+- Národnost
+- Adresa (alespoň Řádek 1, Město, PSČ a Stát)
+- Číslo osobního dokladu
+- Číslo víza je v reportu NEPOVINNÉ, přestože s některými zeměmi Česko udržuje vízovou povinnost. Pro tyto země je potřeba zacházet s tímto polem jako povinným.
 
 *Poznámka:* Je možné stáhnout si report pro vybraný den nebo jej přímo odeslat (opravený) rovnou Policii - viz [Rady na závěr](#rady-na-zaver). V případě, že v reportu bude vybráno delší období, než jeden den, report bude v obou případech vygenerován je pro první den (Start).
 
 <a name="neuplny-report"></a>
 ### Neúplný report
 
-Report [Profily hostů](#report-profily-hostu) bývá zpravidla (aspoň trošku) červený i poté, co všchni hosté již přijeli, a je potřeba jej rychle "vybílit". Pokud chybí nějaký údaj na profilu hosta (křestní jméno, národnost, datum narození, číslo cestovního dokladu, ...), stačí se podívat do registrační karty hosta, kterou měl doplnit během check-inu, a údaje podle ní doplnit. Pokud ani tam údaje nejsou, znamená to, že na recepri při check-inu tyto údaje po hostovi nechtěli. Je potřeba hosta kontaktovat a údaje od něj zjistit. Dále je potřeba informovat recepci, aby při check-inu chtěly všchny údaje, aby se toto již neopakovalo.
+Report [Profily hostů](#report-profily-hostu) nebývá vyplněn na 100% ani poté, co všichni hosté již přijeli. Pokud chybí nějaký údaj na profilu hosta (křestní jméno, národnost, datum narození, číslo cestovního dokladu, adresa, ...), stačí se podívat do registrační karty hosta, kterou měl doplnit během check-inu, a údaje podle ní doplnit. Pokud ani tam údaje nejsou, znamená to, že na recepri při check-inu tyto údaje po hostovi nechtěli, přestože měli. Je potřeba hosta kontaktovat a údaje od něj zjistit. Dále je potřeba informovat recepci, aby při check-inu chtěly všchny údaje, aby se toto již neopakovalo.
 
-Složitější problém na řešení je situace s neuvedeným hostem (případ pokoje `407`) - zvláště pro nováčky se systémem Mews. Mohlo nastat hned několik různých situací:
+Složitější problém na řešení je situace s neuvedeným hostem (případ pokoje `106`) - zvláště pro nováčky se systémem Mews. Mohlo nastat hned několik různých situací:
 
 1. Druhý host nepřijede.
 2. Druhý host přijel, ale nebyl v systému vytvořen.
@@ -74,7 +94,7 @@ Složitější problém na řešení je situace s neuvedeným hostem (případ p
 3. Nejdříve potřeba si uvědomit rozdíl mezi *vlastníkem* rezervace a *hostem* přiřazeným k rezervaci. *Vlastník* je ten, na jehož jméno je rezervace vytvořena. Může to být dokonce někdo, kdo do hotelu vůbec nepřijede, pouze pobyt pro někoho zarezervoval. *Host* je někdo, kdo přijel a kdo bydlí na daném pokoji. Názorně na obrázku:
 
 ![Group Modul](../Images/GroupModule.png)
-Tento obrázek ukazuje, jak vyřešit třetí případ – pokoj `407` z prvního obrázku. `Nicolas Cage` je uveden jako *vlastník* rezervace (červená elipsa). Je potřeba jej ještě přidat na pokoj kliknutím na `>` v červeném obdélníku. Tím se host přidá na vybraný pokoj. Jeden host může totiž objednat více pokojů a systém jej automaticky nemůže přiřadit do všech zarezervovaných pokojů, protože jeden host nemůže být fyzicky ve dvou pokojích. Proto je potřeba vlastníka během Check-In procesu přiřadit do nějaké rezervace (udělat z něj hosta). Opět je potřeba nastavit na recepci check-in proces tak, aby se toto vyřešilo v den u příjezdu a nemuselo se to řešit zpětně.
+Tento obrázek ukazuje, jak vyřešit třetí případ – pokoj `106` z prvního obrázku. `Nicolas Cage` je uveden jako *vlastník* rezervace. Je potřeba jej ještě přidat na pokoj kliknutím na `>` (označené červeně). Tím se host přidá na vybraný pokoj. Jeden host může totiž objednat více pokojů a systém jej automaticky nemůže přiřadit do všech zarezervovaných pokojů, protože jeden host nemůže být fyzicky ve dvou pokojích. Proto je potřeba vlastníka během Check-In procesu přiřadit do nějaké rezervace (udělat z něj hosta). Opět je potřeba nastavit na recepci check-in proces tak, aby se toto vyřešilo v den u příjezdu a nemuselo se to řešit zpětně.
 
 <a name="jak-vse-funguje"></a>
 ## Jak automatický reporting funguje
