@@ -40,7 +40,7 @@ V Mews v *Integraci s cizineckou policií* je potřeba:
 
 <a name="nastaveni-aktualizace"></a>
 ### Aktualizace dat
-Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodloužení se řeší vydáním nového certifikátu. Pokud se tak stane, je potřeba nový certifikát nahrát do Mews a aktualizivat jeho seriové číslo. To samé platí, pokud hotel změní vydavatele certifikáty - v tom případě je potřeba správně přenatavit i jméno vydavatele certifikátu.
+Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodloužení se řeší vydáním nového certifikátu. Pokud se tak stane, je potřeba nový certifikát nahrát do Mews a aktualizovat jeho seriové číslo. To samé platí, pokud hotel změní vydavatele certifikáty - v tom případě je potřeba správně přenatavit i jméno vydavatele certifikátu.
 
 <a name="nastaveni-priklad"></a>
 ### Příklad nastavení
