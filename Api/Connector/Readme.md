@@ -168,14 +168,16 @@ Returns all spaces of an enterprise associated with the connector integration.
             "Type": "Room",
             "Number": "101",
             "ParentSpaceId": null,
-            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "State": "Dirty"
         },
         {
             "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
             "Type": "Room",
             "Number": "102",
             "ParentSpaceId": null,
-            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "State": "Clean"
         }
     ],
     "SpaceCategories": [
@@ -202,6 +204,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
 | `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
+| `State` | string | required | State of the room. Either `Dirty`, `Clean`, `Inspected` or `OutOfService`. |
 
 ##### Space Category
 
@@ -235,15 +238,23 @@ Returns all reservations that collide with the specified interval.
 
 ```json
 {
+    "ReservationGroups": [
+        {
+            "Id": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
+            "Name": "13-12-Smith-F712"
+        }
+    ],
     "Reservations": [
         {
             "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "BusinessSegmentId": "ad42231f-a5b6-466f-b9ef-0bc4d76e8c4c",
             "Companions": [
                 {
                     "Email": null,
                     "FirstName": "Jane",
                     "Id": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
                     "LastName": "Smith",
+                    "NationalityCode": null,
                     "Phone": null
                 },
                 {
@@ -251,20 +262,27 @@ Returns all reservations that collide with the specified interval.
                     "FirstName": "John",
                     "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                     "LastName": "Smith",
+                    "NationalityCode": "US",
                     "Phone": null
                 }
             ],
+            "ChannelNumber": "123456",
+            "ChannelManagerId": "132-456-789",
             "Customer": {
                 "Email": "john.smith@mews.li",
                 "FirstName": "John",
                 "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                 "LastName": "Smith",
+                "NationalityCode": "US",
                 "Phone": null
             },
             "EndUtc": "2019-12-30T23:00:00Z",
+            "GroupId": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
             "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
+            "Number": "123",
             "StartUtc": "2015-07-07T00:00:00Z",
-            "State": "Started"
+            "State": "Started",
+            "TravelAgencyId": "ea473215-fe52-4c1a-bd85-3dedc1c4bd56"
         }
     ]
 }
@@ -273,16 +291,23 @@ Returns all reservations that collide with the specified interval.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
+| `ReservationGroups` | array of [ReservationGroup](#reservationgroup) | required | Reservation groups that the reservations are members of. |
 
 ##### Reservation
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation. |
+| `GroupId` | string | required | Unique identifier of the reservation group. |
+| `Number` | string | required | Confirmation number of the reservation. |
+| `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
+| `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
 | `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
 | `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
+| `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
+| `TravelAgencyId` | string | optional | Identifier of the travel agency that mediated the reservation. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
 
@@ -295,6 +320,14 @@ Returns all reservations that collide with the specified interval.
 | `LastName` | string | required | Last name of the customer. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
+| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
+
+##### ReservationGroup
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the reservation group. |
+| `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
 
 ### Sign in
 

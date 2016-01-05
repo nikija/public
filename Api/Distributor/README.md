@@ -88,7 +88,8 @@ Initial call used to obtain all static data about hotel relevant for a booking w
                 "en-US": "Breakfast"
             },
             "Prices":{
-                "en-US": "Continental breakfast served in the morning."
+                "EUR": 5,
+                "CZK": 150
             }
         }
     ],
@@ -491,6 +492,7 @@ Braintree requires a special client token to be generated for each transaction. 
             "RoomCategoryId": "4037c0ec-a59d-43f1-9d97-d6c984764e8c",
             "StartUtc": "2015-01-01T00:00:00Z",
             "EndUtc": "2015-01-03T00:00:00Z",
+            "VoucherCode": "Discount2042",
             "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
             "AdultCount": 3,
             "ChildCount": 0,
@@ -503,8 +505,7 @@ Braintree requires a special client token to be generated for each transaction. 
     "CreditCardData": {
         "PaymentGatewayData": "...",
         "ObfuscatedCreditCardNumber": "411111******1111"
-    },
-    "VoucherCode": "Discount2042"
+    }
 }
 ```
 
@@ -514,7 +515,6 @@ Braintree requires a special client token to be generated for each transaction. 
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
 | `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
-| `VoucherCode` | string | optional | A voucher code. |
 
 ##### Customer
 
@@ -538,6 +538,7 @@ Braintree requires a special client token to be generated for each transaction. 
 | `RoomCategoryId` | string | required | Identifier of the requested room category. |
 | `StartUtc` | string | required | Start date of the reservation (arrival date). |
 | `EndUtc` | string | required | End date of the reservation (departure date). |
+| `VoucherCode` | string | optional | A voucher code, set to be paired with reservation for later retrieval only. Actual voucher rate used is determined by setting a proper `RateId`. |
 | `RateId` | string | required | Identifier of the chosen rate. |
 | `AdultCount` | number | required | Number of adults. |
 | `ChildCount` | number | required | Number of children. |

@@ -19,7 +19,7 @@
 <a name="uvod"></a>
 ## Úvod
 
-Tento dokument slouží jako návod hotelům pro používání Automatického oznamování cizinců Cizinecké Policii ČR. Základní informace, které poskytuje Policie ČR, jsou k dispozici na [zde](http://e-uby.wz.cz/INFORMACE.htm). Tento dokument počítá s tím, že se přílušní zaměstnanci s návodem Policie ČR seznámili.
+Tento dokument slouží jako návod hotelům pro používání Automatického oznamování cizinců Cizinecké Policii ČR. Základní informace, které poskytuje Policie ČR, jsou k dispozici [zde](http://e-uby.wz.cz/INFORMACE.htm). Tento dokument počítá s tím, že se přílušní zaměstnanci s návodem Policie ČR seznámili.
 
 <a name="nastaveni"></a>
 ## Nastavení
@@ -53,7 +53,7 @@ Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodlouže
 
 <a name="report-profily-hostu"></a>
 ## Report Profily hostů v Mews
-Report Profily hostů (*Customer Profiles*) je možné otevřít přímo z úvodní stránky po přihlášení do systému Mews. Report zobrazuje seznam hostů, kteří jsou ubytovaní (či kteří přijedou) ve vybraném časovém intervalu - záleží na zvolených parametrech reportu. Správný filter pro report je období na den a mód "Příjezdy".
+Report Profily hostů (*Customer Profiles*) je možné otevřít přímo z úvodní stránky po přihlášení do systému Mews. Report zobrazuje seznam hostů, kteří jsou ubytovaní (či kteří přijedou) ve vybraném časovém intervalu - záleží na zvolených parametrech reportu. Správný filtr pro report je období na den a mód "Příjezdy".
 
 ![Report Profily hostů](../Images/Report.png)
 Takto vypadá příklad reportu Profily hostů. Ukazuje, že na pokoji `203` jsou ubytováni `John Smith` a `Last Name` (host bez křestního jména), na pokoji `106` jsou ubytováni `Nicolas Cage`  a ještě někdo neudevený (rezervace je pro 2 osoby), na pokoji `206` je ubytována `Mena Suvari`. 
@@ -74,7 +74,7 @@ Všechny chybějící (červené) údaje měly být vyplněny již běhěm Check
 - Číslo osobního dokladu
 - Číslo víza je v reportu NEPOVINNÉ, přestože s některými zeměmi Česko udržuje vízovou povinnost. Pro tyto země je potřeba zacházet s tímto polem jako povinným.
 
-*Poznámka:* Je možné stáhnout si report pro vybraný den nebo jej přímo odeslat (opravený) rovnou Policii - viz [Rady na závěr](#rady-na-zaver). V případě, že v reportu bude vybráno delší období, než jeden den, report bude v obou případech vygenerován je pro první den (Start).
+*Poznámka:* Je možné stáhnout si report pro vybraný den nebo jej přímo odeslat (opravený) rovnou Policii - viz [Rady na závěr](#rady-na-zaver). V případě, že v reportu bude vybráno delší období než jeden den, report bude v obou případech vygenerován jen pro první den (Start).
 
 <a name="neuplny-report"></a>
 ### Neúplný report
@@ -85,13 +85,13 @@ Složitější problém na řešení je situace s neuvedeným hostem (případ p
 
 1. Druhý host nepřijede.
 2. Druhý host přijel, ale nebyl v systému vytvořen.
-4. Oba hosté přijeli, oba byli vytvořeni v systému, oba hosté jsou na detilu rezervace, přesto v reportu chybí host, na kterého byla rezervace vytvořena.
+4. Oba hosté přijeli, oba byli vytvořeni v systému, oba hosté jsou na detailu rezervace, přesto v reportu chybí host, na kterého byla rezervace vytvořena.
 
 #### Řešení
 
 1. Stačí ručně upravit rezervaci tak, aby byla jen pro jednoho hosta a případně aplikovat nějaké poplatky. 
 2. Stačí vytvořit nového hosta a přiřadit jej k rezervaci.
-3. Nejdříve potřeba si uvědomit rozdíl mezi *vlastníkem* rezervace a *hostem* přiřazeným k rezervaci. *Vlastník* je ten, na jehož jméno je rezervace vytvořena. Může to být dokonce někdo, kdo do hotelu vůbec nepřijede, pouze pobyt pro někoho zarezervoval. *Host* je někdo, kdo přijel a kdo bydlí na daném pokoji. Názorně na obrázku:
+3. Nejdříve je potřeba si uvědomit rozdíl mezi *vlastníkem* rezervace a *hostem* přiřazeným k rezervaci. *Vlastník* je ten, na jehož jméno je rezervace vytvořena. Může to být dokonce někdo, kdo do hotelu vůbec nepřijede, pouze pobyt pro někoho zarezervoval. *Host* je někdo, kdo přijel a kdo bydlí na daném pokoji. Názorně na obrázku:
 
 ![Group Modul](../Images/GroupModule.png)
 Tento obrázek ukazuje, jak vyřešit třetí případ – pokoj `106` z prvního obrázku. `Nicolas Cage` je uveden jako *vlastník* rezervace. Je potřeba jej ještě přidat na pokoj kliknutím na `>` (označené červeně). Tím se host přidá na vybraný pokoj. Jeden host může totiž objednat více pokojů a systém jej automaticky nemůže přiřadit do všech zarezervovaných pokojů, protože jeden host nemůže být fyzicky ve dvou pokojích. Proto je potřeba vlastníka během Check-In procesu přiřadit do nějaké rezervace (udělat z něj hosta). Opět je potřeba nastavit na recepci check-in proces tak, aby se toto vyřešilo v den u příjezdu a nemuselo se to řešit zpětně.
@@ -99,7 +99,7 @@ Tento obrázek ukazuje, jak vyřešit třetí případ – pokoj `106` z prvníh
 <a name="jak-vse-funguje"></a>
 ## Jak automatický reporting funguje
 
-Pokud je na hotelu vše nastaveno a schváleno Mews supportem, je vše připraveno pro automatické oznamování cizinců ubytovaných v hotelu. Tato operace běží na pozadí systému Mews a vždy v 9 hodin ráno udělá dvě věci:
+Pokud je na hotelu vše nastaveno, a schváleno Mews supportem, je vše připraveno pro automatické oznamování cizinců ubytovaných v hotelu. Tato operace běží na pozadí systému Mews a vždy v 9 hodin ráno udělá dvě věci:
 
 - Pošle upomínku na uvedený email s připomínkou, že je potřeba zkontrolovat report příjezdů za **včerejší** den.
 - Vygeneruje se report za **předvčerejší** den a odešle jej Policii ČR.
@@ -115,16 +115,16 @@ Nyní je **17.2.2014 9:00** a stanou se následující věci (využívá emaily 
    - Je potřeba zkontrolovat, že report příjezdů v den **16.2.2014** je 100% (předpokládá se, že všichni hosté, kteří měli přijet **16.2.2014** již přijeli, proto se kontroluje „včerejší“ den). 
    - Pokud report není hotov na 100%, je potřeba tento report *během 24 hodin* co nejvíce dokončit ("zítra" jej totiž Mews automaticky odešle Policii v tom stavu, v jakém je).
 - Mews automatiky vygeneruje report za „předvčerejší“ den **15.2.2014** (o kterém se předpokládá, že je zkontrolován z předchozího dne) a pošle Policii ČR a v kopii na uvedený email `hotel@hotel.com`. 
-- Policie ČR report zpracuje a pošle odpoví na adresu (tu digitálně podepsanou) své [Stanovisko](#stanoviska) k reportu. Většinou to posílají ještě ten den, nejpozději do druhého pracovního dne.
+- Policie ČR report zpracuje a pošle na adresu (tu digitálně podepsanou) své [Stanovisko](#stanoviska) k reportu. Většinou to posílají ještě ten den, nejpozději do druhého pracovního dne.
 
 **Je proto důležité, aby oba 2 tyto emaily někdo každý den četl a ujistil se, že Policie report přijala.**
 
-*Poznámka:* Pokud hotel (na email `hotel@hotel.com`) kolem deváté hodiny ranní neobdržel kopii reportu odeslaného Policii (a neni ani ve Spamu ani omylem smazaný). Je možné, že report neodešel - je třeba kontakovat Mews support (dříve než report odešlete sami ručně). Problém může být jinde.
+*Poznámka:* Pokud hotel (na email `hotel@hotel.com`) kolem deváté hodiny ranní neobdržel kopii reportu odeslaného Policii (a není ani ve Spamu, ani omylem smazaný). Je možné, že report neodešel - je třeba kontakovat Mews support (dříve než report odešlete sami ručně). Problém může být jinde.
 
 <a name="kdo-je-reportovan"></a>
 ### Kteří hosté jsou reportováni
 
-Podle zákona se mají Cizinecké Polici reportovat všichní hosté s jinou než Českou národností. Takže Mews do reportu, který posílá Policii, zahrne každého hosta s vypněnou národností (jinou, než Českou) **a to bez ohledu na to, jestli má profil vyplněný na 100% nebo ne**. Je to z toho důvodu, že kdyby recepční vyplňovali report až po jeho odeslání a přišla na hotel kontrola, tak kniha hostů bude vykazovat mnohem více cizinců, než bylo nahlášeno Policii. Takže toto řešení donutí recepční vyplňovat vše včas. 
+Podle zákona se mají Cizinecké Polici reportovat všichní hosté s jinou než českou národností. Takže Mews do reportu, který posílá Policii, zahrne každého hosta s vypněnou národností (jinou, než českou) **a to bez ohledu na to, jestli má profil vyplněný na 100% nebo ne**. Je to z toho důvodu, že kdyby recepční vyplňovali report až po jeho odeslání a přišla na hotel kontrola, tak kniha hostů bude vykazovat mnohem více cizinců, než bylo nahlášeno Policii. Takže toto řešení donutí recepční vyplňovat vše včas. 
 
 <a name="stanoviska"></a>
 ## Stanoviska Policie ČR
@@ -132,12 +132,12 @@ Podle zákona se mají Cizinecké Polici reportovat všichní hosté s jinou ne�
 
 - Všechna data v pořádku, oznamovací povinnost **BYLA** splněna.
 - Chybí některé drobnosti (křestní jméno, datum narození, …), přesto oznamovací povinnost **BYLA** splněna.
-- Byly detekovány závažné chyby, proto oznamovací povinnost **NEBYLA** splněna - **V tomto případě je potřeba rychle reagovat, je proto důležité, aby uvedený email někdo každý den kontroloval a ujistil se, že chybějící data budou opravena a hned poslána Policii zpět.**
+- Byly detekovány závažné chyby, proto oznamovací povinnost **NEBYLA** splněna - **V tomto případě je potřeba rychle reagovat. Je proto důležité, aby uvedený email někdo každý den kontroloval a ujistil se, že chybějící data budou opravena a hned poslána Policii zpět.**
 
 <a name="jak-na-stanoviska"></a>
 ### Jak zacházet se Stanovisky
 
-- Pokud Stanovisko Policie ČR je jedno z prvních dvou případů, je vše v pořádku (v druhém případě je dobré opravit chybějící data v systému), není potřeba posílat opravený report. 
+- Pokud je Stanovisko Policie ČR jedno z prvních dvou výše zmíněných případů, je vše v pořádku (v druhém případě je dobré opravit chybějící data v systému) a není potřeba posílat opravený report. 
 - Ve třetím případě je potřeba chyby opravit v systému a zároveň poslat opravený report - stačí v reportu [Profily hostů](#report-profily-hostu) vybrat příslušný den (**Pozor, stanoviska chodí na reporty poslané minimálně za 2 dny v minulosti** - viz [Jak automatický reporting funguje](#jak-vse-funguje)).
 
 <a name="rady-na-zaver"></a>
@@ -146,8 +146,8 @@ Podle zákona se mají Cizinecké Polici reportovat všichní hosté s jinou ne�
 - Informovat všechny recepční, aby vyplňovali **všechny** potřebné údaje **při check-inu** (Jméno, Příjemní, Datum narození, Národnost, Číslo pasu a Adresu bydliště) a správně **přiřadili všechny hosty na správný pokoj**.
 - Je potřeba **denně** kontrolovat včerejší report.
 - Je potřeba **denně** kontrolovat [Stanoviska](#stanoviska) Policie k jednotlivým reportům a v případě **zamítavého stanoviska** důsledně a co nejrychleji vyřešit chybějící údaje. 
-- Před prvním spuštění je potřeba zkontrolovat report za poslední 2 dny (od data spuštění), protože na něj nepřijde upomínkový email.
-- Hosté s uvedenou národností **jsou** reportováni **s nevyplněnými dalším údaji**.
+- Před prvním spuštění je potřeba zkontrolovat report za **poslední 2 dny (od data spuštění)**, protože na něj nepřijde upomínkový email.
+- Hosté s uvedenou národností **jsou** reportováni **s nevyplněnými dalšími údaji**.
 - Tlačítko v reportu [Profily hostů](#report-profily-hostu) pro odeslání reportu slouží **primárně** pro posílání **opravného** reportu Policii, *sekundárně* pro poslání reportu, pokud ho *Mews neodeslal automaticky *- to ale musí **potvrdit Mews support**.
 
 <a name="informace-policie-cr"></a>
