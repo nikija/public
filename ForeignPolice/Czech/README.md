@@ -42,6 +42,12 @@ V Mews v *Integraci s cizineckou policií* je potřeba:
 ### Aktualizace dat
 Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodloužení se řeší vydáním nového certifikátu. Pokud se tak stane, je potřeba nový certifikát nahrát do Mews a aktualizovat jeho seriové číslo. To samé platí, pokud hotel změní vydavatele certifikáty - v tom případě je potřeba správně přenatavit i jméno vydavatele certifikátu.
 
+Jak to akualizovat
+1. Kliknout na `Vybrat` (certifikát) v pravé části obrazovky a vybrat certifikát (=digitální podpis).
+2. Kliknout na tlačítko `Nahrát`, tím se certifikát nahraje do Mews.
+3. Vyplnit pole `Sériové číslo certifikátu` a `Vydavatel certifikátu` podle údajů z emailu s obdrženým ertifikátem.
+4. Klinout na `Uložit`, aby se údaje uložily v Mews.
+
 <a name="nastaveni-priklad"></a>
 ### Příklad nastavení
 ![Příklad nastavení integrace](../Images/IntegrationDetail_cs.PNG)
