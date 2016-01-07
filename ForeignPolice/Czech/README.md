@@ -44,7 +44,7 @@ Certifikát (=digitální podpis) je vydáván s omezenou platností. Prodlouže
 
 <a name="nastaveni-priklad"></a>
 ### Příklad nastavení
-![Příklad nastavení integrace](../Images/IntegrationDetail_cs.png)
+![Příklad nastavení integrace](../Images/IntegrationDetail_cs.PNG)
 
 - Emailová adresa, na kterou hotel zařídil digitální podpis a pod kterým je hotel zaregistrován v systému Policie ČR je `cizineckapolicie@hotel.cz`, tento email musi byt uveden v poli `Email odesílatele`.
 - Emailové adresa, na které chodí upozornení na vyplnění hotelu jsou `recepce@hotel.cz` a `manager@hotel.cz`, příjemci této zprávy jsou povini **denně** kontrolovat, že reporty jsou vyplněné.
