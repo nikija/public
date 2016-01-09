@@ -195,102 +195,26 @@ Please note, that some Google Analytics applications can set up their own named 
 Options
 -------
 
-### hotelId (required)
-Type: `string` Default `''`
-
-Guid of hotel used for identification in API calls. 
-
-Currently, you can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier.
-
-### openElements
-Type: `string` Default `''`
-
-List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example.
-
-The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization.
-
-### language
-Type: `string` Default: `en-US`
-
-Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
-
-### currency
-Type: `string` Default: `EUR`
-
-Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander.
-Invalid value will fallback to default currency of your hotel.
-
-### startDate
-Type: `Date` Default: `today`
-
-Default value for a reservation start date.
-
-### endDate
-Type: `Date` Default: `today + 2 days`
-
-Default value for a reservation start date.
-
-### voucherCode
-Type: `string` Default: `''`
-
-Default value for a voucher code.
-
-### rooms
-Type: `Array` Default: `null`
-
-List of guids of room types to display in Distributor. If not set, all rooms are displayed.
-
-Currently, you can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier.
-
-### showRateCompare
-Type: `boolean` Default: `false`
-
-Enables information bar on second page of booking, that lists competitor prices. 
-
-### competitors
-Type: `Array` Default: `null`
-
-String array that allows your to choose competitors shown in information bar on second page of booking. Use competitors names to enable them (e.g. `cometitors: ['Booking.com']`)
-
-### ecommerce
-Type: `boolean` Default: `false`
-
-Enables Google Analytics ecommerce tracking.
-
-### hashEvents
-Type: `boolean` Default: `false`
-
-Enables Google Analytics page view tracking with url hashes.
-
-### theme
-Type: `object`
-
-Object used for setting custom theme values. See next section for more info.
-
-### ecommerceTrackerName
-Type: `string`
-
-Name of the Google Analytics tracker, that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
-
-### gaTrackerName
-Type: `string`
-
-Name of the Google Analytics tracker, that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
-
-### onOpened
-Type: `function`
-
-Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
-
-### onClosed
-Type: `function`
-
-Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
-
-### onLoaded
-Type: `function`
-
-Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API. 
+| Name | Type | Default value | Description |
+| --- | --- | --- | --- |
+| hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
+| openElements | `string` | `''` | List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example. <br><br> The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization. |
+| language | `string` | `null` | Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
+| currency | `string` | `null` | Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander. Invalid value will fallback to currency of default rate of your hotel.
+| startDate | `string` | `today` | Default value for a reservation start date in ISO 8601 format.
+| endDate | `string` | `today + 2 days` | Default value for a reservation end date in ISO 8601 format.
+| voucherCode | `string` | `''` | Default value for a voucher code.
+| <a name="rooms"></a> rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier. 
+| theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
+| hashEvents | `boolean` | `false` | Enables Google Analytics page view tracking with url hashes.
+| ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
+| ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
+| gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
+| showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices. 
+| competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
+| onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
+| onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
+| onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API. 
 
 <a name="customization"></a>
 ## Customization
