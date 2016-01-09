@@ -2,12 +2,12 @@
 
 - [Install](#install)
 - [Advanced Features](#advanced)
+    - [Options](#options)
+        - [Customization](#customization)
+    - [API](#api)
     - [Deeplinks](#deeplinks)
     - [Payment Gateways](#payment)
     - [Google Analytics](#ga)
-- [Options](#options)
-    - [Customization](#customization)
-- [API](#api)
 
 <a name="install"></a>
 Install
@@ -120,6 +120,83 @@ Mews.Distributor({
 #### Note
 See that you have just one `<script>` tag containing `Mews.distributorEmbed` call in your page.
 
+### Options
+
+| Name | Type | Default value | Description |
+| --- | --- | --- | --- |
+| hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
+| openElements | `string` | `''` | List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example. <br><br> The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization. |
+| language | `string` | `null` | Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
+| currency | `string` | `null` | Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander. Invalid value will fallback to currency of default rate of your hotel.
+| startDate | `string` | `today` | Default value for a reservation start date in ISO 8601 format.
+| endDate | `string` | `today + 2 days` | Default value for a reservation end date in ISO 8601 format.
+| voucherCode | `string` | `''` | Default value for a voucher code.
+| <a name="rooms"></a> rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier. 
+| theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
+| hashEvents | `boolean` | `false` | Enables Google Analytics page view tracking with url hashes.
+| ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
+| ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
+| gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
+| showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices. 
+| competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
+| onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
+| onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
+| onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API. 
+
+<a name="customization"></a>
+#### Customization
+
+Distributor Edge has all styles written in javascript and bundled into the script. This way we can limit possibility of clashes when it's included into your website. To allow customization, we have `theme` option, taking your custom values. Currently supported are:
+
+| Name | Type | Description
+| --- | --- | --- |
+| fontFamily | `string` | Name of the font to use, same as the CSS value `font-family`.
+| primaryColor | `string` | Value for primary color. Accepted are all possible denominations of color in CSS, except explicit color names (i.e 'red' will not work).
+
+<a name="api"></a>
+### API
+
+API calls are defined on the Distributor instance you will create with initialization call. This instance is returned to you as an argument of callback function that you can pass as the second parameter to initialization call. See example above for more details.
+
+### open()
+
+Opens Distributor in it's overlay.
+
+### setStartDate(date)
+- `date` Type: `string` - The start date to set
+
+Sets start date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object or its value isn't allowed as start date, nothing happens.
+
+### setEndDate(date)
+- `date` Type: `string` - The end date to set
+
+Sets end date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object, nothing happens.
+
+### setVoucherCode(code)
+- `code` Type: `string` - The voucher code to set
+
+Sets a new voucher code value.
+
+### setRooms(rooms)
+- `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
+
+Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
+
+### setStepRooms(startDate, endDate, voucherCode = null)
+- `startDate` Type: `string` - The start date to set
+- `endDate` Type: `string` - The end date to set
+- `voucherCode` (optional) Type: `string` - The voucher code to set
+
+Sets Distributor to the second step (`Rooms`) as if you clicked the next button on first screen.
+
+### setStepRates(roomId, startDate = null, endDate = null, voucherCode = null)
+- `roomId` Type: `string` - an ID of a room to be selected (More about those IDs is [here](#rooms))
+- `startDate` (optional) Type: `string` - The start date to set
+- `endDate` (optional) Type: `string` - The end date to set
+- `voucherCode` (optional) Type: `string` - The voucher code to set
+
+Sets Distributor to the third step (`Rates`) as if you selected a room on the second screen.
+
 ### Deeplinks
 
 Distributor recognizes a set of parameteres passed to it in URL query. This allows you to deeplink into booking engine from other websites. Those parameters are:
@@ -190,71 +267,3 @@ Also, you can enable ecommerce tracking by setting `ecommerce` option to `true`.
 When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used. 
 
 Please note, that some Google Analytics applications can set up their own named trackers. If you wish to used them to report GA events, check their configuration for correct name. This is especially important in case Google Tag Manager is in use, but no other default Google Analytics trackers are being setup on page. 
-
-<a name="options"></a>
-Options
--------
-
-| Name | Type | Default value | Description |
-| --- | --- | --- | --- |
-| hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
-| openElements | `string` | `''` | List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example. <br><br> The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization. |
-| language | `string` | `null` | Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
-| currency | `string` | `null` | Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander. Invalid value will fallback to currency of default rate of your hotel.
-| startDate | `string` | `today` | Default value for a reservation start date in ISO 8601 format.
-| endDate | `string` | `today + 2 days` | Default value for a reservation end date in ISO 8601 format.
-| voucherCode | `string` | `''` | Default value for a voucher code.
-| <a name="rooms"></a> rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier. 
-| theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
-| hashEvents | `boolean` | `false` | Enables Google Analytics page view tracking with url hashes.
-| ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
-| ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
-| gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
-| showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices. 
-| competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
-| onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
-| onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
-| onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API. 
-
-<a name="customization"></a>
-## Customization
-
-Distributor Edge has all styles written in javascript and bundled into the script. This way we can limit possibility of clashes when it's included into your website. To allow customization, we have `theme` option, taking your custom values. Currently supported are:
-
-### fontFamily
-Type: `string`
-
-Name of the font to use, same as the CSS value `font-family`
-
-### primaryColor
-Type: `string`
-
-Value for primary color. Accepted are all possible denominations of color in CSS, except explicit color names (i.e 'red').
-
-<a name="api"></a>
-API
----
-
-### open()
-
-Opens Distributor in it's overlay.
-
-### setStartDate(date)
-- `date` Type: `date` - The start date to set
-
-Sets start date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object or its value isn't allowed as start date, nothing happens.
-
-### setEndDate(date)
-- `date` Type: `date` - The end date to set
-
-Sets end date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object, nothing happens.
-
-### setVoucherCode(code)
-- `code` Type: `string` - The voucher code to set
-
-Sets a new voucher code value.
-
-### setRooms(rooms)
-- `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
-
-Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
