@@ -1,7 +1,6 @@
 ---
-title: Users
+title: Users Guide
 ---
-#Guide
 
 ##Table of Content
 

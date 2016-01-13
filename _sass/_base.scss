@@ -7,6 +7,7 @@ table {
 
   td, th {
       padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .13);
 
       &:not(:first-child) {
         padding-left: 4px;
@@ -14,13 +15,6 @@ table {
       &:not(:last-child) {
         padding-right: 4px;
       }
-  }
-
-
-  tr:not(:last-child) {
-    td, th {
-      border-bottom: 1px solid rgba(0, 0, 0, .13);
-    }
   }
 }
 

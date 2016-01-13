@@ -1,9 +1,7 @@
 ---
 title: Distributor Standalone
 ---
-Distributor for your hotel is available as standalone version, hosted on our servers.
-You can simply provide a link from your website and not worry about anything else.
-However, you cannot setup any custom option this way (other than default language).
+Distributor for your hotel is available as standalone version, hosted on our servers. You can simply provide a link from your website and not worry about anything else. However, you cannot setup any custom option this way (other than default language).
 
 Address of the Distributor standalone page has the following format:
 ```
@@ -14,8 +12,7 @@ The `aaaa-bbbb-cccc-dddd-eeeeeeee` part should be replaced with id of your hotel
 
 ### Customization
 
-Customization of standalone Distributor is done by url query parameters.
-Currently it's limited only to a default language.
+Customization of standalone Distributor is done by url query parameters. Currently it's limited only to a default language.
 
 | Parameter | Example | Description |
 | --- | --- | --- |

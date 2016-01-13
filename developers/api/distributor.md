@@ -1,11 +1,10 @@
 ---
-title: Distributor API
+title: Distributor API (v1)
 ---
-# Distributor API (v1)
 
 The Distributor API allows external applications (generally known as booking widgets) to get information about offered rooms and products for given hotel, to check availability of those rooms and finally to create new reservations.
 
-First of all, please have a look at [MEWS API Guidelines](https://github.com/MewsSystems/public/tree/master/Api) which describe general usage guidelines of MEWS APIs.
+First of all, please have a look at [API Guidelines](./) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
