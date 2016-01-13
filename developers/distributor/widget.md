@@ -38,7 +38,7 @@ Once required script is loaded, you can initialize Distributor Edge with the fol
 
 The overlay is not visible by default - to actually show it to your users, you should bind its opening to some action (i.e. clicking on button). Distributor can do it automatically for you if you provide second option - a string of comma separated css selectors of elements, whose click event will be binded with opening of Distributor. The event is delegated, so you can pass selectors to elements that don't exist in website yet.
 
-```html
+{% highlight html %}
 <!-- Distributor's initialization call, creating new instance of Distributor. Use id of your hotel. -->
 <script>
     Mews.Distributor({
@@ -46,7 +46,8 @@ The overlay is not visible by default - to actually show it to your users, you s
         openElements: '.open-distributor-button'
     });
 </script>
-```
+{% highlight %}
+
 If you need more specific setup of opening Distributor, or you want to call some api functions on Distributor instance, you can provide a callback function as second argument to initialization call - the instance is provided as an argument to the callback.
 
 ```
