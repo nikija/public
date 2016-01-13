@@ -1,5 +1,8 @@
 - name: 'Users'
   path: '/content/users'
+  subnav:
+    - name: 'Integrations'
+      path: '/integrations'
 
 - name: 'Developers'
   path: '/content/developers'
