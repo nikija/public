@@ -1,18 +1,18 @@
 - name: 'Users'
-  path: '/users'
+  path: '/content/users'
 
 - name: 'Developers'
-  path: '/developers'
+  path: '/content/developers'
   subnav:
     - name: 'API'
       path: '/api'
       subnav:
-        - name: 'Charging API'
-          path: '/charging'
-        - name: 'Connector API'
+        - name: 'Connector'
           path: '/connector'
-        - name: 'Distributor API'
+        - name: 'Distributor'
           path: '/distributor'
+        - name: 'Charging'
+          path: '/charging'
     - name: 'Distributor'
       path: '/distributor'
       subnav:
