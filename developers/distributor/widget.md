@@ -1,18 +1,11 @@
 ---
-title: Widget
+title: Distributor Widget
 ---
-# MEWS Distributor - Widget
 
-- [Install](#install)
-- [Advanced Features](#advanced)
-    - [Options](#options)
-        - [Customization](#customization)
-    - [API](#api)
-    - [Deeplinks](#deeplinks)
-    - [Payment Gateways](#payment)
-    - [Google Analytics](#ga)
+* TOC
+{:toc}
 
-# Install
+## Install
 
 ### Script
 
@@ -38,7 +31,7 @@ Once required script is loaded, you can initialize Distributor Edge with the fol
 
 The overlay is not visible by default - to actually show it to your users, you should bind its opening to some action (i.e. clicking on button). Distributor can do it automatically for you if you provide second option - a string of comma separated css selectors of elements, whose click event will be binded with opening of Distributor. The event is delegated, so you can pass selectors to elements that don't exist in website yet.
 
-{% highlight html %}
+~~~html
 <!-- Distributor's initialization call, creating new instance of Distributor. Use id of your hotel. -->
 <script>
     Mews.Distributor({
@@ -46,11 +39,11 @@ The overlay is not visible by default - to actually show it to your users, you s
         openElements: '.open-distributor-button'
     });
 </script>
-{% endhighlight %}
+~~~
 
 If you need more specific setup of opening Distributor, or you want to call some api functions on Distributor instance, you can provide a callback function as second argument to initialization call - the instance is provided as an argument to the callback.
 
-```
+~~~html
 <script>
     Mews.Distributor({
         hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee'
@@ -58,7 +51,7 @@ If you need more specific setup of opening Distributor, or you want to call some
         // you can call api functions on distributor instance here
     });
 </script>
-```
+~~~
 
 To see a list of all available api calls, please consult [API](#api) section.
 
@@ -68,7 +61,7 @@ Closing of Distributor is provided in the overlay by default, so you don't have 
 
 This is all you need for the basic setup of Mews Distributor. Any other code snippet in this documentation is for advanced usage.
 
-# Advanced features (optional)
+## Advanced features (optional)
 
 #### All possible options
 
@@ -76,7 +69,7 @@ Example with all possible options and their default values:
 
 **Important: This is just an example, do not copy this directly to your website!**
 
-```html
+~~~html
 <script>
 Mews.Distributor({
     // required
@@ -115,7 +108,7 @@ Mews.Distributor({
     // distributor.setRooms(rooms);
 });
 </script>
-```
+~~~
 
 #### Note
 See that you have just one `<script>` tag containing `Mews.distributorEmbed` call in your page.
@@ -143,7 +136,6 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API.
 | onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API.
 
-<a name="customization"></a>
 #### Customization
 
 Distributor Edge has all styles written in javascript and bundled into the script. This way we can limit possibility of clashes when it's included into your website. To allow customization, we have `theme` option, taking your custom values. Currently supported are:
@@ -153,43 +145,42 @@ Distributor Edge has all styles written in javascript and bundled into the scrip
 | fontFamily | `string` | Name of the font to use, same as the CSS value `font-family`.
 | primaryColor | `string` | Value for primary color. Accepted are all possible denominations of color in CSS, except explicit color names (i.e 'red' will not work).
 
-<a name="api"></a>
 ### API
 
 API calls are defined on the Distributor instance you will create with initialization call. This instance is returned to you as an argument of callback function that you can pass as the second parameter to initialization call. See example above for more details.
 
-### open()
+#### open()
 
 Opens Distributor in it's overlay.
 
-### setStartDate(date)
+#### setStartDate(date)
 - `date` Type: `string` - The start date to set
 
 Sets start date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object or its value isn't allowed as start date, nothing happens.
 
-### setEndDate(date)
+#### setEndDate(date)
 - `date` Type: `string` - The end date to set
 
 Sets end date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object, nothing happens.
 
-### setVoucherCode(code)
+#### setVoucherCode(code)
 - `code` Type: `string` - The voucher code to set
 
 Sets a new voucher code value.
 
-### setRooms(rooms)
+#### setRooms(rooms)
 - `rooms` Type: `Array` - The list of guids of rooms to be displayed (see `rooms` option for more details)
 
 Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
 
-### setStepRooms(startDate, endDate, voucherCode = null)
+#### setStepRooms(startDate, endDate, voucherCode = null)
 - `startDate` Type: `string` - The start date to set
 - `endDate` Type: `string` - The end date to set
 - `voucherCode` (optional) Type: `string` - The voucher code to set
 
 Sets Distributor to the second step (`Rooms`) as if you clicked the next button on first screen.
 
-### setStepRates(roomId, startDate = null, endDate = null, voucherCode = null)
+#### setStepRates(roomId, startDate = null, endDate = null, voucherCode = null)
 - `roomId` Type: `string` - an ID of a room to be selected (More about those IDs is [here](#rooms))
 - `startDate` (optional) Type: `string` - The start date to set
 - `endDate` (optional) Type: `string` - The end date to set
@@ -235,7 +226,6 @@ http://www.yourwebsite.com/?mewsEnterpriseId=aaaa-bbbb-cccc-dddd-eeeeeeee&mewsSt
 http://www.yourwebsite.com/?mewsEnterpriseId=aaaa-bbbb-cccc-dddd-eeeeeeee&mewsStart=2015-01-01&mewsEnd=2015-01-02&mewsRoomTypeId=mmmm-nnnn-oooo-pppppp
 ```
 
-<a name="payment"></a>
 ### Payment Gateways
 
 Payement gateway is used to safely collect information about customer's credit card. Configuration is done once, when hotel is set up, and Distributor will use it automatically. Currently Distributor supports these gateways:
@@ -249,7 +239,6 @@ Using payment gateway is not mandatory altough, reservations can be created even
 **Important:**
 PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info, which is happening when using Braintree or Adyen gateway.
 
-<a name="ga"></a>
 ### Google Analytics
 
 If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` or `_gaq` - then Distributor will automatically use it for sending events. Tracked events are:

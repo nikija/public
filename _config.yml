@@ -9,3 +9,7 @@ defaults:
             layout: "page"
 
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  toc_levels: 1..3

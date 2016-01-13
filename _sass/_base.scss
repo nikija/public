@@ -1,30 +1,27 @@
 body {
   font-family: 'Roboto', 'sans-serif'
 }
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
-}
 
-/**
- * Blockquotes
- */
-blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    letter-spacing: -1px;
-    font-style: italic;
+table {
+  border-spacing: 0;
 
-    > :last-child {
-        margin-bottom: 0;
+  td, th {
+      padding: 16px 0;
+
+      &:not(:first-child) {
+        padding-left: 4px;
+      }
+      &:not(:last-child) {
+        padding-right: 4px;
+      }
+  }
+
+
+  tr:not(:last-child) {
+    td, th {
+      border-bottom: 1px solid rgba(0, 0, 0, .13);
     }
+  }
 }
 
 /**
@@ -33,7 +30,7 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 1px solid #e8e8e8;
     border-radius: 3px;
     background-color: #eef;
 }
@@ -50,23 +47,5 @@ pre {
         border: 0;
         padding-right: 0;
         padding-left: 0;
-    }
-}
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
     }
 }
