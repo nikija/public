@@ -1,4 +1,6 @@
-# Integrations
+---
+title: Integrations
+---
 
 - [How to create any integration](#how-to-create)
 - [Channel Manager Integrations](#channel-manager-integrations)
@@ -306,7 +308,7 @@ Make sure that the "API Clientside Encryption Payments role" is active otherwise
 	- Set Method to HTTP POST
 	- Uncheck "Populate SOAP Action headers"
 	- Set UserName = "adyenNotification" (on test/demo use: "adtenNotification")
-	- Set Password = "h5BZsfg3mdNvSSFh" (on test/demo use: "password"
+	- Set Password = "h5BZsfg3mdNvSSFh" (on test/demo use: "password")
 	- Click Test, should show list of messages with code 200
 	- Save
 

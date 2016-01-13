@@ -1,4 +1,6 @@
-# Mews - Integration with Swiss Foreign Police
+---
+title: Mews - Integration with Swiss Foreign Police
+---
 
 ## Content
 
