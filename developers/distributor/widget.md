@@ -46,7 +46,7 @@ The overlay is not visible by default - to actually show it to your users, you s
         openElements: '.open-distributor-button'
     });
 </script>
-{% highlight %}
+{% endhighlight %}
 
 If you need more specific setup of opening Distributor, or you want to call some api functions on Distributor instance, you can provide a callback function as second argument to initialization call - the instance is provided as an argument to the callback.
 
