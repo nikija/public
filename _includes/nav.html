@@ -1,0 +1,18 @@
+<ul>
+{% for item in include.context %}
+  {% capture path %}{{ include.base_path }}{{ item.path }}{% endcapture %}
+  <li>
+    {% if item.subnav %}
+      <span>
+        {% if page.url contains path %}&#9662;{% else %}&#9656;{% endif %}
+      </span>
+    {% endif %}
+    <a href="{{ path }}"{% if page.url contains path %} class="active"{% endif %}>
+      {{ item.name }}
+    </a>
+    {% if page.url contains path %}
+      {% include nav.html context=item.subnav base_path=path %}
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

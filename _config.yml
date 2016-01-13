@@ -1,0 +1,23 @@
+# Site settings
+title: Mews Documentation
+email: your-email@domain.com
+description: >
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Layout settings
+header_type: default  # values [ drawer, default ]
+post_type: highlight    # values [ highlight, default ]
+pagination_type: default  # values [ ops, default ]
+
+defaults:
+    -
+        scope:
+            path: ""
+        values:
+            layout: "page"
+
+markdown: kramdown

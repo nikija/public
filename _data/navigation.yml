@@ -1,0 +1,22 @@
+- name: 'Users'
+  path: '/users'
+
+- name: 'Developers'
+  path: '/developers'
+  subnav:
+    - name: 'API'
+      path: '/api'
+      subnav:
+        - name: 'Charging API'
+          path: '/charging'
+        - name: 'Connector API'
+          path: '/connector'
+        - name: 'Distributor API'
+          path: '/distributor'
+    - name: 'Distributor'
+      path: '/distributor'
+      subnav:
+        - name: 'Standalone'
+          path: '/standalone'
+        - name: 'Widget'
+          path: '/widget'
