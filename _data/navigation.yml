@@ -3,6 +3,13 @@
   subnav:
     - name: 'Integrations'
       path: '/integrations'
+    - name: 'Foreign Police'
+      path: '/foreign-police'
+      subnav:
+      - name: 'Czech'
+        path: '/czech'
+      - name: 'Swiss'
+        path: '/swiss'
 
 - name: 'Developers'
   path: '/content/developers'
