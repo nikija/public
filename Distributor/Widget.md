@@ -138,6 +138,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used. 
 | gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used. 
 | showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices. 
+| hideSpecialRequests| `boolean` | `false` | Hides special requests field in checkout form.
 | competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
 | onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API. 
 | onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API. 
