@@ -1,7 +1,0 @@
-- Section 1
-  - sub section 1
-    - sub sub section A
-    - sub sub section B
-  - sub section 2
-- Section 2
-- Section 3
