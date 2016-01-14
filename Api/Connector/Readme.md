@@ -12,6 +12,7 @@ First of all, please have a look at [MEWS API Guidelines](https://github.com/Mew
     - [Update Command](#update-command)
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
+    - [Get Customer Balance](#get-customer-balance)
     - [Sign in](#sign-in)
 - [Devices](#devices)
     - [Printers](#printers)
@@ -328,6 +329,38 @@ Returns all reservations that collide with the specified interval.
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation group. |
 | `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
+
+### Get Customer Balance
+
+Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getBalance`
+
+```json
+{
+    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ConnectorToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Unique identifier of the customer. |
+
+#### Response
+
+```json
+{
+    "Currency": "EUR",
+    "Value": 100
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
+| `Value` | number | required | Amount in the currency. |
 
 ### Sign in
 
