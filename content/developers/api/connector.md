@@ -4,7 +4,7 @@ title: Connector API (v1)
 
 The Connector API allows external applications to mediate communication between devices that or accessible over local network on the hotel site and the MEWS. There may be several types of connector clients. For example a client that would fetch device commands from the MEWS, execute them on physical devices that are locally accessible and send the command results back to MEWS. Or different client can retrieve some information from MEWS and forward the data to some other system (e.g. heating system, lock system).
 
-First of all, please have a look at [API Guidelines](./) which describe general usage guidelines of MEWS APIs.
+First of all, please have a look at [MEWS API Guidelines](https://github.com/MewsSystems/public/tree/master/Api) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
@@ -14,6 +14,7 @@ First of all, please have a look at [API Guidelines](./) which describe general 
     - [Update Command](#update-command)
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
+    - [Get Customer Balance](#get-customer-balance)
     - [Sign in](#sign-in)
 - [Devices](#devices)
     - [Printers](#printers)
@@ -331,6 +332,38 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the reservation group. |
 | `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
 
+### Get Customer Balance
+
+Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getBalance`
+
+```json
+{
+    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ConnectorToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Unique identifier of the customer. |
+
+#### Response
+
+```json
+{
+    "Currency": "EUR",
+    "Value": 100
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
+| `Value` | number | required | Amount in the currency. |
+
 ### Sign in
 
 Signs in the client application to MEWS using a token that you would normally use as the `AccessToken` in all operations as described in [Authorization](#authorization) section. Returns a new `AccessToken` that should be passed to all other operations. Note that the returned `AccessToken` has limited validity - only until next successful sign in operation. After that, the `AccessToken` returned by the first sign in operation is no longer valid. As a consequence, there is always at most one client with valid `AccessToken`, i.e. the client that signed in last.
@@ -352,7 +385,7 @@ Signs in the client application to MEWS using a token that you would normally us
 ```json
 {
     "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
-    "Enterprise":
+    "Enterprise": 
     {
         "Id": "222b5d8a-0492-4271-9941-cd6d89b81d43",
         "Name": "Test Hotel"
