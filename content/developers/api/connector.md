@@ -4,7 +4,7 @@ title: Connector API (v1)
 
 The Connector API allows external applications to mediate communication between devices that or accessible over local network on the hotel site and the MEWS. There may be several types of connector clients. For example a client that would fetch device commands from the MEWS, execute them on physical devices that are locally accessible and send the command results back to MEWS. Or different client can retrieve some information from MEWS and forward the data to some other system (e.g. heating system, lock system).
 
-First of all, please have a look at [MEWS API Guidelines](https://github.com/MewsSystems/public/tree/master/Api) which describe general usage guidelines of MEWS APIs.
+First of all, please have a look at [API Guidelines](./api.html) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
