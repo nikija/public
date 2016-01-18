@@ -1,5 +1,6 @@
 ---
 title: Integrations
+ordering: 7
 ---
 
 - [How to create any integration](#how-to-create)
@@ -42,17 +43,17 @@ title: Integrations
 2. Click Enterprise Integrations link.
 3. Create an integration of proper type.
 4. Fill the integration's data.
-5. Enable the integration. 
+5. Enable the integration.
 
 <a name="channel-manager-integrations"></a>
 ## Channel Manager Integrations
 
-Channel Manager Integration connects Mews Commander with external Channel Manager - an aggregator of booking engines all over the world. The main function of the connection between the Channel Manager and Mews Commander is to upload the availability and prices (Mews Commander -> Channel Manager -> OTAs) and to download reservations (OTAs -> Channel Manager -> Mews Commander). 
+Channel Manager Integration connects Mews Commander with external Channel Manager - an aggregator of booking engines all over the world. The main function of the connection between the Channel Manager and Mews Commander is to upload the availability and prices (Mews Commander -> Channel Manager -> OTAs) and to download reservations (OTAs -> Channel Manager -> Mews Commander).
 
 The update of availability and prices works in two different modes
 
 - **Full update** when information for all connected room types and rates is sent (can be triggered manually).
-- **Delta update** when only difference from last delta update is sent (can't be triggered manually). 
+- **Delta update** when only difference from last delta update is sent (can't be triggered manually).
 
 <a name="how-to-create-channel-manager-integration"></a>
 ### How to create a Channel Manager Integration
@@ -77,24 +78,24 @@ This is a general manual for creating any Channel Manager integration. If any co
 9. Enable **Download resevations periodically** operation and trigger the **Download reservation** action.
 10. Check that all reservations were downloaded and confirmed successfully. If not, deal with the errors somehow, until all reservations are downloaded and confirmed.
 12. Enable the proper set of operations.
-11. DONE. 
+11. DONE.
 
 <a name="how-to-map-channel-manager-rates"></a>
 ### How to map a Channel Manager Rates
 
 There is several possobilities how a rate can be connected to channel manager via Channel Manager rate:
 
-1. The rate exists in Mews and Channel Manager 
+1. The rate exists in Mews and Channel Manager
 	- the usual situation.
 2. The rate exist only in Channel Manager
 	- This helps when there is a special rate setting on channel manager that can't be achieved in Mews.
-	- The Channel Manager rate must be connected to rate in mews (regardless whether the Mews rate is already mapped to a different channal manager rate). 
+	- The Channel Manager rate must be connected to rate in mews (regardless whether the Mews rate is already mapped to a different channal manager rate).
 
 Anyway the set up steps are:
 
 - Create a new Channel Manager rate.
 - Select proper Mews rate.
-- Assign a proper mapping code. 
+- Assign a proper mapping code.
 - Set `IsSynchronzied` according to rate specification.
 
 <a name="how-to-map-channel-manager-products"></a>
@@ -102,7 +103,7 @@ Anyway the set up steps are:
 
 From mapping you will obtain a code for each individual prouct or service, that is offered via CHM. Those codes need to be mapped in the product detail. If there is no code for any product specified in the CHM mapping, it usually means that the CHM just resends the code of the product from the OTA to Mews without change, so the OTA code nneds to be mapped instead. **That is why the mapping field can hold multiple codes for multiple OTAs separated by `;` or by `,`.** Those codes need to be obtained from each OTA - hotel should ask for it and finish the mapping.
 
-*Useful fact:* The code for breakfast on Booking.com is usually `1`, so mapping the brakfast with code `1` will apply to Booking.com reservations. 
+*Useful fact:* The code for breakfast on Booking.com is usually `1`, so mapping the brakfast with code `1` will apply to Booking.com reservations.
 
 Providing such mapping will ensure, that all ordered services/products will be properly added to the reservation, when ordered by guest.
 
@@ -118,10 +119,10 @@ Providing such mapping will ensure, that all ordered services/products will be p
 <a name="adding-a-new-room-type-to-channel-manager-reservation"></a>
 #### Adding a new room type
 
-If hotels want to add a new room type to be sychronized with channel manager: 
+If hotels want to add a new room type to be sychronized with channel manager:
 
-1. They need to obtain from the channel manager the mapping code for the room type and the rate codes the room type is connected to. 
-2. The room type mapping code should be set to the mapping property of the room type. 
+1. They need to obtain from the channel manager the mapping code for the room type and the rate codes the room type is connected to.
+2. The room type mapping code should be set to the mapping property of the room type.
 3. The room should be added to the list of connected room types on each channel manager rate (on the integration detail) the room type should be connected to.
 
 <a name="removing-a-room-type-from-channel-manager-reservation"></a>
@@ -148,7 +149,7 @@ Every operation can be triggered either manually (from the integration screen) o
 <a name="channel-manager-integration-actions"></a>
 ### Actions
 
-To trigger operations on the integration manually, go to the integration detail page (where the setting is). On the bottom there is a form which enables to trigger some operations manually. *Note that the operations run via jobs where only global admin has access*. To check the status of operations, log in as a global admin in an incognito tab and check jobs (the sign of an lightning). 
+To trigger operations on the integration manually, go to the integration detail page (where the setting is). On the bottom there is a form which enables to trigger some operations manually. *Note that the operations run via jobs where only global admin has access*. To check the status of operations, log in as a global admin in an incognito tab and check jobs (the sign of an lightning).
 
 - **Download Mappings** - will create a background job that downloads hotel mapping from Channel Manager.
 - **Download Reservation** - will create a background job that downloads pending reservations from Channel Manager.
@@ -192,7 +193,7 @@ To trigger operations on the integration manually, go to the integration detail 
 #### SiteMinder
 
 - SiteMinder integration supports **Create reservations**, **Download reservations peridically**, **Upload Availability**, **Upload Prices**, **Synchronize** operations.
-- SiteMinder has 2 different sets of credentials, to correct set up just provide `UserName` field with provided value: 
+- SiteMinder has 2 different sets of credentials, to correct set up just provide `UserName` field with provided value:
    - `MewsSystemsAPAC` - for Australia and oceania based hotels
    - `MewsSystemsEMEA` - for Europe based hotels (not sure about America)
    - basically if one value doesn't work, the second should as there is no third option.
@@ -215,10 +216,10 @@ To trigger operations on the integration manually, go to the integration detail 
 
 - WebHotelier integration supports **Create reservations**, **Ping notifications**, **Download reservations peridically**, **Upload Availability**, **Upload Prices**, **Synchronize** operations.
 - Prefferably use **Ping notification** over **Download reservations peridically** operation.
-- WebHotelier provides each hotel with its own credentials. Once you have set up the credentials, 
- - select the enabled operations: "download mappings" 
- - then enable the connection. 
- - select the option "download mappings" and select ok. 
+- WebHotelier provides each hotel with its own credentials. Once you have set up the credentials,
+ - select the enabled operations: "download mappings"
+ - then enable the connection.
+ - select the option "download mappings" and select ok.
  - the mappings have been delivered to the MEWS ADMIN (so Sysco will have to write an e-mail to Mews to get the mappings shared). When you open the mappings you see that they are missing formatting, you can use this link to give it better formatting: https://jsonformatter.curiousconcept.com/
 - The Webhotelier mapping of rates works slightly different from other channel managers. Each rate has a unique code for each room type that is mapped. So when setting up a New Channel Manager Rate, select the correct rate type, and put the unique code, and save it. Secondly only add the room type to which this rate is applicable.
 - Once you have connected Webhotelier, you can only send them inventory updated up to 180 days in 1 push. If you include any date that is more than 180 days out, the job will fail.
@@ -255,13 +256,13 @@ To create new payment gateway simply follows see [the base steps](#how-to-create
 <a name="adyen"></a>
 ### Adyen
 #### Process
-1. We get credentials for test account (on [https://ca-test.adyen.com/ca/ca/login.shtml]). 
+1. We get credentials for test account (on [https://ca-test.adyen.com/ca/ca/login.shtml]).
 2. Follow the setup below and setup this account on a hotel on test/demo.
 3. Run a couple of transactions (create gateway payments, refund some, ...). Something aroung 5 transactions is enough
 	- There are test credit cards which should be used, e.g. 4111 1111 1111 1111 with expiry date 06/2016 . List of all test credit cards is here: [https://www.adyen.com/home/support/knowledgebase/implementation-articles]
 4. Contact Adyen and let them know that we have entered the transactions and they should check if it is fine.
 5. Often much later, we get credentials for live environment
-6. Follow the setup below and setup this account on production environment. 
+6. Follow the setup below and setup this account on production environment.
 7. Try adding a credit card to confirm it works fine, then delete it
 
 #### Requirements for web user
@@ -282,12 +283,12 @@ Make sure that the "API Clientside Encryption Payments role" is active otherwise
 
 #### Setup in Adyen
 - Log in to https://ca-live.adyen.com/ca/ca/login.shtml with the credentials provided by the hotel or Adyen.
-- Select the account within Adyen, which you would like to set up in Mews. 
+- Select the account within Adyen, which you would like to set up in Mews.
 - Select "Settings" and then select `users`. *Note that in order to access this area, the user who gave you the login, must have given you admin rights*.
 - Once you are in the "users", select to see the `system` user in the dropdown selection box. Select on the user to open the details (ws@company.*)
-- Copy / generate `Client Side Public Key` (check with adyen if it is enabled). 
+- Copy / generate `Client Side Public Key` (check with adyen if it is enabled).
 - Copy `username` for system user.
-- Generate new password and copy it *and save the dialogue with the new password* (without this, it will still have the old password you don't know). 
+- Generate new password and copy it *and save the dialogue with the new password* (without this, it will still have the old password you don't know).
 - Paste the provided details from Adyen user configuration into the Mews Adyen integration. *Note in Adyen, you may have to generate a new password, and also generate the `Client Encryption` Key*.
 	- Copy `Client Side Encryption Key` in Adyen into `Public Key` in Mews
 	- Copy `Username` in Adyen into `Username` in Mews
@@ -297,7 +298,7 @@ Make sure that the "API Clientside Encryption Payments role" is active otherwise
 	- After saving, it contains Notification Url which should be later copied to Adyen notification settings (see below)
 
 - **Setup account**
-	- Go to "Settings" > "Merchant Settings" 
+	- Go to "Settings" > "Merchant Settings"
 	- Set Capture Delay to Manual(Select merchant account, Settings -> Merchant Settings)
 
 - **Notifications**
@@ -337,9 +338,9 @@ Make sure that the "API Clientside Encryption Payments role" is active otherwise
 <a name="foreign-police-integrations"></a>
 ## Foreign Police Integrations
 
-- Theese integrations serves to automatically report the guests of the hotel to the proper Foreign Police department. 
-- The integration cooperates with a Customer Profiles report in Mews Commander. 
-- The report can't contain any red cell to have succesfully filled all informations needed for the integration, the more red on the report, the more informations needs to be filled in. 
+- Theese integrations serves to automatically report the guests of the hotel to the proper Foreign Police department.
+- The integration cooperates with a Customer Profiles report in Mews Commander.
+- The report can't contain any red cell to have succesfully filled all informations needed for the integration, the more red on the report, the more informations needs to be filled in.
 - The generated report file can be obtained by selecting `Export report file` button.
 - The report file can be resend by selecting `Save report file` button.
 - Based on integration type, the supported report types are `Daily` and/or `Monthly`.
@@ -424,11 +425,11 @@ VingCard integration lets you issue key cutting commands. In order to use this i
  - Is Externally Chargeable
  - Is Retrospectively Orderable
  - New Order is Processed
-- Once you have created the service successfully, in the section "options" of that service, you will find the "access token". Provide this access token to the POS company, and ask them to set up the integration from their side. 
+- Once you have created the service successfully, in the section "options" of that service, you will find the "access token". Provide this access token to the POS company, and ask them to set up the integration from their side.
 
 Via the connection with the POS you have the following possibilities
 - Charge guests who are checked-in, you should be able to search for guests by name or room number, and close the bill to their account.
-- Charge guest profiles without a reservation, only if in their "internals" section of the profile you have selected the option "is externally chargeable". 
+- Charge guest profiles without a reservation, only if in their "internals" section of the profile you have selected the option "is externally chargeable".
 
 It is currently not possible to cancel a bill from the POS in the PMS. If you have closed a bill by accident in the POS to the wrong customer, you will have to manually cancel it in the PMS
 
