@@ -1,9 +1,6 @@
 {% assign pages = site.pages | group_by: 'dir' %}
 
 <div class="drawer">
-  <div class="title">
-    <img src="{{ "/img/mews-logo-small.png" | prepend: site.baseurl }}" />
-  </div>
   <nav>
     {% include nav.html pages=pages basepath='/content' %}
   </nav>

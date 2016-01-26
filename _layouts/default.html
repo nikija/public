@@ -3,11 +3,11 @@
   {% include head.html %}
   <body>
     <div class="layout">
+        {% include header.html %}
         <div class="sidebar">
           {% include drawer.html %}
         </div>
         <div class="page-container">
-          {% include header.html %}
           {{ content }}
         </div>
       </div>
