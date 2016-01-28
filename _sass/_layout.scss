@@ -62,9 +62,10 @@
     min-height: 100vh;
 
     .content {
-      background-color: #fafafa;
+      background-color: white;
       flex-grow: 1;
       padding-top: 64px;
+      padding-left: 64px;
     }
   }
 }
@@ -78,6 +79,7 @@ nav {
     margin: 0;
     padding: 0;
   }
+  
   li {
     position: relative;
     span {
