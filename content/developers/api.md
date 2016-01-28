@@ -1,8 +1,10 @@
 ---
-title: API Guidelines
+title: APIs
 ---
 
-All public APIs provided by the MEWS platform share a set of common properties which are described in the following document. If you encounter any unclear/misleading information or feel that something is missing in the documentation, do not hesitate to either contact us, raise an issue or open a pull request.
+All public APIs provided by the MEWS platform share a set of common properties which are described in the following document. If you encounter any unclear/misleading information or feel that something is missing in the documentation, do not hesitate to contact us.
+
+## General Guidelines
 
 ### Requests
 
