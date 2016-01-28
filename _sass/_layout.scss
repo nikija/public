@@ -66,6 +66,31 @@
       flex-grow: 1;
       padding-top: 64px;
       padding-left: 64px;
+      
+      h1 {
+        font-size: 50px;
+        line-height: 55px;
+      }
+      
+      h2 {
+        font-size: 40px;
+        line-height: 44px;
+      }
+      
+      h3 {
+        font-size: 30px;
+        line-height: 33px;
+      }
+      
+      h4 {
+        font-size: 20px;
+        line-height: 22px;
+      }
+      
+      h5 {
+        font-size: 17px;
+        line-height: 20px;
+      }
     }
   }
 }
