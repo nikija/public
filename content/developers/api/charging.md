@@ -4,7 +4,7 @@ title: Charging API (v1)
 
 The Charging API allows external applications to charge hotel guests for services that were not provided directly by the hotel or that are managed by an external system. For example it allows a restaurant POS system to charge the guests on their open hotel bills.
 
-First of all, please have a look at [API Guidelines](./) which describe general usage guidelines of MEWS APIs.
+First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
 
