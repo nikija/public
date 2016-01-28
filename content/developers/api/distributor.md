@@ -278,7 +278,9 @@ Gives availabilities and pricings for given date interval with product prices in
     "ProductIds": [
         "d0e88da5-ae64-411c-b773-60ed68954f64"
     ],
-    "VoucherCode": "Discount2042"
+    "VoucherCode": "Discount2042",
+    "AdultCount": 2,
+    "ChildCount": 0
 }
 ```
 
@@ -289,6 +291,7 @@ Gives availabilities and pricings for given date interval with product prices in
 | `EndUtc` | string | required | Reservation end date (departure date) in ISO 8601 format. |
 | `ProductIds` | array of string | optional | Ids of products which should be included into pricing calculations. |
 | `VoucherCode` | string | optional | Voucher code enabling special rate offerings. |
+| `AdultCount` and `ChildCount` | number | optional | If both parameters are provided, `RoomOccupancyAvailabilities` will be computed only for that combination instead of all possible. If `RoomCategory` doesn't support given values, nearest applicable are found. |
 
 #### Response
 
