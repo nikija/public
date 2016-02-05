@@ -53,7 +53,7 @@ Jak to akualizovat:
 
 <a name="nastaveni-priklad"></a>
 ### Příklad nastavení
-![Příklad nastavení integrace](../Images/IntegrationDetail_cs.PNG)
+![Příklad nastavení integrace](../img/IntegrationDetail_cs.PNG)
 
 - Emailová adresa, na kterou hotel zařídil digitální podpis a pod kterým je hotel zaregistrován v systému Policie ČR je `cizineckapolicie@hotel.cz`, tento email musi byt uveden v poli `Email odesílatele`.
 - Emailové adresa, na které chodí upozornení na vyplnění hotelu jsou `recepce@hotel.cz` a `manager@hotel.cz`, příjemci této zprávy jsou povini **denně** kontrolovat, že reporty jsou vyplněné.
@@ -64,7 +64,7 @@ Jak to akualizovat:
 ## Report Profily hostů v Mews
 Report Profily hostů (*Customer Profiles*) je možné otevřít přímo z úvodní stránky po přihlášení do systému Mews. Report zobrazuje seznam hostů, kteří jsou ubytovaní (či kteří přijedou) ve vybraném časovém intervalu - záleží na zvolených parametrech reportu. Správný filtr pro report je období na den a mód "Příjezdy".
 
-![Report Profily hostů](../Images/Report.png)
+![Report Profily hostů](../img/Report.png)
 Takto vypadá příklad reportu Profily hostů. Ukazuje, že na pokoji `203` jsou ubytováni `John Smith` a `Last Name` (host bez křestního jména), na pokoji `106` jsou ubytováni `Nicolas Cage`  a ještě někdo neudevený (rezervace je pro 2 osoby), na pokoji `206` je ubytována `Mena Suvari`. 
 
 Dále report říká, že:
@@ -102,7 +102,7 @@ Složitější problém na řešení je situace s neuvedeným hostem (případ p
 2. Stačí vytvořit nového hosta a přiřadit jej k rezervaci.
 3. Nejdříve je potřeba si uvědomit rozdíl mezi *vlastníkem* rezervace a *hostem* přiřazeným k rezervaci. *Vlastník* je ten, na jehož jméno je rezervace vytvořena. Může to být dokonce někdo, kdo do hotelu vůbec nepřijede, pouze pobyt pro někoho zarezervoval. *Host* je někdo, kdo přijel a kdo bydlí na daném pokoji. Názorně na obrázku:
 
-![Group Modul](../Images/GroupModule.png)
+![Group Modul](../img/GroupModule.png)
 Tento obrázek ukazuje, jak vyřešit třetí případ – pokoj `106` z prvního obrázku. `Nicolas Cage` je uveden jako *vlastník* rezervace. Je potřeba jej ještě přidat na pokoj kliknutím na `>` (označené červeně). Tím se host přidá na vybraný pokoj. Jeden host může totiž objednat více pokojů a systém jej automaticky nemůže přiřadit do všech zarezervovaných pokojů, protože jeden host nemůže být fyzicky ve dvou pokojích. Proto je potřeba vlastníka během Check-In procesu přiřadit do nějaké rezervace (udělat z něj hosta). Opět je potřeba nastavit na recepci check-in proces tak, aby se toto vyřešilo v den u příjezdu a nemuselo se to řešit zpětně.
 
 <a name="jak-vse-funguje"></a>
