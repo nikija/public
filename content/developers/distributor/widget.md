@@ -89,9 +89,10 @@ Mews.Distributor({
     hashEvents: false,
     ecommerceTrackerName: null,
     gaTrackerName: null,
-    onOpened: function(distributor){ },
-    onClosed: function(distributor){ },
-    onLoaded: function(distributor){ },
+    onOpened: function(distributor) { },
+    onClosed: function(distributor) { },
+    onLoaded: function(distributor) { },
+    onBookingFinished: function(reservationGroup) { },
 
     // theme
     theme: {
@@ -136,6 +137,33 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API.
 | onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API.
 | onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API.
+| onBookingFinished | `function` | `function() {}` | Callback function that will be called on confirmation screen after booking was made. Arguments are described [here](#onBookingFinished)
+
+#### Callbacks arguments
+
+##### onBookingFinished
+- reservationGroup: type `object`, schema:
+```
+{
+  currencyCode: 'EUR',
+  totalCost: 1000,
+  reservations: [{
+    roomName: 'A room',
+    startDate: Date
+    endDate: Date,
+    number: 42
+  }]
+}
+```
+
+Description of properties:
+- currencyCode: type: `string` - Hotel's default currency code.
+- totalCost: type: `number` - Total cost of reservation group in hotel's default currency.
+- reservations: type: `Array of Objects` - list of reservations in reservation group:
+  - roomName: type: `string` - name of room category
+  - startDate: type: `Date` - start date of reservation
+  - endDate: type: `Date` - end date of reservation
+  - number: type: `number` - confirmation number of reservation
 
 #### Customization
 
