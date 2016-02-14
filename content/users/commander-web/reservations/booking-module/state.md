@@ -61,7 +61,7 @@ Secondly, you need to decide whether you would like to charge cancellation fees 
 
 --> If you try to cancel a bill "Without Fee” but have already closed the bill, then the system will post refunds automatically on the bill.
 
-## Check-in
+## How to Check-in a Booking
 
 To check-in, the first step is identifying the room to be checked in. There are a few methods to quickly find a booking:
 
@@ -81,7 +81,7 @@ Checking in a continuing reservation can be quite challenging.
 - Check-out the current booking. The booking that is currently checked-in will have to be checked out. You can check it out by ticking the box "Check Out with Open Balance,” and it will leave the charges unpaid on the guest profile.
 - Lastly, you can check in the new reservation, and once this is done, you will see that all the charges from the first booking are automatically transferred to this bill.
 
-## Check-out
+## How to Check-out a Booking
 
 To check-out, the first step is identifying the booking to be checked out. There are a few methods to quickly find a booking:
 
@@ -98,5 +98,3 @@ If the balance is zero, you can immediately check-out the reservation by clickin
 Note if you need to check out a guest even though they have not yet settled the bill (for example for a continueing booking) this is possible, Next to the "Check-out" button, simply click "Check-out with Open Bill", provide a reason, and the reservation will be checekd out. The bill will appear in the Guest Ledger, so that you can follow up on the payment.
 
 Once the room is checked-out in the system, it will automatically turn "dirty" in the system so that housekeeping is informed that it requires cleaning.
-
-
