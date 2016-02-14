@@ -105,3 +105,24 @@ To trigger operations on the integration manually, go to the integration detail 
 - **Send Inventory** - will create a background job that uploads full update (availability and/or prices) for the specified period in the Channel Manager.
 - **Synchronization** - will create a background job that triggers synchronization with the the Channel Manager.
 - **Create reservation** - will create reservation based on data from `Input` field. *Note that reservation will not be confirmed to Channel Manager*.  
+
+## Troubleshooting
+
+### Invalid mapping
+- When you receive an email with invalid mapping, it is crucial to fix the mapping as soon as possible. Because Mews **disabled** the integration, which means that until the mapping is fixed, no reservation will be downloaded and no availability/rate will be updated.
+
+
+### Rates synchronization issues
+- If you receive a notification email that says something like rate update is not allowed, becaue updated rates are dependent (linked, derived, ...), you usually receive the rate code, so it is easy.
+- In case this happens on AvailPro, you are not notified by an email, but by an angry customer, that complains that rates are not updated correctly. If synchronization doesn't help, you need to contact AvailPro, because they have mess in rate set up. There is some hidden rate dependency, and AvailPro needs to find it and give you the rate code.
+- With the dependent rate code, you need to communicate with Channel Manager and Hotel to ask where the rate needs to be supplied from - either from Mews or from Channel Manager and adjust mapping accordingly.
+
+### Reservations are not downloaded
+If hotel complains about reservation(s) not being downloaded, there could be a lot of reasons. Some of them:
+- The integration is disabled. or the `Download Reservations periodically` or `Ping Notificiation` or `Create Reservation` method is disabled (depends on channel manager which operation is used to obtain reservations).
+   - In this case enable the integraton/operation and wait for the job to get it (if operation is `Download Reservations periodically`. Otherwise ask channel manager to resend the reservation.
+- The resevation was downloaded, but hotel assigned it to another guest (hotel just can't find it by the original guest name) or updated it somehow. Just try to find it by channel manager code.
+- The reservation wasn't sent to Mews (accoring to logs), but in Channel Manager is marked as delivered. In this case contact channel manager to get you the exact time of reservation download and confirmation number we send them as part of confirmation.
+   - If they send you the data, check the logs again to see what happend.
+   - If they don't have the data, means they didn't deliver the reservation an the problem is in channel manager.
+   - In both cases the solution is to resend it from channel manager again.
