@@ -3,8 +3,6 @@ title: Create New Reservation
 ordering: 2
 ---
 
-## Creating Reservations
-
 In order to make a new reservation, click the “New Reservation” icon at the top of the screen. This button is visible from anywhere in the system allowing for quick and instant reservations.
 
 Pressing the button will open a calendar on top of the timeline.
