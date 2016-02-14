@@ -2,7 +2,6 @@
 title: Employee Profiles
 ordering: 4
 ---
-###Your Profile
 
 When you select the “Your Profile” icon at top of the screen, you will have several options.
 Note: If you have created a guest profile in one or more of the hotels, your profile details will also show in this section, requesting more information.
