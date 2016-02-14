@@ -4,6 +4,8 @@ title: Room Status
 
 ## Housekeeping Status
 
+Before explaining the functions of the Room Status Report, its important to understand the different room statuses:
+
 - **Dirty**: The room was vacated by the previous customer or has gone through a 1 night-run and is placed in the dirty status. This signifies to housekeeping that the room requires cleaning. Front office will not be allowed to check a customer into a room in this status.
 - **Clean**: Once the housekeeper has cleaned the room, he/she should place the room in the "Clean" status, signifying to the floor supervisor that the room is cleaned and should be inspected prior to arrival. Front office will not be allowed to check a customer into a room in this status.
 - **Inspected**: Once a supervisor or manager has inspected the room, it is placed in the system as "inspected," and front office is allowed to check a customer into this room.
