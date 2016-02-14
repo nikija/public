@@ -29,6 +29,29 @@ A hotel may also select to manage rates manually. In order to manage the exchang
 - **Optional Credit Card Payment Details**: If you select this option in the settings, the system will not require the hotel to complete the receipt identifier details when posting manual credit card payments. This is preferred by some hotels in order to speed up check-out/in. Note this is only applicable for payments that are made on an external terminal and input manually in the system with a receipt from the terminal. If you make a payment via our Payment Gateway (Adyen/Braintree) we automatically record all details.
 - **Send Confirmation E-mail Pre Checked**: If you select this option, when a new booking is input manually by one of the users via the "New Reservations Screen", the selection to send the Confirmation E-mail to the guest is pre-set to "send". If you do not tick it, the system will not automatically send confirmation e-mails to your guests, unless you specifically select this option during the booking process.
 
+### Editable History
+
+The downside to not having a night audit, is that no-shows have to be resolved in some way before you run accounting reports, as the No-Show Accommodation Revenue needs to be converted into a Cancellation Revenue (we post revenue at the time of booking, so the system already posted the Accommodation Revenue at the time of booking). In general the system does not allow you to change historic bookings, as this has taken place, and the revenues/costs should be locked and unchangeable, so that the accountant can rely on the reports he/she receives. A hotel may decide to allow a period during which you can still make changes to bookings, move rooms and cancel bookings. We recommend not making this period last longer than 24 hours, but this is entirely up to the hotel's discretion. Do not give the accounting reports to the accountant until this period has elapsed, otherwise the accounting reports might still change.
+
+To set up the field, you have to calculate from the Official Arrival Time of the hotel (for example 15:00), until the time you would like to allow employees to handle no-shows. So if you would like the editable history window to close at 8AM in the morning, you set it to 17 hours (from 15:00 until 08:00 the next day, total = 17 hours).
+
+Note: often users will get error messages such as "you cannot make this change as the items on this reservation are on a closed bill", to still be able to fix errors such as this one, you could open up the Editable History Window, but make sure you inform the accountant when you do so, as it will impact his/her reports, as you are changing historic revenues.
+
+### Enabled External Payment Types
+
+We standardly equip your payment screen with Credit Card and Cash payment types. If you want to accept any additional payment types to settle guest bills, you can chose any of the following options:
+
+ - BACS Payment (UK) - this is a bank transfer type that is used in the UK only.
+ - Bad Debts - often if you have accounts open for long periods of time, the accounting department needs to write these off, so you could use this payment type to close accounts that are considered as "bad debt".
+ - Barter - if you barter your hotel services against services of your customers. Closing bills to this payment type still allows you to track the revenue (rather than simply rebating it).
+ - Complimentary - If your accountant wants to track the revenue of bookings that were provided on a "complimentary basis" this is one way to track it. Some accountants prefer to set the rate of the booking to 0, rather than generate articial revenue figures, other accountants would rebate the revenues, and another type of accountant prefers to close the bills to payment type "complimentary". This decision is entirely up to your accounting department.
+ - Exchange Rate Difference - Our system has automated calculations of situations where exchange rate differences occur. Therefore we do not render it necessary to swich on this payment type, however some accountants still prefer to have this payment type, in order to close bills that could have exchange rate differences. Note: exchange rate differences occur in countries where the sales currency is different from the accounting currency (such as Czech Republic).
+ - Exchange Rounding Difference: if you have a difference on a bill, often a minute amount, which is mostly due to the rounding of items, to close a bill with a 1 or 2 cent difference, you could use this payment type. This is very rate, and sometimes its easier to simply use "cash" rather than confuse the operations team with yet another payment type.
+ - Invoice - We suggest not to switch on this external payment type, and rather provide the "Invoicing Tool" provided by the system, which allows invoice payment tracking. If you use this payment type, we will simply close a bill, with a payment against "invoice" however we will not ask for future due date, and the bill will still come out with the header "Bill".
+ - Reseller Payment - This option is used in a similar manner to the Barter option, described earlier. Its up to your accountant to use this option.
+ - Unspecified - if you receive payments in any other manner than the above described ways, you could use "unspecified". We often suggest using this if you have recently migrated from an old system to Mews, and the imported bookings were already paid, and thus you want to record this (rather than recording them double as CC payments).
+ - Wire Transfer - This is another way of saying "Bank Transfer".
+
 ## Reception
 
 - **Departure Time**: this field needs to denote your official departure time. The timeline is built on a 24hr basis, so bookings will appear on the timeline with their exact departure time, unless you manually change a booking to have a different departure time.
