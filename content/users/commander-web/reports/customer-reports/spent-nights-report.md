@@ -1,0 +1,3 @@
+---
+title: Spent Nights Report
+---
