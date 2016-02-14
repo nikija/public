@@ -154,6 +154,26 @@ nav {
       & ul li {
         & a { padding-left: 56px; }
         & span { left: 40px; }
+        
+        & ul li {
+          & a { padding-left: 72px; }
+          & span { left: 56px; }
+          
+          & ul li {
+            & a { padding-left: 88px; }
+            & span { left: 72px; }
+            
+            & ul li {
+              & a { padding-left: 104px; }
+              & span { left: 88px; }
+              
+              & ul li {
+                & a { padding-left: 120px; }
+                & span { left: 104px; }
+              }
+            }
+          }
+        }
       }
     }
   }
