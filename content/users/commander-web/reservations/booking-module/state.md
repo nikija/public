@@ -7,7 +7,7 @@ ordering: 1
 
 At the top of the State screen, you can see the customer balances of all customers assigned to the group and selected (by the tick box next to bookings). You can select "Payments" to add preauthorization or prepayments to the booking. Alternatively you can enter the "Billing" screen where you can take payments or settle bills. If the "billing" button is blue, that means that there is action required, as there are still open bills that require to be closed. So even if the balance is set to 0, and the button is blue, that means that the bill is not yet closed. If you are handling a group booking and have selected multiple bookings in the group, you will see the Customer Balance of all participants, allowing you to quickly see the balance of the whole group.
 
-### Room Assignment
+## Room Assignment
 
 You will see all the bookings that are in the group and selected. Here you can quickly see the housekeeping status of the room currently assigned, and you can either assign another inspected room or inspect the room directly in the system (if you have the ok from your housekeeper). It only displays rooms in the same category, organized by room number, and it will not allow you to assign a room that has another "locked" reservation on it.
 If the "Room Criteria" have been set up, you can instantly see the key features of the different rooms, next to the room number to help reception assign the correct room to the right customer.
