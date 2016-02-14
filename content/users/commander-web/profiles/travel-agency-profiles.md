@@ -1,6 +1,8 @@
 ---
-title: Travel Agent Profiles
+title: Travel Agency Profiles
+ordering: 3
 ---
+
 To create the new travel agent profile, select the Profile icon and then select “Travel Agency Contracts.” This will take you to a list of travel agents who have been set up for your hotel. You can select any travel agent and update any additional details you may have such as IATA, contact person, address or notes with regards to the agency.
 
 You can also create a new travel agent contract by selecting the button. Once this field opens, you will be asked to update the different details. One important field is the bill assignment field. If you manage this field correctly, when new bookings are made it will automatically assign the booking at the correct rate to the correct bill.

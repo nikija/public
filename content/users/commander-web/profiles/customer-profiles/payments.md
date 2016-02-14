@@ -7,19 +7,19 @@ From this screen you can select different payment types and manage prepayments a
 
 In order to innovate the way payments are taken within the PMS, we have done integrations with Braintree and Adyen. These companies are allowing storage of guest cards directly in the Mews Commander, once a card is stored in the system, this allows direct charging from the PMS, without requiring external credit card machines.
 
-**Storing a Credit Card**
+## Storing a Credit Card
 
 - To store a new online chargeable credit card, visit the "Payments" screen on the guest profile.
 - Select the "New Credit Card" screen. The screen will open and have 2 main sections, the left is the section for online cards (Braintree & Adyen) and the right hand side is for cards that are being charged via an external terminal.
 - Once you have stored a credit card, you will see a "Payment Gateway ID" which higlights that he card has been verified by the bank, and has now become chargeable through the system
 
-**Taking a Preauthorization**
+## Taking a Preauthorization
 
 - To take a preauthorization, select the button, and a new screen will open asking how much money to preauthorize.
 - Once you have taken the preauthorization, you will be taken back to the "Payments" screen on the guest profile. Next to the transaction you can either
- - Charge Preauthorization: if you would like to charge the preauthorization fully or partially (and release the remainder to the guest account automatically) you can select this option.
- - Delete: if you would like to release the preauthorization, select "delete" and we will communicate to the bank to release the transaction. Note that it may take up to 2 business days for Adyen to release the transaction.
+- Charge Preauthorization: if you would like to charge the preauthorization fully or partially (and release the remainder to the guest account automatically) you can select this option.
+- Delete: if you would like to release the preauthorization, select "delete" and we will communicate to the bank to release the transaction. Note that it may take up to 2 business days for Adyen to release the transaction.
 
-**Taking a New Credit Card Deposit**
+## Taking a New Credit Card Deposit
 
 - If you would like to take a credit card payment, select the button "New Credit Card Deposit" and you can instantly fill in the amount and charge the card. The payment will be directly posted on the open guest bill.
