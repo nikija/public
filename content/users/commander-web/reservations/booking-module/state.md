@@ -3,6 +3,19 @@ title: State
 ordering: 1
 ---
 
+## Customer Balance
+
+At the top of the State screen, you can see the customer balances of all customers assigned to the group and selected (by the tick box next to bookings). You can select "Payments" to add preauthorization or prepayments to the booking. Alternatively you can enter the "Billing" screen where you can take payments or settle bills. If the "billing" button is blue, that means that there is action required, as there are still open bills that require to be closed. So even if the balance is set to 0, and the button is blue, that means that the bill is not yet closed. If you are handling a group booking and have selected multiple bookings in the group, you will see the Customer Balance of all participants, allowing you to quickly see the balance of the whole group.
+
+### Room Assignment
+
+You will see all the bookings that are in the group and selected. Here you can quickly see the housekeeping status of the room currently assigned, and you can either assign another inspected room or inspect the room directly in the system (if you have the ok from your housekeeper). It only displays rooms in the same category, organized by room number, and it will not allow you to assign a room that has another "locked" reservation on it.
+If the "Room Criteria" have been set up, you can instantly see the key features of the different rooms, next to the room number to help reception assign the correct room to the right customer.
+
+Similar to the Customer Balance if you have a group booking and you select multiple bookings you can do the room assignment for multiple rooms at the same time.
+
+## Reservation Statuses
+
 In the State screen you are able to manage the status of the reservation. The system knows the following statuses:
 
 - **Optional**: The booking is not yet confirmed but is blocking space on the timeline and availability. No revenue, however, is yet recorded in revenue reports. If options are cancelled, no cancellation fees will be incurred. All optional bookings have a release date assigned, and on the date of release, it will highlight the bookings in the reservation overview/report to decide whether to extend the option or release. Note that the system will not automatically release bookings.
@@ -11,26 +24,15 @@ In the State screen you are able to manage the status of the reservation. The sy
 - **Checked-out**: All bookings that have completed their stay will have the status "Checked-Out". Once a booking is checked-out, you can no longer check it back in.
 - **Checked-in**: A booking that is currently in-house will be considered "Checked-In"
 
-### Customer Balance
-
-At the top of the State screen, you can see the customer balances of all customers assigned to the group and selected (by the tick box next to bookings). You can select "Payments" to add preauthorization or prepayments to the booking. Alternatively you can enter the "Billing" screen where you can take payments or settle bills. If the "billing" button is blue, that means that there is action required, as there are still open bills that require to be closed. So even if the balance is set to 0, and the button is blue, that means that the bill is not yet closed. If you are handling a group booking and have selected multiple bookings in the group, you will see the Customer Balance of all participants, allowing you to quickly see the balance of the whole group.
-
-###Room Assignment
-
-You will see all the bookings that are in the group and selected. Here you can quickly see the housekeeping status of the room currently assigned, and you can either assign another inspected room or inspect the room directly in the system (if you have the ok from your housekeeper). It only displays rooms in the same category, organized by room number, and it will not allow you to assign a room that has another "locked" reservation on it.
-If the "Room Criteria" have been set up, you can instantly see the key features of the different rooms, next to the room number to help reception assign the correct room to the right customer.
-
-Similar to the Customer Balance if you have a group booking and you select multiple bookings you can do the room assignment for multiple rooms at the same time.
-
-###Confirm
+### Confirm
 
 If a booking is on OPTIONAL state, you can confirm bookings directly from this screen. It will change the status to "Confirmed" and post the revenue on the customer bill. Next to the confirmation box you are also able to send a confirmation to another person who is not assigned to the booking. Type the e-mail in the box and he/she will receive the confirmation e-mail with a summary of all the bookings that are selected.
 
-###Check-in
+### Check-in
 
 Once you have assigned an inspected room, you can select the button “Check-In.” Note that the check-in button will only appear if you have selected a booking(s) that is on arrival today. It will check in all bookings that were selected, allowing you to check-in multiple bookings at the same time. If a booking is due to arrive today, there is also a "print" button next to it, allowing you to instantly print the registration card of the guest, if your country still requires physical signatures on the registration cards.
 
-###Check-out
+### Check-out
 
 On the day of departure for the booking(s) selected, a new button will appear called "Check-Out.” The system will only allow you to check-out a guest for whom all open bills and unsettled items have been paid with a balance on zero. Should you wish to check-out a customer with an open balance (as he may pay it later), select the "Check-Out with Open Bill" and fill in the reason. This room will then be transferred to the Guest Ledger report in red, where the payment will need to be resolved as soon as possible.
 
