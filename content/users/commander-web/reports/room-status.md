@@ -32,6 +32,7 @@ Note that this report has been fully optimized for mobile, allowing a housekeepe
 - Temperature: If you have the heating module set up, this will allow you to instantly see the exact temperature in the bedroom.
 
 ### Filters
+
 At the top of the report there are 3 filters you can select to narrow down the report:
 - Floor
 - State: if you would only like to see rooms in a specific housekeeping state (for example, the supervisor would only like ot see "clean" rooms which require inspection.
