@@ -4,11 +4,13 @@
   <body>
     <div class="layout">
         {% include header.html %}
-        <div class="sidebar">
-          {% include drawer.html %}
-        </div>
-        <div class="page-container">
-          {{ content }}
+        <div class="wrapper">
+          <div class="sidebar">
+            {% include drawer.html %}
+          </div>
+          <div class="page-container">
+            {{ content }}
+          </div>
         </div>
       </div>
     </div>

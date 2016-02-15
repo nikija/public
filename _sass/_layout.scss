@@ -1,13 +1,10 @@
 .layout {
+  background-color: white;
+  height: 100%;
 
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
     height: 64px;
     width: 100%;
-    background-color: #fff;
     display: flex;
     align-items: center;
     padding: 0 16px;
@@ -33,61 +30,66 @@
     }
   }
 
-  .sidebar {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    z-index: 2;
-    width: 340px;
-    height: calc(100vh - 64px);
-    box-sizing: border-box;
-    background-color: #fff;
-    border-right: 1px solid rgba(0, 0, 0, .14);
-    overflow-y: auto;
-  }
-
-  .page-container {
+  .wrapper{
     display: flex;
-    flex-direction: column;
-    margin-left: 340px;
-    min-height: 100vh;
+    height: 100%;
 
-    .content {
-      background-color: white;
-      flex-grow: 1;
-      padding-top: 64px;
-      padding-left: 64px;
+    .sidebar {
+      height: calc(100vh - 64px);
+      min-width: 340px;
+      box-sizing: border-box;
+      border-right: 1px solid rgba(0, 0, 0, .14);
+      overflow-y: auto;
+    }
 
-      h1 {
-        font-size: 50px;
-        line-height: 55px;
-      }
+    .page-container {
+      height: 100%;
+      padding-left: 32px;
+      display: flex;
+      flex-flow: row wrap;
+      margin: 0 auto;
+      align-items: stretch;
+      overflow-y: auto;
 
-      h2 {
-        font-size: 40px;
-        line-height: 44px;
-        border-bottom: 1px solid rgba(0, 0, 0, .14);
-      }
+      .page {
+        height: calc(100vh - 64px);
+        width: 100%;
 
-      h3 {
-        font-size: 30px;
-        line-height: 33px;
-      }
+        @media (min-width: 840px) {
+          width: 66.66%;
+        }
 
-      h4 {
-        font-size: 22px;
-        line-height: 24px;
-        font-weight: bold;
-      }
+        h1 {
+          font-size: 50px;
+          line-height: 55px;
+        }
 
-      h5 {
-        font-size: 18px;
-        line-height: 20px;
-        font-weight: bold;
-      }
+        h2 {
+          font-size: 40px;
+          line-height: 44px;
+          border-bottom: 1px solid rgba(0, 0, 0, .14);
+        }
 
-      a {
-        color: #0091FB;
+        h3 {
+          font-size: 30px;
+          line-height: 33px;
+        }
+
+        h4 {
+          font-size: 22px;
+          line-height: 24px;
+          font-weight: bold;
+        }
+
+        h5 {
+          font-size: 18px;
+          line-height: 20px;
+          font-weight: bold;
+        }
+
+        a {
+          color: #0091FB;
+        }
       }
     }
   }
