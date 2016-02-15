@@ -124,7 +124,7 @@ nav {
     
     a {
       display: block;
-      padding: 8px 16px;
+      padding: 4px 16px;
       text-decoration: none;
       color: rgba(0, 0, 0, .87);
       font-weight: 400;
@@ -170,6 +170,11 @@ nav {
               & ul li {
                 & a { padding-left: 120px; }
                 & span { left: 104px; }
+                
+                & ul li {
+                    & a { padding-left: 136px; }
+                    & span { left: 120px; }
+                  }
               }
             }
           }
