@@ -89,9 +89,12 @@ Mews.Distributor({
     hashEvents: false,
     ecommerceTrackerName: null,
     gaTrackerName: null,
-    onOpened: function(distributor){ },
-    onClosed: function(distributor){ },
-    onLoaded: function(distributor){ },
+    adwords: false,
+    adwordsConversionId: null,
+    onOpened: function(distributor) { },
+    onClosed: function(distributor) { },
+    onLoaded: function(distributor) { },
+    onBookingFinished: function(reservationGroup) { },
 
     // theme
     theme: {
@@ -130,12 +133,41 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
 | ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used.
 | gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used.
+| adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
+| adwordsConversionId | `number` | null | Google AdWords conversion id (9 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required. 
 | showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
 | onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API.
 | onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API.
 | onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API.
+| onBookingFinished | `function` | `function() {}` | Callback function that will be called on confirmation screen after booking was made. Arguments are described [here](#onBookingFinished)
+
+#### Callbacks arguments
+
+##### onBookingFinished
+- reservationGroup: type `object`, schema:
+```
+{
+  currencyCode: 'EUR',
+  totalCost: 1000,
+  reservations: [{
+    roomName: 'A room',
+    startDate: Date
+    endDate: Date,
+    number: 42
+  }]
+}
+```
+
+Description of properties:
+- currencyCode: type: `string` - Hotel's default currency code.
+- totalCost: type: `number` - Total cost of reservation group in hotel's default currency.
+- reservations: type: `Array of Objects` - list of reservations in reservation group:
+  - roomName: type: `string` - name of room category
+  - startDate: type: `Date` - start date of reservation
+  - endDate: type: `Date` - end date of reservation
+  - number: type: `number` - confirmation number of reservation
 
 #### Customization
 
