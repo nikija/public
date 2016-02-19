@@ -6,11 +6,11 @@ Distributor is a booking engine that lets customers create reservations in a hot
 
 ### Standalone
 
-If you're not sure which version to use, go with the standalone option. It's the simplest way how to connect your website with the booking engine. We will provide you with a link to page where the Distributor is located. For further information, see [Standalone Distributor](./standalone.html) or contact our sales team at sales@mewssystems.com
+If you're not sure which version to use, go with the standalone option. It's the simplest way how to connect your website with the booking engine. We will provide you with a link to page where the Distributor is located. For further information, see [Standalone Distributor](./distributor/standalone.html) or contact our sales team at sales@mewssystems.com
 
 ### Widget
 
-If you are a developer, you might be interested in more advanced ways how to integrate the Distributor into your website. For more seamless experience, the Distributor JavaScript widget allows customers to book directly from website of your hotel without being redirected elsewhere. For more information, consult the [Distributor Widget](./widget.html).
+If you are a developer, you might be interested in more advanced ways how to integrate the Distributor into your website. For more seamless experience, the Distributor JavaScript widget allows customers to book directly from website of your hotel without being redirected elsewhere. For more information, consult the [Distributor Widget](./distributor/widget.html).
 
 ### API
 
