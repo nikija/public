@@ -14,4 +14,4 @@ If you are a developer, you might be interested in more advanced ways how to int
 
 ### API
 
-In case you'd like to implement your own custom booking engine that would be connected with MEWS, you should have a look at [Distributor API](../api/distributor.html). Please contact sales@mewssystems.com to activate this function.
+In case you'd like to implement your own custom booking engine that would be connected with MEWS, you should have a look at [Distributor API](./api/distributor.html). Please contact sales@mewssystems.com to activate this function.
