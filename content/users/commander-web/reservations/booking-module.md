@@ -19,3 +19,18 @@ On the top bar you have several buttons:
 - Open All: this will open up the booking details of each individual reservation in this group.
 - Close All: this will close all the booking details of the individuals bookings
 - New Reservation: if you would like to add a new booking to an already existing group, you can click on this button, which will open the new reservation screen, with a group code prefilled, once you complete the new booking, it will automatically be part of the same booking.
+
+## Booking Tabs
+
+The Booking Module consists of multiple tabs which allow you to manage the booking(s). We follow the below tabs which will be explained in detail below:
+
+- State
+- Properties
+- Group
+- Pricing
+- Items
+- Mailing
+- Action Log
+
+Its possible to select multiple bookings, allowing you to much quicker manage the bookings. Depending on the different tabs, and whether the bookings contain similarly completed fields on all selected bookings, we will prefill the field on the left hand side of the screen.
+
