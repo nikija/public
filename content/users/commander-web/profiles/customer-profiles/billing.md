@@ -3,7 +3,9 @@ title: Billing
 ordering: 5
 ---
 
-This screen shows all unpaid items on the guest profile that require settlement. The receptionists can select items and move them into the customer, company or travel agent bill, depending on who is required to settle the account. From this screen you may also assign the charges to another customer.
+Unlike most PMS systems, we link all reservation charges to the Guest Profile. Traditional PMS systems usually link these to the room number. We found that hospitality should be all about the guest, and he/she is central to the travel experience, and thus should be central in the Mews Commander Platform. This means that all bills are linked to the guest profiles.
+
+The Billing Screen on the Guest Profile shows all unpaid items that require settlement. The receptionists can select items and move them into the customer, company or travel agent bill, depending on who is required to settle the account. From this screen you may also assign the charges to another customer.
 
 ## Unpaid Items
 
@@ -11,10 +13,11 @@ All items that are posted on the customer’s bill are automatically routed into
 
 Should you need to add additional manual charges to the bill, you can select “New Item” in the billing screen. Select a service category, and within this category select the product, quantity, price, currency and any written notes that you wish to post. The correct VAT is automatically preselected.
 
-Note that if the customer is part of a group, you will also see all of the other customers in that group along with their unsettled items. If you move items into the bill of one of the customers, they will disappear from the unsettled group-billing list. Be careful when you assign bill items from groups because it may be hard to find any items you accidently misplace (and you will have to inspect every single bill of the group’s companions to find it).
-
+Note that if the customer is part of a group, you will also see all of the other customers in that group along with their unsettled items. If you move items into the bill of one of the customers, they will disappear from the unsettled group-billing list. Be careful when you assign bill items from groups because it may be hard to find any items you accidently misplace (if you have lost an item, go to the booking, and review the "items" tab, where you can see where items are routed).
 
 ## Open Bills
+
+Bill: in Mews we define a bill as a list of bill items that are closed to a payment on the day of departure.
 
 The open bill section (on the right of the payment screen) refers to the customer bills that need to be settled by the customer directly upon check-out. First, select the bill that you are looking to settle. Second, by selecting the arrow next to an “unpaid item” you can easily move it into the bill you are working in. At the top you can see the total unsettled amount. You can easily create a preview bill or pro-forma for a guest to show how the bill will print and with which address details. Allow the guest to always check this before checking them out. Once a bill is checked-out, you cannot re-open the bill to amend the address.
 
@@ -22,11 +25,17 @@ Once the customer has confirmed the charges and address details, ask the custome
 
 The moment the bill is set to a zero balance, a new button appears at the bottom of the bill you are working in called “Review and Close.” This allows you to review the bill once more, and in this screen you can still amend the address. Once you press “Close and Print,” the bill is closed, and the customer is checked out.
 
-**Credit Note / Rebate**: if you have accidentally closed a bill with an incorrect item on it, you will have to rebate the original bill. To rebate a bill, you will have to open a new bill on the same customer profile, and create the same items as on the original bill, and post them with the opposite value. This corrects the initial bill. Once corrected, you close this bill, and you can repost them correctly. This is quite a lot of work, and its highly recommended to always print the bill-preview for guests to check their details prior to check-out, this might save you a lot of work.
+### Credit Note / Rebate
+
+If you have accidentally closed a bill with an incorrect item on it, you will have to rebate the original bill. To rebate a bill, you will have to open a new bill on the same customer profile, and create the same items as on the original bill, and post them with the opposite value. This corrects the initial bill. Once corrected, you close this bill, and you can repost them correctly. This is quite a lot of work, and its highly recommended to always print the bill-preview for guests to check their details prior to check-out, this might save you a lot of work.
 
 ### Close to Invoice
 
+Invoice: in Mews we define an invoice as a list of bill items that will not be paid on the spot, but will have a future date of payment.
+
 Hotels who have selected to enable the “Closing to Invoice” option will see a button on any bill that has a negative or positive balance. If there are items on the bill creating a balance, the button "Close to Invoice" will generate an invoice form where you will need to complete the invoice details. Once you create the invoice, it will post a payment type on the bill called "Invoice," and you will be able to close the bill.
+
+We recommend not to give the option to Close to Invoice to too many employees, as its very easy to make a mistake, and as this is accounting related, its complex to correct mistakes. 
 
 ## Company Bills
 
