@@ -14,18 +14,26 @@ Pressing the button will open a calendar on top of the timeline.
 
 ### Step 2 - Options
 
-- Origin: how did the booking come in, this will help the management of the hotel analyse the sources of business. If you do not select an origin, you cannot proceed to the next step. If you select "Company" or "Travel Agent" you will be asked which company to TA is linked to the booking, and those fields are obligatory in order to track the production per company.
+- Origin: how did the booking come in, this will help the management of the hotel analyse the sources of business. If you do not select an origin, you cannot proceed to the next step. If you select "Company" or "Travel Agent" you will be asked which company to TA is linked to the booking, and those fields are obligatory in order to track the production per company. The different origins in the system are pre-set, and cannot be amended
+ - Agency Direct: the booking is made on behalf of a travel agency, note you will be asked which travel agent in the next step. You cannot select this segment, if you do not select a travel agent, the booking will fail. This is important, as we need to track which travel agents are booking, in order for the sales department to follow up on.
+ - Company Direct: the booking is made on behalf of a company, note you will be asked which company in the next step. You cannot select this segment, if you do not select a company, the booking will fail. This is important, as we need to track which companies are booking, in order for the sales department to follow up on.
+ - E-mail
+ - Fax
+ - In Person: the customer walked in and would like to book for a future check-in date 
+ - Phone Call
+ - Walk In: the customer walked in and would like accommodation for that same night 
+ - Website: booked via the website, if you do not use the Mews Distributor
 - Segment: Next you are asked to select the Business Segement of the booking. This again helps management analyse the origin of business. Management of the hotel can set up custom business segmentation for their hotel in the configuration of the system.
 - Products: lastly, you are asked to select the products that you would like to have included into the booking. These could be items that you sell together with the room such as Breakfast, Baby Cots, Welcome VIP setups, etc. When you hover over the item you can see the cost of each item.
 
 ### Step 3 - Pricing
 
-- If you are working at a hostel, there is a quick switch at the top of this screen that allows you to see "beds" or "rooms/dorms".
-- The first column shows the room types you have at the hotel
+- If you are working at a hostel, there is a quick switch at the top of this screen that allows you to see "beds", "rooms" or "dorms".
+- The first column shows the room types you have at the hotel, if you do not understand the short codes used, there are tooltips that allow you to quickly see the full name and room description.
 - The second column shows how many rooms you have available in the selected stay period.
 - Rooms: If you would like to book more than 1 room, you can amend the number in this selection next to the room type. This is a quick tool to book larger groups.
 - Adults / Children: how many adults or children will you accommodate in the room. It only allows you to select up to the maximum number of people in a room, so the screen will tell you how many people fit in a room. It will not allow selections of more people.
-- Rate Groups: the rates it displays next to the initial columns are according to the different rate groups. A rate group is a group of rates that have the same cancellation conditions, so we merge these together in 1 column and display the lowest available rate in that selection. This ensures you always offer the lowest available price to customers. When you hover over the currency name (ie. EUR) it will tell you which exact rate is behind the selection. If you would like to book a custom rate, you can simply override the rate provided in this screen and it will allow you to book the custom rate. Select the + sign to select a specific rate, and add it to your shopping basket
+- Rate Groups: the rates it displays next to the initial columns are according to the different rate groups. A rate group is a group of rates that have the same cancellation conditions, so we merge these together in 1 column and display the lowest available rate in that selection. This ensures you always offer the lowest available price to customers. When you hover over the currency name (ie. EUR) it will tell you which exact rate is behind the selection. If you would like to book a custom rate, you can simply override the rate provided in this screen and it will allow you to book the custom rate. Select the + sign to select a specific rate, and add it to your shopping basket. Note that if a rate is displayed in light grey, it is not available for that specific day, so if you still would like to book it, only managers have the right to book it, as it requires their approval.
 
 ### Step 4 - Finish Booking
 
