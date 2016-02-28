@@ -83,7 +83,7 @@ If you export the report to Excel, we have also added the number of Bed Night co
 Run the report by totals, grouped by Travel Agent in order to get a Travel Agent Statistics report, to analyse the performance of your travel agents at the hotel. There is also a special "commission" column, so if you have set up the commissions in the travel agent profiles, you can see how much commission is to be booked over those reservations
 
 ### Credit Card Check
-THe reservations department should tun the report in detailed mode, for all bookings created yesterday with the filter "credit cards". 
+The reservations department should tun the report in detailed mode, for all bookings created yesterday with the filter "credit cards". 
 
 This way you can quickly see if any of the credit cards linked with newly made bookings have been rejected by the payment gateway, for follow up with the guests.
 
