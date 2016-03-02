@@ -10,14 +10,15 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 - [Authorization](#authorization)
 - [Operations](#operations)
-    - [Get All Commands](#get-all-commands)
-    - [Update Command](#update-command)
+    - [Sign in](#sign-in)
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
     - [Get Customer Balance](#get-customer-balance)
-    - [Sign in](#sign-in)
+    - [Get All Commands](#get-all-commands)
+    - [Update Command](#update-command)
 - [Devices](#devices)
     - [Printers](#printers)
+    - [VisiOnline Key Cutters](#visionline-key-cutters)
 - [Environments](#environments)
     - [Demo Environment](#demo-environment)
     - [Production Environment](#production-environment)
@@ -30,120 +31,47 @@ The API also supports more advanced scenario with session management, which make
 
 ## Operations
 
-### Get All Commands
+### Sign in
 
-A device command is in one of the following states:
+Signs in the client application to MEWS using a token that you would normally use as the `AccessToken` in all operations as described in [Authorization](#authorization) section. Returns a new `AccessToken` that should be passed to all other operations. Note that the returned `AccessToken` has limited validity - only until next successful sign in operation. After that, the `AccessToken` returned by the first sign in operation is no longer valid. As a consequence, there is always at most one client with valid `AccessToken`, i.e. the client that signed in last.
 
-- `Pending` - A command that is created in MEWS, but not yet received by a client application.
-- `Received` - A command received by a client application.
-- `Processing` - A command that is being processed.
-- `Processed` - A successfully processed command.
-- `Cancelled` - A command whose execution has been cancelled before (or during) processing.
-- `Error` - A command whose execution was or processing was terminated by an error.
-
-This operation returns all commands the are still active from the client application point of view. That means commands that are in either `Pending` or `Received` state.
-
-#### Request `[PlatformAddress]/api/connector/v1/commands/getAllActive`
+#### Request `[PlatformAddress]/api/connector/v1/app/signIn`
 
 ```json
 {
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `AccessToken` | string | required | Access token of the client application. |
+| `ConnectorToken` | string | required | Unique token identifying the client application. Can be obtained from MEWS from enterprise settings. |
 
 #### Response
 
 ```json
 {
-    "Commands": [
-        {
-            "Id": "aa20961f-6d9e-4b35-ad25-071213530aec",
-            "State": "Pending",
-            "CreatedUtc": "2015-09-02T19:25:44Z",
-            "Creator": {
-                "FirstName": "Sample",
-                "LastName": "User",
-                "ImageUrl": "..."
-            },
-            "Device": {
-                "Id": "63efb573-fc58-4065-b687-9bdd51568529",
-                "Name": "Test Printer",
-                "Type": "Printer"
-            },
-            "Data": {
-                "CopyCount": 1,
-                "FileType": "application/pdf",
-                "FileData": "...",
-                "PrinterName": "Printer",
-                "PrinterDriverName": "",
-                "PrinterPortName": ""
-            }
-        }
-    ]
+    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
+    "Enterprise": 
+    {
+        "Id": "222b5d8a-0492-4271-9941-cd6d89b81d43",
+        "Name": "Test Hotel"
+    }
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Commands` | array of [Command](#command) | required | The active commands. |
+| `AccessToken` | string | required | An access token representing the client application session. |
+| `Enterprise` | [Enterprise](#enterprise) | required | Enterprise whose data the connector client handles. |
 
-##### Command
 
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the command. |
-| `State` | string | required | State of the command. |
-| `CreatedUtc` | string | required | Creation date and time of the command. |
-| `Creator` | [User](#user) | optional | Creator of the command. |
-| `Device` | [Device](#device) | required | Device that the command should be executed on. |
-| `Data` | object | optional | Data of the command depending on device type and command type. Details in the [devices](#devices) section. |
-
-##### User
+##### Enterprise
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `FirstName` | string | optional | First name of the user. |
-| `LastName` | string | required | Last name of the user. |
-| `ImageUrl` | string | optional | URL of the profile image. |
-
-##### Device
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the device. |
-| `Name` | string | required | Name of the device. |
-| `Type` | string | optional | Type of the device. |
-
-### Update Command
-
-Updates state of a command.
-
-#### Request `[PlatformAddress]/api/connector/v1/commands/update`
-
-```json
-{
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "CommandId": "aa20961f-6d9e-4b35-ad25-071213530aec",
-    "State": "Processed"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccessToken` | string | required | Access token of the client application. |
-| `CommandId` | string | required | Identifier of the command to be updated. |
-| `State` | string | required | New state of the command. |
-| `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored. |
-| `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored. Details in the [devices](#devices) section. |
-| `Notes` | string | optional | Notes about command execution. Only used if the `State` is `Processed`, `Cancelled` or `Error`, otherwise ignored. |
-
-#### Response
-
-Empty object.
+| `Id` | string | required | Unique identifier of the enterprise. |
+| `Name` | string | required | Name of the enterprise. |
 
 ### Get All Spaces
 
@@ -364,47 +292,120 @@ Returns current open balance of a customer. If the balance is positive, the cust
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Value` | number | required | Amount in the currency. |
 
-### Sign in
+### Get All Commands
 
-Signs in the client application to MEWS using a token that you would normally use as the `AccessToken` in all operations as described in [Authorization](#authorization) section. Returns a new `AccessToken` that should be passed to all other operations. Note that the returned `AccessToken` has limited validity - only until next successful sign in operation. After that, the `AccessToken` returned by the first sign in operation is no longer valid. As a consequence, there is always at most one client with valid `AccessToken`, i.e. the client that signed in last.
+A device command is in one of the following states:
 
-#### Request `[PlatformAddress]/api/connector/v1/app/signIn`
+- `Pending` - A command that is created in MEWS, but not yet received by a client application.
+- `Received` - A command received by a client application.
+- `Processing` - A command that is being processed.
+- `Processed` - A successfully processed command.
+- `Cancelled` - A command whose execution has been cancelled before (or during) processing.
+- `Error` - A command whose execution was or processing was terminated by an error.
+
+This operation returns all commands the are still active from the client application point of view. That means commands that are in either `Pending` or `Received` state.
+
+#### Request `[PlatformAddress]/api/connector/v1/commands/getAllActive`
 
 ```json
 {
-    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `ConnectorToken` | string | required | Unique token identifying the client application. Can be obtained from MEWS from enterprise settings. |
+| `AccessToken` | string | required | Access token of the client application. |
 
 #### Response
 
 ```json
 {
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
-    "Enterprise": 
-    {
-        "Id": "222b5d8a-0492-4271-9941-cd6d89b81d43",
-        "Name": "Test Hotel"
-    }
+    "Commands": [
+        {
+            "Id": "aa20961f-6d9e-4b35-ad25-071213530aec",
+            "State": "Pending",
+            "CreatedUtc": "2015-09-02T19:25:44Z",
+            "Creator": {
+                "FirstName": "Sample",
+                "LastName": "User",
+                "ImageUrl": "..."
+            },
+            "Device": {
+                "Id": "63efb573-fc58-4065-b687-9bdd51568529",
+                "Name": "Test Printer",
+                "Type": "Printer"
+            },
+            "Data": {
+                "CopyCount": 1,
+                "FileType": "application/pdf",
+                "FileData": "...",
+                "PrinterName": "Printer",
+                "PrinterDriverName": "",
+                "PrinterPortName": ""
+            }
+        }
+    ]
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `AccessToken` | string | required | An access token representing the client application session. |
-| `Enterprise` | [Enterprise](#enterprise) | required | Enterprise whose data the connector client handles. |
+| `Commands` | array of [Command](#command) | required | The active commands. |
 
-
-##### Enterprise
+##### Command
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the enterprise. |
-| `Name` | string | required | Name of the enterprise. |
+| `Id` | string | required | Unique identifier of the command. |
+| `State` | string | required | State of the command. |
+| `CreatedUtc` | string | required | Creation date and time of the command. |
+| `Creator` | [User](#user) | optional | Creator of the command. |
+| `Device` | [Device](#device) | required | Device that the command should be executed on. |
+| `Data` | object | optional | Data of the command depending on device type and command type. Details in the [devices](#devices) section. |
+
+##### User
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `FirstName` | string | optional | First name of the user. |
+| `LastName` | string | required | Last name of the user. |
+| `ImageUrl` | string | optional | URL of the profile image. |
+
+##### Device
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the device. |
+| `Name` | string | required | Name of the device. |
+| `Type` | string | optional | Type of the device. |
+
+### Update Command
+
+Updates state of a command.
+
+#### Request `[PlatformAddress]/api/connector/v1/commands/update`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CommandId": "aa20961f-6d9e-4b35-ad25-071213530aec",
+    "State": "Processed"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CommandId` | string | required | Identifier of the command to be updated. |
+| `State` | string | required | New state of the command. |
+| `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored. |
+| `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored. Details in the [devices](#devices) section. |
+| `Notes` | string | optional | Notes about command execution. Only used if the `State` is `Processed`, `Cancelled` or `Error`, otherwise ignored. |
+
+#### Response
+
+Empty object.
 
 ## Devices
 
@@ -422,6 +423,28 @@ Device type: `Printer`
 | `PrinterName` | string | required | Name of the printer. |
 | `PrinterDriverName` | string | required | Name of the printer driver. |
 | `PrinterPortName` | string | required | Name of the printer port. |
+
+#### Command Result
+
+Not used.
+
+### VisiOnline Key Cutters
+
+Device type: `VisiOnlineKeyCutter`
+
+#### Command Data
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ApiUrl` | string | required | VisiOnline API URL. |
+| `UserName` | string | required | VisiOnline user name. |
+| `Password` | string | required | VisiOnline password. |
+| `KeyCutterId` | string | required | Identifier of the key cutter which should cut the keys. |
+| `LockNumbers` | array of string | required | Numbers of locks/rooms the key should open. |
+| `ValidityStartUtc` | string | required | Start of the key validity interval in UTC timezone in ISO 8601 format. |
+| `ValidityEndUtc` | string | required | End of the key validity interval in UTC timezone in ISO 8601 format. |
+| `KeyCount` | number | required | Count of keys to cut. |
+| `Reservation` | [Reservation](#reservation) | optional | Additional information about the reservation. |
 
 #### Command Result
 
