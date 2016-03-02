@@ -440,7 +440,7 @@ Device type: `VisiOnlineKeyCutter`
 | `UserName` | string | required | VisiOnline user name. |
 | `Password` | string | required | VisiOnline password. |
 | `KeyCutterId` | string | required | Identifier of the key cutter which should cut the keys. |
-| `LockNumbers` | array of string | required | Numbers of locks/rooms the key should open. |
+| `LockIds` | array of string | required | Identifiers of locks/rooms the key should open. |
 | `ValidityStartUtc` | string | required | Start of the key validity interval in UTC timezone in ISO 8601 format. |
 | `ValidityEndUtc` | string | required | End of the key validity interval in UTC timezone in ISO 8601 format. |
 | `KeyCount` | number | required | Count of keys to cut. |
