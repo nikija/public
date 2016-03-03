@@ -6,12 +6,15 @@ ordering: 1
 
 ### Customer Balance
 
-At the top of the State screen, you can see the customer balances of all customers assigned to the group and selected (by the tick box next to bookings). You can select "Payments" to add preauthorization or prepayments to the booking. Alternatively you can enter the "Billing" screen where you can take payments or settle bills. If the "billing" button is blue, that means that there is action required, as there are still open bills that require to be closed. So even if the balance is set to 0, and the button is blue, that means that the bill is not yet closed. If you are handling a group booking and have selected multiple bookings in the group, you will see the Customer Balance of all participants, allowing you to quickly see the balance of the whole group.
+At the top of the State screen, you can see the customer balances of all customers assigned to the group and selected. 
+
+You can select "Payments" to add preauthorization or prepayments to the booking. Alternatively you can enter the "Billing" screen where you can take payments or settle bills. If the "billing" button is blue, that means that there is action required, as there are still open bills that require to be closed. So even if the balance is set to 0, and the button is blue, that means that the bill is not yet closed. If you are handling a group booking and have selected multiple bookings in the group, you will see the Customer Balance of all participants, allowing you to quickly see the balance of the whole group.
 
 ### Room Assignment
 
 You will see all the bookings that are in the group and selected. Here you can quickly see the housekeeping status of the room currently assigned, and you can either assign another inspected room or inspect the room directly in the system (if you have the ok from your housekeeper). It only displays rooms in the same category, organized by room number, and it will not allow you to assign a room that has another "locked" reservation on it.
-If the "Room Criteria" have been set up, you can instantly see the key features of the different rooms, next to the room number to help reception assign the correct room to the right customer.
+
+If the "Space Features" have been set up, you can instantly see the key features of the different spaces, next to the room/bed/dorm number to help reception assign the correct space to the right customer.
 
 Similar to the Customer Balance if you have a group booking and you select multiple bookings you can do the room assignment for multiple rooms at the same time.
 
@@ -61,6 +64,8 @@ Secondly, you need to decide whether you would like to charge cancellation fees 
 
 --> If you try to cancel a bill "Without Fee” but have already closed the bill, then the system will post refunds automatically on the bill.
 
+Lastly you need to decide whether you would like to send a cancellation-confirmation e-mail to the customer. Simply tick that box, and cancel the booking. The system will then send an e-mail to the guest with the cancellation confirmation.
+
 ## How to Check-in a Booking
 
 To check-in, the first step is identifying the room to be checked in. There are a few methods to quickly find a booking:
@@ -75,6 +80,8 @@ Once you have identified the booking, select the “Check In” button on the bo
 2. Take preauthorization or deposit from the guest for the amount agreed. Once the money has been accepted, process this in the system by selecting either the “Preauthorization” or “Deposit” button, which will allow you to post the amount directly in the system.
 3. Check that the pre-assigned room is inspected. If it is not, check if there is another room of the same type that is available and inspected. This can be spotted quickly from the dropdown menu. If no room is available ensure you assign an available (dirty or clean) room and contact housekeeping to get the room cleaned.
 4. Once an inspected room is assigned, you can press “Check-in,” and the room is checked in. It will be locked, so that it cannot be moved in the system.
+
+### How to handle a Continueing Booking
 
 Checking in a continuing reservation can be quite challenging.
 - First, you will want to ensure that the same room number has been allocated for the continuing booking, so that the guest will not be required to move. Ensure that this is done at the booking stage, as it may be harder to move bookings around on the day of arrival. Always lock your booking, so that no one can move the room.

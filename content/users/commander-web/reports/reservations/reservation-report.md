@@ -8,25 +8,42 @@ The reservation report provides all needed information about all the bookings at
 
 Below is an explanation of a few of the key filters and their purposes.
 
-- **Include Tax**: the report standarly runs with Net Rates, but if you would like to include tax into the rates simply tick this box and run the report.
-- **Load Balances**: Should you require the overview of all guests in-house and their outstanding balances, selecting this box prior to loading will load the total bill balance of all of the guests. Note that as it will need to check all guest bills, this will slow down the running of the report somewhat.
-- **Mode**: You can filter the report by "detailed" reservations. It will show each individual reservation, and you can review the individual details of these bookings. Alternatively you can select only the "Totals," and the report will only give the totals of the selection made. It will not display the individual bookings in this section.
-- **Group By**:
- - Business Segment: it will run the report by the business segmentation that is set up at the hotel level.
- - Confirmation State: if you would be interested to see whether booking in the report are Optional or Confirmed.
- - Creation Date: this will show the results of the report organized by the creation date of the bookings.
- - Credit Card: to quickly show whether guest profiles have a Adyen/Braintree card attached or not, this helps identify reservations where the credit card failed, so that your reservations department can follow up on alternative payment methods.
- - Customer Category: if you would like to sort the report by Customer Category. The customer category can be set up in the Customer Profile in the "Internals" section. Should you need to add or amend the customer categories, contact your Mews representative.
- - Customer Nationality: if you want to analyse the origin of your customers.
- - Mother Company: when you set up your partner companies, you can assign also "mother companies", which represent the "head office" this helps you to quickly pull out statistics for multiple companies in 1 line.
- - Group: to pull out all the different groups that have bookings in a selected period.
- - Travel Agency: It will break the report down by all different travel agents that have booked the hotel in the selected period.
- - Partner Company: If you have assigned companies to bookings, it will break down the report by the partner companies.
- - Rate: If you would like to analyse the performance of specific rate types, you can select this filter.
- - Voucher: If you have the Mews Distributor, you can filter the report by the different voucher codes used by customers to analyse the performance of these codes.
- - Room Type: To analyse the performance of specific room types, you can see exactly how many bookings are made for each individual room type.
- - Origin: To generate a specific overview of the source of business (from booking engine, channel, and manual).
-- **Filter**: You can filter the report by the following filters.
+### Options
+- Include Additional Expense: some bookings are cancelled or partially cancelled and the system may have posted an additional expense (cancellation fee)
+- Include Nights: include the night revenue into the report
+- Include Products: include the product revenue into the report (such as breakfast, packages)
+- Load Balances: load the bill balance of the customers, by adding an additional column. This is often used by hostels and budget hotels who need to ensure that all accommodation is fully paid by the time of check-in
+
+### Values
+- Gross: show the booking inclusive tax
+- Nett: show the bookings net of tax
+- Tax: show the tax on bookings only
+
+### Group By
+- Arrival Date
+- Balance
+- Business Segment: it will run the report by the business segmentation that is set up at the hotel level.
+- Cancellation Reason
+- Company
+- Confirmation State: if you would be interested to see whether booking in the report are Optional or Confirmed.
+- Creation Date
+- Credit Card: to quickly show whether guest profiles have a Adyen/Braintree card attached or not, this helps identify reservations where the credit card failed, so that your reservations department can follow up on alternative payment methods.
+- Customer Category: if you would like to sort the report by Customer Category. The customer category can be set up in the Customer Profile in the "Internals" section. Should you need to add or amend the customer categories, contact your Mews representative.
+- Customer Nationality: if you want to analyse the origin of your customers.
+- Departure Date
+- Group: to pull out all the different groups that have bookings in a selected period.
+- Mother Company: when you set up your partner companies, you can assign also "mother companies", which represent the "head office" this helps you to quickly pull out statistics for multiple companies in 1 line.
+- Origin
+- Rate: if you want to see the results by rate types
+- Room: if you want to see the results by room number
+- Room Type
+- Travel Agency 
+- Voucher: If you have the Mews Distributor, you can filter the report by the different voucher codes used by customers to analyse the performance of these codes.
+
+## Filter
+
+You can filter the report by the following settings.
+
  - Created: By the creation date of the booking.
  - Arrival: By the arrival date of the booking.
  - Departure: By the departure date of the booking.
@@ -55,3 +72,24 @@ Note that if you export the report into excel, the following additional columns 
 - Release date: if you have booked an optional booking
 - Requested Room Type and Room Category: this allows you to compare whether the room type that was booked, also corresponds with the room type that was finally used to accommodate the guest.
 - Reservations and Customer Notes
+
+## Hostel Specific Feature
+
+If you export the report to Excel, we have also added the number of Bed Night columns, where all sold bednights are added to the report. This is a critical number to the operations of a hostel, as they have a mix of rooms, dorms and beds, and they run performance based on bed occupancy and RevPab numbers.
+
+## Some Great Uses of the Reservations Report
+
+### Travel Agent Statistics
+Run the report by totals, grouped by Travel Agent in order to get a Travel Agent Statistics report, to analyse the performance of your travel agents at the hotel. There is also a special "commission" column, so if you have set up the commissions in the travel agent profiles, you can see how much commission is to be booked over those reservations
+
+### Credit Card Check
+The reservations department should tun the report in detailed mode, for all bookings created yesterday with the filter "credit cards". 
+
+This way you can quickly see if any of the credit cards linked with newly made bookings have been rejected by the payment gateway, for follow up with the guests.
+
+### Load Balances
+If you want to ensure that everyone who is arriving on a specific date (or is in house) have 0 balance to be paid, you can simply tick the "load balanced" option. The report will then add an additional column with the bill balance of the customer linked to the booking.
+
+### Cancelled Bookings
+Its important to check daily the reasons why the team have cancelled bookings, and to check that they have charged cancellation fees where needed. Therefore run the report with yesterday's dates, and filter by "cancelled on". Then you can quickly see all cancelled bookings. If you group it by "cancellation reasons, you can quickly see the main reaons selected.
+
