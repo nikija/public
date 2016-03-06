@@ -3,7 +3,9 @@ title: Main Enterprise Settings
 ordering: 1
 ---
 
-When you select settings in the menu bar at the top of the screen, and select your hotel name, this will take you to the main settings menu.
+When you select settings in the menu bar at the top of the screen, and select your hotel name, this will take you to the main settings menu. Only employees with ADMIN rights have this button in their top menu, and these rights should be handed out very sparingly, as anyone with access to the configuration of the hotel can change any and all settings having a major impact of hotel functioning. We generally recommend not to give rights to this section to more than 2-3 persons in the hotel.
+
+Below we will walk through a number of the main settings. Note that if functions do not require any description (in our opinion) we have not detailed them below, should you be missing any critical feature description, kindly inform us at support@mewssystems.com and we will be sure to update the guide.
 
 ## General Settings
 
@@ -13,21 +15,39 @@ When you select settings in the menu bar at the top of the screen, and select yo
 - **Unique Name**: Please always complete this field, which we used as part of the link we e-mail guests with their login to the online dashboard. Complete the field with the name of the hotel, preferably without spaces in lower case. (eg. waldorf-astoria)
 - **E-mail**: Complete this field with the e-mail address from which you would like to communicate with guests.
 - **Contact details**: Complete these fields with hotel telephone number, website address and physical address details, as this is important for the different types of communication sent through the system. Its best if you find your address using the provided Google Address bar, so that it will also pick up your Longitude and Lattitude, allowing us to place your hotel on a map with its exact coordinates.
-- **Timezone**: you will not be able your Timezone, but its critically important that the correct timezone is selected, if you notice this is not the correct timezone, kindly contact Mews Support.
+- **Timezone**: you will not be able your Timezone, but its critically important that the correct timezone is selected, if you notice this is not the correct timezone, kindly contact Mews Support at support@mewssystems.com
 
 ## Globalization
 
+- **Legal Environment**: each hotel that is built has to be assigned to a legal environment, which sets the main taxation and accounting rules for the hotel within Mews. If you notice that the wrong legal environment is selected for your hotels, kindly contact support to correct this.
+- **Default Currency**: each hotel has to be set up with a default currency. This currently is the fallback currency, in case no currency is selected by the hotel. Hotels cannot change this currency, and if you need it amended, please contact support.
+- **Currency Rate Update**: Mews can automatically change your currencies from different online sources, this prevents manual work by accountants, and ensures you always offer guestst the most fair rate. You can chose to either update it "never", which means you will set the rates manually, and the system will never update it automatically. ALternatively you can set it to update daily, monthly or yearly.
+- **Currency Rate Source**: Here you can select from which source you would like to pick up the exchange rates.
+- **Accepted Currencies**: We allow the handling of multiple currencies, which allows you to accept money in a variety of currencies. Should you find that your preferred currency is not available in the menu of offered currencies, please contact Mews so that we can add this currency.
+- **Default Language**: The default language is important, as this is the primary language in the system that is used for users, but also for customer is no other language is selected. So all guest communication will be primarily set in that language, unless otherwise specified in the guest profile.
 - **Supported Language**: This selection is not to set your personal language, but more to select in which language you want guest communication to be sent. Note that if you select languages, other than English, the hotel is responsible for the translations of the Confirmation E-mails, Registration Cards, Rate descriptions, Room Descriptions, Products and any other text that is guest-facing.
-- **Accepted Currencies**: We allow the handling of multiple currencies, which allows you to accept money in a variety of currencies. You can set rates based on an automatic daily, monthly or yearly rate (note this is only available for countries in the EU currently). You can also select from which source you would like to take the exchange rate. The options are provided in the "Currency Rate Source" menu.
-A hotel may also select to manage rates manually. In order to manage the exchange rate manually, you need to select "Never" in the Currency Rate Update menu and select "Exchange Rates" in the settings tab in the top-bar menu.
 
 ## Options
 
 - **Closing Bill as Invoice**: This option allows you to close bills directly to invoices from the payment screen. As mentioned before in the "external payments this is the preferred method of closing invoices. When you close a Bill as Invoice, we will change the naming of the Bill to "Invoice", print the Due Date and leave the payment as "To be Paid".
 - **Customer Invoice Module Enabled**: we recommend against using this module, as its a complete standalone invoicing module, which we wil ldiscontinue using in the near future. So any invoices created through this tool will no longer be supported in the future.
+- **Charge Cancellation Fee by Default**: if you tick this option, we will always pre-tick the "charge cancellation fees" tickbox in the State Tab of the Booking Module, so that when you cancel a booking we will by default charge the cancellation fee.
 - **Invoice Payment Tracking Enabled**: if you have enabled the "Closing Bill as Invoice" option (above), then we would also recommend selecting this option, as it allows you to tack, in the "Bills and Invoices Report" they payments of outstanding invoices and their respective due dates.
 - **Optional Credit Card Payment Details**: If you select this option in the settings, the system will not require the hotel to complete the receipt identifier details when posting manual credit card payments. This is preferred by some hotels in order to speed up check-out/in. Note this is only applicable for payments that are made on an external terminal and input manually in the system with a receipt from the terminal. If you make a payment via our Payment Gateway (Adyen/Braintree) we automatically record all details.
-- **Send Confirmation E-mail Pre Checked**: If you select this option, when a new booking is input manually by one of the users via the "New Reservations Screen", the selection to send the Confirmation E-mail to the guest is pre-set to "send". If you do not tick it, the system will not automatically send confirmation e-mails to your guests, unless you specifically select this option during the booking process.
+- **Print Registration Cards On A5 Paper Format**: some hotels have pre-printed the back of an A5 paper with the hotel T&C's, if you use A5 paper, instead of A4, then switch on this option.
+- **Send Backup Reports Enables**: every night we send backup reports to the main e-mail provided in the general settings. These reports include the following reports, which we feel contain the most critical hotel information in case you have an internet outage, or Mews has any downtime:
+
+Each night at 2am, we will send the following reports to the main e-mail of the hotel (the address in the general settings of Mews). The reports will be sent in Excel format, so that you can work with the data more easily. Please instruct your team not to delete this e-mail, but store it safely.
+
+ - Room Status Report - for housekeeping
+ - Guest In House Report - From this report you can, check the names of all guests in house, by room number, and whether they have any products included in their stay. It also shows the balance of the bill, and the level of preauthorisations taken on the account.
+ - Reservations Report (all in house bookings for today with loaded balances)
+ - Guest Ledger: We send the Guest Ledger, so that you can see the balances of all guests in house, but also any open “to be resolved” bills and the items that are on those bills. So in case the guest would not be willing to late-charged when the system comes back online, you can compile a bill from these items.
+
+- **Send Confirmation E-mail By Default**: If you select this option, when a new booking is input manually by one of the users via the "New Reservations Screen", the selection to send the Confirmation E-mail to the guest is pre-set to "send". If you do not tick it, the system will not automatically send confirmation e-mails to your guests, unless you specifically select this option during the booking process.
+
+### Tax Precision
+Some accountants in hotels prefer very specific precision of their numbers in reports. For example if a number is 2,342453 without having the tax precision set, we will try to keep this number as complete as possible. However if you set the tax precision to 2, it will cut the number off at 2,34 in all reports and calculations. Once this setting is switched on, all postings from that point forward will follow this tax precision, and they cannot be reverted. So be careful with this setting to be sure this is what you would like to achieve.
 
 ### Editable History
 
