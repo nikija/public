@@ -21,3 +21,16 @@ Set this field to the number of days, after which an invoice should standardly g
 
 When the team is creating a new invoice it will in this case always select "30 days" unless you manually specify a different date.
 
+## Accounting Revenue & Payment Mapping Table
+
+### VAT
+
+The Mews Commander supports several accounting system exports. Some of those exports require mapping of all the products, payments and also the VAT Rates.
+
+The VAT Rate fields are open text fields, where the hotel can put their mapping codes, as dictated by the Accounting Software with which the accountant works.
+
+### Payments
+
+You will see every possible payment type that is available in the system in this selection. We suggest to firstly create the "Accounting Categories" for each payment type, with their specific accounting codes. 
+
+Secondly return to this Accounting Configuration Screen, and select for each payment type the correct Payment Accounting Category. Once each payment is correctly mapped, it will automatically pick up this mapping in the different Accounting Integrations.
