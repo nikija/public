@@ -36,8 +36,10 @@ All room types should be fully configured, this means:
 All public rates will always automatically display on the Mews Distributor, so ensure that all rates have the following fields completed:
 
 - Rate descriptions, some examples:
+
  - Bad Rate Names: "Master Rate", "BAR Rate", "NR Rate", "Min 2 nts rate" --> these rates are customer un-friendly, as guests do not know abreviations and they do not know industry terminology
  - Good Rate Names: "Best Available - Flexible Rate!", "Non Refundable - Best Deal!" --> they describe the benefits of that particular rate to the customer.
+
 - External Name field: you can use this field if you would like to set up a customer-friendly name, which is different from the "internal name" which is used in the Mews Commander. If you fill in the External Name, this is the rate name that the guest will see on the Distributor and his/her confirmation e-mail.
 - If you add a city tax or service charge to the booking after the booking is made, be sure to explain this also in the rate description.
 
