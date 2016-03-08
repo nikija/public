@@ -134,7 +134,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used.
 | gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used.
 | adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
-| adwordsConversionId | `number` | null | Google AdWords conversion id (9 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required. 
+| adwordsConversionId | `number` | null | Google AdWords conversion id (9 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
 | showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
@@ -143,31 +143,27 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API.
 | onBookingFinished | `function` | `function() {}` | Callback function that will be called on confirmation screen after booking was made. Arguments are described [here](#onBookingFinished)
 
-#### Callbacks arguments
+#### Callbacks
 
 ##### onBookingFinished
-- reservationGroup: type `object`, schema:
 ```
-{
-  currencyCode: 'EUR',
-  totalCost: 1000,
-  reservations: [{
-    roomName: 'A room',
-    startDate: Date
-    endDate: Date,
-    number: 42
-  }]
-}
+onBookingFinished(
+  object reservationGroup
+);
 ```
 
-Description of properties:
-- currencyCode: type: `string` - Hotel's default currency code.
-- totalCost: type: `number` - Total cost of reservation group in hotel's default currency.
-- reservations: type: `Array of Objects` - list of reservations in reservation group:
-  - roomName: type: `string` - name of room category
-  - startDate: type: `Date` - start date of reservation
-  - endDate: type: `Date` - end date of reservation
-  - number: type: `number` - confirmation number of reservation
+The schema of `reservationGroup` object is following:
+
+```
+string currencyCode - hotel's default currency code.
+number totalCost - total cost of reservation group in hotel's default currency.
+array reservations [{ - list of reservations in reservation group
+  string roomName - name of room category
+  Date startDate - start date of reservation
+  Date endDate - end date of reservation
+  number number - confirmation number of reservation
+}]
+```
 
 #### Customization
 
