@@ -312,6 +312,8 @@ Returns current open balance of a customer. If the balance is positive, the cust
 }
 ```
 
+##### Currency Value
+
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
@@ -357,6 +359,60 @@ Updates personal information of a customer.
 ```
 
 The updated [Customer](#customer) object.
+
+### Add Credit Card Payment
+
+Adds a new credit card payment to a customer. Returns updated balance of the customer.
+
+#### Request `[PlatformAddress]/api/connector/v1/payments/addCreditCard`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
+    "Amount": { 
+        "Currency": "GBP", 
+        "Value": 100
+    },
+    "CreditCard": {
+        "Type": "Visa",
+        "Number": "41111*******1111",
+        "Expiration": "12/2016",
+        "Name": "John Smith"
+    },
+    "ReceiptIdentifier": "123456",
+    "Notes": "Terminal A"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Unique identifier of the customer. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment payment. |
+| `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
+| `ReceiptIdentifier` | string | optional | Identifier of the payment receipt. |
+| `Notes` | string | optional | Additional payment notes. |
+
+##### Credit Card
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Type` | string | required | Type of the credit card, one of: `Visa`, `MasterCard`, `Amex`, `Discover`, `DinersClub`, `Jcb`, `EnRoute`, `Maestro`, `UnionPay`. |
+| `Number` | string | required | Obfuscated credit card number. At most first five digits and last four digits can be specified, the digits in between should be replaced with `*`. It is possible to provide even more obfuscated number or just last four digits. **Never provide full credit card number**. For example `41111*******1111`. |
+| `Expiration` | string | required | Expiration of the credit card in format `MM/YYYY`, e.g. `12/2016` or `04/2017`. |
+| `Name` | string | required | Name of the card holder. |
+
+#### Response
+
+```json
+{
+    "Currency": "GBP",
+    "Value": 100
+}
+```
+
+Balance ([Currency Value](#customer)) of the customer after the payment is posted.
 
 ### Get All Commands
 
