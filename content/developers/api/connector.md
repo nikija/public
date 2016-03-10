@@ -376,7 +376,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
     },
     "CreditCard": {
         "Type": "Visa",
-        "Number": "41111*******1111",
+        "Number": "411111******1111",
         "Expiration": "12/2016",
         "Name": "John Smith"
     },
@@ -399,7 +399,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Type` | string | required | Type of the credit card, one of: `Visa`, `MasterCard`, `Amex`, `Discover`, `DinersClub`, `Jcb`, `EnRoute`, `Maestro`, `UnionPay`. |
-| `Number` | string | required | Obfuscated credit card number. At most first five digits and last four digits can be specified, the digits in between should be replaced with `*`. It is possible to provide even more obfuscated number or just last four digits. **Never provide full credit card number**. For example `41111*******1111`. |
+| `Number` | string | required | Obfuscated credit card number. At most first six digits and last four digits can be specified, the digits in between should be replaced with `*`. It is possible to provide even more obfuscated number or just last four digits. **Never provide full credit card number**. For example `411111******1111`. |
 | `Expiration` | string | required | Expiration of the credit card in format `MM/YYYY`, e.g. `12/2016` or `04/2017`. |
 | `Name` | string | required | Name of the card holder. |
 
