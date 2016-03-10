@@ -13,7 +13,10 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Sign in](#sign-in)
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
+    - [Start Reservation](#start-reservation)
     - [Get Customer Balance](#get-customer-balance)
+    - [Update Customer](#update-customer)
+    - [Add Credit Card Payment](#add-credit-card-payment)
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
 - [Devices](#devices)
@@ -260,6 +263,28 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the reservation group. |
 | `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
 
+### Start Reservation
+
+Marks a reservation as `Started` (= checked in). Succeeds only if all starting conditions are met (the reservation has state `Confirmed`, does not have start set to future, has room assigned, the room is inspected etc).
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/start`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the reservation to start. |
+
+#### Response
+
+Empty object.
+
 ### Get Customer Balance
 
 Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
@@ -268,14 +293,14 @@ Returns current open balance of a customer. If the balance is positive, the cust
 
 ```json
 {
-    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `ConnectorToken` | string | required | Access token of the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Unique identifier of the customer. |
 
 #### Response
@@ -291,6 +316,47 @@ Returns current open balance of a customer. If the balance is positive, the cust
 | --- | --- | --- | --- |
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Value` | number | required | Amount in the currency. |
+
+### Update Customer
+
+Updates personal information of a customer.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/update`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
+    "FirstName": "John",
+    "LastName": "Smith",
+    "Phone": "00420123456789",
+    "NationalityCode": "US"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Unique identifier of the customer. |
+| `FirstName` | string | optional | New first name. |
+| `LastName` | string | required | New last name. |
+| `Phone` | string | optional | New phone number. |
+| `NationalityCode` | string | required | ISO 3166-1 alpha-2 country code (two letter country code) of the new nationality. |
+
+#### Response
+
+```json
+{
+    "Email": null,
+    "FirstName": "John",
+    "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+    "LastName": "Smith",
+    "NationalityCode": "US",
+    "Phone": "00420123456789"
+}
+```
+
+The updated [Customer](#customer) object.
 
 ### Get All Commands
 
