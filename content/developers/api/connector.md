@@ -265,7 +265,7 @@ Returns all reservations that collide with the specified interval.
 
 ### Start Reservation
 
-Marks a reservation as `Started` (= checked in). Succeeds only if all starting conditions are met (the reservation has state `Confirmed`, does not have start set to future, has room assigned, the room is inspected etc).
+Marks a reservation as `Started` (= checked in). Succeeds only if all starting conditions are met (the reservation has the `Confirmed` state, does not have start set to future, has an inspected room assigned etc).
 
 #### Request `[PlatformAddress]/api/connector/v1/reservations/start`
 
@@ -341,7 +341,7 @@ Updates personal information of a customer.
 | `FirstName` | string | optional | New first name. |
 | `LastName` | string | required | New last name. |
 | `Phone` | string | optional | New phone number. |
-| `NationalityCode` | string | required | ISO 3166-1 alpha-2 country code (two letter country code) of the new nationality. |
+| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the new nationality. |
 
 #### Response
 
