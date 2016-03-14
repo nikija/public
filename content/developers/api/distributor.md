@@ -518,7 +518,7 @@ Braintree requires a special client token to be generated for each transaction. 
 | --- | --- | --- | --- |
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
-| `Reservations` | array of [Reservation](#reservation) | required | The reservations to be ordered. |
+| `Reservations` | array of [ReservationData](#reservationdata) | required | Parameters of reservations to be ordered. |
 | `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
 
 ##### Customer
@@ -536,7 +536,7 @@ Braintree requires a special client token to be generated for each transaction. 
 | `StateCode` | string | optional | ISO 3166-2 code of the state, e.g. `US-AL`.  |
 | `NationalityCode` | string | optional | ISO 3166-1 Aplha-2 code of the customer's nation country, e.g. `US`.  |
 
-##### Reservation
+##### ReservationData
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
@@ -599,6 +599,22 @@ Braintree requires a special client token to be generated for each transaction. 
 | `CustomerId` | string | required | Unique identifier of customer who created reservation group. |
 | `Reservations` | array of [Reservation](#reservation) | required | The created reservations in group. |
 | `TotalCost` | [CurrencyValues](#currencyvalues) | required | Total cost of the whole group. |
+
+#### Reservation
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Identifier of the reservation. |
+| `Number` | string | required | Confirmation number of the reservation. |
+| `RoomCategoryId` | string | required | Identifier of the requested room category. |
+| `StartUtc` | string | required | Start date of the reservation (arrival date). |
+| `EndUtc` | string | required | End date of the reservation (departure date). |
+| `AdultCount` | number | required | Number of adults. |
+| `ChildCount` | number | required | Number of children. |
+| `ProductIds` | array of string | optional | Identifiers of the requested products. |
+| `RateId` | string | required | Identifier of the chosen rate. |
+| `Notes` | string | optional | Additional notes. |
+| `Cost` | [CurrencyValues](#currencyvalues) | required | Total cost of the reservation. |
 
 ### Get Reservation Group
 
