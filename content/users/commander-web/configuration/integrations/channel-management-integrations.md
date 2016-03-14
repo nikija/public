@@ -17,7 +17,7 @@ This is a general manual for creating any Channel Manager integration. If any co
 
 1. Obtain a mapping codes for `Room Types`, `Rates` and `Products` and hotel's credentials.
 2. Fill in the codes of `Room Types` and `Products` into proper row of `Channel Manager Id` property on settigns page.
-3. Create the integration (see [How to create integration](../integrations.md#how-to-create-an-intgration)). **DO NOT ENABLE IT YET**.
+3. Create the integration (see [How to create integration](../integrations.md). **DO NOT ENABLE IT YET**.
 4. Fill in the `Channel Manager Id` of the hotel and `Information email` (an email of the hotel (usually reception) to which notifications will be sent) and other data if required.
 5. Create `Channel Manager Rate`s (Make sure that none of the rates in Channel Manager are derived from another rate).
 	- Create new `Channel Manager Rate` by selecting an existing Mews rate and assigning proper mapping code.
@@ -31,7 +31,7 @@ This is a general manual for creating any Channel Manager integration. If any co
 	- If the operation finishes with error or warning, it is probably because of mapping codes are set up incorectly. Check the mapping and run again. It may have failed because the connection is not activated yet on the side od Channel Manager - in this case you have to concact their support to enable the connection.
 	- If the operation succeeds, you can continue.
 8. Upload data for the whole period (each channel manager accepts info for different number of days ti the future).
-9. Enable reservation delivery operation (based on Channel maanager) - see [Operations](#channel-manager-operations). Then trigger the **Download reservations** action if CHM allows to dowload old pending reservations (from queue).
+9. Enable reservation delivery operation (based on Channel maanager) - see [Operations](#operations). Then trigger the **Download reservations** action if CHM allows to dowload old pending reservations (from queue).
 10. Check that all reservations were downloaded and confirmed successfully. If not, deal with the errors somehow, until all reservations are downloaded and confirmed.
 12. Enable the proper set of operations.
 13. **YOU CAN ENABLE THE INTEGRATION NOW**.
@@ -55,7 +55,6 @@ Anyway the set up steps are:
 - Assign a proper mapping code.
 - Set `IsSynchronzied` according to rate specification.
 
-<a name="how-to-map-channel-manager-products"></a>
 #### Map Channel Manager Products
 
 From mapping you will obtain a code for each individual prouct or service, that is offered via CHM. Those codes need to be mapped in the product detail. If there is no code for any product specified in the CHM mapping, it usually means that the CHM just resends the code of the product from the OTA to Mews without change, so the OTA code of the product needs to be mapped instead. **That is why the mapping field can hold multiple codes for multiple OTAs separated by `;` or by `,`.** Those codes need to be obtained from each OTA - hotel should ask for it and finish the mapping.
@@ -87,7 +86,6 @@ If hotel doesn't want to synchronize a room type anymore, follow these steps:
 1. Remove the room type connection from all channel manager rates that connect the room type.
 2. Remove the mapping code from the room type setting.
 
-<a name="channel-manager-operations"></a>
 ### Operations
 
 Every operation can be triggered either manually (from the integration screen) or by a background job that triggers the opertion on the integration (if the integration has the operation enabled). There are all operations that the integration might support:
