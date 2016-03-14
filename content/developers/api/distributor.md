@@ -225,7 +225,7 @@ An object where field names correspond to currency ISO codes and field values to
 ```json
 {
     "EUR": 100.00,
-    "USD": 120.50
+    "USD": 120.50,
     "CZK": 2500
 }
 ```
