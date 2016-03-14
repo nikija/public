@@ -86,10 +86,10 @@ Initial call used to obtain all static data about hotel relevant for a booking w
             "Id": "1627aea5-8e0a-4371-9022-9b504344e724",
             "ImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
             "IncludedByDefault": true,
-            "Name":{
+            "Name": {
                 "en-US": "Breakfast"
             },
-            "Prices":{
+            "Prices": {
                 "EUR": 5,
                 "CZK": 150
             }
@@ -216,11 +216,19 @@ The client app should use the provided information together with Adyen library t
 | `ImageId` | string | optional | Unique identifier of the product's image. |
 | `IncludedByDefault` | boolean | required | Indicates whether the product should be added to order by default. |
 | `AlwaysIncluded` | boolean | required | Indicates whether the product is always included (= cannot be removed). |
-| `Prices` | array of [CurrencyValues](#currencyvalues) | required | Price of the product. |
+| `Prices` | [CurrencyValues](#currencyvalues) | required | Price of the product. |
 
 ##### CurrencyValues
 
-A currency value is an object of the entity prices in every currency supported by hotel, indexed by currency codes.
+An object where field names correspond to currency ISO codes and field values to amounts. Only currencies that the hotel accepts are listed, for example:
+
+```json
+{
+    "EUR": 100.00,
+    "USD": 120.50
+    "CZK": 2500
+}
+```
 
 ##### RoomCategory
 
