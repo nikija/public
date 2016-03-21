@@ -270,7 +270,7 @@ PCI Security Standard requires you to use **SSL Certificate** on you website in 
 
 ### Google Analytics
 
-If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` or `_gaq` - then Distributor will automatically use it for sending events. Tracked events are:
+If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` - then Distributor will automatically use it for sending events. Tracked events are:
 - `Opened` - the Distributor was opened
 - `Dates selected` - both start and end dates were selected
 - `Room selected` - a room was selected by clicking on 'Show Rates' button, its name is send as action argument
