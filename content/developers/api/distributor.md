@@ -133,7 +133,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | `Products` | array of [Product](#product) | required | All products orderable with rooms. |
 | `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
 | `TermsAndConditionsUrl` | string | optional | URL of hotel's terms and conditions. |
-| `ImageBaseUrl` | string | required | Base URL of images. To obtain URL of an image, use `[ImageBaseUrl]/[ImageId]?Width=640&Height=480`. The `Width` and `Height` parameters are optional. |
+| `ImageBaseUrl` | string | required | Base URL of images. To obtain URL of an image, use `[ImageBaseUrl]/[ImageId]?Width=[Width]&Height=[Height]`, e.g. `[ImageBaseUrl]/1627aea5-8e0a-4371-9022-9b504344e724?Width=640&Height=480`. The `Width` and `Height` parameters are optional. |
 
 ##### Country
 
