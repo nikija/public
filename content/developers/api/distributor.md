@@ -112,7 +112,8 @@ Initial call used to obtain all static data about hotel relevant for a booking w
             "SpaceType": "Room"
         }
     ],
-    "TermsAndConditionsUrl": "https://website.com/terms-and-conditions.html"
+    "TermsAndConditionsUrl": "https://website.com/terms-and-conditions.html",
+    "ImageBaseUrl": "https://cdn.demo.mews.li/Media/Image"
 }
 ```
 
@@ -132,6 +133,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | `Products` | array of [Product](#product) | required | All products orderable with rooms. |
 | `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
 | `TermsAndConditionsUrl` | string | optional | URL of hotel's terms and conditions. |
+| `ImageBaseUrl` | string | required | Base URL of images. To obtain URL of an image, use `[ImageBaseUrl]/Media/Image/[ImageId]?Width=640&Height=480`. The `Width` and `Height` parameters are optional. |
 
 ##### Country
 
