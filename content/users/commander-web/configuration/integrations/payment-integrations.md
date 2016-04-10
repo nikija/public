@@ -14,7 +14,7 @@ Hotel can have only 1 payment gateway integration enabled.
 
 ## Set up
 
-### Set up merchant account
+### Set up `Merchant` account
 
 It is very easy to set up `Merchant` account for a hotel - just create a `Merchant` integration and enable it.
 

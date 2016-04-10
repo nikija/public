@@ -72,9 +72,7 @@ Please make sure all of the below roles are set up - you will usually have to as
 - Merchant Recurring role
 - Zero Auth (if hotel wants to be able to charge credit cards which are not chargeable at the moment they are created, e.g. virtual)
 
-Also, the account needs to have Client Side Encryption Key generated (see below)
-![Adyen screen](Images/Adyen%20setup.png)
-Make sure that the `API Clientside Encryption Payments role` is **active** otherwise you won't be able to integrate!
+Also, the account may need to have Client Side Encryption Key generated. Make sure that the `API Clientside Encryption Payments role` is **active** otherwise you won't be able to integrate!
 
 ### Setup account
 
