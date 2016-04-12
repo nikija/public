@@ -45,7 +45,8 @@ Once a contract with Adyen is signed, basic setup of the Adyen account is config
 	- Copy `Username` in Adyen into `Username` in Mews
 	- Copy `Password` in Adyen into `Password` in Mews
 		- Usually you have to generate a new password and copy it *and save the dialogue with the new password* (without this, it will still have the old password you don't know) and paste the password to MEWS integration.
-- Add new `Merchant Account`s for every account in Adyen.
+	- Make sure in Adyen that all merchant accounts are set to **Manual** capture (Settings -> Merchant Settings -> Capture = Manual).
+- Add new `Merchant Account` in MEWS for every account in Adyen.
 	- Fill in the Settlement currency and account name (same as in Adyen - you will find it under "Accounts" as "Account Code")
 	- After saving, you can see generated fields `UserName` and `Password`, which are used to set up `Notifications`.
 
@@ -72,7 +73,9 @@ Please make sure all of the below roles are set up - you will usually have to as
 - Merchant Recurring role
 - Zero Auth (if hotel wants to be able to charge credit cards which are not chargeable at the moment they are created, e.g. virtual)
 
-Also, the account may need to have Client Side Encryption Key generated. Make sure that the `API Clientside Encryption Payments role` is **active** otherwise you won't be able to integrate!
+Also, the account may need to have Client Side Encryption Key generated. Make sure that the `API Clientside Encryption Payments role` is **active** otherwise you won't be able to integrate! Setting screen:
+
+![Settings](../../../../img/Adyen%20setup.png)
 
 ### Setup account
 
