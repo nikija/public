@@ -100,9 +100,17 @@ Mews will automatically add its Data and Privacy Policies to your hotel policies
 
 If you would like to import Company Profiles and Guest Bookings into Mews from your previous system, we have built a custom import module.
 
-Download the excel template from this link. Once you open the Excel template you will see 2 tabs:
+Download the excel template from this link. Once you open the Excel template you will see 2 tabs. Do not amend/delete any created column or fields. You may only insert the data:
 1. Companies: if you want to import Company Profiles, you can fill in the first tab with as many details you have of the companies. All columns are explained in the notes field in row 1 on each field. The minimum requirement is a Company Name, withouth which we cannot create an profile (logically)
 2. Customers: if you want to create Customer Profiles, you can fill in all fields up to Internal Guest Notes. Importing a file with data completed in all fields up to the Internal Guest Notes, will result in an import and creation of Guest Profiles with all fields pre-filled. Note that as you are starting with a clean system, so be selective about the data that you import, in order not to pollute the system with data that is not up to date.
-**Reservations Import** if you complete any columns in tab 2 from Arrival Date forward, we will also create the accompanying bookings, and link them to the Customer Profiles you just created.
+**Reservations Import** if you complete any columns in tab 2 from Arrival Date forward, we will also create the accompanying bookings, and link them to the Customer Profiles you just created. Comments to some of the columns:
+
+- Total price reflects total price paid upon departure.
+- Allocated Room Category, Allocated Rate, Travel Agency - must be have EXACTLY the same format and name as it has in a system.
+- Group Code: In case you have a group of several reservation that need to be under the same group-code, all of those bookings should contain the same code. You will be also to search by this number in Mews
+- Make sure that you have correct date and number format 
+- Every column has a tooltip marked with in a red corner, so you may read more in depth explanation.
 
 **NOTE**: when filling in the file, you **MUST** follow the formatting as described in the notes field of each column. If there is any error the import will fail, and we will ask you to update it.
+
+**NOTE2**: If you import guest profiles and the guest profile contains an e-mail address, we will (at the time of import) send an invitation e-mail to the guest asking them to complete their profile. If you do not wish for this to happen, then do NOT include the e-mail in the profile.
