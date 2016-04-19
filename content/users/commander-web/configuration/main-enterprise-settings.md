@@ -102,11 +102,14 @@ If you would like to import Company Profiles and Guest Bookings into Mews from y
 
 Download the excel template from this link. Once you open the Excel template you will see 2 tabs. Do not amend/delete any created column or fields. You may only insert the data:
 
-### Companies: if you want to import Company Profiles, you can fill in the first tab with as many details you have of the companies. All columns are explained in the notes field in row 1 on each field. The minimum requirement is a Company Name, withouth which we cannot create an profile (logically)
+### Companies
+If you want to import Company Profiles, you can fill in the first tab with as many details you have of the companies. All columns are explained in the notes field in row 1 on each field. The minimum requirement is a Company Name, withouth which we cannot create an profile (logically)
 
-### Customers: if you want to create Customer Profiles, you can fill in all fields up to Internal Guest Notes. Importing a file with data completed in all fields up to the Internal Guest Notes, will result in an import and creation of Guest Profiles with all fields pre-filled. Note that as you are starting with a clean system, so be selective about the data that you import, in order not to pollute the system with data that is not up to date.
+### Customers
+If you want to create Customer Profiles, you can fill in all fields up to Internal Guest Notes. Importing a file with data completed in all fields up to the Internal Guest Notes, will result in an import and creation of Guest Profiles with all fields pre-filled. Note that as you are starting with a clean system, so be selective about the data that you import, in order not to pollute the system with data that is not up to date.
 
-### Reservations Import if you complete any columns in tab 2 from Arrival Date forward, we will also create the accompanying bookings, and link them to the Customer Profiles you just created. Comments to some of the columns:
+### Reservations Import
+If you complete any columns in tab 2 from Arrival Date forward, we will also create the accompanying bookings, and link them to the Customer Profiles you just created. Comments to some of the columns:
 
 - Total price reflects total price paid upon departure.
 - Allocated Room Category, Allocated Rate, Travel Agency - must be have EXACTLY the same format and name as it has in a system.
