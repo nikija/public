@@ -1,0 +1,19 @@
+### Employee Privileges
+
+Once you create new employee you will always need to select a combination of employee privileges relevant to his/her duties. 
+Below you may find breif description of each previlege:
+
+- Manage Employees: Manage and create inferior users & assign workplace privilages
+- Configure Enterprise: Enables the employee to set up the general settings of the hotel (e.g. Emails, Editable History Window)
+- Configure Services: Enables employee to manage services.
+- Configure Spaces: This privilege enables to modification of spaces. It also allows placing rooms in Out Of Order.
+- Issue Invoices: Rights to create invoices with future payment date.
+- Manage Companies: Enables creation and management of Company Profiles
+- Manage Customers: Enables creation and management of Customer Profiles
+- Manage Reservations: Rights to amend details of a booking.
+- Manage Travel Agencies: Enables creation and management of Travel Agent Profiles
+- Modify Closed Bills: Right to modify bill address, or assign to company or travel agent after its been created.
+- Overbook Services: Right to create bookings, even when the room type is fully booked.
+- Perform Housekeeping: Right to change room status clean/dirty/etc
+- Receive Customer Messages: Right to receive customer messages from Navigator
+
