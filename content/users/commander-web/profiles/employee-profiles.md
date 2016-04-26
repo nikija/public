@@ -27,3 +27,22 @@ Should you have forgotten your password, visit http://www.mews.li and press the 
 
 Customers are sent login details via their confirmation e-mail. Once their profile is created in the system, their login details are sent to the e-mail address provided.
 Should you have a customer asking to reset their password or stating that they did not receive their login details, you can visit http://www.mews.li and press the button "Forgot Password." The system will prompt you to input the guest e-mail address and will resend the password.
+
+### Employee Privileges
+
+Once you create new employee, you will always need to select a combination of employee privileges relevant to his/her duties. 
+Below you may find a breif description of each privilege:
+
+- Manage Employees: Manage and create inferior users & assign workplace privilages
+- Configure Enterprise: Enables the employee to set up the general settings of the hotel (e.g. Emails, Editable History Window)
+- Configure Services: Enables employee to manage services.
+- Configure Spaces: This privilege enables to modification of spaces. It also allows placing rooms in Out Of Order.
+- Issue Invoices: Rights to create invoices with future payment date.
+- Manage Companies: Enables creation and management of Company Profiles
+- Manage Customers: Enables creation and management of Customer Profiles
+- Manage Reservations: Rights to amend details of a booking.
+- Manage Travel Agencies: Enables creation and management of Travel Agent Profiles
+- Modify Closed Bills: Right to modify bill address, or assign to company or travel agent after its been created.
+- Overbook Services: Right to create bookings, even when the room type is fully booked.
+- Perform Housekeeping: Right to change room status clean/dirty/etc
+- Receive Customer Messages: Right to receive customer messages from Navigator
