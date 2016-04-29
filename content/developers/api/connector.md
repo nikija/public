@@ -380,6 +380,9 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
         "Expiration": "12/2016",
         "Name": "John Smith"
     },
+    "Category": {
+        "Code": "CCP"
+    },
     "ReceiptIdentifier": "123456",
     "Notes": "Terminal A"
 }
@@ -391,6 +394,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | `CustomerId` | string | required | Unique identifier of the customer. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment payment. |
 | `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
+| `Category` | [Accounting Category](#accounting-category) | optional | Accounting category to be assigned to the payment. |
 | `ReceiptIdentifier` | string | optional | Identifier of the payment receipt. |
 | `Notes` | string | optional | Additional payment notes. |
 
@@ -402,6 +406,13 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | `Number` | string | required | Obfuscated credit card number. At most first six digits and last four digits can be specified, the digits in between should be replaced with `*`. It is possible to provide even more obfuscated number or just last four digits. **Never provide full credit card number**. For example `411111******1111`. |
 | `Expiration` | string | required | Expiration of the credit card in format `MM/YYYY`, e.g. `12/2016` or `04/2017`. |
 | `Name` | string | required | Name of the card holder. |
+
+##### Accounting Category
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Code` | string | required | Code of the accounting category in MEWS. |
+| `Name` | string | optional | Name of the category, used if no category is matched using the code. |
 
 #### Response
 
