@@ -23,7 +23,6 @@ You have the possibility to set rate restrictions, which will affect the availab
 
 - New Length Restriction: If you wish to set a minimum or maximum length of a booking, here you can select the amount of days for which you would like to apply this. For example, if you set a minimum length of stay as 3 nights, it will only offer this rate to people who select 3 nights or longer. It is important that you select "Only For Current Rate," otherwise it will apply this rule to all rates.
 - New Earliness Restriction: You can create rates that are only available up to X nights before arrival. So, for example, you can set this as 21 days, and in that case, the rate will only be bookable 21 days and more in advance. It is important that you select "Only For Current Rate" otherwise it will apply this rule to all rates.
-- New Amount Restriction: In order to prevent you accidentally selling rates that are too low, you can set a minimum amount, and the system will not allow you to lower any rate below this point.
 - New Date Restriction: If you would like to create a specific period of time when you would not like the rate to be bookable or when you would like to create a specific period of time when you would only like to offer this special rate.
 
 ## Setting Dependent Rates (Floating Rates)
