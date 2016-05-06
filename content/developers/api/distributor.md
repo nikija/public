@@ -571,7 +571,7 @@ Braintree requires a special client token to be generated for each transaction. 
 
 ```json
 {
-    "ReservationGroupId": "f6fa7e62-eb22-4176-bc49-e521d0524dee",
+    "Id": "f6fa7e62-eb22-4176-bc49-e521d0524dee",
     "CustomerId": "7ac6ca0d-7c08-4ab1-8da8-9b44979d8855",
     "Reservations": [
         {
@@ -605,7 +605,7 @@ Braintree requires a special client token to be generated for each transaction. 
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `ReservationGroupId` | string | required | Unique identifier of the created reservation group. |
+| `Id` | string | required | Unique identifier of the created reservation group. |
 | `CustomerId` | string | required | Unique identifier of customer who created reservation group. |
 | `Reservations` | array of [Reservation](#reservation) | required | The created reservations in group. |
 | `TotalCost` | [CurrencyValues](#currencyvalues) | required | Total cost of the whole group. |
