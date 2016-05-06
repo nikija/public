@@ -14,6 +14,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get Availability](#get-availability)
     - [Get Reservations Pricing](#get-reservations-pricing)
     - [Get Braintree Client Token](#get-braintree-client-token)
+    - [Get Adyen Client Token](#get-adyen-client-token)
     - [Create Reservation Group](#create-reservation-group)
     - [Get Reservation Group](#get-reservation-group)
 - [Environments](#environments)
@@ -482,6 +483,34 @@ Braintree requires a special client token to be generated for each transaction. 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `ClientToken` | string | required | Braintree client token generated on server. |
+
+### Get Adyen Client Token
+
+Adyen requires a server utc time to be used for client-side credit card encryption. In case the hotel uses Adyen as a payment gateway, you need to obtain it to before processing payment.
+
+#### Request `[PlatformAddress]/api/distributor/v1/payments/getAdyenClientToken`
+
+```json
+{
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `HotelId` | string | required | Unique identifier of hotel. |
+
+#### Response
+
+```json
+{
+    "NowUtc": "2015-01-01T13:42:05Z"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `NowUtc` | string | required | Server time. |
 
 ### Create Reservation Group
 
