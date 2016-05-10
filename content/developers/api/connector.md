@@ -14,6 +14,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
+    - [Cancel Reservation](#cancel-reservation)
     - [Get Customer Balance](#get-customer-balance)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
@@ -280,6 +281,32 @@ Marks a reservation as `Started` (= checked in). Succeeds only if all starting c
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `ReservationId` | string | required | Unique identifier of the reservation to start. |
+
+#### Response
+
+Empty object.
+
+### Cancel Reservation
+
+Cancels a reservation. Succeeds only if the reservation is cancellable
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/cancel`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "ChargeCancellationFee": true,
+    "Notes": "Cancellation through Connector API"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the reservation to cancel. |
+| `ChargeCancellationFee` | boolean | required | Whether cancellation fees should be charged according to rate conditions. |
+| `Notes` | string | required | Addiotional notes describing the cancellation. |
 
 #### Response
 
