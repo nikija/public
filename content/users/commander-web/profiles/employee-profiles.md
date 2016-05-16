@@ -33,7 +33,7 @@ Should you have a customer asking to reset their password or stating that they d
 Once you create new employee, you will always need to select a combination of employee privileges relevant to his/her duties. 
 Below you may find a breif description of each privilege:
 
-- Manage Employees: Manage and create inferior users & assign workplace privilages
+- Manage Employees: Manage and create inferior users & assign workplace privileges
 - Configure Enterprise: Enables the employee to set up the general settings of the hotel (e.g. Emails, Editable History Window)
 - Configure Services: Enables employee to manage services.
 - Configure Spaces: This privilege enables to modification of spaces. It also allows placing rooms in Out Of Order.
