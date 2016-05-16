@@ -7,6 +7,11 @@ defaults:
             path: ""
         values:
             layout: "page"
+    -
+        scope:
+            path: "status"
+        values:
+            layout: "status"
 
 markdown: kramdown
 
