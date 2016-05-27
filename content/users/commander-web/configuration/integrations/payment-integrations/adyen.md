@@ -80,7 +80,8 @@ Also, the account may need to have Client Side Encryption Key generated. Make su
 ### Setup account
 
 - Go to "Settings" > "Merchant Settings"
-- Set Capture Delay to Manual(Select merchant account, Settings -> Merchant Settings)
+- Set Capture Delay to Manual (Select merchant account, Settings -> Merchant Settings)
+![Capture delay Settings](../../../../img/AdyenCsetup.png)
 
 ### Notifications
 
