@@ -5,9 +5,10 @@
 <ul>
 {% for item in sorted %}
   {% assign subnavName = item.url | remove: ".html" %}
-  {% assign subnav = include.pages | where: "name", subnavName | size %}
+  {% assign subnavPath = subnavName | append: "/" %}
+  {% assign subnavCount = include.pages | where: "name", subnavPath | size %}
   <li>
-    {% if subnav == 1 %}
+    {% if subnavCount == 1 %}
       <span>
         {% if page.url contains subnavName %}&#9662;{% else %}&#9656;{% endif %}
       </span>
@@ -16,7 +17,7 @@
       {{ item.title }}
     </a>
     {% if page.url contains subnavName %}
-      {% include nav.html pages=include.pages basepath=subnavName %}
+      {% include nav.html pages=include.pages basepath=subnavPath %}
     {% endif %}
   </li>
 {% endfor %}
