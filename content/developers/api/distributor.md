@@ -655,7 +655,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 | `Notes` | string | optional | Additional notes. |
 | `Cost` | [CurrencyValues](#currencyvalues) | required | Total cost of the reservation. |
 
-#### Error Repsponse
+#### Error Response
 
 In case of an error caused by insufficient availability (which might have decreased since the time it was provided to the client), the error response may contain the following fields on top the standard ones:
 
