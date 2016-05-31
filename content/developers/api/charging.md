@@ -181,7 +181,7 @@ When the customer to be charged is known, the client application should use his 
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Code` | string | required | Unique code of the category (can be e.g. used to map POS categories to accounting categories in the hotel system). |
+| `Code` | string | required | Unique code of the category (can be e.g. used to map POS categories to accounting categories in MEWS). Mapped against external codes of accounting categories in MEWS.  |
 | `Name` | string | optional | Name of the category.  |
 
 #### Response
