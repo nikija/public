@@ -22,8 +22,6 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
     - [Devices](#devices)
-        - [Printers](#printers)
-        - [VisiOnline Key Cutters](#visionline-key-cutters)
 - [Environments](#environments)
     - [Demo Environment](#demo-environment)
     - [Production Environment](#production-environment)
