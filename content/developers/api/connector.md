@@ -6,39 +6,42 @@ The Connector API allows external applications to mediate communication between 
 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
-## Contents
+# Contents
 
 - [Authorization](#authorization)
-- [Application Operations](#application-operations)
-    - [Sign in](#sign-in)
-- [Space Operations](#space-operations)
-    - [Get All Spaces](#get-all-spaces)
-- [Reservation Operations](#reservation-operations)
-    - [Get All Reservations](#get-all-reservations)
-    - [Start Reservation](#start-reservation)
-    - [Process Reservation](#process-reservation)
-    - [Cancel Reservation](#cancel-reservation)
-- [Customer Operations](#customer-operations)
-    - [Get Customer Balance](#get-customer-balance)
-    - [Update Customer](#update-customer)
-    - [Add Credit Card Payment](#add-credit-card-payment)
-- [Command Operations](#command-operations)
-    - [Get All Commands](#get-all-commands)
-    - [Update Command](#update-command)
-- [Devices](#devices)
-    - [Printers](#printers)
-    - [VisiOnline Key Cutters](#visionline-key-cutters)
+- [Operations](#operations)
+    - [Application](#application)
+        - [Sign in](#sign-in)
+    - [Space](#spaces)
+        - [Get All Spaces](#get-all-spaces)
+    - [Reservations](#reservations)
+        - [Get All Reservations](#get-all-reservations)
+        - [Start Reservation](#start-reservation)
+        - [Process Reservation](#process-reservation)
+        - [Cancel Reservation](#cancel-reservation)
+    - [Customers](#customers)
+        - [Get Customer Balance](#get-customer-balance)
+        - [Update Customer](#update-customer)
+        - [Add Credit Card Payment](#add-credit-card-payment)
+    - [Commands](#commands)
+        - [Get All Commands](#get-all-commands)
+        - [Update Command](#update-command)
+        - [Devices](#devices)
+            - [Printers](#printers)
+            - [VisiOnline Key Cutters](#visionline-key-cutters)
 - [Environments](#environments)
     - [Demo Environment](#demo-environment)
     - [Production Environment](#production-environment)
 
-## Authorization
+# Authorization
 
 All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, consult the  [Demo Environment](#demo-environment) section.
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication. For more information, see the [Sign in](#sign-in) operation.
 
-## Application Operations
+# Operations
+
+## Application
 
 ### Sign in
 
@@ -602,13 +605,13 @@ Updates state of a command.
 
 Empty object.
 
-## Devices
+### Devices
 
-### Printers
+#### Printers
 
 Device type: `Printer`
 
-#### Command Data
+##### Command Data
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
@@ -619,15 +622,15 @@ Device type: `Printer`
 | `PrinterDriverName` | string | required | Name of the printer driver. |
 | `PrinterPortName` | string | required | Name of the printer port. |
 
-#### Command Result
+##### Command Result
 
 Not used.
 
-### VisiOnline Key Cutters
+#### VisiOnline Key Cutters
 
 Device type: `VisiOnlineKeyCutter`
 
-#### Command Data
+##### Command Data
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
@@ -641,13 +644,13 @@ Device type: `VisiOnlineKeyCutter`
 | `KeyCount` | number | required | Count of keys to cut. |
 | `Reservation` | [Reservation](#reservation) | optional | Additional information about the reservation. |
 
-#### Command Result
+##### Command Result
 
 Not used.
 
-## Environments
+# Environments
 
-#### Demo Environment
+## Demo Environment
 
 This environment is meant to be used during implementation of the client applications.
 
@@ -660,7 +663,7 @@ The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of t
 - **Email** - `connector-api@mews.li`
 - **Password** - `connector-api`
 
-#### Production Environment
+## Production Environment
 
 - **Platform Address** - `https://www.mews.li`
 - **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
