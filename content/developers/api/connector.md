@@ -424,7 +424,7 @@ Returns all open items of the specified customer, i.e. all unpaid items and all 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the item. |
-| `OrderId` | string | optional | Unique identifier of the order the item belongs to. |
+| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
