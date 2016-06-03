@@ -17,6 +17,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
     - [Get Customer Balance](#get-customer-balance)
+    - [Get Customers Open Items](#get-customers-open-items)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
     - [Get All Commands](#get-all-commands)
@@ -367,6 +368,67 @@ Returns current open balance of a customer. If the balance is positive, the cust
 | `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
 | `Value` | number | required | Amount in the currency. |
 
+### Get Customers Open Items
+
+Returns all open items of the specified customer, i.e. all unpaid items and all deposited payments. Sum of the open items is the balance of the customer.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getOpenItems`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Unique identifier of the customer. |
+
+#### Response
+
+```json
+{
+    "Items": [
+        {
+            "Amount": {
+                "Currency": "EUR",
+                "Value": -100
+            },
+            "ConsumptionUtc": "2016-05-25T15:56:54Z",
+            "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
+            "Name": "Cash Payment EUR",
+            "OrderId": null
+        },
+        {
+            "Amount": {
+                "Currency": "EUR",
+                "Value": 150
+            },
+            "ConsumptionUtc": "2016-05-25T18:00:00Z",
+            "Id": "ad679ead-6e8f-409b-85fd-1b0f73db393e",
+            "Name": "Night 25.5.2016",
+            "OrderId": "e4840894-42a1-4848-85b5-9eba71e6ffb5"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Items` | array of [Item](#item) | required | The open items. |
+
+##### Item
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the item. |
+| `OrderId` | string | optional | Unique identifier of the order the item belongs to. |
+| `Name` | string | required | Name of the item. |
+| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
+
 ### Update Customer
 
 Updates personal information of a customer.
@@ -440,7 +502,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Unique identifier of the customer. |
-| `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment payment. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment. |
 | `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
 | `Category` | [Accounting Category](#accounting-category) | optional | Accounting category to be assigned to the payment. |
 | `ReceiptIdentifier` | string | optional | Identifier of the payment receipt. |
