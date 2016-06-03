@@ -6,42 +6,35 @@ The Connector API allows external applications to mediate communication between 
 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
-# Contents
+## Contents
 
 - [Authorization](#authorization)
 - [Operations](#operations)
-    - [Application](#application)
-        - [Sign in](#sign-in)
-    - [Spaces](#spaces)
-        - [Get All Spaces](#get-all-spaces)
-    - [Reservations](#reservations)
-        - [Get All Reservations](#get-all-reservations)
-        - [Start Reservation](#start-reservation)
-        - [Process Reservation](#process-reservation)
-        - [Cancel Reservation](#cancel-reservation)
-    - [Customers](#customers)
-        - [Get Customer Balance](#get-customer-balance)
-        - [Update Customer](#update-customer)
-        - [Add Credit Card Payment](#add-credit-card-payment)
-    - [Commands](#commands)
-        - [Get All Commands](#get-all-commands)
-        - [Update Command](#update-command)
-        - [Devices](#devices)
-            - [Printers](#printers)
-            - [VisiOnline Key Cutters](#visionline-key-cutters)
+    - [Sign in](#sign-in)
+    - [Get All Spaces](#get-all-spaces)
+    - [Get All Reservations](#get-all-reservations)
+    - [Start Reservation](#start-reservation)
+    - [Process Reservation](#process-reservation)
+    - [Cancel Reservation](#cancel-reservation)
+    - [Get Customer Balance](#get-customer-balance)
+    - [Update Customer](#update-customer)
+    - [Add Credit Card Payment](#add-credit-card-payment)
+    - [Get All Commands](#get-all-commands)
+    - [Update Command](#update-command)
+    - [Devices](#devices)
+        - [Printers](#printers)
+        - [VisiOnline Key Cutters](#visionline-key-cutters)
 - [Environments](#environments)
     - [Demo Environment](#demo-environment)
     - [Production Environment](#production-environment)
 
-# Authorization
+## Authorization
 
 All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, consult the  [Demo Environment](#demo-environment) section.
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication. For more information, see the [Sign in](#sign-in) operation.
 
-# Operations
-
-## Application
+## Operations
 
 ### Sign in
 
@@ -84,8 +77,6 @@ Signs in the client application to MEWS using a token that you would normally us
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the enterprise. |
 | `Name` | string | required | Name of the enterprise. |
-
-## Spaces
 
 ### Get All Spaces
 
@@ -158,8 +149,6 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Id` | string | required | Unique identifier of the category. |
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
-
-## Reservations
 
 ### Get All Reservations
 
@@ -346,8 +335,6 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 
 Empty object.
 
-## Customers
-
 ### Get Customer Balance
 
 Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
@@ -487,8 +474,6 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 ```
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
-
-## Commands
 
 ### Get All Commands
 
