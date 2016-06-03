@@ -631,9 +631,9 @@ Device type: `VisiOnlineKeyCutter`
 
 Not used.
 
-# Environments
+## Environments
 
-## Demo Environment
+### Demo Environment
 
 This environment is meant to be used during implementation of the client applications.
 
@@ -646,7 +646,7 @@ The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of t
 - **Email** - `connector-api@mews.li`
 - **Password** - `connector-api`
 
-## Production Environment
+### Production Environment
 
 - **Platform Address** - `https://www.mews.li`
 - **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
