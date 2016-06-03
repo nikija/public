@@ -9,15 +9,20 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 ## Contents
 
 - [Authorization](#authorization)
-- [Operations](#operations)
+- [Application Operations](#application-operations)
     - [Sign in](#sign-in)
+- [Space Operations](#space-operations)
     - [Get All Spaces](#get-all-spaces)
+- [Reservation Operations](#reservation-operations)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
+    - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
+- [Customer Operations](#customer-operations)
     - [Get Customer Balance](#get-customer-balance)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
+- [Command Operations](#command-operations)
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
 - [Devices](#devices)
@@ -33,7 +38,7 @@ All operations of the API require `AccessToken` to be present in the request. In
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication. For more information, see the [Sign in](#sign-in) operation.
 
-## Operations
+## Application Operations
 
 ### Sign in
 
@@ -76,6 +81,8 @@ Signs in the client application to MEWS using a token that you would normally us
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the enterprise. |
 | `Name` | string | required | Name of the enterprise. |
+
+## Space Operations
 
 ### Get All Spaces
 
@@ -148,6 +155,8 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Id` | string | required | Unique identifier of the category. |
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
+
+## Reservation Operations
 
 ### Get All Reservations
 
@@ -286,6 +295,28 @@ Marks a reservation as `Started` (= checked in). Succeeds only if all starting c
 
 Empty object.
 
+### Process Reservation
+
+Marks a reservation as `Processed` (= checked out). Succeeds only if all processing conditions are met (the reservation has the `Started` state, all customer bills are closed etc).
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/process`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the reservation to process. |
+
+#### Response
+
+Empty object.
+
 ### Cancel Reservation
 
 Cancels a reservation. Succeeds only if the reservation is cancellable
@@ -311,6 +342,8 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 #### Response
 
 Empty object.
+
+## Customer Operations
 
 ### Get Customer Balance
 
@@ -451,6 +484,8 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 ```
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
+
+## Command Operations
 
 ### Get All Commands
 
