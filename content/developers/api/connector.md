@@ -12,7 +12,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Operations](#operations)
     - [Application](#application)
         - [Sign in](#sign-in)
-    - [Space](#spaces)
+    - [Spaces](#spaces)
         - [Get All Spaces](#get-all-spaces)
     - [Reservations](#reservations)
         - [Get All Reservations](#get-all-reservations)
@@ -85,7 +85,7 @@ Signs in the client application to MEWS using a token that you would normally us
 | `Id` | string | required | Unique identifier of the enterprise. |
 | `Name` | string | required | Name of the enterprise. |
 
-## Space Operations
+## Spaces
 
 ### Get All Spaces
 
@@ -159,7 +159,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
 
-## Reservation Operations
+## Reservations
 
 ### Get All Reservations
 
@@ -346,7 +346,7 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 
 Empty object.
 
-## Customer Operations
+## Customers
 
 ### Get Customer Balance
 
@@ -488,7 +488,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
 
-## Command Operations
+## Commands
 
 ### Get All Commands
 
