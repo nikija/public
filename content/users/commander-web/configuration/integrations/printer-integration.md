@@ -12,7 +12,7 @@ title: Printer Integration
 
 ### Step 3 
 
-Setup New Printer Integration**: In the Mews Commander open the settings, and select the “Enterprise Integrations” and follow these steps:
+**Setup New Printer Integration**: In the Mews Commander open the settings, and select the “Enterprise Integrations” and follow these steps:
 
 - Select to create a “New Printer Integrations” from the possible integrations list.
 - Set the name to “Printer List” and enable the integration
