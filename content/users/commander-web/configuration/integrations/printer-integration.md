@@ -33,7 +33,7 @@ title: Printer Integration
 
 ### Step 5
 
-Set the token into the Mews Connector:
+**Set the token into the Mews Connector**:
 
 - Return to the previously installed Mews Connector Application.
 - Paste the token in the application.
