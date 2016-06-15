@@ -135,6 +135,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used.
 | adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
 | adwordsConversionId | `number` | null | Google AdWords conversion id (9 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
+| adwordsConversionLabel | `string` | null | Google AdWords conversion label to be sent when a booking is made.
 | showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
