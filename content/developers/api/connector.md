@@ -394,7 +394,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 {
     "Customers: [
         {
-            "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+            "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
             "Items": [
                 {
                     "Amount": {
