@@ -81,7 +81,7 @@ Signs in the client application to MEWS using a token that you would normally us
 
 Returns all spaces of an enterprise associated with the connector integration.
 
-#### Request `[PlatformAddress]/api/connector/v1/spaces/getAll`
+#### Request `[PlatformAddress]/api/connector/v1/spaces/getAll`g
 
 ```json
 {
@@ -377,39 +377,46 @@ Returns all open items of the specified customer, i.e. all unpaid items and all 
 ```json
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+    "CustomerIds": [
+        "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+    ]
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerId` | string | required | Unique identifier of the customer. |
+| `CustomerIds` | array of string | required | Unique identifiers of the customers. |
 
 #### Response
 
 ```json
 {
-    "Items": [
+    "Customers: [
         {
-            "Amount": {
-                "Currency": "EUR",
-                "Value": -100
-            },
-            "ConsumptionUtc": "2016-05-25T15:56:54Z",
-            "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
-            "Name": "Cash Payment EUR",
-            "OrderId": null
-        },
-        {
-            "Amount": {
-                "Currency": "EUR",
-                "Value": 150
-            },
-            "ConsumptionUtc": "2016-05-25T18:00:00Z",
-            "Id": "ad679ead-6e8f-409b-85fd-1b0f73db393e",
-            "Name": "Night 25.5.2016",
-            "OrderId": "e4840894-42a1-4848-85b5-9eba71e6ffb5"
+            "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
+            "Items": [
+                {
+                    "Amount": {
+                        "Currency": "EUR",
+                        "Value": -100
+                    },
+                    "ConsumptionUtc": "2016-05-25T15:56:54Z",
+                    "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
+                    "Name": "Cash Payment EUR",
+                    "OrderId": null
+                },
+                {
+                    "Amount": {
+                        "Currency": "EUR",
+                        "Value": 150
+                    },
+                    "ConsumptionUtc": "2016-05-25T18:00:00Z",
+                    "Id": "ad679ead-6e8f-409b-85fd-1b0f73db393e",
+                    "Name": "Night 25.5.2016",
+                    "OrderId": "e4840894-42a1-4848-85b5-9eba71e6ffb5"
+                }
+            ]
         }
     ]
 }
@@ -417,6 +424,13 @@ Returns all open items of the specified customer, i.e. all unpaid items and all 
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
+| `Customers` | array of [Customer Items](#customer-items) | required | The customers with their items. |
+
+##### Customer Items
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `CustomerId` | string | required | Unique identifier of the customer. |
 | `Items` | array of [Item](#item) | required | The open items. |
 
 ##### Item
