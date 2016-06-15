@@ -14,7 +14,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
-    - [Process Reservation](#process-reservation)
+    - [Process Reservation](#process-reservation)s
     - [Cancel Reservation](#cancel-reservation)
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
@@ -370,7 +370,7 @@ Returns current open balance of a customer. If the balance is positive, the cust
 
 ### Get Customers Open Items
 
-Returns all open items of the specified customer, i.e. all unpaid items and all deposited payments. Sum of the open items is the balance of the customer.
+Returns all open items of the specified customers, i.e. all unpaid items and all deposited payments. Sum of the open items is the balance of the customer.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/getOpenItems`
 
