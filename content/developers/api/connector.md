@@ -17,7 +17,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Process Reservation](#process-reservation)s
     - [Cancel Reservation](#cancel-reservation)
     - [Get Customer Balance](#get-customer-balance)
-    - [Get Customers Open Items](#get-customers-open-items)
+    - [Get Customers Open Items](#get-customers-open-items)c
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
     - [Get All Commands](#get-all-commands)
@@ -392,7 +392,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 
 ```json
 {
-    "Customers: [
+    "Customers": [
         {
             "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
             "Items": [
