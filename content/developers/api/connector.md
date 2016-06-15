@@ -14,10 +14,10 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Spaces](#get-all-spaces)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
-    - [Process Reservation](#process-reservation)s
+    - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
     - [Get Customer Balance](#get-customer-balance)
-    - [Get Customers Open Items](#get-customers-open-items)c
+    - [Get Customers Open Items](#get-customers-open-items)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
     - [Get All Commands](#get-all-commands)
