@@ -23,8 +23,8 @@ In the Mews Commander open the settings, and select the “Enterprise Integratio
 - Set the name to “Printer List” and enable the integration
 - Select the “printers menu to set up the individual printers
 - Select “New Printer” button. 
- - Name: this is the name that your team will see, so set it for example to “Printer Backoffice”, etc
- - Printer Name: set this to the exact name as the printer is names in the settings of your windows computer. See next slide.
+ - Name: this is the name that your team will see, so set it for example to “Printer Backoffice”, etc
+ - Printer Name: set this to the exact name as the printer is names in the settings of your windows computer.
  - Driver & Port Name – leave these fields blank
 
 ### Setup a new connector integration
