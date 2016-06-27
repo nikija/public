@@ -13,7 +13,7 @@ Once downloaded install the application.
 
 ## Install a Printer Connection
 
-### Setup a new printer integratino
+### Setup a new printer integration
 
 If you would like to connect a printer to the system, that would allow you to press "print" and instantly send the job to the printer, rather than printing via a PDF service. Then you will need to set up the following
 
