@@ -1,6 +1,18 @@
 <header class="header">
-    <img src="{{ "/img/mews-logo-small.png" | prepend: site.baseurl }}" />
-    <div>
+    <div class="header-title">
+      <img src="{{ "/img/mews-logo-small.png" | prepend: site.baseurl }}" />
       <span>Documentation</span>
     </div>
+    <script>
+      (function() {
+        var cx = '011139744692622013806:zwvxoscxnkw';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
 </header>
