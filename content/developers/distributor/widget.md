@@ -144,8 +144,8 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="ecommerce"></a>ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
 | <a name="ecommerceTrackerName"></a>ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used.
 | <a name="adwords"></a>adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
-| <a name="adwordsConversionId"></a>adwordsConversionId | `number` | null | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
-| <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | null | Google AdWords conversion label to be sent when a booking is made.
+| <a name="adwordsConversionId"></a>adwordsConversionId | `number` | `null` | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
+| <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | `null` | Google AdWords conversion label to be sent when a booking is made.
 | <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | <a name="competitors"></a>competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
