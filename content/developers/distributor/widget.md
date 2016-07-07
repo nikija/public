@@ -307,6 +307,10 @@ You can use also get those trackings as page views with different url hashes by 
 
 You can enable ecommerce tracking by setting [`ecommerce`](#ecommerce) option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
 
+#### Adwords
+
+You can enable AdWords conversion tracking by setting [`adwords`](#adwords) option to `true` and providing [`adwordsConversionId`](#adwordsConversionId). The conversion tracking will happen asynchronously every time a booking is made.
+
 #### Multiple trackers
 
 When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used.
