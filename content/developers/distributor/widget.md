@@ -77,20 +77,30 @@ Mews.Distributor({
 
     // optionals
     openElements: '',
-    language: 'en-US',
-    currency: 'EUR',
+    language: null,
+    currency: null,
     endDate: null,
     startDate: null,
-    voucherCode: '',
+    voucherCode: null,
+    adultCount: 2,
+    childCount: 0,
     rooms: null,
-    showRateCompare: false,
-    competitors: null,
-    ecommerce: false,
     hashEvents: false,
-    ecommerceTrackerName: null,
     gaTrackerName: null,
+    ecommerce: false,
+    ecommerceTrackerName: null,
     adwords: false,
     adwordsConversionId: null,
+    adwordsConversionLabel: null,
+    hideSpecialRequests: false,
+    showRateCompare: false,
+    competitors: [
+        'Booking.com',
+        'Expedia.com',
+        'HRS.com',
+    ],
+
+    // callbacks
     onOpened: function(distributor) { },
     onClosed: function(distributor) { },
     onLoaded: function(distributor) { },
@@ -98,7 +108,6 @@ Mews.Distributor({
 
     // theme
     theme: {
-        fontFamily: null
         primaryColor: null
     }
 }, function(distributor) {
@@ -120,7 +129,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 
 | Name | Type | Default value | Description |
 | --- | --- | --- | --- |
-| hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
+| <a name="hotelId"></a>hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
 | openElements | `string` | `''` | List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example. <br><br> The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization. |
 | language | `string` | `null` | Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
 | currency | `string` | `null` | Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander. Invalid value will fallback to currency of default rate of your hotel.
@@ -172,7 +181,6 @@ Distributor Edge has all styles written in javascript and bundled into the scrip
 
 | Name | Type | Description
 | --- | --- | --- |
-| fontFamily | `string` | Name of the font to use, same as the CSS value `font-family`.
 | primaryColor | `string` | Value for primary color. Accepted are all possible denominations of color in CSS, except explicit color names (i.e 'red' will not work).
 
 ### API
@@ -220,7 +228,9 @@ Sets Distributor to the third step (`Rates`) as if you selected a room on the se
 
 ### Deeplinks
 
-Distributor recognizes a set of parameteres passed to it in URL query. This allows you to deeplink into booking engine from other websites. Those parameters are:
+Distributor recognizes a set of parameteres passed to it in URL query. This allows you to deeplink into booking engine from other websites. **Important: This should not be used as a standard way to open Distributor from your own website**
+
+Recognized parameters are:
 
 | Name | Description
 | --- | --- |
@@ -262,24 +272,37 @@ Payement gateway is used to safely collect information about customer's credit c
 
 - [Braintree](https://www.braintreepayments.com/)
 - [Adyen](https://www.adyen.com/home)
-- Mews Payments
+- Mews Merchant
 
 Using payment gateway is not mandatory altough, reservations can be created even without providing credit card information.
 
 **Important:**
 PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info, which is happening when using Braintree or Adyen gateway.
 
+#### Mews Merchant
+
+When using the Mews Merchant gateway integration in Distributor on your website, the customer will be redirected to a mirroring Distributor hosted at https://wwww.mews.li/ just before entering payment details. This is required when using the Mews Merchant. After booking is finished or when closing the Distributor, the customer will be redirected back to your website.
+
 ### Google Analytics
 
-If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` - then Distributor will automatically use it for sending events. Tracked events are:
-- `Opened` - the Distributor was opened
-- `Dates selected` - both start and end dates were selected
-- `Room selected` - a room was selected by clicking on 'Show Rates' button, its name is send as action argument
-- `Booking finished` - a booking was finished by sending out filled checkout form
+If you have Google Analytics configured on your website using standard naming convention for global variable holding its object - `ga` - then Distributor will automatically use it for sending events. Otherwise, if you use a named tracker, you can provide a name of your tracker with [`gaTrackerName`](#gaTrackerName) option to Distributor. Tracked events are:
+- `Loaded` - A website with Distributor was loaded.
+- `Opened` - The Distributor was opened.
+- `Closed` - The Distributor was closed.
+- `Step dates` - A dates (first) step was displayed.
+- `Step rooms` - A rooms (second) step was displayed.
+- `Step rates` - A rates (third) step was displayed.
+- `Step summary` - A summary (fourth) step was displayed.
+- `Step checkout` - A checkout (fifth) step was displayed.
+- `Step confirmation` - A confirmation page was displayed.
+- `Offered dates selected` - Alternative dates when there is no availability selected.
+- `Booking finished` - A booking was made.
 
 You can use also get those trackings as page views with different url hashes by setting `hashEvents` to `true`. Just be aware that this can actually mess up with your website if you're already using url hashes for routing!
 
-Also, you can enable ecommerce tracking by setting `ecommerce` option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
+#### Ecommerce
+
+You can enable ecommerce tracking by setting `ecommerce` option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
 
 #### Multiple trackers
 
