@@ -124,7 +124,7 @@ Returns all spaces of an enterprise associated with the connector integration.
     ]
 }
 ```
-
+c
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Spaces` | array of [Space](#space) | required | The spaces of the enterprise. |
@@ -238,11 +238,18 @@ Returns all reservations that collide with the specified interval.
 | `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
 | `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
 | `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
+| `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
+| `RequestedCategoryId` | string | required | Identifier of the requested space category. |
+| `AssignedCategoryId` | string | required | Identifier of the assigned space category (differs from requested e.g. when upgraded). |
 | `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
 | `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
+| `CompanyId` | string | optional | Identifier of the company on behalf of which the reservation was made. |
 | `TravelAgencyId` | string | optional | Identifier of the travel agency that mediated the reservation. |
+| `RateId` | string | required | Identifier of the reservation rate. |
+| `AdultCount` | number | required | Count of adults the reservation was booked for. |
+| `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
 
@@ -253,9 +260,12 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
+| `Gender` | string | optional | Gender of the customer (`Male` or `Female`). |
+| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
+| `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
-| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
+| `CategoryId` | string | optional | Unique identifier of the customer category. |
 
 ##### ReservationGroup
 
