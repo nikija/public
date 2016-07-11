@@ -381,7 +381,9 @@ Returns current open balance of a customer. If the balance is positive, the cust
 ```json
 {
     "Currency": "EUR",
-    "Value": 100
+    "Value": 100,
+    "Tax": null,
+    "TaxRate": null
 }
 ```
 
@@ -389,8 +391,10 @@ Returns current open balance of a customer. If the balance is positive, the cust
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
-| `Value` | number | required | Amount in the currency. |
+| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
+| `Value` | number | required | Amount in the currency (including tax if taxed). |
+| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
+| `Tax` | number | optional | Tax value in case the item is taxed. |
 
 ### Get Customers Open Items
 
