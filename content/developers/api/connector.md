@@ -168,6 +168,7 @@ Returns all reservations that collide with the specified interval.
 | `AccessToken` | string | required | Access token of the client application. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
+| `LoadItems` | bool | optional | Whether the reservation items should be loaded. |
 
 #### Response
 
@@ -252,6 +253,7 @@ Returns all reservations that collide with the specified interval.
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
+| `Items` | array of [Item](#items) | required | Revenue items related to the reservation, loaded only if the `LoadItems` is specified in the parameters. |
 
 ##### Customer
 
@@ -260,12 +262,24 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
+| `Title` | string | optional | Title prefix of the customer (`Mister`, `Miss` or `Misses`). |
 | `Gender` | string | optional | Gender of the customer (`Male` or `Female`). |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
 | `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
 | `CategoryId` | string | optional | Unique identifier of the customer category. |
+| `Address` | [Address](#address) | required | Address of the customer. |
+
+##### Address
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Line1` | string | optional | First line of the address. |
+| `Line2` | string | optional | Second line of the address. |
+| `City` | string | optional | The city. |
+| `PostalCode` | string | optional | Postal code. |
+| `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
 
 ##### ReservationGroup
 
