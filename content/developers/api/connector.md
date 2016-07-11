@@ -124,7 +124,7 @@ Returns all spaces of an enterprise associated with the connector integration.
     ]
 }
 ```
-c
+
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Spaces` | array of [Space](#space) | required | The spaces of the enterprise. |
