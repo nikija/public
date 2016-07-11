@@ -281,6 +281,25 @@ Returns all reservations that collide with the specified interval.
 | `PostalCode` | string | optional | Postal code. |
 | `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
 
+##### Item
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the item. |
+| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
+| `Name` | string | required | Name of the item. |
+| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
+
+##### Currency Value
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
+| `Value` | number | required | Amount in the currency (including tax if taxed). |
+| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
+| `Tax` | number | optional | Tax value in case the item is taxed. |
+
 ##### ReservationGroup
 
 | Property | Type | | Description |
@@ -387,14 +406,7 @@ Returns current open balance of a customer. If the balance is positive, the cust
 }
 ```
 
-##### Currency Value
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
-| `Value` | number | required | Amount in the currency (including tax if taxed). |
-| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
-| `Tax` | number | optional | Tax value in case the item is taxed. |
+A [Currency Value](#currency-value).
 
 ### Get Customers Open Items
 
@@ -460,16 +472,6 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | --- | --- | --- | --- |
 | `CustomerId` | string | required | Unique identifier of the customer. |
 | `Items` | array of [Item](#item) | required | The open items. |
-
-##### Item
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the item. |
-| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
-| `Name` | string | required | Name of the item. |
-| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
-| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 
 ### Update Customer
 
