@@ -140,9 +140,10 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="childCount"></a>childCount | `number` | `0` | Default value for a child count in rate selection.
 | <a name="rooms"></a>rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier.
 | <a name="hashEvents"></a>hashEvents | `boolean` | `false` | Enables Google Analytics page view tracking with url hashes.
-| <a name="gaTrackerName"></a>gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking.
+| <a name="analyticsTrackingId"></a>analyticsTrackingId | `string` | `null` | A Google Analytics tracking id is string associated with your tracker in format `UA-XXXX-Y`. More about how to find it is [here](https://support.google.com/analytics/answer/1032385?hl=en).
+| <a name="gaTrackerName"></a>gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used.
 | <a name="ecommerce"></a>ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
-| <a name="ecommerceTrackerName"></a>ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking.
+| <a name="ecommerceTrackerName"></a>ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used.
 | <a name="adwords"></a>adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
 | <a name="adwordsConversionId"></a>adwordsConversionId | `number` | `null` | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
 | <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | `null` | Google AdWords conversion label to be sent when a booking is made.
@@ -288,7 +289,7 @@ When using the Mews Merchant gateway integration in Distributor on your website,
 
 ### Google Analytics
 
-If you want to track events in Distributor with Google Analytics, you have to use a named tracker (unnamed are not supported). You can provide a name of your tracker with [`gaTrackerName`](#gaTrackerName) option to Distributor. Tracked events are:
+To enable Google Analytics in Distributor, you have to provide the [`analyticsTrackingId`](#analyticsTrackingId). After that, Distributor will automatically start sending events, using unnamed "default" tracker. Otherwise, if you use a named tracker, you can provide a name of your tracker with [`gaTrackerName`](#gaTrackerName) option to Distributor. Tracked events are:
 
 - `Loaded` - A website with Distributor was loaded.
 - `Opened` - The Distributor was opened.
@@ -306,7 +307,7 @@ You can use also get those trackings as page views with different url hashes by 
 
 #### Ecommerce
 
-You can enable ecommerce tracking by setting [`ecommerce`](#ecommerce) option to `true` and [`ecommerceTrackerName`](#ecommerceTrackerName) to a name of tracker (unnamed are not supported). Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
+You can enable ecommerce tracking by setting [`ecommerce`](#ecommerce) option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
 
 #### Adwords
 
@@ -314,6 +315,6 @@ You can enable AdWords conversion tracking by setting [`adwords`](#adwords) opti
 
 #### Multiple trackers
 
-When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers.
+When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used.
 
 Please note, that some Google Analytics applications can set up their own named trackers. If you wish to used them to report GA events, check their configuration for correct name. This is especially important in case Google Tag Manager is in use, but no other default Google Analytics trackers are being setup on page.
