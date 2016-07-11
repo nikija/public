@@ -253,7 +253,7 @@ Returns all reservations that collide with the specified interval.
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
-| `Items` | array of [Item](#items) | required | Revenue items related to the reservation, loaded only if the `LoadItems` is specified in the parameters. |
+| `Items` | array of [Item](#item) | required | Revenue items related to the reservation, populated only if the `LoadItems` is specified in the parameters, otherwise empty. |
 
 ##### Customer
 
