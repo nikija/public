@@ -146,8 +146,8 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="adwords"></a>adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
 | <a name="adwordsConversionId"></a>adwordsConversionId | `number` | `null` | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
 | <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | `null` | Google AdWords conversion label to be sent when a booking is made.
-| <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
+| <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="competitors"></a>competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
 | <a name="theme"></a>theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
 | <a name="onOpened"></a>onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API.
@@ -246,6 +246,7 @@ Recognized parameters are:
 #### Link rules
 
 Deeplinks are validated with bunch of rules, resulting in different results:
+
 - `mewsStart`, `mewsEnd`, `mewsVoucherCode` and `language` are always parsed and used by every Distributor instance on website, given that passed value is valid.
 - if `mewsEnterpriseId` is provided, corresponding embeded Distributor opens automatically and:
     - if both `mewsStart` and `mewsEnd` are set and valid, then this Distributor opens on the Rooms step (a list of rooms).
