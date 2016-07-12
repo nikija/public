@@ -20,6 +20,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Environments](#environments)
     - [Test Environment](#test-environment)
     - [Production Environment](#production-environment)
+- [Images](#images)
 
 ## Operations
 
@@ -134,7 +135,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | `Products` | array of [Product](#product) | required | All products orderable with rooms. |
 | `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
 | `TermsAndConditionsUrl` | string | optional | URL of hotel's terms and conditions. |
-| `ImageBaseUrl` | string | required | Base URL of images. To obtain URL of an image, use `[ImageBaseUrl]/[ImageId]?Width=[Width]&Height=[Height]`, e.g. `[ImageBaseUrl]/1627aea5-8e0a-4371-9022-9b504344e724?Width=640&Height=480`. The `Width` and `Height` parameters are optional. |
+| `ImageBaseUrl` | string | required | Base URL of images. |
 
 ##### Country
 
@@ -702,3 +703,13 @@ You will also have access into the system so it is possible for you to check whe
 
 - **Platform Address** - `https://www.mews.li`
 - **Hotel Id** - Depends on the hotel, should be provided to you by the hotel administrator.
+
+## Images
+
+To obtain URL of an image from `ImageId`, use `[ImageBaseUrl]/[ImageId]?Width=[Width]&Height=[Height]&Mode=[Mode]`, e.g. `[ImageBaseUrl]/1627aea5-8e0a-4371-9022-9b504344e724?Width=640&Height=480&Mode=1`. The `Width` and `Height` parameters are optional. The `Mode` paramater can have following values:
+
+- `0` (Scale) - The image is rescaled to have exactly the specified dimensions. May change image aspect ratio.
+- `1` (Cover) - The image is resized to cover the specified dimensions while keeping the aspect ratio. So the result might be larger than the specified size (only in one dimension). The result is smallest possible image that covers the specified size.
+- `3` (CoverExact) - The image is resized and clipped to cover the specified dimensions while keeping the aspect ratio. So parts of the image might be missing from the result.
+- `4` (Fit) - The image is resized to fit within the specified dimensions while keeping the aspect ratio. So the result might be smaller than the specified size. The result is largest possible image the fits into the specified size.
+- `5` (FitExact) - The image is resized and padded to exactly fit within the specified dimensions while keeping the aspect ratio. So parts of the result image might be blank (black or transparent depending on the image format).
