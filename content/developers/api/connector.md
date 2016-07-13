@@ -182,43 +182,78 @@ Returns all reservations that collide with the specified interval.
     ],
     "Reservations": [
         {
-            "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
-            "BusinessSegmentId": "ad42231f-a5b6-466f-b9ef-0bc4d76e8c4c",
+            "AdultCount": 2,
+            "AssignedCategoryId": "c71d3e9b-03bd-425b-9dde-f63018e94a4e",
+            "AssignedSpaceId": "20e00c32-d561-4008-8609-82d8aa525714",
+            "BusinessSegmentId": null,
+            "ChannelManagerId": null,
+            "ChannelNumber": null,
+            "ChildCount": 0,
             "Companions": [
                 {
+                    "Address": {
+                        "City": null,
+                        "CountryCode": null,
+                        "Line1": null,
+                        "Line2": null,
+                        "PostalCode": null
+                    },
+                    "BirthDateUtc": null,
+                    "CategoryId": null,
                     "Email": null,
-                    "FirstName": "Jane",
-                    "Id": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
-                    "LastName": "Smith",
-                    "NationalityCode": null,
-                    "Phone": null
-                },
-                {
-                    "Email": "john.smith@mews.li",
                     "FirstName": "John",
+                    "Gender": null,
                     "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                     "LastName": "Smith",
                     "NationalityCode": "US",
-                    "Phone": null
+                    "Phone": "00420123456789",
+                    "Title": null
                 }
             ],
-            "ChannelNumber": "123456",
-            "ChannelManagerId": "132-456-789",
+            "CompanyId": null,
+            "CreatedUtc": "2016-02-20T14:58:02Z",
             "Customer": {
-                "Email": "john.smith@mews.li",
+                "Address": {
+                    "City": null,
+                    "CountryCode": null,
+                    "Line1": null,
+                    "Line2": null,
+                    "PostalCode": null
+                },
+                "BirthDateUtc": null,
+                "CategoryId": null,
+                "Email": null,
                 "FirstName": "John",
+                "Gender": null,
                 "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                 "LastName": "Smith",
                 "NationalityCode": "US",
-                "Phone": null
+                "Phone": "00420123456789",
+                "Title": null
             },
-            "EndUtc": "2019-12-30T23:00:00Z",
-            "GroupId": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
-            "Id": "2bbb5d8a-0492-4271-9941-cd6d89b81d43",
-            "Number": "123",
-            "StartUtc": "2015-07-07T00:00:00Z",
-            "State": "Started",
-            "TravelAgencyId": "ea473215-fe52-4c1a-bd85-3dedc1c4bd56"
+            "EndUtc": "2016-02-22T11:00:00Z",
+            "GroupId": "94843f6f-3be3-481b-a1c7-06458774c3df",
+            "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d",
+            "Items": [
+                {
+                    "Amount": {
+                        "Currency": "GBP",
+                        "Tax": 3.33,
+                        "TaxRate": 0.2,
+                        "Value": 20
+                    },
+                    "ConsumptionUtc": "2016-02-20T13:00:00Z",
+                    "Id": "e90126c9-afa4-4f95-bfff-b875ecfe900f",
+                    "Name": "Night 2/20/2016",
+                    "OrderId": "bfee2c44-1f84-4326-a862-5289598f6e2d"
+                }
+            ],
+            "Number": "52",
+            "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
+            "RequestedCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+            "StartUtc": "2016-02-20T13:00:00Z",
+            "State": "Processed",
+            "TravelAgencyId": null
         }
     ]
 }
@@ -400,9 +435,9 @@ Returns current open balance of a customer. If the balance is positive, the cust
 ```json
 {
     "Currency": "EUR",
-    "Value": 100,
     "Tax": null,
-    "TaxRate": null
+    "TaxRate": null,
+    "Value": 100
 }
 ```
 
@@ -439,6 +474,8 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                 {
                     "Amount": {
                         "Currency": "EUR",
+                        "Tax": null,
+                        "TaxRate": null,
                         "Value": -100
                     },
                     "ConsumptionUtc": "2016-05-25T15:56:54Z",
@@ -448,13 +485,15 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                 },
                 {
                     "Amount": {
-                        "Currency": "EUR",
-                        "Value": 150
+                        "Currency": "GBP",
+                        "Tax": 3.33,
+                        "TaxRate": 0.2,
+                        "Value": 20
                     },
-                    "ConsumptionUtc": "2016-05-25T18:00:00Z",
-                    "Id": "ad679ead-6e8f-409b-85fd-1b0f73db393e",
-                    "Name": "Night 25.5.2016",
-                    "OrderId": "e4840894-42a1-4848-85b5-9eba71e6ffb5"
+                    "ConsumptionUtc": "2016-02-20T13:00:00Z",
+                    "Id": "e90126c9-afa4-4f95-bfff-b875ecfe900f",
+                    "Name": "Night 2/20/2016",
+                    "OrderId": "bfee2c44-1f84-4326-a862-5289598f6e2d"
                 }
             ]
         }
@@ -503,12 +542,23 @@ Updates personal information of a customer.
 
 ```json
 {
+    "Address": {
+        "City": null,
+        "CountryCode": null,
+        "Line1": null,
+        "Line2": null,
+        "PostalCode": null
+    },
+    "BirthDateUtc": null,
+    "CategoryId": null,
     "Email": null,
     "FirstName": "John",
+    "Gender": null,
     "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
     "LastName": "Smith",
     "NationalityCode": "US",
-    "Phone": "00420123456789"
+    "Phone": "00420123456789",
+    "Title": null
 }
 ```
 
@@ -525,7 +575,9 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
     "Amount": { 
-        "Currency": "GBP", 
+        "Currency": "GBP",
+        "Tax": null,
+        "TaxRate": null,
         "Value": 100
     },
     "CreditCard": {
@@ -573,6 +625,8 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 ```json
 {
     "Currency": "GBP",
+    "Tax": null,
+    "TaxRate": null,
     "Value": 100
 }
 ```
