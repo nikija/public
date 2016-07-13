@@ -576,8 +576,6 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
     "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
     "Amount": { 
         "Currency": "GBP",
-        "Tax": null,
-        "TaxRate": null,
         "Value": 100
     },
     "CreditCard": {
