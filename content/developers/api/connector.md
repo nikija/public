@@ -183,7 +183,6 @@ Returns all reservations that collide with the specified interval.
     "Reservations": [
         {
             "AdultCount": 2,
-            "AssignedCategoryId": "c71d3e9b-03bd-425b-9dde-f63018e94a4e",
             "AssignedSpaceId": "20e00c32-d561-4008-8609-82d8aa525714",
             "BusinessSegmentId": null,
             "ChannelManagerId": null,
@@ -278,7 +277,6 @@ Returns all reservations that collide with the specified interval.
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
 | `RequestedCategoryId` | string | required | Identifier of the requested space category. |
-| `AssignedCategoryId` | string | required | Identifier of the assigned space category (differs from requested e.g. when upgraded). |
 | `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
 | `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
 | `CompanyId` | string | optional | Identifier of the company on behalf of which the reservation was made. |
