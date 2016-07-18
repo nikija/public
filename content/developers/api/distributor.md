@@ -559,7 +559,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
 | `Reservations` | array of [ReservationData](#reservationdata) | required | Parameters of reservations to be ordered. |
-| `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, depends on hotel payment gateway. |
+| `CreditCardData` | [CreditCardData](#creditcarddata) | optional | Credit card data, required if hotel has payment gateway. |
 
 ##### Customer
 
@@ -594,8 +594,8 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `PaymentGatewayData` | string | optional | Encoded credit card data obtained from the payment gateway specific library. |
-| `ObfuscatedCreditCardNumber` | string | optional | Obfuscated credit card number, e.g. `411111******1111`. |
+| `PaymentGatewayData` | string | required | Encoded credit card data obtained from the payment gateway specific library. More details [here](#payment-gateway-data) |
+| `ObfuscatedCreditCardNumber` | string | required | Obfuscated credit card number, e.g. `411111******1111`. |
 
 #### Response
 
@@ -713,3 +713,10 @@ To obtain URL of an image from `ImageId`, use `[ImageBaseUrl]/[ImageId]?Width=[W
 - `3` (CoverExact) - The image is resized and clipped to cover the specified dimensions while keeping the aspect ratio. So parts of the image might be missing from the result.
 - `4` (Fit) - The image is resized to fit within the specified dimensions while keeping the aspect ratio. So the result might be smaller than the specified size. The result is largest possible image the fits into the specified size.
 - `5` (FitExact) - The image is resized and padded to exactly fit within the specified dimensions while keeping the aspect ratio. So parts of the result image might be blank (black or transparent depending on the image format).
+
+## Payment Gateway Data
+
+To obtain `PaymentGatewayData`, you have to use client side encryption library provided by given payment gateway. You can find them here: 
+
+- [Braintree](https://github.com/braintree/braintree-web)
+- [Adyen](https://github.com/Adyen/CSE-JS)
