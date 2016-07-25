@@ -135,11 +135,11 @@ Returns all spaces of an enterprise associated with the connector integration.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the space. |
-| `Type` | string | required | Type of the space. For example `Room` or `Bed`, other types might be added in the future. |
+| `Type` | string | required | Type of the space. For example `Room`, `Dorm` or `Bed`. Other types might be added in the future. |
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
 | `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
-| `State` | string | required | State of the room. Either `Dirty`, `Clean`, `Inspected` or `OutOfService`. |
+| `State` | string | required | State of the room. Either `Dirty`, `Clean`, `Inspected`, `OutOfService` or `OutOfOrder`. |
 
 ##### Space Category
 
@@ -252,7 +252,8 @@ Returns all reservations that collide with the specified interval.
             "RequestedCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
             "StartUtc": "2016-02-20T13:00:00Z",
             "State": "Processed",
-            "TravelAgencyId": null
+            "TravelAgencyId": null,
+            "UpdatedUtc": "2016-02-20T14:58:02Z"
         }
     ]
 }
@@ -274,6 +275,7 @@ Returns all reservations that collide with the specified interval.
 | `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
 | `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
 | `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
 | `RequestedCategoryId` | string | required | Identifier of the requested space category. |
