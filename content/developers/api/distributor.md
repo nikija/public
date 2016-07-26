@@ -162,7 +162,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | `Name` | string | required | Name of the language. |
 | `DefaultCulture` | [Culture](#cuture) | required | Specifics of a default culture for the language. |
 
-###### Culture
+##### Culture
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
