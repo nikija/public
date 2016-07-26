@@ -15,7 +15,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get Reservations Pricing](#get-reservations-pricing)
     - [Get Braintree Client Token](#get-braintree-client-token)
     - [Get Adyen Client Token](#get-adyen-client-token)
-    - [Create Reservation Group](#create-reservation-group)
+    - [Create Reservation Group](#create-reservation-group)i
     - [Get Reservation Group](#get-reservation-group)
 - [Images](#images)
 - [Environments](#environments)
@@ -697,7 +697,7 @@ To obtain URL of an image from `ImageId`, use the following address pattern:
 E.g.
 
 ```
-[ImageBaseUrl]/1627aea5-8e0a-4371-9022-9b504344e724?Width=640&Height=480&Mode=1`
+[ImageBaseUrl]/1627aea5-8e0a-4371-9022-9b504344e724?Width=640&Height=480&Mode=1
 ```
 
 The `Width` and `Height` parameters are optional. The `Mode` paramater can have following values:
