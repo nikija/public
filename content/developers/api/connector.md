@@ -446,6 +446,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
             "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9",
             "Items": [
                 {
+                    "AccountingCategoryId": "12345678-7e6f-4131-af21-402cec59b8b9",
                     "Amount": {
                         "Currency": "EUR",
                         "Tax": null,
@@ -458,6 +459,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                     "OrderId": null
                 },
                 {
+                    "AccountingCategoryId": "12345678-7e6f-4131-af21-402cec59b8b9",
                     "Amount": {
                         "Currency": "GBP",
                         "Tax": 3.33,
@@ -492,6 +494,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the item. |
 | `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
+| `AccountingCategoryId` | string | optional | Unique identifier of the accounting category the item belongs to. |
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
