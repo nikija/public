@@ -703,7 +703,7 @@ E.g.
 The `Width` and `Height` parameters are optional. The `Mode` paramater can have following values:
 
 | Value | Name | Description |
-| --- | --- |
+| --- | --- | --- |
 | `0` | Scale | The image is rescaled to have exactly the specified dimensions. May change image aspect ratio. |
 | `1` | Cover | The image is resized to cover the specified dimensions while keeping the aspect ratio. So the result might be larger than the specified size (only in one dimension). The result is smallest possible image that covers the specified size. |
 | `3` | CoverExact | The image is resized and clipped to cover the specified dimensions while keeping the aspect ratio. So parts of the image might be missing from the result. |
