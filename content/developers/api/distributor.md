@@ -689,6 +689,7 @@ Same as in [Create Reservation Group](#create-reservation-group).
 ## Images
 
 To obtain URL of an image from `ImageId`, use the following address pattern:
+
 ```
 [ImageBaseUrl]/[ImageId]?Width=[Width]&Height=[Height]&Mode=[Mode]
 ```
