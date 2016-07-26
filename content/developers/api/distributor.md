@@ -411,16 +411,16 @@ Gives a pricing information for the given configuration.
 
 ```json
 {
-  	"HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
-  	"AdultCount": 2,
-  	"ChildCount": 0,
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "AdultCount": 2,
+    "ChildCount": 0,
     "StartUtc": "2015-01-01T00:00:00Z",
     "EndUtc": "2015-01-03T00:00:00Z",
     "ProductIds": [
         "d0e88da5-ae64-411c-b773-60ed68954f64"
     ],
-  	"RoomCategoryId": "1627aea5-8e0a-4371-9022-9b504344e724",
-  	"VoucherCode":   "Discount2042"
+    "RoomCategoryId": "1627aea5-8e0a-4371-9022-9b504344e724",
+    "VoucherCode":   "Discount2042"
 }
 ```
 
@@ -441,16 +441,16 @@ Gives a pricing information for the given configuration.
 {
     "RatePrices": [
         {
-  		      "MaxPrice": {
-  			         "AveragePerNight": {},
-  			         "Total": {}
-  			    },
-        		"Price" :{
-  			         "AveragePerNight": {},
-  			         "Total": {}
-  			    },
-  		      "RateId": "1627aea5-8e0a-4371-9022-9b504344e724"
-  	   }
+            "MaxPrice": {
+                "AveragePerNight": {},
+                "Total": {}
+            },
+            "Price" :{
+                "AveragePerNight": {},
+                "Total": {}
+            },
+            "RateId": "1627aea5-8e0a-4371-9022-9b504344e724"
+        }
     ]
 }
 ```
