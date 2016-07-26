@@ -160,9 +160,9 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 | --- | --- | --- | --- |
 | `Code` | string | required | Code of the language in the ISO format. |
 | `Name` | string | required | Name of the language. |
-| `DefaultCulture` | [DefaultCulture](#defaultcuture) | required | Specifics of a default culture for the language. |
+| `DefaultCulture` | [Culture](#cuture) | required | Specifics of a default culture for the language. |
 
-###### DefaultCulture
+###### Culture
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
