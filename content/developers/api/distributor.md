@@ -423,6 +423,7 @@ Gives a pricing information for the given configuration.
   	"VoucherCode":   "Discount2042"
 }
 ```
+
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `HotelId` | string | required | Unique identifier of the hotel. |
@@ -453,6 +454,7 @@ Gives a pricing information for the given configuration.
     ]
 }
 ```
+
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `RatePrices` | array of [Pricing](#pricing) | required | Pricing information. |
