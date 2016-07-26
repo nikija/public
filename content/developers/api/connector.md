@@ -168,7 +168,6 @@ Returns all reservations that collide with the specified interval.
 | `AccessToken` | string | required | Access token of the client application. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
-| `LoadItems` | bool | optional | Whether the reservation items should be loaded. |
 
 #### Response
 
@@ -233,20 +232,6 @@ Returns all reservations that collide with the specified interval.
             "EndUtc": "2016-02-22T11:00:00Z",
             "GroupId": "94843f6f-3be3-481b-a1c7-06458774c3df",
             "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d",
-            "Items": [
-                {
-                    "Amount": {
-                        "Currency": "GBP",
-                        "Tax": 3.33,
-                        "TaxRate": 0.2,
-                        "Value": 20
-                    },
-                    "ConsumptionUtc": "2016-02-20T13:00:00Z",
-                    "Id": "e90126c9-afa4-4f95-bfff-b875ecfe900f",
-                    "Name": "Night 2/20/2016",
-                    "OrderId": "bfee2c44-1f84-4326-a862-5289598f6e2d"
-                }
-            ],
             "Number": "52",
             "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
             "RequestedCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
@@ -288,7 +273,6 @@ Returns all reservations that collide with the specified interval.
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
-| `Items` | array of [Item](#item) | required | Revenue items related to the reservation, populated only if the `LoadItems` is specified in the parameters, otherwise empty. |
 
 ##### Customer
 
@@ -315,16 +299,6 @@ Returns all reservations that collide with the specified interval.
 | `City` | string | optional | The city. |
 | `PostalCode` | string | optional | Postal code. |
 | `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
-
-##### Item
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the item. |
-| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
-| `Name` | string | required | Name of the item. |
-| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
-| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 
 ##### Currency Value
 
@@ -511,6 +485,16 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | --- | --- | --- | --- |
 | `CustomerId` | string | required | Unique identifier of the customer. |
 | `Items` | array of [Item](#item) | required | The open items. |
+
+##### Item
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the item. |
+| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
+| `Name` | string | required | Name of the item. |
+| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 
 ### Update Customer
 
