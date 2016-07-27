@@ -564,7 +564,7 @@ When it comes to dates provided by customer (e.g. birth date or passport expirat
     "Passport": {
         "Number": "123456",
         "ExpirationUtc": "2020-01-01T12:00:00Z"
-    }
+    },
     "Phone": "00420123456789",
     "Title": null
 }
