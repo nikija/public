@@ -20,6 +20,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get Customers Open Items](#get-customers-open-items)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
+    - [Add Task](#add-task)
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
     - [Devices](#devices)
@@ -638,6 +639,34 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 ```
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
+
+### Add Task
+
+Adds a new task to the enterprise, optionally to a specified department.
+
+#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "DepartmentId": null,
+    "Name": "Test",
+    "Description": "Task description",
+    "DeadlineUtc": "2016-01-01T14:00:00Z"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
+| `Name` | string | required | Name (or title) of the task. |
+| `Description` | string | optional | Further decription of the task. |
+| `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
+
+#### Response
+
+Empty object.
 
 ### Get All Commands
 
