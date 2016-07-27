@@ -289,6 +289,7 @@ Returns all reservations that collide with the specified interval.
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
 | `CategoryId` | string | optional | Unique identifier of the customer category. |
 | `Address` | [Address](#address) | required | Address of the customer. |
+| `Passport` | [Document](#document) | optional | Passport details of the customer. |
 
 ##### Address
 
@@ -299,6 +300,13 @@ Returns all reservations that collide with the specified interval.
 | `City` | string | optional | The city. |
 | `PostalCode` | string | optional | Postal code. |
 | `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
+
+##### Document
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Number` | string | optional | Number of the document (e.g. passport number). |
+| `ExpirationUtc` | string | optional | Expiration date in UTC timezone in ISO 8601 format. |
 
 ##### Currency Value
 
@@ -501,7 +509,9 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 
 ### Update Customer
 
-Updates personal information of a customer.
+Updates personal information of a customer. Note that all fields should be provided in the update request, leaving some of them empty would cause them to be cleared (deleting some information is considered a valid update). So if e.g. only last name should be updated and all other should remain the same, the request has to contain the new last name but all other fields have to be filled with the values received from the server.
+
+When it comes to dates provided by customer (e.g. birth date or passport expiration), they are all represented as dates in UTC timezone with time set to 12:00. That ensures that the date won't change no matter the timezone it is converted to. Practically it would be too complicated to obtain the timezone (e.g. timezone of place of birth or timezone of passport issuance) if we wanted to represent exact date and time in UTC.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/update`
 
@@ -512,7 +522,12 @@ Updates personal information of a customer.
     "FirstName": "John",
     "LastName": "Smith",
     "Phone": "00420123456789",
-    "NationalityCode": "US"
+    "NationalityCode": "US",
+    "BirthDateUtc": "2000-01-01T12:00:00Z",
+    "Passport": {
+        "Number": "123456",
+        "ExpirationUtc": "2020-01-01T12:00:00Z"
+    }
 }
 ```
 
@@ -522,8 +537,10 @@ Updates personal information of a customer.
 | `CustomerId` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | New first name. |
 | `LastName` | string | required | New last name. |
-| `Phone` | string | optional | New phone number. |
+| `BirthDateUtc` | string | optional | New birth date in UTC timezone in ISO 8601 format. |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the new nationality. |
+| `Phone` | string | optional | New phone number. |
+| `Passport` | [Document](#document) | optional | New passport details. |
 
 #### Response
 
@@ -536,7 +553,7 @@ Updates personal information of a customer.
         "Line2": null,
         "PostalCode": null
     },
-    "BirthDateUtc": null,
+    "BirthDateUtc": "2000-01-01T12:00:00Z",
     "CategoryId": null,
     "Email": null,
     "FirstName": "John",
@@ -544,6 +561,10 @@ Updates personal information of a customer.
     "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
     "LastName": "Smith",
     "NationalityCode": "US",
+    "Passport": {
+        "Number": "123456",
+        "ExpirationUtc": "2020-01-01T12:00:00Z"
+    }
     "Phone": "00420123456789",
     "Title": null
 }
