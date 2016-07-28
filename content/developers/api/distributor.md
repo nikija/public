@@ -15,7 +15,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get Reservations Pricing](#get-reservations-pricing)
     - [Get Braintree Client Token](#get-braintree-client-token)
     - [Get Adyen Client Token](#get-adyen-client-token)
-    - [Create Reservation Group](#create-reservation-group)i
+    - [Create Reservation Group](#create-reservation-group)
     - [Get Reservation Group](#get-reservation-group)
 - [Images](#images)
 - [Environments](#environments)
@@ -32,7 +32,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 
 ```json
 {
-    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343"
 }
 ```
 
@@ -303,7 +303,8 @@ Gives availabilities and pricings for given date interval with product prices in
 | `EndUtc` | string | required | Reservation end date (departure date) in ISO 8601 format. |
 | `ProductIds` | array of string | optional | Ids of products which should be included into pricing calculations. |
 | `VoucherCode` | string | optional | Voucher code enabling special rate offerings. |
-| `AdultCount` and `ChildCount` | number | optional | If both parameters are provided, `RoomOccupancyAvailabilities` will be computed only for that combination instead of all possible. If `RoomCategory` doesn't support given values, nearest applicable are found. |
+| `AdultCount` | number | optional | Requested number of adults. If provided together with `ChildCount`, then `RoomOccupancyAvailabilities` will be computed only for that combination instead of all possible. If `RoomCategory` doesn't support given values, nearest applicable are found. |
+| `ChildCount` | number | optional | Requested number of children. |
 
 #### Response
 
@@ -317,7 +318,7 @@ Gives availabilities and pricings for given date interval with product prices in
             },
             "Description": {
                 "en-US": "Best rate available."
-            },
+            }
         }
     ],
     "RoomCategoryAvailabilities": [
@@ -332,7 +333,7 @@ Gives availabilities and pricings for given date interval with product prices in
                         {
                             "RateId": "c1d48c54-9382-4ceb-a820-772bf370573d",
                             "Price": { },
-                            "MaxPrice": { },
+                            "MaxPrice": { }
                         }
                     ]
                 },
@@ -349,7 +350,7 @@ Gives availabilities and pricings for given date interval with product prices in
                             "MaxPrice": {
                                 "Total": { },
                                 "AveragePerNight": { }
-                            },
+                            }
                         }
                     ]
                 }
@@ -467,7 +468,7 @@ Braintree requires a special client token to be generated for each transaction. 
 
 ```json
 {
-    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343"
 }
 ```
 
@@ -495,7 +496,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 
 ```json
 {
-    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
+    "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343"
 }
 ```
 
@@ -619,7 +620,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
                 },
                 "Description": {
                     "en-US": "Best rate available."
-                },
+                }
             },
             "AdultCount": 3,
             "ChildCount": 0,
