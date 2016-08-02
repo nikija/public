@@ -140,7 +140,15 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Number` | string | required | Number of the space (e.g. room number). |
 | `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
 | `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
-| `State` | string | required | State of the room. Either `Dirty`, `Clean`, `Inspected`, `OutOfService` or `OutOfOrder`. |
+| `State` | string [Space State](#space-state) | required | State of the room. |
+
+##### Space State
+
+- `Dirty`
+- `Clean`
+- `Inspected`
+- `OutOfService`
+- `OutOfOrder`
 
 ##### Space Category
 
@@ -169,6 +177,7 @@ Returns all reservations that collide with the specified interval.
 | `AccessToken` | string | required | Access token of the client application. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
+| `States` | array of string [Reservation State](#reservation-state) | optional | States the reservations should be in. If not specified, reservations in `Confirmed`, `Started` or `Processed` states are returned. |
 
 #### Response
 
@@ -259,7 +268,7 @@ Returns all reservations that collide with the specified interval.
 | `Number` | string | required | Confirmation number of the reservation. |
 | `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
 | `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
-| `State` | string | required | State of the reservation. One of: `Confirmed` (before check-in), `Started` (checked-in) or `Processed` (checked-out). |
+| `State` | string [Reservation State](#reservation-state) | required | State of the reservation. |
 | `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
@@ -275,6 +284,16 @@ Returns all reservations that collide with the specified interval.
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
 | `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
 
+##### Reservation State
+
+- `Enquired` - Confirmed neither by the customer or enterprise.
+- `Requested` - Confirmed by the customer but not by the enterprise (waitlist).
+- `Optional` - Confirmed by enterprise but not by the guest (the enterprise is holding space for the guest).
+- `Confirmed` - Confirmed by both parties, before check-in.
+- `Started` - Checked in.
+- `Processed` - Checked out.
+- `Canceled` - Canceled, not active anymore.
+
 ##### Customer
 
 | Property | Type | | Description |
@@ -282,8 +301,8 @@ Returns all reservations that collide with the specified interval.
 | `Id` | string | required | Unique identifier of the customer. |
 | `FirstName` | string | optional | First name of the customer. |
 | `LastName` | string | required | Last name of the customer. |
-| `Title` | string | optional | Title prefix of the customer (`Mister`, `Miss` or `Misses`). |
-| `Gender` | string | optional | Gender of the customer (`Male` or `Female`). |
+| `Title` | string [Title](#title) | optional | Title prefix of the customer. |
+| `Gender` | string [Gender](#gender) | optional | Gender of the customer. |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
 | `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
 | `Email` | string | optional | Email address of the customer. |
@@ -291,6 +310,17 @@ Returns all reservations that collide with the specified interval.
 | `CategoryId` | string | optional | Unique identifier of the customer category. |
 | `Address` | [Address](#address) | required | Address of the customer. |
 | `Passport` | [Document](#document) | optional | Passport details of the customer. |
+
+##### Title
+
+- `Mister`
+- `Miss`
+- `Misses`
+
+##### Gender
+
+- `Male`
+- `Female`
 
 ##### Address
 
@@ -308,15 +338,6 @@ Returns all reservations that collide with the specified interval.
 | --- | --- | --- | --- |
 | `Number` | string | optional | Number of the document (e.g. passport number). |
 | `ExpirationUtc` | string | optional | Expiration date in UTC timezone in ISO 8601 format. |
-
-##### Currency Value
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
-| `Value` | number | required | Amount in the currency (including tax if taxed). |
-| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
-| `Tax` | number | optional | Tax value in case the item is taxed. |
 
 ##### ReservationGroup
 
@@ -424,7 +445,14 @@ Returns current open balance of a customer. If the balance is positive, the cust
 }
 ```
 
-A [Currency Value](#currency-value).
+##### Currency Value
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
+| `Value` | number | required | Amount in the currency (including tax if taxed). |
+| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
+| `Tax` | number | optional | Tax value in case the item is taxed. |
 
 ### Get Customers Open Items
 
