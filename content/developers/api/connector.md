@@ -713,16 +713,7 @@ Balance ([Currency Value](#customer)) of the customer after the payment is poste
 
 ### Get All Commands
 
-A device command is in one of the following states:
-
-- `Pending` - A command that is created in MEWS, but not yet received by a client application.
-- `Received` - A command received by a client application.
-- `Processing` - A command that is being processed.
-- `Processed` - A successfully processed command.
-- `Cancelled` - A command whose execution has been cancelled before (or during) processing.
-- `Error` - A command whose execution was or processing was terminated by an error.
-
-This operation returns all commands the are still active from the client application point of view. That means commands that are in either `Pending` or `Received` state.
+Returns all commands the are still active from the client application point of view. That means commands that are in either `Pending` or `Received` state.
 
 #### Request `[PlatformAddress]/api/connector/v1/commands/getAllActive`
 
@@ -777,11 +768,20 @@ This operation returns all commands the are still active from the client applica
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the command. |
-| `State` | string | required | State of the command. |
+| `State` | string [Command State](#command-state) | required | State of the command. |
 | `CreatedUtc` | string | required | Creation date and time of the command. |
 | `Creator` | [User](#user) | optional | Creator of the command. |
 | `Device` | [Device](#device) | required | Device that the command should be executed on. |
 | `Data` | object | optional | Data of the command depending on device type and command type. Details in the [devices](#devices) section. |
+
+##### Command State
+
+- `Pending` - Created in MEWS, but not yet received by the client application.
+- `Received` - Received by the client application.
+- `Processing` - Being processed by the client application.
+- `Processed` - Successfully processed command.
+- `Cancelled` - A command whose execution has been cancelled before (or during) processing.
+- `Error` - A command whose execution or processing was terminated by an error.
 
 ##### User
 
@@ -817,7 +817,7 @@ Updates state of a command.
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CommandId` | string | required | Identifier of the command to be updated. |
-| `State` | string | required | New state of the command. |
+| `State` | string [Command State](#command-state) | required | New state of the command. |
 | `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored. |
 | `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored. Details in the [devices](#devices) section. |
 | `Notes` | string | optional | Notes about command execution. Only used if the `State` is `Processed`, `Cancelled` or `Error`, otherwise ignored. |
