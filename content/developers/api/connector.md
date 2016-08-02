@@ -200,7 +200,7 @@ Returns all accounting categories of the enterprise associated with the connecto
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the category. |
-| `IsActive` | boolean | required | Wheteher the accounting category is still active. |
+| `IsActive` | boolean | required | Whether the accounting category is still active. |
 | `Name` | string | required | Name of the category. |
 
 ### Get All Business Segments
@@ -233,7 +233,7 @@ Returns all business segments of the default service provided by the enterprise.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the segment. |
-| `IsActive` | boolean | required | Wheteher the business segment is still active. |
+| `IsActive` | boolean | required | Whether the business segment is still active. |
 | `Name` | string | required | Name of the segment. |
 
 ### Get All Rates
@@ -268,7 +268,7 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the rate. |
 | `GroupId` | string | required | Unique identifier of [Rate Group](#rate-group) where the rate belongs. |
-| `IsActive` | boolean | required | Wheteher the rate is still active. |
+| `IsActive` | boolean | required | Whether the rate is still active. |
 | `Name` | string | required | Name of the rate. |
 
 ##### Rate Group
@@ -276,7 +276,7 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the group. |
-| `IsActive` | boolean | required | Wheteher the rate group is still active. |
+| `IsActive` | boolean | required | Whether the rate group is still active. |
 | `Name` | string | required | Name of the rate group. |
 
 ### Add Task
