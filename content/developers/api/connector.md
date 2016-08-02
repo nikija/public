@@ -7,7 +7,7 @@ The Connector API allows external applications to mediate communication between 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
-
+a
 - [Authorization](#authorization)
     - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
@@ -296,7 +296,7 @@ Returns all reservations that from the specified interval according to the time 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
-| `ReservationGroups` | array of [ReservationGroup](#reservationgroup) | required | Reservation groups that the reservations are members of. |
+| `ReservationGroups` | array of [Reservation Group](#reservation-group) | required | Reservation groups that the reservations are members of. |
 
 ##### Reservation
 
@@ -378,7 +378,7 @@ Returns all reservations that from the specified interval according to the time 
 | `Number` | string | optional | Number of the document (e.g. passport number). |
 | `ExpirationUtc` | string | optional | Expiration date in UTC timezone in ISO 8601 format. |
 
-##### ReservationGroup
+##### Reservation Group
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
@@ -676,7 +676,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | `CustomerId` | string | required | Unique identifier of the customer. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment. |
 | `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
-| `Category` | [Accounting Category](#accounting-category) | optional | Accounting category to be assigned to the payment. |
+| `Category` | [Accounting Category Parameters](#accounting-category-parameters) | optional | Accounting category to be assigned to the payment. |
 | `ReceiptIdentifier` | string | optional | Identifier of the payment receipt. |
 | `Notes` | string | optional | Additional payment notes. |
 
@@ -689,7 +689,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | `Expiration` | string | required | Expiration of the credit card in format `MM/YYYY`, e.g. `12/2016` or `04/2017`. |
 | `Name` | string | required | Name of the card holder. |
 
-##### Accounting Category
+##### Accounting Category Parameters
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
