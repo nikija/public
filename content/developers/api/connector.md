@@ -12,6 +12,9 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
     - [Get All Spaces](#get-all-spaces)
+    - [Get All Accounting Categories](#get-all-accounting-categories)
+    - [Get All Business Segments](#get-all-business-segments)
+    - [Get All Rates](#get-all-rates)
     - [Add Task](#add-task)
 - [Reservations](#reservations)
     - [Get All Reservations](#get-all-reservations)
@@ -84,7 +87,7 @@ Signs in the client application to MEWS using a token that you would normally us
 
 Returns all spaces of an enterprise associated with the connector integration.
 
-#### Request `[PlatformAddress]/api/connector/v1/spaces/getAll`g
+#### Request `[PlatformAddress]/api/connector/v1/spaces/getAll`
 
 ```json
 {
@@ -138,11 +141,18 @@ Returns all spaces of an enterprise associated with the connector integration.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the space. |
-| `Type` | string | required | Type of the space. For example `Room`, `Dorm` or `Bed`. Other types might be added in the future. |
+| `Type` | string [Space Type](#space-type) | required | Type of the space. |
 | `Number` | string | required | Number of the space (e.g. room number). |
-| `ParentSpaceId` | string | optional | Identifier of the parent space (e.g. room of a bed). |
-| `CategoryId` | string | required | Identifier of the cateogory assigned to the space. |
+| `ParentSpaceId` | string | optional | Identifier of the parent [Space](#space) (e.g. room of a bed). |
+| `CategoryId` | string | required | Identifier of the [Space Category](#space-category) assigned to the space. |
 | `State` | string [Space State](#space-state) | required | State of the room. |
+
+##### Space Type
+
+- `Room`
+- `Dorm`
+- `Bed`
+- ...
 
 ##### Space State
 
@@ -159,6 +169,115 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Id` | string | required | Unique identifier of the category. |
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
+
+### Get All Accounting Categories
+
+Returns all accounting categories of the enterprise associated with the connector integration.
+
+#### Request `[PlatformAddress]/api/connector/v1/accountingCategories/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccountingCategories` | array of [Accounting Category](#accounting-category) | required | Accounting categories of the enterprise. |
+
+##### Accounting Category
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the category. |
+| `IsActive` | boolean | required | Wheteher the accounting category is still active. |
+| `Name` | string | required | Name of the category. |
+
+### Get All Business Segments
+
+Returns all business segments of the default service provided by the enterprise.
+
+#### Request `[PlatformAddress]/api/connector/v1/businessSegments/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `BusinessSegments` | array of [Business Segment](#business-segment) | required | Business segments of the default service. |
+
+##### Business Segment
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the segment. |
+| `IsActive` | boolean | required | Wheteher the business segment is still active. |
+| `Name` | string | required | Name of the segment. |
+
+### Get All Rates
+
+Returns all rates (pricing setups) and rate groups (condition settings) of the default service provided by the enterprise.
+
+#### Request `[PlatformAddress]/api/connector/v1/rates/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Rates` | array of [Rate](#rate) | required | Rates of the default service. |
+| `RateGroups` | array of [Rate Group](#rate-group) | required | Rate groups of the default service. |
+
+##### Rate
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the rate. |
+| `GroupId` | string | required | Unique identifier of [Rate Group](#rate-group) where the rate belongs. |
+| `IsActive` | boolean | required | Wheteher the rate is still active. |
+| `Name` | string | required | Name of the rate. |
+
+##### Rate Group
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the group. |
+| `IsActive` | boolean | required | Wheteher the rate group is still active. |
+| `Name` | string | required | Name of the rate group. |
 
 ### Add Task
 
@@ -303,7 +422,7 @@ Returns all reservations that from the specified interval according to the time 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation. |
-| `GroupId` | string | required | Unique identifier of the reservation group. |
+| `GroupId` | string | required | Unique identifier of the [Reservation Group](#reservation-group). |
 | `Number` | string | required | Confirmation number of the reservation. |
 | `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
 | `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
@@ -312,12 +431,12 @@ Returns all reservations that from the specified interval according to the time 
 | `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `StartUtc` | string | required | Start of the reservation (arrival) in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the reservation (departure) in UTC timezone in ISO 8601 format. |
-| `RequestedCategoryId` | string | required | Identifier of the requested space category. |
-| `AssignedSpaceId` | string | optional | Identifier of the assigned space. |
-| `BusinessSegmentId` | string | optional | Identifier of the reservation business segment. |
-| `CompanyId` | string | optional | Identifier of the company on behalf of which the reservation was made. |
-| `TravelAgencyId` | string | optional | Identifier of the travel agency that mediated the reservation. |
-| `RateId` | string | required | Identifier of the reservation rate. |
+| `RequestedCategoryId` | string | required | Identifier of the requested [Space Category](#space-category). |
+| `AssignedSpaceId` | string | optional | Identifier of the assigned [Space](#space). |
+| `BusinessSegmentId` | string | optional | Identifier of the reservation [Business Segment](#business-segment). |
+| `CompanyId` | string | optional | Identifier of the [Company](#company) on behalf of which the reservation was made. |
+| `TravelAgencyId` | string | optional | Identifier of the [Company](#company) that mediated the reservation. |
+| `RateId` | string | required | Identifier of the reservation [Rate](#rate). |
 | `AdultCount` | number | required | Count of adults the reservation was booked for. |
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `Customer` | [Customer](#customer) | required | Owner of the reservation. |
@@ -401,7 +520,7 @@ Marks a reservation as `Started` (= checked in). Succeeds only if all starting c
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ReservationId` | string | required | Unique identifier of the reservation to start. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to start. |
 
 #### Response
 
@@ -423,7 +542,7 @@ Marks a reservation as `Processed` (= checked out). Succeeds only if all process
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ReservationId` | string | required | Unique identifier of the reservation to process. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to process. |
 
 #### Response
 
@@ -447,7 +566,7 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ReservationId` | string | required | Unique identifier of the reservation to cancel. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to cancel. |
 | `ChargeCancellationFee` | boolean | required | Whether cancellation fees should be charged according to rate conditions. |
 | `Notes` | string | required | Addiotional notes describing the cancellation. |
 
@@ -473,7 +592,7 @@ Returns current open balance of a customer. If the balance is positive, the cust
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerId` | string | required | Unique identifier of the customer. |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 
 #### Response
 
@@ -513,7 +632,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerIds` | array of string | required | Unique identifiers of the customers. |
+| `CustomerIds` | array of string | required | Unique identifiers of the [Customer](#customer)s. |
 
 #### Response
 
@@ -563,7 +682,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `CustomerId` | string | required | Unique identifier of the customer. |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 | `Items` | array of [Item](#item) | required | The open items. |
 
 ##### Item
@@ -571,8 +690,8 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the item. |
-| `OrderId` | string | optional | Unique identifier of the order (or reservation) the item belongs to. |
-| `AccountingCategoryId` | string | optional | Unique identifier of the accounting category the item belongs to. |
+| `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
+| `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
@@ -604,7 +723,7 @@ When it comes to dates provided by customer (e.g. birth date or passport expirat
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerId` | string | required | Unique identifier of the customer. |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 | `FirstName` | string | optional | New first name. |
 | `LastName` | string | required | New last name. |
 | `BirthDateUtc` | string | optional | New birth date in UTC timezone in ISO 8601 format. |
@@ -673,7 +792,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerId` | string | required | Unique identifier of the customer. |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 | `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment. |
 | `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
 | `Category` | [Accounting Category Parameters](#accounting-category-parameters) | optional | Accounting category to be assigned to the payment. |
@@ -816,7 +935,7 @@ Updates state of a command.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CommandId` | string | required | Identifier of the command to be updated. |
+| `CommandId` | string | required | Identifier of the [Command](#command) to be updated. |
 | `State` | string [Command State](#command-state) | required | New state of the command. |
 | `Progress` | number | optional | Progress of the command processing. Only used if the `State` is `Processing`, otherwise ignored. |
 | `Result` | object | optional | Result of the command depending on device type and command type. Only used if the `State` is `Processed`, otherwise ignored. Details in the [devices](#devices) section. |
