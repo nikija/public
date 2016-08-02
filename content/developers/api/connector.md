@@ -9,18 +9,21 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 ## Contents
 
 - [Authorization](#authorization)
-- [Operations](#operations)
     - [Sign in](#sign-in)
+- [Enterprises](#enterprises)
     - [Get All Spaces](#get-all-spaces)
+    - [Add Task](#add-task)
+- [Reservations](#reservations)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
     - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
+- [Customers](#customers)
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
     - [Update Customer](#update-customer)
     - [Add Credit Card Payment](#add-credit-card-payment)
-    - [Add Task](#add-task)
+- [Commands](#commands)   
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
     - [Devices](#devices)
@@ -32,9 +35,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, consult the  [Demo Environment](#demo-environment) section.
 
-The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication. For more information, see the [Sign in](#sign-in) operation.
-
-## Operations
+The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication.
 
 ### Sign in
 
@@ -70,13 +71,14 @@ Signs in the client application to MEWS using a token that you would normally us
 | `AccessToken` | string | required | An access token representing the client application session. |
 | `Enterprise` | [Enterprise](#enterprise) | required | Enterprise whose data the connector client handles. |
 
-
 ##### Enterprise
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the enterprise. |
 | `Name` | string | required | Name of the enterprise. |
+
+## Enterprises
 
 ### Get All Spaces
 
@@ -157,6 +159,36 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Id` | string | required | Unique identifier of the category. |
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
+
+### Add Task
+
+Adds a new task to the enterprise, optionally to a specified department.
+
+#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "DepartmentId": null,
+    "Name": "Test",
+    "Description": "Task description",
+    "DeadlineUtc": "2016-01-01T14:00:00Z"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
+| `Name` | string | required | Name (or title) of the task. |
+| `Description` | string | optional | Further decription of the task. |
+| `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
+
+#### Response
+
+Empty object.
+
+## Reservartions
 
 ### Get All Reservations
 
@@ -423,6 +455,8 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 
 Empty object.
 
+## Customers
+
 ### Get Customer Balance
 
 Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
@@ -675,33 +709,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
 
-### Add Task
-
-Adds a new task to the enterprise, optionally to a specified department.
-
-#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
-
-```json
-{
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "DepartmentId": null,
-    "Name": "Test",
-    "Description": "Task description",
-    "DeadlineUtc": "2016-01-01T14:00:00Z"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccessToken` | string | required | Access token of the client application. |
-| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
-| `Name` | string | required | Name (or title) of the task. |
-| `Description` | string | optional | Further decription of the task. |
-| `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
-
-#### Response
-
-Empty object.
+## Commands
 
 ### Get All Commands
 
