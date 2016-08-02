@@ -7,7 +7,7 @@ The Connector API allows external applications to mediate communication between 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
 ## Contents
-a
+
 - [Authorization](#authorization)
     - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
