@@ -189,6 +189,7 @@ Returns all accounting categories of the enterprise associated with the connecto
 #### Response
 
 ```json
+TODO
 ```
 
 | Property | Type | | Description |
@@ -222,6 +223,7 @@ Returns all business segments of the default service provided by the enterprise.
 #### Response
 
 ```json
+TODO
 ```
 
 | Property | Type | | Description |
@@ -255,6 +257,7 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 #### Response
 
 ```json
+TODO
 ```
 
 | Property | Type | | Description |
