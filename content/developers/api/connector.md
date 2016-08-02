@@ -180,7 +180,7 @@ Returns all reservations that from the specified interval according to the time 
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `States` | array of string [Reservation State](#reservation-state) | optional | States the reservations should be in. If not specified, reservations in `Confirmed`, `Started` or `Processed` states are returned. |
 
-##### Reservation Time Fitler
+##### Reservation Time Filter
 
 - `Colliding`
 - `Created`
