@@ -160,7 +160,7 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 ### Get All Reservations
 
-Returns all reservations that collide with the specified interval.
+Returns all reservations that from the specified interval according to the time filter (e.g. colliding with that interval or created in that interval).
 
 #### Request `[PlatformAddress]/api/connector/v1/reservations/getAll`
 
@@ -175,9 +175,16 @@ Returns all reservations that collide with the specified interval.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
+| `TimeFilter` | string [Reservation Time Filter](#reservation-time-filter) | optional | Time filter of the interval. If not specified, reservations `Colliding` with the interval are returned. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `States` | array of string [Reservation State](#reservation-state) | optional | States the reservations should be in. If not specified, reservations in `Confirmed`, `Started` or `Processed` states are returned. |
+
+##### Reservation Time Fitler
+
+- `Colliding`
+- `Created`
+- `Updated`
 
 #### Response
 
