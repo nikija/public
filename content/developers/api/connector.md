@@ -188,7 +188,7 @@ Adds a new task to the enterprise, optionally to a specified department.
 
 Empty object.
 
-## Reservartions
+## Reservations
 
 ### Get All Reservations
 
