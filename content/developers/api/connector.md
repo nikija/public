@@ -9,6 +9,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 ## Contents
 
 - [Authorization](#authorization)
+    - [Environments](#environments)
     - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
     - [Get All Companies](#get-all-companies)
@@ -33,15 +34,32 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Commands](#get-all-commands)
     - [Update Command](#update-command)
     - [Devices](#devices)
-- [Environments](#environments)
-    - [Demo Environment](#demo-environment)
-    - [Production Environment](#production-environment)
 
 ## Authorization
 
-All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, consult the  [Demo Environment](#demo-environment) section.
+All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, use the  [Demo Environment](#demo-environment).
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication.
+
+### Environments
+
+#### Demo Environment
+
+This environment is meant to be used during implementation of the client applications.
+
+- **Platform Address** - `https://demo.mews.li`
+- **Access Token** - `C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D`
+
+The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
+
+- **Address** - `https://demo.mews.li`
+- **Email** - `connector-api@mews.li`
+- **Password** - `connector-api`
+
+#### Production Environment
+
+- **Platform Address** - `https://www.mews.li`
+- **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
 
 ### Sign in
 
@@ -1043,23 +1061,3 @@ Device type: `VisiOnlineKeyCutter`
 ##### Command Result
 
 Not used.
-
-## Environments
-
-### Demo Environment
-
-This environment is meant to be used during implementation of the client applications.
-
-- **Platform Address** - `https://demo.mews.li`
-- **Access Token** - `C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D`
-
-The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
-
-- **Address** - `https://demo.mews.li`
-- **Email** - `connector-api@mews.li`
-- **Password** - `connector-api`
-
-### Production Environment
-
-- **Platform Address** - `https://www.mews.li`
-- **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
