@@ -246,7 +246,7 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "StartUtc": "2016-01-01T00:00:00Z",
-    "EndUtc": "2017-01-01T00:00:00Z",
+    "EndUtc": "2017-01-01T00:00:00Z"
 }
 ```
 
