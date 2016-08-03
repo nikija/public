@@ -293,6 +293,11 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
 | `CreatedUtc` | string | required | Creation date and time of the block in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the block in UTC timezone in ISO 8601 format. |
 
+##### Space Block Type
+
+- `OutOfOrder`
+- `HouseUse`
+
 ### Add Task
 
 Adds a new task to the enterprise, optionally to a specified department.
