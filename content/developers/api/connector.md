@@ -11,12 +11,13 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Authorization](#authorization)
     - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
+    - [Get All Companies](#get-all-companies)
     - [Get All Spaces](#get-all-spaces)
-    - [Get All Accounting Categories](#get-all-accounting-categories)
-    - [Get All Business Segments](#get-all-business-segments)
-    - [Get All Rates](#get-all-rates)
+    - [Get All Space Blocks](#get-all-space-blocks)
     - [Add Task](#add-task)
 - [Reservations](#reservations)
+    - [Get All Business Segments](#get-all-business-segments)
+    - [Get All Rates](#get-all-rates)
     - [Get All Reservations](#get-all-reservations)
     - [Start Reservation](#start-reservation)
     - [Process Reservation](#process-reservation)
@@ -25,6 +26,8 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
     - [Update Customer](#update-customer)
+- [Finance](#finance)
+    - [Get All Accounting Categories](#get-all-accounting-categories)
     - [Add Credit Card Payment](#add-credit-card-payment)
 - [Commands](#commands)   
     - [Get All Commands](#get-all-commands)
@@ -82,6 +85,8 @@ Signs in the client application to MEWS using a token that you would normally us
 | `Name` | string | required | Name of the enterprise. |
 
 ## Enterprises
+
+### Get All Companies
 
 ### Get All Spaces
 
@@ -170,52 +175,37 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `Name` | string | required | Name of the category. |
 | `ShortName` | string | optional | Short name (e.g. code) of the category. |
 
-### Get All Accounting Categories
+### Get All Space Blocks
 
-Returns all accounting categories of the enterprise associated with the connector integration.
+### Add Task
 
-#### Request `[PlatformAddress]/api/connector/v1/accountingCategories/getAll`
+Adds a new task to the enterprise, optionally to a specified department.
+
+#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
 
 ```json
 {
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "DepartmentId": null,
+    "Name": "Test",
+    "Description": "Task description",
+    "DeadlineUtc": "2016-01-01T14:00:00Z"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
+| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
+| `Name` | string | required | Name (or title) of the task. |
+| `Description` | string | optional | Further decription of the task. |
+| `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
 
 #### Response
 
-```json
-{
-    "AccountingCategories": [
-        {
-            "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
-            "IsActive": true,
-            "Name": "Alcoholic Beverage"
-        },
-        {
-            "Id": "19ba0729-0e88-4354-9131-e5b6a1afba4f",
-            "IsActive": true,
-            "Name": "Beverage"
-        }
-    ]
-}
-```
+Empty object.
 
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccountingCategories` | array of [Accounting Category](#accounting-category) | required | Accounting categories of the enterprise. |
-
-##### Accounting Category
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the category. |
-| `IsActive` | boolean | required | Whether the accounting category is still active. |
-| `Name` | string | required | Name of the category. |
+## Reservations
 
 ### Get All Business Segments
 
@@ -323,36 +313,6 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | `Id` | string | required | Unique identifier of the group. |
 | `IsActive` | boolean | required | Whether the rate group is still active. |
 | `Name` | string | required | Name of the rate group. |
-
-### Add Task
-
-Adds a new task to the enterprise, optionally to a specified department.
-
-#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
-
-```json
-{
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "DepartmentId": null,
-    "Name": "Test",
-    "Description": "Task description",
-    "DeadlineUtc": "2016-01-01T14:00:00Z"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccessToken` | string | required | Access token of the client application. |
-| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
-| `Name` | string | required | Name (or title) of the task. |
-| `Description` | string | optional | Further decription of the task. |
-| `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
-
-#### Response
-
-Empty object.
-
-## Reservations
 
 ### Get All Reservations
 
@@ -807,6 +767,55 @@ When it comes to dates provided by customer (e.g. birth date or passport expirat
 ```
 
 The updated [Customer](#customer) object.
+
+## Finance
+
+### Get All Accounting Categories
+
+Returns all accounting categories of the enterprise associated with the connector integration.
+
+#### Request `[PlatformAddress]/api/connector/v1/accountingCategories/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+{
+    "AccountingCategories": [
+        {
+            "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
+            "IsActive": true,
+            "Name": "Alcoholic Beverage"
+        },
+        {
+            "Id": "19ba0729-0e88-4354-9131-e5b6a1afba4f",
+            "IsActive": true,
+            "Name": "Beverage"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccountingCategories` | array of [Accounting Category](#accounting-category) | required | Accounting categories of the enterprise. |
+
+##### Accounting Category
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the category. |
+| `IsActive` | boolean | required | Whether the accounting category is still active. |
+| `Name` | string | required | Name of the category. |
 
 ### Add Credit Card Payment
 
