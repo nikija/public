@@ -238,6 +238,61 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 ### Get All Space Blocks
 
+Returns all space blocks (out of order blocks or house use blocks) colliding with the specified interval.
+
+#### Request `[PlatformAddress]/api/connector/v1/spaceBlocks/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "StartUtc": "2016-01-01T00:00:00Z",
+    "EndUtc": "2017-01-01T00:00:00Z",
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
+
+#### Response
+
+```json
+{
+    "SpaceBlocks": [
+        {
+            "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "CreatedUtc": "2016-03-29T22:02:34Z",
+            "Id": "5ab9d519-2485-4d77-85c4-2a619cbdc4e7",
+            "Type": "HouseUse",
+            "UpdatedUtc": "2016-03-29T22:02:34Z"
+        },
+        {
+            "AssignedSpaceId": "f7c4b4f5-ac83-4977-a41a-63d27cc6e3e9",
+            "CreatedUtc": "2016-03-29T15:14:06Z",
+            "Id": "4d98ad40-a726-409e-8bf3-2c12ff3c0331",
+            "Type": "OutOfOrder",
+            "UpdatedUtc": "2016-03-29T15:14:06Z"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `SpaceBlocks` | array of [Space Block](#space-block) | required | The space blocks colliding with the interval. |
+
+##### Space Block
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the block. |
+| `AssignedSpaceId` | string | required | Unique identifier of the assigned [Space](#space). |
+| `Type` | string [Space Block Type](#space-block-type) | required | Type of the space block. |
+| `CreatedUtc` | string | required | Creation date and time of the block in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the block in UTC timezone in ISO 8601 format. |
+
 ### Add Task
 
 Adds a new task to the enterprise, optionally to a specified department.
