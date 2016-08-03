@@ -2,7 +2,7 @@
 title: Connector API (v1)
 ---
 
-The Connector API allows external applications to mediate communication between devices that or accessible over local network on the hotel site and the MEWS. There may be several types of connector clients. For example a client that would fetch device commands from the MEWS, execute them on physical devices that are locally accessible and send the command results back to MEWS. Or different client can retrieve some information from MEWS and forward the data to some other system (e.g. heating system, lock system).
+The Connector API serves as en endpoint for applications that mediate communication between MEWS and external systems. Typically these external systems are located in the hotel and accessible only via local network  (e.g. POS systems, printers and other physical devices, kiosks etc). But it is not restricted to just systems running in the hotel, it may also be used directly by other cloud without any application in the middle (e.g. revenue management systems, cloud POS systems).
 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
@@ -189,7 +189,20 @@ Returns all accounting categories of the enterprise associated with the connecto
 #### Response
 
 ```json
-TODO
+{
+    "AccountingCategories": [
+        {
+            "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
+            "IsActive": true,
+            "Name": "Alcoholic Beverage"
+        },
+        {
+            "Id": "19ba0729-0e88-4354-9131-e5b6a1afba4f",
+            "IsActive": true,
+            "Name": "Beverage"
+        }
+    ]
+}
 ```
 
 | Property | Type | | Description |
@@ -223,7 +236,20 @@ Returns all business segments of the default service provided by the enterprise.
 #### Response
 
 ```json
-TODO
+{
+    "BusinessSegments": [
+        {
+            "Id": "7760b5cb-a666-41bb-9758-76bf5d1df399",
+            "IsActive": true,
+            "Name": "Business"
+        },
+        {
+            "Id": "54ec08b6-e6fc-48e9-b8ae-02943e0ac693",
+            "IsActive": true,
+            "Name": "Leisure"
+        }
+    ]
+}
 ```
 
 | Property | Type | | Description |
@@ -257,7 +283,23 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 #### Response
 
 ```json
-TODO
+{
+    "Rates": [
+        {
+            "GroupId": "c8b866b3-be2e-4a47-9486-034318e9f393",
+            "Id": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
+            "IsActive": true,
+            "Name": "Fully Flexible"
+        }
+    ],
+    "RateGroups": [
+        {
+            "Id": "c8b866b3-be2e-4a47-9486-034318e9f393",
+            "IsActive": true,
+            "Name": "Default"
+        }
+    ]
+}
 ```
 
 | Property | Type | | Description |
