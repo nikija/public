@@ -106,6 +106,49 @@ Signs in the client application to MEWS using a token that you would normally us
 
 ### Get All Companies
 
+Returns all company profiles of the enterprise, possible filtered by their identifiers.
+
+#### Request `[PlatformAddress]/api/connector/v1/companies/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Ids` | array of string | optional | If specified, returns only companies with the specified identifiers.  |
+
+#### Response
+
+```json
+{
+    "Companies": [
+        {
+            "Id": "207b9da3-1c2a-45df-af20-54e57a13368c",
+            "Name": "IBM"
+        },
+        {
+            "Id": "217b9da3-1c2a-45df-af20-54e57a13368c",
+            "Name": "Booking.com"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Companies` | array of [Company](#company) | required | The company profiles of the enterprise. |
+
+##### Company
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the company. |
+| `Name` | string  | required | Name of the company. |
+
 ### Get All Spaces
 
 Returns all spaces of an enterprise associated with the connector integration.
