@@ -2,7 +2,7 @@
 title: Connector API (v1)
 ---
 
-The Connector API serves as en endpoint for applications that mediate communication between MEWS and external systems. Typically these external systems are located in the hotel and accessible only via local network  (e.g. POS systems, printers and other physical devices, kiosks etc). But it is not restricted to just systems running in the hotel, it may also be used directly by other cloud without any application in the middle (e.g. revenue management systems, cloud POS systems).
+The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the hotel (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems).
 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
