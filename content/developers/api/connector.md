@@ -573,14 +573,15 @@ Empty object.
 
 ### Process Reservation
 
-Marks a reservation as `Processed` (= checked out). Succeeds only if all processing conditions are met (the reservation has the `Started` state, all customer bills are closed etc).
+Marks a reservation as `Processed` (= checked out). Succeeds only if all processing conditions are met (the reservation has the `Started` state, balance of all reservation members is zero etc).
 
 #### Request `[PlatformAddress]/api/connector/v1/reservations/process`
 
 ```json
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "CloseBills": false
 }
 ```
 
@@ -588,6 +589,7 @@ Marks a reservation as `Processed` (= checked out). Succeeds only if all process
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to process. |
+| `CloseBills` | bool | optional | Whether closable bills of the reservation members should be automatically closed. |
 
 #### Response
 
