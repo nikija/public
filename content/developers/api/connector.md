@@ -811,18 +811,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
-| `Items` | array of [Item](#item) | required | The open items. |
-
-##### Item
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the item. |
-| `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
-| `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
-| `Name` | string | required | Name of the item. |
-| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
-| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
+| `Items` | array of [Accounting Item](#accounting-item) | required | The open items. |
 
 ### Update Customer
 
@@ -937,6 +926,63 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `Id` | string | required | Unique identifier of the category. |
 | `IsActive` | boolean | required | Whether the accounting category is still active. |
 | `Name` | string | required | Name of the category. |
+
+### Get All Accounting Items
+
+Returns all accounting items of the enterprise that were consumed (posted) or will be consumed within the specified interval. 
+
+#### Request `[PlatformAddress]/api/connector/v1/accountingItems/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "StartUtc": "2016-01-01T00:00:00Z",
+    "EndUtc": "2017-01-01T00:00:00Z"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `StartUtc` | string | required | Start of the consumption interval in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | End of the consumption interval in UTC timezone in ISO 8601 format. |
+
+#### Response
+
+```json
+
+    "AccountingItems": [
+        {
+            "AccountingCategoryId": "4ac8ce68-5732-4f1d-bf0d-e557072c926f",
+            "Amount": {
+                "Currency": "GBP",
+                "Tax": 0.42,
+                "TaxRate": 0.2,
+                "Value": 2.5
+            },
+            "ConsumptionUtc": "2016-07-27T12:48:39Z",
+            "Id": "89b93f7c-5c63-4de2-bd17-ec5fee5e3120",
+            "Name": "Caramel, Pepper & Chilli Popcorn",
+            "OrderId": "810b8c3a-d358-4378-84a9-534c830016fc"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccountingItems` | array of [Accounting Item](#accounting-item) | required | The consumed accounting items. |
+
+##### Accounting Item
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the item. |
+| `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
+| `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
+| `Name` | string | required | Name of the item. |
+| `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 
 ### Add Credit Card Payment
 
