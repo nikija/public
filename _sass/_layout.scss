@@ -40,6 +40,10 @@
 
         .gsc-input {
             vertical-align: top;
+
+            table {
+                background: white;
+            }
         }
 
         .gsib_a {
@@ -54,6 +58,15 @@
                 margin: 0px;
                 background-color: #979797; 
             }
+        }
+
+        .gsst_a {
+            padding: 0px;
+
+            span.gscb_a {
+                color: black; 
+                vertical-align: middle;
+            } 
         }
     }
   }
