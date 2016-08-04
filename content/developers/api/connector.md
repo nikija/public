@@ -29,6 +29,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Update Customer](#update-customer)
 - [Finance](#finance)
     - [Get All Accounting Categories](#get-all-accounting-categories)
+    - [Get All Accounting Items](#get-all-accounting-items)
     - [Add Credit Card Payment](#add-credit-card-payment)
 - [Commands](#commands)   
     - [Get All Commands](#get-all-commands)
