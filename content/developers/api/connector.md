@@ -486,13 +486,6 @@ Returns all reservations that from the specified interval according to the time 
             "ChildCount": 0,
             "Companions": [
                 {
-                    "Address": {
-                        "City": null,
-                        "CountryCode": null,
-                        "Line1": null,
-                        "Line2": null,
-                        "PostalCode": null
-                    },
                     "BirthDateUtc": null,
                     "CategoryId": null,
                     "Email": null,
@@ -508,13 +501,6 @@ Returns all reservations that from the specified interval according to the time 
             "CompanyId": null,
             "CreatedUtc": "2016-02-20T14:58:02Z",
             "Customer": {
-                "Address": {
-                    "City": null,
-                    "CountryCode": null,
-                    "Line1": null,
-                    "Line2": null,
-                    "PostalCode": null
-                },
                 "BirthDateUtc": null,
                 "CategoryId": null,
                 "Email": null,
@@ -827,19 +813,12 @@ When it comes to dates in the customer data (e.g. birth date or passport expirat
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
 | `Passport` | [Document](#document) | optional | Passport details of the customer. |
-| `Address` | [Address](#address) | required | Address of the customer. |
+| `Address` | [Address](#address) | optional | Address of the customer. |
 
 #### Response
 
 ```json
 {
-    "Address": {
-        "City": null,
-        "CountryCode": null,
-        "Line1": null,
-        "Line2": null,
-        "PostalCode": null
-    },
     "BirthDateUtc": "2000-01-01T12:00:00Z",
     "CategoryId": null,
     "Email": "john@doe.com",
@@ -870,7 +849,7 @@ The created [Customer](#customer) or an existing [Customer](#customer) with the 
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
 | `CategoryId` | string | optional | Unique identifier of the customer category. |
 | `Passport` | [Document](#document) | optional | Passport details of the customer. |
-| `Address` | [Address](#address) | required | Address of the customer. |
+| `Address` | [Address](#address) | optional | Address of the customer. |
 
 ##### Title
 
