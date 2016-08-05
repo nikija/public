@@ -27,6 +27,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Customers](#customers)
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
+    - [Add Customer](#add-customer)
     - [Update Customer](#update-customer)
 - [Finance](#finance)
     - [Get All Accounting Categories](#get-all-accounting-categories)
