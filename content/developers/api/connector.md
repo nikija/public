@@ -23,6 +23,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Start Reservation](#start-reservation)
     - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
+    - [Add Companion](#add-companion)
 - [Customers](#customers)
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
@@ -679,7 +680,7 @@ Empty object.
 
 ### Cancel Reservation
 
-Cancels a reservation. Succeeds only if the reservation is cancellable
+Cancels a reservation. Succeeds only if the reservation is cancellable.
 
 #### Request `[PlatformAddress]/api/connector/v1/reservations/cancel`
 
@@ -698,6 +699,30 @@ Cancels a reservation. Succeeds only if the reservation is cancellable
 | `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to cancel. |
 | `ChargeCancellationFee` | boolean | required | Whether cancellation fees should be charged according to rate conditions. |
 | `Notes` | string | required | Addiotional notes describing the cancellation. |
+
+#### Response
+
+Empty object.
+
+### Add Companion
+
+Adds a customer as a companion to the reservation. Succeeds only if there is space for the new companion (count of current companions is less than `AdultCount + ChildCount`).
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/addCompanion`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation). |
+| `CustomerId` | boolean | required | Unique identifier of the [Customer](#customer). |
 
 #### Response
 
