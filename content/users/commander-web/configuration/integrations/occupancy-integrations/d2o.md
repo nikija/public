@@ -21,7 +21,7 @@ We use a service called IFTTT to deliver the attachment to dropbox and we use th
 On the settings of the recipe it should show the following:
 - **Tag**: dropbox
 - **File URL**: {{AttachmentUrl}}
-- **File Name**: {{Body}} 
+- **File Name**: {{BodyHTML}}
 - **Dropbox Folder Path**: {{Subject}}
 
 NOTE - You do not need to set up a new recipe for each new hotel - this is a generic recipe for delivery of the files.
