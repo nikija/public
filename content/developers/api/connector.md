@@ -1027,15 +1027,15 @@ Charges a customer, i.e. creates a new order attached to his profile with the sp
 | `Name` | string | required | Name of the item. |
 | `UnitCount` | number | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
 | `UnitCost` | [Charge Cost](#charge-cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
-| `Category` | [Accounting Category Parameters](#category) | optional | Category of the item. |
+| `Category` | [Accounting Category Parameters](#accounting-category-parameters) | optional | Category of the item. |
 
 ##### Charge Cost
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Amount` | decimal | required | Amount including tax. |
-| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
-| `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
+| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
+| `Tax` | decimal | required | Tax rate, e.g. `0.21` in case of 21% tax rate.  |
 
 #### Response
 
