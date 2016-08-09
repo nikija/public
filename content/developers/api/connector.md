@@ -2,7 +2,7 @@
 title: Connector API (v1)
 ---
 
-The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the hotel (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems).
+The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the enterprise (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems).
 
 First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
 
@@ -25,10 +25,12 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Cancel Reservation](#cancel-reservation)
     - [Add Companion](#add-companion)
 - [Customers](#customers)
+    - [Search Customers](#search-customers)
     - [Get Customer Balance](#get-customer-balance)
     - [Get Customers Open Items](#get-customers-open-items)
     - [Add Customer](#add-customer)
     - [Update Customer](#update-customer)
+    - [Charge Customer](#charge-customer)
 - [Finance](#finance)
     - [Get All Accounting Categories](#get-all-accounting-categories)
     - [Get All Accounting Items](#get-all-accounting-items)
@@ -40,7 +42,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 ## Authorization
 
-All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the hotel admin. For development purposes, use the  [Demo Environment](#demo-environment).
+All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the enterprise admin. For development purposes, use the  [Demo Environment](#demo-environment).
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication.
 
@@ -53,7 +55,7 @@ This environment is meant to be used during implementation of the client applica
 - **Platform Address** - `https://demo.mews.li`
 - **Access Token** - `C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D`
 
-The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
+The enterprise is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of them may be used), as a tax rate, either `0.0`, `0.05` or `0.20` can be used. The predefined accounting categories have codes: `FOOD`, `BVG` and `ABVG`. To sign into the system, use the following credentials:
 
 - **Address** - `https://demo.mews.li`
 - **Email** - `connector-api@mews.li`
@@ -62,7 +64,7 @@ The hotel is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any of t
 #### Production Environment
 
 - **Platform Address** - `https://www.mews.li`
-- **Access Token** - Depends on the hotel, should be provided to you by the hotel admin.
+- **Access Token** - Depends on the enterprise, should be provided to you by the enterprise admin.
 
 ### Sign in
 
@@ -672,9 +674,65 @@ Empty object.
 
 ## Customers
 
+### Search Customers
+
+Searches for customers that are active at the moment in the enterprise (e.g. companions of on checked-in reservations or paymasters).
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/search`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "Name": "Smith"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Name` | string | optional | Name to search by (applies to first name, last name and full name). |
+| `SpaceId` | string | optional | Identifier of [Space](#space) to search by (members of [Reservation](#reservation) assigned there will be returned) . |
+
+#### Response
+
+```json
+{
+    "Customers": [
+        {
+            "Customer": {
+                "Address": null,
+                "BirthDateUtc": null,
+                "CategoryId": null,
+                "Email": "john@smith.com",
+                "FirstName": "Peter",
+                "Gender": null,
+                "Id": "794dbb77-0a9a-4170-9fa9-62ea4bf2a56e",
+                "LastName": "Smith",
+                "NationalityCode": null,
+                "Passport": null,
+                "Phone": "123456789",
+                "Title": null
+            },
+            "Reservation": null,
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Customers` | array of [Customer Search Result](#customer-search-result) | required | The customer search results. |
+
+##### Customer Search Result
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Customer` | [Customer](#customer) | required | The found customer. |
+| `Reservation` | [Reservation](#reservation) | optional | Reservation of the customer in case he currently stays in the enterprise. |
+
 ### Get Customer Balance
 
-Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the hotel at the moment.
+Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the enterprise at the moment.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/getBalance`
 
@@ -918,6 +976,79 @@ Updates personal information of a customer. Note that all fields should be provi
 #### Response
 
 The updated [Customer](#customer).
+
+### Charge Customer
+
+Charges a customer, i.e. creates a new order attached to his profile with the specified items.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/charge`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerId": "794dbb77-0a9a-4170-9fa9-62ea4bf2a56e",
+    "Items": [
+        {
+            "Name": "Beer",
+            "UnitCount": 10,
+            "UnitCost": {
+                "Amount": 2.50,
+                "Currency": "GBP",
+                "Tax": 0.20
+            },
+            "Category": {
+                "Code": "ABVG"
+            }
+        },
+        {
+            "Name": "Steak",
+            "UnitCount": 1,
+            "UnitCost": {
+                "Amount": 12.8,
+                "Currency": "GBP",
+                "Tax": 0.05
+            }
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerId` | string | required | Identifier of the [Customer](#customer) to be charged. |
+| `Items` | array of [Charge Item](#charge-item) | required | Items of the charge. |
+| `Notes` | string | optional | Additional notes of the charge. |
+
+##### Charge Item
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Name` | string | required | Name of the item. |
+| `UnitCount` | number | required | Count of units to be charged, e.g. 10 in case of 10 beers. |
+| `UnitCost` | [Charge Cost](#charge-cost) | required | Unit cost, e.g. cost for one beer (note that total cost of the item is therefore `UnitCount` times `UnitCost`). |
+| `Category` | [Accounting Category Parameters](#category) | optional | Category of the item. |
+
+##### Charge Cost
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Amount` | decimal | required | Amount including tax. |
+| `Currency` | string | required | ISO-4217 currency code, e.g. "EUR" or "USD". |
+| `Tax` | decimal | required | Tax rate, e.g. 0.21 in case of 21% tax rate.  |
+
+#### Response
+
+```json
+{
+    "ChargeId": "cdfd5caa-2868-411b-ba95-322e70035f1a"
+}
+```
+
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ChargeId` | string | required | Unique identifier of the created charge. |
 
 ## Finance
 
