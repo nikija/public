@@ -269,15 +269,19 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
         {
             "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
             "CreatedUtc": "2016-03-29T22:02:34Z",
+            "EndUtc": "2016-01-01T16:00:00Z",
             "Id": "5ab9d519-2485-4d77-85c4-2a619cbdc4e7",
+            "StartUtc": "2016-01-01T10:00:00Z",
             "Type": "HouseUse",
             "UpdatedUtc": "2016-03-29T22:02:34Z"
         },
         {
             "AssignedSpaceId": "f7c4b4f5-ac83-4977-a41a-63d27cc6e3e9",
             "CreatedUtc": "2016-03-29T15:14:06Z",
+            "EndUtc": "2016-01-01T16:00:00Z",
             "Id": "4d98ad40-a726-409e-8bf3-2c12ff3c0331",
             "Type": "OutOfOrder",
+            "StartUtc": "2016-01-01T10:00:00Z",
             "UpdatedUtc": "2016-03-29T15:14:06Z"
         }
     ]
@@ -295,6 +299,8 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
 | `Id` | string | required | Unique identifier of the block. |
 | `AssignedSpaceId` | string | required | Unique identifier of the assigned [Space](#space). |
 | `Type` | string [Space Block Type](#space-block-type) | required | Type of the space block. |
+| `StartUtc` | string | required | Start of the block in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | End of the block in UTC timezone in ISO 8601 format. |
 | `CreatedUtc` | string | required | Creation date and time of the block in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the block in UTC timezone in ISO 8601 format. |
 
