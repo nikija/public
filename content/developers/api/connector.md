@@ -10,7 +10,6 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 - [Authorization](#authorization)
     - [Environments](#environments)
-    - [Sign in](#sign-in)
 - [Enterprises](#enterprises)
     - [Get All Companies](#get-all-companies)
     - [Get All Spaces](#get-all-spaces)
@@ -43,8 +42,6 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 ## Authorization
 
 All operations of the API require `AccessToken` to be present in the request. In production environment, the `AccessToken` will be provided to you by the enterprise admin. For development purposes, use the  [Demo Environment](#demo-environment).
-
-The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication.
 
 ### Environments
 
