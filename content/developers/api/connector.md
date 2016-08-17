@@ -42,7 +42,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 ## Authorization
 
-All operations of the API require `AccessToken` to be present in the request. In production environment, the `Token` will be provided to you by the enterprise admin. For development purposes, use the  [Demo Environment](#demo-environment).
+All operations of the API require `AccessToken` to be present in the request. In production environment, the `AccessToken` will be provided to you by the enterprise admin. For development purposes, use the  [Demo Environment](#demo-environment).
 
 The API also supports more advanced scenario with session management, which makes it simple to ensure that only one client is active at a time. That is particulary useful if the client communicates with a physical device that does not support parallel connections/communication.
 
@@ -65,47 +65,6 @@ The enterprise is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any
 
 - **Platform Address** - `https://www.mews.li`
 - **Access Token** - Depends on the enterprise, should be provided to you by the enterprise admin.
-
-### Sign in
-
-Signs in the client application to MEWS using a token that you would normally use as the `AccessToken` in all operations as described in [Authorization](#authorization) section. Returns a new `AccessToken` that should be passed to all other operations. Note that the returned `AccessToken` has limited validity - only until next successful sign in operation. After that, the `AccessToken` returned by the first sign in operation is no longer valid. As a consequence, there is always at most one client with valid `AccessToken`, i.e. the client that signed in last.
-
-#### Request `[PlatformAddress]/api/connector/v1/app/signIn`
-
-```json
-{
-    "ConnectorToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `ConnectorToken` | string | required | Unique token identifying the client application. Can be obtained from MEWS from enterprise settings. |
-
-#### Response
-
-```json
-{
-    "AccessToken": "210F2620DDAE4A988D26DEB3A5B75B2F-77EB7EA147D2EAB4863054EB85FFACE",
-    "Enterprise": 
-    {
-        "Id": "222b5d8a-0492-4271-9941-cd6d89b81d43",
-        "Name": "Test Hotel"
-    }
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccessToken` | string | required | An access token representing the client application session. |
-| `Enterprise` | [Enterprise](#enterprise) | required | Enterprise whose data the connector client handles. |
-
-##### Enterprise
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the enterprise. |
-| `Name` | string | required | Name of the enterprise. |
 
 ## Enterprises
 
