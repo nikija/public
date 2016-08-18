@@ -1,6 +1,6 @@
 ---
 title: Configuration
-ordering: 6
+ordering: 7
 ---
 
 ## Major Differences Versus Traditional Systems
