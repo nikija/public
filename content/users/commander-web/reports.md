@@ -1,6 +1,6 @@
 ---
 title: Reports
-ordering: 5
+ordering: 6
 ---
 
 Almost every report in Mews has a date selection and/or time selection.
