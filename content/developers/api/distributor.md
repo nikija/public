@@ -34,7 +34,7 @@ It is also a good practice to include version info, which makes potential proble
 
 ### Get Hotel Info
 
-Initial call used to obtain all static data about hotel relevant for a booking widget.
+Initial call used to obtain all static data about hotel relevant for the client.
 
 #### Request `[PlatformAddress]/api/distributor/v1/hotels/get`
 
