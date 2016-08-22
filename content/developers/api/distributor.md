@@ -26,7 +26,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 ## Authorization
 
-The Distributor API is a public API with no authorization, it suffices to know unique identifier of a hotel in order to access it. However it is highly recommended that the client would identify itself by providing the `Client` property in all requests made to the API. As an example, have a look at [Get Hotel Info](#get-hotel-info) operation.
+The Distributor API is a public API with no authorization, it suffices to know unique identifier of a hotel in order to access it. However it is required that the client would identify itself by providing the `Client` property in all requests made to the API. As an example, have a look at [Get Hotel Info](#get-hotel-info) operation.
 
 It is also a good practice to include version info, which makes potential problem investigation much simpler. For example our client uses the following identification `MEWS Distributor [version]`.
 
@@ -47,7 +47,7 @@ Initial call used to obtain all static data about hotel relevant for a booking w
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of hotel. |
 
 #### Response
@@ -272,7 +272,7 @@ Can be used to deterimne whether a voucher code is valid.
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of hotel. |
 | `VoucherCode` | string | required | Code of voucher to validate, case sensitive. |
 
@@ -311,7 +311,7 @@ Gives availabilities and pricings for given date interval with product prices in
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of hotel. |
 | `StartUtc` | string | required | Reservation start date (arrival date) in ISO 8601 format. |
 | `EndUtc` | string | required | Reservation end date (departure date) in ISO 8601 format. |
@@ -442,7 +442,7 @@ Gives a pricing information for the given configuration.
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `AdultCount` | number | required | Number of adults. |
 | `ChildCount` | number | required | Number of children. |
@@ -491,7 +491,7 @@ Braintree requires a special client token to be generated for each transaction. 
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of hotel. |
 
 #### Response
@@ -521,7 +521,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of hotel. |
 
 #### Response
@@ -580,7 +580,7 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `Customer` | [Customer](#customer) | required | Information about customer who creates the order. |
 | `Reservations` | array of [ReservationData](#reservationdata) | required | Parameters of reservations to be ordered. |
@@ -703,7 +703,7 @@ In case of an error caused by insufficient availability (which might have decrea
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Client` | string | optional | Identification of the client as described in [Authorization](#authorization). |
+| `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of the hotel. |
 | `ReservationGroupId` | string | required | Unique identifier of the reservation group. |
 
