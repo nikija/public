@@ -92,6 +92,7 @@ Mews.Distributor({
     adwords: false,
     adwordsConversionId: null,
     adwordsConversionLabel: null,
+    facebookPixelId: null,
     hideSpecialRequests: false,
     showRateCompare: false,
     competitors: [
@@ -147,6 +148,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="adwords"></a>adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
 | <a name="adwordsConversionId"></a>adwordsConversionId | `number` | `null` | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
 | <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | `null` | Google AdWords conversion label to be sent when a booking is made.
+| <a name="facebookPixelId"></a>facebookPixelId | `string` | `null` | Facebook Pixel id used for tracking the standard events.
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="competitors"></a>competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
@@ -318,3 +320,13 @@ You can enable AdWords conversion tracking by setting [`adwords`](#adwords) opti
 When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used.
 
 Please note, that some Google Analytics applications can set up their own named trackers. If you wish to used them to report GA events, check their configuration for correct name. This is especially important in case Google Tag Manager is in use, but no other default Google Analytics trackers are being setup on page.
+
+### Facebook Pixel
+
+You can enable tracking of standard events with Facebook Pixel by providing your's pixel id with [`facebookPixelId`](#facebookPixelId) option. When enabled, the following events get tracked:
+
+- `ViewContent` when Distributor is loaded
+- `Search` when customer searches rooms availabilities
+- `AddToCart` when customer adds room order 
+- `InitiateCheckout` when customer presses "Proceed To Checkout" button
+- `Purchase` when booking is completed, with value set to total cost of order in hotel's default currency
