@@ -1344,9 +1344,13 @@ Not used.
 
 ## Changelog
 
+### Demo Environment
+
 #### 26.8.2016
 
 - Added `Currency` parameter to operations [Get Customers Open Items](#get-customers-open-items) and [Get All Accounting Items](#get-all-accounting-items).
 - Deprecated operation [Get Customer Balance](#get-customer-balance). Operation [Get Customer Open Items](#get-customer-open-items) should be used instead, since it provides more complete information.
 - Deprecated properties `Customer` and `Companions` on [Reservation](#reservation). `CustomerId` an `CompanionIds` should be used instead. The customer data are part of the result of [Get All Reservations](#get-all-reservations). This removes redundancy in the response data, especially in hostels where the customer is mostly the only companion and currently the customer data were twice in the result.
-- Address on [Customer](#customer) will become optional.
+- We plan to make `Address` on [Customer](#customer) optional in order to reduce response sizes, in many cases the customers do not have address details filled in.
+
+### Production Environment
