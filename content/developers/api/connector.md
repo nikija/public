@@ -4,7 +4,7 @@ title: Connector API (v1)
 
 The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the enterprise (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems).
 
-First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs.
+First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs. If you are interested in changes and updates of this API, check [Changelog](#changelog).
 
 ## Contents
 
