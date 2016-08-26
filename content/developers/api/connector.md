@@ -8,7 +8,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 ## Contents
 
-- [Authorization](#authorization)g
+- [Authorization](#authorization)
     - [Environments](#environments)
 - [Enterprises](#enterprises)
     - [Get All Companies](#get-all-companies)
@@ -448,34 +448,12 @@ Returns all reservations that from the specified interval according to the time 
             "ChannelManagerId": null,
             "ChannelNumber": null,
             "ChildCount": 0,
-            "Companions": [
-                {
-                    "BirthDateUtc": null,
-                    "CategoryId": null,
-                    "Email": null,
-                    "FirstName": "John",
-                    "Gender": null,
-                    "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
-                    "LastName": "Smith",
-                    "NationalityCode": "US",
-                    "Phone": "00420123456789",
-                    "Title": null
-                }
+            "CompanionIds": [
+                "35d4b117-4e60-44a3-9580-c582117eff98"
             ],
             "CompanyId": null,
             "CreatedUtc": "2016-02-20T14:58:02Z",
-            "Customer": {
-                "BirthDateUtc": null,
-                "CategoryId": null,
-                "Email": null,
-                "FirstName": "John",
-                "Gender": null,
-                "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
-                "LastName": "Smith",
-                "NationalityCode": "US",
-                "Phone": "00420123456789",
-                "Title": null
-            },
+            "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98",
             "EndUtc": "2016-02-22T11:00:00Z",
             "GroupId": "94843f6f-3be3-481b-a1c7-06458774c3df",
             "Id": "bfee2c44-1f84-4326-a862-5289598f6e2d",
@@ -487,6 +465,20 @@ Returns all reservations that from the specified interval according to the time 
             "TravelAgencyId": null,
             "UpdatedUtc": "2016-02-20T14:58:02Z"
         }
+    ],
+    "Customers": [
+        {
+            "BirthDateUtc": null,
+            "CategoryId": null,
+            "Email": null,
+            "FirstName": "John",
+            "Gender": null,
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LastName": "Smith",
+            "NationalityCode": "US",
+            "Phone": "00420123456789",
+            "Title": null
+        }
     ]
 }
 ```
@@ -495,6 +487,7 @@ Returns all reservations that from the specified interval according to the time 
 | --- | --- | --- | --- |
 | `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
 | `ReservationGroups` | array of [Reservation Group](#reservation-group) | required | Reservation groups that the reservations are members of. |
+| `Customers` | array of [Customer](#customer) | required | Customers that are members of the reservations. |
 
 ##### Reservation
 
@@ -518,8 +511,10 @@ Returns all reservations that from the specified interval according to the time 
 | `RateId` | string | required | Identifier of the reservation [Rate](#rate). |
 | `AdultCount` | number | required | Count of adults the reservation was booked for. |
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
-| `Customer` | [Customer](#customer) | required | Owner of the reservation. |
-| `Companions` | array of [Customer](#customer) | required | Customers that will occupy the space. |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer) who owns the reservation. |
+| `Customer` | [Customer](#customer) | required | **DEPRECATED** Owner of the reservation. |
+| `CompanionIds` | array of string | required | Unique identifiers of [Customer](#customer)s that will occupy the space. |
+| `Companions` | array of [Customer](#customer) | required | **DEPRECATED** Customers that will occupy the space. |
 
 ##### Reservation State
 
@@ -692,7 +687,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
 | `Customer` | [Customer](#customer) | required | The found customer. |
 | `Reservation` | [Reservation](#reservation) | optional | Reservation of the customer in case he currently stays in the enterprise. |
 
-### Get Customer Balance
+### **DEPRECATED** Get Customer Balance
 
 Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the enterprise at the moment.
 
@@ -1346,3 +1341,12 @@ Device type: `VisiOnlineKeyCutter`
 ##### Command Result
 
 Not used.
+
+## Changelog
+
+#### 26.8.2016
+
+- Added `Currency` parameter to operations [Get Customers Open Items](#get-customers-open-items) and [Get All Accounting Items](#get-all-accounting-items).
+- Deprecated operation [Get Customer Balance](#get-customer-balance). Operation [Get Customer Open Items](#get-customer-open-items) should be used instead, since it provides more complete information.
+- Deprecated properties `Customer` and `Companions` on [Reservation](#reservation). `CustomerId` an `CompanionIds` should be used instead. The customer data are part of the result of [Get All Reservations](#get-all-reservations). This removes redundancy in the response data, especially in hostels where the customer is mostly the only companion and currently the customer data were twice in the result.
+- Address on [Customer](#customer) will become optional.
