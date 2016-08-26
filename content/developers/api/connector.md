@@ -8,7 +8,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 
 ## Contents
 
-- [Authorization](#authorization)
+- [Authorization](#authorization)g
     - [Environments](#environments)
 - [Enterprises](#enterprises)
     - [Get All Companies](#get-all-companies)
@@ -732,7 +732,7 @@ Returns current open balance of a customer. If the balance is positive, the cust
 
 ### Get Customers Open Items
 
-Returns all open items of the specified customers, i.e. all unpaid items and all deposited payments. Sum of the open items is the balance of the customer.
+Returns all open items of the specified customers, i.e. all unpaid items and all deposited payments. Sum of the open items is the balance of the customer. If the `Currency` is specified, costs of the items are converted to that currency.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/getOpenItems`
 
@@ -749,6 +749,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerIds` | array of string | required | Unique identifiers of the [Customer](#customer)s. |
+| `Currency` | string | optional | ISO-4217 currency code the item costs should be converted to, e.g. `EUR` or `USD`. |
 
 #### Response
 
@@ -1063,7 +1064,7 @@ Returns all accounting categories of the enterprise associated with the connecto
 
 ### Get All Accounting Items
 
-Returns all accounting items of the enterprise that were consumed (posted) or will be consumed within the specified interval. 
+Returns all accounting items of the enterprise that were consumed (posted) or will be consumed within the specified interval. If the `Currency` is specified, costs of the items are converted to that currency.
 
 #### Request `[PlatformAddress]/api/connector/v1/accountingItems/getAll`
 
@@ -1080,6 +1081,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | `AccessToken` | string | required | Access token of the client application. |
 | `StartUtc` | string | required | Start of the consumption interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the consumption interval in UTC timezone in ISO 8601 format. |
+| `Currency` | string | optional | ISO-4217 currency code the item costs should be converted to, e.g. `EUR` or `USD`. |
 
 #### Response
 
