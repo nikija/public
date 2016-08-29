@@ -185,40 +185,13 @@ A localized text is an object of the property values localized into languages su
 
 ##### Payment Gateway
 
-If the hotel does not use any payment gateway, the value is null. If it does, then it is currently one of 3 types of payment gateways. And for each different gateway, different object is returned. The main purpose of a payment gateway is to securely obtain credit card of the customer before a reservation is created. You can decide not to support any of them and just ignore it, in which case reservations are created with note about missing credit card.
-
-###### Mews Payments
+If the hotel does not use any payment gateway, the value is null. If it does, then you should use a specific api call and the gateway's library to encode credit card data. The main purpose of a payment gateway is to securely obtain credit card of the customer before a reservation is created. You can decide not to support any of them and just ignore it, in which case reservations are created with note about missing credit card.
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `PaymentGatewayType` | string | required | Type of the payment gateway, `MewsPayments` in this case. |
-
-Mews Payments gateway is hosted on our website. After a reservation is created, the customer should be redirected to:
-
-```
-[PlatformAddress]/distributor/payment/{reservationGroupId}/{customerId}/?shouldRedirect=true
-```
-
-Both parameters are obtained as a result of [Create Reservation Group](#create-reservation-group) operation. The customer will fill the credit card information there and after that will be redirected back.
-
-###### Braintree
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `PaymentGatewayType` | string | required | Type of the payment gateway, `Braintree` in this case. |
-| `MerchantId` | string | required | Braintree MerchantId. |
-| `ClientKey` | string | required | Braintree ClientKey. |
-
-The client app should use the provided information together with Braintree library to obtain credit card information, encode it and send it when creating a reservation.
-
-###### Adyen
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `PaymentGatewayType` | string | required | Type of the payment gateway, `Adyen` in this case. |
-| `PublicKey` | string | required | Adyen PublicKey. |
-
-The client app should use the provided information together with Adyen library to obtain credit card information, encode it and send it when creating a reservation.
+| `PaymentGatewayType` | string | required | Type of the payment gateway (`Braintree` or `Adyen`). |
+| `IsMerchant` | boolean | required | Whether the gateway is processed through Mews Merchant or not. |
+| `SupportedCreditCardTypes` | array of string | required | The list of supported credit cards, should be used to enhance UX. |
 
 ##### Product
 
@@ -508,7 +481,7 @@ Braintree requires a special client token to be generated for each transaction. 
 
 ### Get Adyen Client Token
 
-Adyen requires a server utc time to be used for client-side credit card encryption. In case the hotel uses Adyen as a payment gateway, you need to obtain it to before processing payment.
+Adyen requires a public key and a server utc time to be used for client-side credit card encryption. In case the hotel uses Adyen as a payment gateway, you need to obtain it to before processing payment.
 
 #### Request `[PlatformAddress]/api/distributor/v1/payments/getAdyenClientToken`
 
@@ -528,13 +501,15 @@ Adyen requires a server utc time to be used for client-side credit card encrypti
 
 ```json
 {
-    "NowUtc": "2015-01-01T13:42:05Z"
+    "NowUtc": "2015-01-01T13:42:05Z",
+    "PublicKey": "..."
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `NowUtc` | string | required | Server time. |
+| `PublicKey` | string | required | Adyen Public key. |
 
 ### Create Reservation Group
 
