@@ -1,5 +1,5 @@
 ---
-title: Users Guide
+title: Users
 ---
 
 ##Table of Content
