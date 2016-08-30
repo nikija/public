@@ -15,10 +15,13 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Get All Spaces](#get-all-spaces)
     - [Get All Space Blocks](#get-all-space-blocks)
     - [Add Task](#add-task)
-- [Reservations](#reservations)
+- [Services](#services)
     - [Get All Business Segments](#get-all-business-segments)
     - [Get All Rates](#get-all-rates)
+    - [Update Base Price](#update-base-price)
+- [Reservations](#reservations)
     - [Get All Reservations](#get-all-reservations)
+    - [Get All Reservation Items](#get-all-reservation-items)
     - [Start Reservation](#start-reservation)
     - [Process Reservation](#process-reservation)
     - [Cancel Reservation](#cancel-reservation)
@@ -293,7 +296,7 @@ Adds a new task to the enterprise, optionally to a specified department.
 
 Empty object.
 
-## Reservations
+## Services
 
 ### Get All Business Segments
 
@@ -401,6 +404,10 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | `Id` | string | required | Unique identifier of the group. |
 | `IsActive` | boolean | required | Whether the rate group is still active. |
 | `Name` | string | required | Name of the rate group. |
+
+### Update Rate Base Price
+
+## Reservations
 
 ### Get All Reservations
 
@@ -532,6 +539,8 @@ Returns all reservations that from the specified interval according to the time 
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation group. |
 | `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
+
+### Get All Reservation Items
 
 ### Start Reservation
 
