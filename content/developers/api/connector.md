@@ -1443,7 +1443,7 @@ Not used.
 #### 30.8.2016
 
 - Added operation [Update Rate Base Price](#update-rate-base-price) that allows e.g. revenue management systems to provide recommended rates to MEWS.
-- Added operation [Get All Reservation Items](#get-all-reservation-items) that provides revenue items of selected reservations.
+- Added operation [Get All Reservation Items](#get-all-reservation-items) that returns revenue items of selected reservations.
 
 #### 26.8.2016
 
