@@ -583,6 +583,63 @@ Returns all reservations that from the specified interval according to the time 
 
 ### Get All Reservation Items
 
+Returns all revenue items associated with the specified reservations.
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/getAllItems`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationIds": [
+        "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationIds` | string | required | Unique identifiers of the [Reservation](#reservation)s. |
+| `Currency` | string | optional | ISO-4217 currency code the item costs should be converted to. |
+
+#### Response
+
+```json
+{
+    "Reservations": [
+        {
+            "Items": [
+                {
+                    "AccountingCategoryId": "0cf7aa90-736f-43e9-a7dc-787704548d86",
+                    "Amount": {
+                        "Currency": "GBP",
+                        "Tax": 3.33,
+                        "TaxRate": 0.2,
+                        "Value": 20
+                    },
+                    "ConsumptionUtc": "2016-03-10T13:00:00Z",
+                    "Id": "784a29df-6196-4402-96a0-58695a881239",
+                    "Name": "Night 3/10/2016",
+                    "OrderId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+                }
+            ],
+            "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Reservations` | array of [Reservation Items](#reservation-items) | required | The reservations with their items. |
+
+##### Reservation Items
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservations). |
+| `Items` | array of [Accounting Item](#accounting-item) | required | The items associated with the reservation. |
+
 ### Start Reservation
 
 Marks a reservation as `Started` (= checked in). Succeeds only if all starting conditions are met (the reservation has the `Confirmed` state, does not have start set to future, has an inspected room assigned etc).
@@ -816,19 +873,6 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                     "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
                     "Name": "Cash Payment EUR",
                     "OrderId": null
-                },
-                {
-                    "AccountingCategoryId": "12345678-7e6f-4131-af21-402cec59b8b9",
-                    "Amount": {
-                        "Currency": "GBP",
-                        "Tax": 3.33,
-                        "TaxRate": 0.2,
-                        "Value": 20
-                    },
-                    "ConsumptionUtc": "2016-02-20T13:00:00Z",
-                    "Id": "e90126c9-afa4-4f95-bfff-b875ecfe900f",
-                    "Name": "Night 2/20/2016",
-                    "OrderId": "bfee2c44-1f84-4326-a862-5289598f6e2d"
                 }
             ]
         }
