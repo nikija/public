@@ -18,7 +18,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Services](#services)
     - [Get All Business Segments](#get-all-business-segments)
     - [Get All Rates](#get-all-rates)
-    - [Update Base Price](#update-base-price)
+    - [Update Rate Base Price](#update-rate-base-price)
 - [Reservations](#reservations)
     - [Get All Reservations](#get-all-reservations)
     - [Get All Reservation Items](#get-all-reservation-items)
@@ -406,6 +406,45 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | `Name` | string | required | Name of the rate group. |
 
 ### Update Rate Base Price
+
+Updates base price of a rate in the specified intervals. Note that prices are defined daily, so when the server receives the UTC interval, it first converts it to enterprise timezone and updates the price on all dates that the interval intersects.
+
+#### Request `[PlatformAddress]/api/connector/v1/rates/updateBasePrice`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
+    "BasePriceUpdates": [
+        {
+            "StartUtc": "2016-09-01T00:00:00Z",
+            "EndUtc": "2016-09-02T00:00:00Z",
+            "Value": 100
+        },
+        {
+            "StartUtc": "2016-09-04T00:00:00Z",
+            "EndUtc": "2016-09-05T00:00:00Z",
+            "Value": 50
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `AccessToken` | string | required | Unique identifier of the [Rate](#rate) to update. |
+| `BasePriceUpdates` | array of [Base Price Update](#base-price-update) | required | Intervals with new prices. |
+
+##### Base Price Update
+
+| `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
+| `Value` | number | required | New value of the rate on the interval. |
+
+#### Response
+
+Empty object.
 
 ## Reservations
 
