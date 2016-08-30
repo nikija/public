@@ -438,6 +438,8 @@ Updates base price of a rate in the specified intervals. Note that prices are de
 
 ##### Base Price Update
 
+| Property | Type | | Description |
+| --- | --- | --- | --- |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `Value` | number | required | New value of the rate on the interval. |
