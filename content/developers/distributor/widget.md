@@ -164,7 +164,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="marinId"></a>marinId | `string` | `null` | Marin id used for tracking.
 | <a name="travelClick"></a>travelClick | `boolean` | `false` | Enables TravelClick tracking.
 | <a name="travelClickId"></a>travelClickId | `string` | `null` | TravelClick Advertiser Id used for tracking.
-| <a name=">travelClickGroupTag"></a>travelClickGroupTag | `string` | `null` | TravelClick Group Tag String used for tracking.
+| <a name="travelClickGroupTag"></a>travelClickGroupTag | `string` | `null` | TravelClick Group Tag String used for tracking.
 | <a name="travelClickActivityTag"></a>travelClickActivityTag | `string` | `null` | TravelClick Activity Tag String used for tracking.
 | <a name="myHotelShopId"></a>myHotelShopId | `number` | `null` | MyHotelShop id used for tracking.
 | <a name="onOpened"></a>onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API.
