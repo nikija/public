@@ -599,7 +599,7 @@ Returns all revenue items associated with the specified reservations.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ReservationIds` | string | required | Unique identifiers of the [Reservation](#reservation)s. |
+| `ReservationIds` | array of string | required | Unique identifiers of the [Reservation](#reservation)s. |
 | `Currency` | string | optional | ISO-4217 currency code the item costs should be converted to. |
 
 #### Response
@@ -777,7 +777,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
                 "Phone": "123456789",
                 "Title": null
             },
-            "Reservation": null,
+            "Reservation": null
         }
     ]
 }
@@ -1175,7 +1175,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 #### Response
 
 ```json
-
+{
     "AccountingItems": [
         {
             "AccountingCategoryId": "4ac8ce68-5732-4f1d-bf0d-e557072c926f",
@@ -1439,6 +1439,11 @@ Not used.
 ## Changelog
 
 ### Demo Environment
+
+#### 30.8.2016
+
+- Added operation [Update Rate Base Price](#update-rate-base-price) that allows e.g. revenue management systems to provide recommended rates to MEWS.
+- Added operation [Get All Reservation Items](#get-all-reservation-items) that provides revenue items of selected reservations.
 
 #### 26.8.2016
 
