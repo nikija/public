@@ -1438,18 +1438,11 @@ Not used.
 
 ## Changelog
 
-### Demo Environment
-
-#### 30.8.2016
+#### 1st September 2016 23:00 CET
 
 - Added operation [Update Rate Base Price](#update-rate-base-price) that allows e.g. revenue management systems to provide recommended rates to MEWS.
 - Added operation [Get All Reservation Items](#get-all-reservation-items) that returns revenue items of selected reservations.
-
-#### 26.8.2016
-
 - Added `Currency` parameter to operations [Get Customers Open Items](#get-customers-open-items) and [Get All Accounting Items](#get-all-accounting-items).
 - Deprecated operation [Get Customer Balance](#get-customer-balance). Operation [Get Customer Open Items](#get-customer-open-items) should be used instead, since it provides more complete information.
 - Deprecated properties `Customer` and `Companions` on [Reservation](#reservation). `CustomerId` an `CompanionIds` should be used instead. The customer data are part of the result of [Get All Reservations](#get-all-reservations). This removes redundancy in the response data, especially in hostels where the customer is mostly the only companion and currently the customer data were twice in the result.
 - We plan to make `Address` on [Customer](#customer) optional in order to reduce response sizes, in many cases the customers do not have address details filled in.
-
-### Production Environment
