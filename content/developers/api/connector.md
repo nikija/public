@@ -516,6 +516,7 @@ Returns all reservations that from the specified interval according to the time 
     ],
     "Customers": [
         {
+            "Address": null,
             "BirthDateUtc": null,
             "CategoryId": null,
             "Email": null,
@@ -524,6 +525,7 @@ Returns all reservations that from the specified interval according to the time 
             "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
             "LastName": "Smith",
             "NationalityCode": "US",
+            "Passport": null,
             "Phone": "00420123456789",
             "Title": null
         }
