@@ -8,7 +8,7 @@ All public APIs provided by the MEWS platform share a set of common properties w
 
 ### Requests
 
-The APIs accept only HTTP POST requests with `Content-Type` set to `application/json` and JSON content depending on the operation to be performed. In order to perform an operation, the client needs to know the **operation address** where to send the request. All APIs follow this operation address pattern:
+The APIs accept only `HTTP POST` requests with `Content-Type` set to `application/json` and JSON content depending on the operation to be performed. In order to perform an operation, the client needs to know the **operation address** where to send the request. All APIs follow this operation address pattern:
 
 ```
 [PlatformAddress]/api/[ApiName]/[ApiVersion]/[Resource]/[Operation]
