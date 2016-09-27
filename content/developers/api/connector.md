@@ -2,45 +2,48 @@
 title: Connector API (v1)
 ---
 
-The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the enterprise (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems).
+The Connector API serves as en endpoint for communication between MEWS and external systems. Or for applications that mediate communication between MEWS and the third party systems. Typically the external systems are running on site in the enterprise (e.g. POS systems, printers and other physical devices, kiosks etc), but the API may also be used by other cloud systems (e.g. revenue management systems, cloud POS systems). 
 
-First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs. If you are interested in changes and updates of this API, check [Changelog](#changelog).
+First of all, please have a look at [API Guidelines](../api.html) which describe general usage guidelines of MEWS APIs. If you are interested in changes and updates of this API, check [Changelog](#changelog). To see some scenarios when this API might be used, have a look at the [Use Cases](#use-cases) section.
 
 ## Contents
 
 - [Authorization](#authorization)
     - [Environments](#environments)
-- [Enterprises](#enterprises)
-    - [Get All Companies](#get-all-companies)
-    - [Get All Spaces](#get-all-spaces)
-    - [Get All Space Blocks](#get-all-space-blocks)
-    - [Add Task](#add-task)
-- [Services](#services)
-    - [Get All Business Segments](#get-all-business-segments)
-    - [Get All Rates](#get-all-rates)
-    - [Update Rate Base Price](#update-rate-base-price)
-- [Reservations](#reservations)
-    - [Get All Reservations](#get-all-reservations)
-    - [Get All Reservation Items](#get-all-reservation-items)
-    - [Start Reservation](#start-reservation)
-    - [Process Reservation](#process-reservation)
-    - [Cancel Reservation](#cancel-reservation)
-    - [Add Companion](#add-companion)
-- [Customers](#customers)
-    - [Search Customers](#search-customers)
-    - [Get Customer Balance](#get-customer-balance)
-    - [Get Customers Open Items](#get-customers-open-items)
-    - [Add Customer](#add-customer)
-    - [Update Customer](#update-customer)
-    - [Charge Customer](#charge-customer)
-- [Finance](#finance)
-    - [Get All Accounting Categories](#get-all-accounting-categories)
-    - [Get All Accounting Items](#get-all-accounting-items)
-    - [Add Credit Card Payment](#add-credit-card-payment)
-- [Commands](#commands)   
-    - [Get All Commands](#get-all-commands)
-    - [Update Command](#update-command)
-    - [Devices](#devices)
+- Operations
+    - [Enterprise](#enterprise)
+        - [Get All Companies](#get-all-companies)
+        - [Get All Spaces](#get-all-spaces)
+        - [Get All Space Blocks](#get-all-space-blocks)
+        - [Add Task](#add-task)
+    - [Services](#services)
+        - [Get All Business Segments](#get-all-business-segments)
+        - [Get All Rates](#get-all-rates)
+        - [Update Rate Base Price](#update-rate-base-price)
+    - [Reservations](#reservations)
+        - [Get All Reservations](#get-all-reservations)
+        - [Get All Reservation Items](#get-all-reservation-items)
+        - [Start Reservation](#start-reservation)
+        - [Process Reservation](#process-reservation)
+        - [Cancel Reservation](#cancel-reservation)
+        - [Add Companion](#add-companion)
+    - [Customers](#customers)
+        - [Search Customers](#search-customers)
+        - [Get Customer Balance](#get-customer-balance)
+        - [Get Customers Open Items](#get-customers-open-items)
+        - [Add Customer](#add-customer)
+        - [Update Customer](#update-customer)
+        - [Charge Customer](#charge-customer)
+    - [Finance](#finance)
+        - [Get All Accounting Categories](#get-all-accounting-categories)
+        - [Get All Accounting Items](#get-all-accounting-items)
+        - [Add Credit Card Payment](#add-credit-card-payment)
+    - [Commands](#commands)   
+        - [Get All Commands](#get-all-commands)
+        - [Update Command](#update-command)
+        - [Devices](#devices)
+ - [Use Cases](#use-cases)
+ - [Changelog](#changelog)
 
 ## Authorization
 
@@ -1438,6 +1441,28 @@ Device type: `VisiOnlineKeyCutter`
 
 Not used.
 
+## Use Cases
+
+### Revenue Management System
+
+Revenue management systems obtain information about reservations, revenue and pricing from MEWS. And based on the data they may recommend or directly update rate prices, give future revenue estimates, predict occupancy etc. In bigger hotels, there are might be more than 50k reservations in a year, so it is necessary to always limit the API calls in terms of potential data size, in order to avoid timeouts, network errors etc. A recommended approach, how to implement a RMS client is described below. Folowing these guidelines should ensure that both our servers and RMS clients are not unnecessiraly overutilized. 
+
+#### Initial Data Pull
+
+Performed once when setting up the connection, because the RMS needs to obtain historical data.
+    
+RMS should obtain the reservations in time-limitted batches using [Get All Reservations](#get-all-reservations). Size of the batches depends on size of the hotel and its occupancy, but in general weekly batches are recommended and should work well even for big hotels (1000+ units). In order to get reservations e.g. in the past year, RMS should call [Get All Reservations](#get-all-reservations) sequentially 52 times (one call for each week in the past year). That would give RMS all reservations that "collide" with the past year.
+
+To obtain revenue items associated with reservations, [Get All Reservation Items](#get-all-reservation-items) can be used. In order to prevent both huge responses, long response times or thousands of API calls, it should be called for batches of reservations (using `ReservationIds` parameter). One approach might be to call it once for each reservation batch returned in the previous step and therefore 52 times at most (if there is a week when there are no reservations, it does not have to be called for that week).
+
+Sometimes the data obtained through the previous two steps are not sufficient enough for RMS. So additionally, RMS can pull e.g. business segments via [Get All Business Segments](#get-all-business-segments) or rates via [Get All Rates](#get-all-rates). Note that it is important to get the reservations and revenue first and the additional data later after that. If done the other way around, it might happen that RMS would receive a reservation with e.g. `RateId` which does not correspond to any rate that was pulled beforehand. Rates, business segments etc. are dynamic and hotel employee could create a new one and assign it to a reservation right before the reservation gets pulled to RMS.
+
+#### Periodic Future Update
+
+Performed periodically after the connection is set up so that RMS has future reservations and revenue up to date. Length of the period is not specified, but it is recommended to update the future data once or twice a day.
+
+The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
+    
 ## Changelog
 
 #### 1st September 2016 23:00 CET
