@@ -3,7 +3,16 @@ title: Introduction
 ordering: 1
 ---
 
-Before you start to work with the Mews Commander, the most important part is that you update your personal profile correct. If you do not do this before you start, you will find that the language or culture settings will prevent you from optimally using the system. 
+Before you start to work with the Mews Commander, the most important part is that you update your personal profile correct. If you do not do this before you start, you will find that the language or culture settings will prevent you from optimally using the system.
+
+## Useful links
+
+[status.mews.li](http://status.mews.li) - Current service status of Mews.
+
+[FAQ](https://mews.desk.com/) - Frequently Asked Questions.
+
+[Release Notes](http://www.mewssystems.com/release-notes/) - New features in the system.
+
 
 ## Search Function
 
