@@ -11,34 +11,34 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Authorization](#authorization)
     - [Environments](#environments)
 - Operations
-    - [Enterprise](#enterprise)
+    - Enterprises
         - [Get All Companies](#get-all-companies)
         - [Get All Spaces](#get-all-spaces)
         - [Get All Space Blocks](#get-all-space-blocks)
         - [Add Task](#add-task)
-    - [Services](#services)
+    - Services
         - [Get All Business Segments](#get-all-business-segments)
         - [Get All Rates](#get-all-rates)
         - [Update Rate Base Price](#update-rate-base-price)
-    - [Reservations](#reservations)
+    - Reservations
         - [Get All Reservations](#get-all-reservations)
         - [Get All Reservation Items](#get-all-reservation-items)
         - [Start Reservation](#start-reservation)
         - [Process Reservation](#process-reservation)
         - [Cancel Reservation](#cancel-reservation)
         - [Add Companion](#add-companion)
-    - [Customers](#customers)
+    - Customers
         - [Search Customers](#search-customers)
         - [Get Customer Balance](#get-customer-balance)
         - [Get Customers Open Items](#get-customers-open-items)
         - [Add Customer](#add-customer)
         - [Update Customer](#update-customer)
         - [Charge Customer](#charge-customer)
-    - [Finance](#finance)
+    - Finance
         - [Get All Accounting Categories](#get-all-accounting-categories)
         - [Get All Accounting Items](#get-all-accounting-items)
         - [Add Credit Card Payment](#add-credit-card-payment)
-    - [Commands](#commands)   
+    - Commands
         - [Get All Commands](#get-all-commands)
         - [Update Command](#update-command)
         - [Devices](#devices)
@@ -69,7 +69,7 @@ The enterprise is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any
 - **Platform Address** - `https://www.mews.li`
 - **Access Token** - Depends on the enterprise, should be provided to you by the enterprise admin.
 
-## Enterprises
+## Operations
 
 ### Get All Companies
 
@@ -299,8 +299,6 @@ Adds a new task to the enterprise, optionally to a specified department.
 
 Empty object.
 
-## Services
-
 ### Get All Business Segments
 
 Returns all business segments of the default service provided by the enterprise.
@@ -450,8 +448,6 @@ Updates base price of a rate in the specified intervals. Note that prices are de
 #### Response
 
 Empty object.
-
-## Reservations
 
 ### Get All Reservations
 
@@ -740,8 +736,6 @@ Adds a customer as a companion to the reservation. Succeeds only if there is spa
 #### Response
 
 Empty object.
-
-## Customers
 
 ### Search Customers
 
@@ -1107,8 +1101,6 @@ Charges a customer, i.e. creates a new order attached to his profile with the sp
 | --- | --- | --- | --- |
 | `ChargeId` | string | required | Unique identifier of the created charge. |
 
-## Finance
-
 ### Get All Accounting Categories
 
 Returns all accounting categories of the enterprise associated with the connector integration.
@@ -1280,8 +1272,6 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 ```
 
 Balance ([Currency Value](#customer)) of the customer after the payment is posted.
-
-## Commands
 
 ### Get All Commands
 
