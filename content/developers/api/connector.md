@@ -29,7 +29,6 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Add Companion](#add-companion)
     - Customers
         - [Search Customers](#search-customers)
-        - [Get Customer Balance](#get-customer-balance)
         - [Get Customers Open Items](#get-customers-open-items)
         - [Add Customer](#add-customer)
         - [Update Customer](#update-customer)
@@ -561,9 +560,7 @@ Returns all reservations that from the specified interval according to the time 
 | `AdultCount` | number | required | Count of adults the reservation was booked for. |
 | `ChildCount` | number | required | Count of children the reservation was booked for. |
 | `CustomerId` | string | required | Unique identifier of the [Customer](#customer) who owns the reservation. |
-| `Customer` | [Customer](#customer) | required | **DEPRECATED** Owner of the reservation. |
 | `CompanionIds` | array of string | required | Unique identifiers of [Customer](#customer)s that will occupy the space. |
-| `Companions` | array of [Customer](#customer) | required | **DEPRECATED** Customers that will occupy the space. |
 
 ##### Reservation State
 
@@ -792,44 +789,6 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
 | --- | --- | --- | --- |
 | `Customer` | [Customer](#customer) | required | The found customer. |
 | `Reservation` | [Reservation](#reservation) | optional | Reservation of the customer in case he currently stays in the enterprise. |
-
-### **DEPRECATED** Get Customer Balance
-
-Returns current open balance of a customer. If the balance is positive, the customer has some unpaid items. Otherwise the customer does not owe anything to the enterprise at the moment.
-
-#### Request `[PlatformAddress]/api/connector/v1/customers/getBalance`
-
-```json
-{
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "CustomerId": "2a1a4315-7e6f-4131-af21-402cec59b8b9"
-}
-```
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `AccessToken` | string | required | Access token of the client application. |
-| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
-
-#### Response
-
-```json
-{
-    "Currency": "EUR",
-    "Tax": null,
-    "TaxRate": null,
-    "Value": 100
-}
-```
-
-##### Currency Value
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
-| `Value` | number | required | Amount in the currency (including tax if taxed). |
-| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
-| `Tax` | number | optional | Tax value in case the item is taxed. |
 
 ### Get Customers Open Items
 
@@ -1205,6 +1164,15 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
+
+##### Currency Value
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Currency` | string | required | ISO-4217 currency code, e.g. `EUR` or `USD`. |
+| `Value` | number | required | Amount in the currency (including tax if taxed). |
+| `TaxRate` | number | optional | Tax rate in case the item is taxed (e.g. `0.21`). |
+| `Tax` | number | optional | Tax value in case the item is taxed. |
 
 ### Add Credit Card Payment
 
