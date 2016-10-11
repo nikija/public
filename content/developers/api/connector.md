@@ -22,7 +22,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Get All Business Segments](#get-all-business-segments)
         - [Get All Rates](#get-all-rates)
         - [Get Rate Pricing](#get-rate-pricing)
-        - [Update Rate Base Price](#update-rate-base-price)
+        - [Update Rate Price](#update-rate-price)
     - Reservations
         - [Get All Reservations](#get-all-reservations)
         - [Get All Reservation Items](#get-all-reservation-items)
@@ -562,26 +562,27 @@ Returns prices of a rate in the specified interval. Note that response contains 
 | `Prices` | array of string | required | Prices of the rate for the space category in the covered dates. |
 
 
-### Update Rate Base Price
+### Update Rate Price
 
-Updates base price of a rate in the specified intervals. Note that prices are defined daily, so when the server receives the UTC interval, it first converts it to enterprise timezone and updates the price on all dates that the interval intersects.
+Updates price of a rate in the specified intervals. If the `CategoryId` is specified, updates price of the corresponding [Space Category](#space-category), otherwise updates the base price. Note that prices are defined daily, so when the server receives the UTC interval, it first converts it to enterprise timezone and updates the price on all dates that the interval intersects.
 
-#### Request `[PlatformAddress]/api/connector/v1/rates/updateBasePrice`
+#### Request `[PlatformAddress]/api/connector/v1/rates/updatePrice`
 
 ```json
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
-    "BasePriceUpdates": [
+    "PriceUpdates": [
         {
             "StartUtc": "2016-09-01T00:00:00Z",
             "EndUtc": "2016-09-02T00:00:00Z",
-            "Value": 100
+            "Value": 111
         },
         {
+            "CategoryId": "e3aa3117-dff0-46b7-b49a-2c0391e70ff9",
             "StartUtc": "2016-09-04T00:00:00Z",
             "EndUtc": "2016-09-05T00:00:00Z",
-            "Value": 50
+            "Value": 222
         }
     ]
 }
@@ -590,13 +591,14 @@ Updates base price of a rate in the specified intervals. Note that prices are de
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `AccessToken` | string | required | Unique identifier of the [Rate](#rate) to update. |
-| `BasePriceUpdates` | array of [Base Price Update](#base-price-update) | required | Intervals with new prices. |
+| `RateId` | string | required | Unique identifier of the [Rate](#rate) to update. |
+| `PriceUpdates` | array of [Price Update](#price-update) | required | Price updates. |
 
-##### Base Price Update
+##### Price Update
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
+| `CategoryId` | string | optional | Unique identifier of the [Space Category](#space-category) whose prices to update. If not specified, base price is updated. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `Value` | number | required | New value of the rate on the interval. |
@@ -1614,6 +1616,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
 - Added [Get All Services](#get-all-services) operation.
 - Added [Get All Products](#get-all-products) operation.
 - Added [Get Rate Pricing](#get-rate-pricing) operation.
+- Generalized `Update Rate Base Price` to [Update Rate Price](#update-rate-price).
 
 #### 1st September 2016 23:00 CET
 
