@@ -551,7 +551,7 @@ Returns prices of a rate in the specified interval. Note that response contains 
 | --- | --- | --- | --- |
 | `BasePrices` | array of Number | required | Base prices of the rate in the covered dates. |
 | `CategoryPrices` | array of [Space Category Pricing](#space-category-pricing) | required | Space category prices. |
-| `Dates` | array of string | required | Covered dates in UTC timezone in ISO 8601 format. |
+| `DatesUtc` | array of string | required | Covered dates in UTC timezone in ISO 8601 format. |
 
 ##### Space Category Pricing
 
