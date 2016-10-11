@@ -550,7 +550,7 @@ Returns prices of a rate in the specified interval. Note that response contains 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `BasePrices` | array of Number | required | Base prices of the rate in the covered dates. |
-| `CategoryPrices` | array of [Space Category Pricing](#category-pricing) | required | Space category prices. |
+| `CategoryPrices` | array of [Space Category Pricing](#space-category-pricing) | required | Space category prices. |
 | `Dates` | array of string | required | Covered dates in UTC timezone in ISO 8601 format. |
 
 ##### Space Category Pricing
