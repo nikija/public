@@ -21,6 +21,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Get All Products](#get-all-products)
         - [Get All Business Segments](#get-all-business-segments)
         - [Get All Rates](#get-all-rates)
+        - [Get Rate Pricing](#get-rate-pricing)
         - [Update Rate Base Price](#update-rate-base-price)
     - Reservations
         - [Get All Reservations](#get-all-reservations)
@@ -503,6 +504,63 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | `Id` | string | required | Unique identifier of the group. |
 | `IsActive` | boolean | required | Whether the rate group is still active. |
 | `Name` | string | required | Name of the rate group. |
+
+### Get Rate Pricing
+
+Returns prices of a rate in the specified interval. Note that response contains prices for all dates that the specified interval intersects. So e.g. interval `1st Jan 13:00 - 1st Jan 14:00` will result in one price for `1st Jan`. Interval `1st Jan 23:00 - 2nd Jan 01:00` will result in two prices for `1st Jan` and `2nd Jan`.
+
+#### Request `[PlatformAddress]/api/connector/v1/rates/getPricing`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
+    "StartUtc":"2017-01-01T00:00:00.000Z",
+    "EndUtc":"2017-01-03T00:00:00.000Z",
+}
+```
+
+#### Response
+
+```json
+{
+    "BasePrices": [
+        20,
+        20,
+        20
+    ],
+    "CategoryPrices": [
+        {
+            "CategoryId": "e3aa3117-dff0-46b7-b49a-2c0391e70ff9",
+            "Prices": [
+                20,
+                20,
+                20
+            ]
+        }
+    ],
+    "DatesUtc": [
+        "2016-12-31T23:00:00Z",
+        "2017-01-01T23:00:00Z",
+        "2017-01-02T23:00:00Z"
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `BasePrices` | array of Number | required | Base prices of the rate in the covered dates. |
+| `CategoryPrices` | array of [Space Category Pricing](#category-pricing) | required | Space category prices. |
+| `Dates` | array of string | required | Covered dates in UTC timezone in ISO 8601 format. |
+
+##### Space Category Pricing
+
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `CategoryId` | string | required | Unique identifier of the [Space Category](#space-category). |
+| `Prices` | array of string | required | Prices of the rate for the space category in the covered dates. |
+
 
 ### Update Rate Base Price
 
@@ -1328,6 +1386,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
+| `BillId` | string | optional | Unique identifier of an open bill of the customer where to assign the payment. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount of the credit card payment. |
 | `CreditCard` | [Credit Card](#credit-card) | required | Credit card details. |
 | `Category` | [Accounting Category Parameters](#accounting-category-parameters) | optional | Accounting category to be assigned to the payment. |
@@ -1551,8 +1610,10 @@ The workflow can be similar as during the initial data pull, just applied to fut
 - Added `Start` and `End` [Reservation Time Filter](#reservation-time-filter).
 - Added `ProductId`, `BillId` and `Type` to [Accounting Item](#accounting-item).
 - Added `ServiceId` to [Reservation](#reservation).
+- Added optional `BillId` parameter to [Add Credit Card Payment](#add-credit-card-payment).
 - Added [Get All Services](#get-all-services) operation.
 - Added [Get All Products](#get-all-products) operation.
+- Added [Get Rate Pricing](#get-rate-pricing) operation.
 
 #### 1st September 2016 23:00 CET
 
