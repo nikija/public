@@ -17,6 +17,8 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Get All Space Blocks](#get-all-space-blocks)
         - [Add Task](#add-task)
     - Services
+        - [Get All Services](#get-all-services)
+        - [Get All Products](#get-all-products)
         - [Get All Business Segments](#get-all-business-segments)
         - [Get All Rates](#get-all-rates)
         - [Update Rate Base Price](#update-rate-base-price)
@@ -298,6 +300,103 @@ Adds a new task to the enterprise, optionally to a specified department.
 
 Empty object.
 
+### Get All Services
+
+Raturns all services offered by the enterprise.
+
+#### Request `[PlatformAddress]/api/connector/v1/services/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+{
+    "Services": [
+        {
+            "EndTime": null,
+            "Id": "fc79a518-bc69-45b8-93bd-83326201bd14",
+            "IsActive": true,
+            "Name": "Restaurant",
+            "StartTime": null
+        },
+        {
+            "EndTime": "PT12H",
+            "Id": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
+            "IsActive": true,
+            "Name": "Accommodation",
+            "StartTime": "PT14H"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Services` | array of [Service](#service) | required | Services offered by the enterprise. |
+
+##### Service
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the service. |
+| `IsActive` | boolean | required | Whether the service is still active. |
+| `Name` | string | required | Name of the service. |
+| `StartTime` | string | optional | Default start time of the service orders in ISO 8601 duration format. |
+| `EndTime` | string | optional | Default end time of the service orders in ISO 8601 duration format. |
+
+### Get All Products
+
+Raturns all products offered together with the specified service
+
+#### Request `[PlatformAddress]/api/connector/v1/products/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ServiceId` | string | required | Unique identifier of the [Service](#service). |
+
+#### Response
+
+```json
+{
+    "Products": [
+        {
+            "Id": "198bc308-c1f2-4a1c-a827-c41d99d52f3d",
+            "IsActive": true,
+            "Name": "Breakfast"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Products` | array of [Product](#product) | required | Products offered with the service. |
+
+##### Product
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the product. |
+| `IsActive` | boolean | required | Whether the product is still active. |
+| `Name` | string | required | Name of the product. |
+
 ### Get All Business Segments
 
 Returns all business segments of the default service provided by the enterprise.
@@ -472,9 +571,11 @@ Returns all reservations that from the specified interval according to the time 
 
 ##### Reservation Time Filter
 
-- `Colliding`
-- `Created`
-- `Updated`
+- `Colliding` - reservation interval collides with the interval.
+- `Created` - reservation created within the interval.
+- `Updated` - reservation updated within the interval.
+- `Start`- reservation start (= arrival) within the interval.
+- `End` - reservation end (= departure) within the interval.
 
 #### Response
 
@@ -506,6 +607,7 @@ Returns all reservations that from the specified interval according to the time 
             "Number": "52",
             "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
             "RequestedCategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
+            "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
             "StartUtc": "2016-02-20T13:00:00Z",
             "State": "Processed",
             "TravelAgencyId": null,
@@ -542,6 +644,7 @@ Returns all reservations that from the specified interval according to the time 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation. |
+| `ServiceId` | string | required | Unique identifier of the [Service](#service) that is reserved. |
 | `GroupId` | string | required | Unique identifier of the [Reservation Group](#reservation-group). |
 | `Number` | string | required | Confirmation number of the reservation. |
 | `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
@@ -615,10 +718,13 @@ Returns all revenue items associated with the specified reservations.
                         "TaxRate": 0.2,
                         "Value": 20
                     },
+                    "BillId": null,
                     "ConsumptionUtc": "2016-03-10T13:00:00Z",
                     "Id": "784a29df-6196-4402-96a0-58695a881239",
                     "Name": "Night 3/10/2016",
-                    "OrderId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
+                    "OrderId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+                    "ProductId": null,
+                    "Type": "ServiceRevenue"
                 }
             ],
             "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b"
@@ -827,10 +933,13 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                         "TaxRate": null,
                         "Value": -100
                     },
+                    "BillId": null,
                     "ConsumptionUtc": "2016-05-25T15:56:54Z",
                     "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
                     "Name": "Cash Payment EUR",
-                    "OrderId": null
+                    "OrderId": null,
+                    "ProductId": null,
+                    "Type": "Payment"
                 }
             ]
         }
@@ -1141,10 +1250,13 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
                 "TaxRate": 0.2,
                 "Value": 2.5
             },
+            "BillId": null,
             "ConsumptionUtc": "2016-07-27T12:48:39Z",
             "Id": "89b93f7c-5c63-4de2-bd17-ec5fee5e3120",
             "Name": "Caramel, Pepper & Chilli Popcorn",
-            "OrderId": "810b8c3a-d358-4378-84a9-534c830016fc"
+            "OrderId": "810b8c3a-d358-4378-84a9-534c830016fc",
+            "ProductId": null,
+            "Type": "ServiceRevenue"
         }
     ]
 }
@@ -1159,11 +1271,21 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the item. |
+| `ProductId` | string | optional | Unique identifier of the [Product](#product). |
 | `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
+| `BillId` | string | optional | Unique identifier of the bill the item is assigned to. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
+| `Name` | string [Accounting Item Type](#accounting-item-type) | required | Type of the item. |
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
+
+##### Accounting Item Type
+
+- `ServiceRevenue`
+- `ProductRevenue`
+- `AdditionalRevenue`
+- `Payment`
 
 ##### Currency Value
 
@@ -1422,6 +1544,15 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### Demo Environment
+
+- Removed the deprecated data fields and operations.
+- Added `Start` and `End` [Reservation Time Filter](#reservation-time-filter).
+- Added `ProductId`, `BillId` and `Type` to [Accounting Item](#accounting-item).
+- Added `ServiceId` to [Reservation](#reservation).
+- Added [Get All Services](#get-all-services) operation.
+- Added [Get All Products](#get-all-products) operation.
 
 #### 1st September 2016 23:00 CET
 
