@@ -516,7 +516,7 @@ Returns prices of a rate in the specified interval. Note that response contains 
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "RateId": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
     "StartUtc":"2017-01-01T00:00:00.000Z",
-    "EndUtc":"2017-01-03T00:00:00.000Z",
+    "EndUtc":"2017-01-03T00:00:00.000Z"
 }
 ```
 
@@ -1335,7 +1335,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
 | `BillId` | string | optional | Unique identifier of the bill the item is assigned to. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
-| `Name` | string [Accounting Item Type](#accounting-item-type) | required | Type of the item. |
+| `Type` | string [Accounting Item Type](#accounting-item-type) | required | Type of the item. |
 | `Name` | string | required | Name of the item. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
 | `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
