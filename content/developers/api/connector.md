@@ -1606,7 +1606,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo Environment
+#### 17th October 2016 23:50 CET
 
 - Removed the deprecated data fields and operations.
 - Added `Start` and `End` [Reservation Time Filter](#reservation-time-filter).
