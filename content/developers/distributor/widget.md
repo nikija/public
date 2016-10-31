@@ -85,14 +85,6 @@ Mews.Distributor({
     adultCount: 2,
     childCount: 0,
     rooms: null,
-    hashEvents: false,
-    gaTrackerName: null,
-    ecommerce: false,
-    ecommerceTrackerName: null,
-    adwords: false,
-    adwordsConversionId: null,
-    adwordsConversionLabel: null,
-    facebookPixelId: null,
     hideSpecialRequests: false,
     showRateCompare: false,
     competitors: [
@@ -102,18 +94,7 @@ Mews.Distributor({
     ],
     
     // integrations
-    marinId: null,
-    travelClick: false,
-    travelClickId: null,
-    travelClickGroupTag: null,
-    travelClickActivityTag: null,
-    myHotelShopId: null,
-
-    // callbacks
-    onOpened: function(distributor) { },
-    onClosed: function(distributor) { },
-    onLoaded: function(distributor) { },
-    onBookingFinished: function(reservationGroup) { },
+    gtmContainerId: null,
 
     // theme
     theme: {
@@ -148,51 +129,11 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="adultCount"></a>adultCount | `number` | `2` | Default value for an adult count in rate selection.
 | <a name="childCount"></a>childCount | `number` | `0` | Default value for a child count in rate selection.
 | <a name="rooms"></a>rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier.
-| <a name="hashEvents"></a>hashEvents | `boolean` | `false` | Enables Google Analytics page view tracking with url hashes.
-| <a name="analyticsTrackingId"></a>analyticsTrackingId | `string` | `null` | A Google Analytics tracking id is string associated with your tracker in format `UA-XXXX-Y`. More about how to find it is [here](https://support.google.com/analytics/answer/1032385?hl=en).
-| <a name="gaTrackerName"></a>gaTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report google analytics tracking. If not used, default tracker without name will be used.
-| <a name="ecommerce"></a>ecommerce | `boolean` | `false` | Enables Google Analytics ecommerce tracking.
-| <a name="ecommerceTrackerName"></a>ecommerceTrackerName | `string` | `null` | Name of the Google Analytics tracker that should be used to report ecommerce tracking. If not used, default tracker without name will be used.
-| <a name="adwords"></a>adwords | `boolean` | `false` | Enables Google AdWords conversion tracking for made bookings.
-| <a name="adwordsConversionId"></a>adwordsConversionId | `number` | `null` | Google AdWords conversion id (9 or 10 digit number) to be sent when a booking is made. When `adwords` is set to `true`, this option is required.
-| <a name="adwordsConversionLabel"></a>adwordsConversionLabel | `string` | `null` | Google AdWords conversion label to be sent when a booking is made.
-| <a name="facebookPixelId"></a>facebookPixelId | `string` | `null` | Facebook Pixel id used for tracking the standard events.
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="competitors"></a>competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
 | <a name="theme"></a>theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
-| <a name="marinId"></a>marinId | `string` | `null` | Marin id used for tracking.
-| <a name="travelClick"></a>travelClick | `boolean` | `false` | Enables TravelClick tracking.
-| <a name="travelClickId"></a>travelClickId | `string` | `null` | TravelClick Advertiser Id used for tracking.
-| <a name="travelClickGroupTag"></a>travelClickGroupTag | `string` | `null` | TravelClick Group Tag String used for tracking.
-| <a name="travelClickActivityTag"></a>travelClickActivityTag | `string` | `null` | TravelClick Activity Tag String used for tracking.
-| <a name="myHotelShopId"></a>myHotelShopId | `number` | `null` | MyHotelShop id used for tracking.
-| <a name="onOpened"></a>onOpened | `function` | `function() {}` | Callback function that will be called every time Distributor's window is opened (regardless if by API call, or by clicking `openElements`). Function has one parametr, which is reference to distributors API.
-| <a name="onClosed"></a>onClosed | `function` | `function() {}` | Callback function that will be called every time Distributor's window is closed (regardless if by API call, or by clicking close button in Distributor itself). Function has one parametr, which is reference to distributors API.
-| <a name="onLoaded"></a>onLoaded | `function` | `function() {}` | Callback function that will be called once Distributor finnished loading itself into page and is ready for use. Function has one parametr, which is reference to distributors API.
-| <a name="onBookingFinished"></a>onBookingFinished | `function` | `function() {}` | Callback function that will be called on confirmation screen after booking was made. Arguments are described [here](#onBookingFinished)
-
-#### Callbacks
-
-##### onBookingFinished
-```
-onBookingFinished(
-  object reservationGroup
-);
-```
-
-The schema of `reservationGroup` object is following:
-
-```
-string currencyCode - hotel's default currency code.
-number totalCost - total cost of reservation group in hotel's default currency.
-array reservations [{ - list of reservations in reservation group
-  string roomName - name of room category
-  Date startDate - start date of reservation
-  Date endDate - end date of reservation
-  number number - confirmation number of reservation
-}]
-```
+| <a name="gtmContainerId"></a>gtmContainerId | `string` | `null` | A Google Tag Manager container id is string associated with your container in format `GTM-XXXX`. More about how to find it is [here](https://support.google.com/tagmanager/answer/6103696?hl=en#AddingTheContainerSnippet).
 
 #### Customization
 
@@ -204,7 +145,25 @@ Distributor Edge has all styles written in javascript and bundled into the scrip
 
 ### API
 
-API calls are defined on the Distributor instance you will create with initialization call. This instance is returned to you as an argument of callback function that you can pass as the second parameter to initialization call. See example above for more details.
+API calls are defined on the Distributor instance, which is created with the initialization call. This instance is returned to you as an argument of callback function that you can pass as the second parameter to initialization call. The following simple example shows how to use the calls to set up start and end dates, and then open the Distributor:
+
+~~~html
+<script>
+Mews.Distributor({ 
+    hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
+}, function(distributor) {
+   $('.booking-button').click(function() {
+     var start = new Date();
+     var end = new Date();
+     end.setDate(start.getDate() + 2);
+     
+     distributor.setStartDate(start);
+     distributor.setEndDate(end);
+     distributor.open();
+   });
+});
+</script>
+~~~
 
 #### open()
 
@@ -294,7 +253,7 @@ Payement gateway is used to safely collect information about customer's credit c
 - [Adyen](https://www.adyen.com/home)
 - Mews Merchant
 
-Using payment gateway is not mandatory altough, reservations can be created even without providing credit card information.
+Using payment gateway is not mandatory though as reservations can be created even without providing credit card information.
 
 **Important:**
 PCI Security Standard requires you to use **SSL Certificate** on you website in order to be allowed collecting any payments info, which is happening when using Braintree or Adyen gateway.
@@ -303,44 +262,60 @@ PCI Security Standard requires you to use **SSL Certificate** on you website in 
 
 When using the Mews Merchant gateway integration in Distributor on your website, the customer will be redirected to a mirroring Distributor hosted at https://wwww.mews.li/ just before entering payment details. This is required when using the Mews Merchant. After booking is finished or when closing the Distributor, the customer will be redirected back to your website.
 
-### Google Analytics
+### Integrations
 
-To enable Google Analytics in Distributor, you have to provide the [`analyticsTrackingId`](#analyticsTrackingId). After that, Distributor will automatically start sending events, using unnamed "default" tracker. Otherwise, if you use a named tracker, you can provide a name of your tracker with [`gaTrackerName`](#gaTrackerName) option to Distributor. Tracked events are:
+Main and only source of Distributor integrations with 3rd party tags and tracking services is [Google Tag Manager](https://www.google.com/analytics/tag-manager/). You can enable it by passing your container's id in [`gtmContainerId`](#gtmContainerId) option.
 
-- `Loaded` - A website with Distributor was loaded.
-- `Opened` - The Distributor was opened.
-- `Closed` - The Distributor was closed.
-- `Step dates` - A dates (first) step was displayed.
-- `Step rooms` - A rooms (second) step was displayed.
-- `Step rates` - A rates (third) step was displayed.
-- `Step summary` - A summary (fourth) step was displayed.
-- `Step checkout` - A checkout (fifth) step was displayed.
-- `Step confirmation` - A confirmation page was displayed.
-- `Offered dates selected` - Alternative dates when there is no availability selected.
-- `Booking finished` - A booking was made.
+#### Google Tag Manager
 
-You can use also get those trackings as page views with different url hashes by setting [`hashEvents`](#hashEvents) to `true`. Just be aware that this can actually mess up with your website if you're already using url hashes for routing!
+To integrate with Google Tag Manager, Distributor provides a set of *Custom Events*, that you can set up as *Triggers*:
 
-#### Ecommerce
+- `distributorLoaded` - A website with Distributor was loaded.
+- `distributorOpened` - The Distributor was opened.
+- `distributorClosed` - The Distributor was closed.
+- `distributorStepDates` - A dates (first) step was displayed.
+- `distributorStepRooms` - A rooms (second) step was displayed.
+- `distributorStepRates` - A rates (third) step was displayed.
+- `distributorStepSummary` - A summary (fourth) step was displayed.
+- `distributorStepCheckout` - A checkout (fifth) step was displayed.
+- `distributorStepConfirmation` - A confirmation page was displayed.
+- `distributorOfferedDatesSelected` - Alternative dates when there is no availability selected.
+- `distributorBookingFinished` - A booking was made. This event triggers once per reservation group made.
+- `distributorReservationCreated` - A reservation was created. This event triggers for each reservation made in the reservation group.
 
-You can enable ecommerce tracking by setting [`ecommerce`](#ecommerce) option to `true`. Transaction will be send upon finishing booking, with reservation group id set as transaction id and affiliation set as *Mews Distributor*. Each room in order will be added as a transaction item, with confirmation number set as sku. Total price and prices for each room reservation in group are also included. Currency used is the hotel's default currency as set in the Commander.
+*Note: If you want to track multiple events with one trigger, you can easily use regex matching on Event Name. For example `^distributor` will track every distributor event, which can be useful for setting a trigger for Universal Analytics.*
 
-#### Adwords
+All events data are passed to Tag Manager through *dataLayer*. To use them in your tags, set up custom variables with proper name as variables of the data layer. Each event is fired with standard set of data:
 
-You can enable AdWords conversion tracking by setting [`adwords`](#adwords) option to `true` and providing [`adwordsConversionId`](#adwordsConversionId). The conversion tracking will happen asynchronously every time a booking is made.
+| Name | Description
+| --- | --- |
+| eventName | name of the event in readable form without prefix, i.e `Step Dates`. |
+| hotelName | name of the hotel |
 
-#### Multiple trackers
+In addition, specific events has an additional data:
 
-When setting up page, multiple instances of Google Analytics can be used to track events for different accounts or for different purposes. Distributor`s initialization options allows you to specify names of trackers of ecommerce and for rest of google analytics reporting. Names can point to the same tracker, or two distinct trackers. You can also omit names of trackers. In that case, default - unnamed - tracker will be used.
+**distributorBookingFinished**
 
-Please note, that some Google Analytics applications can set up their own named trackers. If you wish to used them to report GA events, check their configuration for correct name. This is especially important in case Google Tag Manager is in use, but no other default Google Analytics trackers are being setup on page.
+| Name | Description
+| --- | --- |
+| reservationGroupId | the id of reservation group |
+| totalCost | total cost of reservation group, in hotel's default currency |
+| currencyCode | hotel's default currency code in ISO format |
 
-### Facebook Pixel
+**distributorReservationCreated**
 
-You can enable tracking of standard events with Facebook Pixel by providing your's pixel id with [`facebookPixelId`](#facebookPixelId) option. When enabled, the following events get tracked:
+| Name | Description
+| --- | --- |
+| reservationGroupId | id of reservation group |
+| currencyCode | hotel's default currency code in ISO format |
+| reservation.id | id of reservation |
+| reservation.number | confirmation number of reservation |
+| reservation.roomName | name of the room|
+| reservation.startDate | start date of reservation |
+| reservation.endDate | end date of reservation |
+| reservation.nights | total nights spent |
+| reservation.cost | cost of reservation in hotel's default currency |
 
-- `ViewContent` when Distributor is loaded
-- `Search` when customer searches rooms availabilities
-- `AddToCart` when customer adds room order 
-- `InitiateCheckout` when customer presses "Proceed To Checkout" button
-- `Purchase` when booking is completed, with value set to total cost of order in hotel's default currency
+##### Google Ecommerce
+
+You can track transactions with Google Universal Analytics on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer*.
