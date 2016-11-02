@@ -439,17 +439,22 @@ Gives a pricing information for the given configuration.
 
 ```json
 {
-    "RatePrices": [
+    "OccupancyPrices": [
         {
-            "MaxPrice": {
-                "AveragePerNight": {},
-                "Total": {}
-            },
-            "Price" :{
-                "AveragePerNight": {},
-                "Total": {}
-            },
-            "RateId": "1627aea5-8e0a-4371-9022-9b504344e724"
+            "AdultCount": 1,
+            "ChildCount": 0,
+            "Pricing": [
+                {
+                "MaxPrice": {
+                    "AveragePerNight": {},
+                    "Total": {}
+                },
+                "Price": {
+                    "AveragePerNight": {},
+                    "Total": {}
+                },
+                "RateId": "b34330be-7e19-453e-8959-592c4e820f85"
+            ]
         }
     ]
 }
@@ -457,7 +462,7 @@ Gives a pricing information for the given configuration.
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `RatePrices` | array of [Pricing](#pricing) | required | Pricing information. |
+| `OccupancyPrices` | array of [RoomOccupancyAvailability](#roomoccupancyavailability) | required | Pricing information. |
 
 ### Get Braintree Client Token
 
