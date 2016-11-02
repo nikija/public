@@ -408,7 +408,7 @@ Gives a pricing information for the given configuration.
     "Occupancies": [
         {
             "AdultCount": 2,
-            "ChildCount": 0,
+            "ChildCount": 0
         }
     ],
     "ProductIds": [
