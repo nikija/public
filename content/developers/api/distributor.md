@@ -401,15 +401,19 @@ Gives a pricing information for the given configuration.
 {
     "Client": "My Client 1.0.0",
     "HotelId": "8dbb4b86-e6c5-4282-a996-e823afeef343",
-    "AdultCount": 2,
-    "ChildCount": 0,
     "StartUtc": "2015-01-01T00:00:00Z",
     "EndUtc": "2015-01-03T00:00:00Z",
+    "VoucherCode": "Discount2042",
+    "RoomCategoryId": "1627aea5-8e0a-4371-9022-9b504344e724",
+    "Occupancies": [
+        {
+            "AdultCount": 2,
+            "ChildCount": 0,
+        }
+    ],
     "ProductIds": [
         "d0e88da5-ae64-411c-b773-60ed68954f64"
-    ],
-    "RoomCategoryId": "1627aea5-8e0a-4371-9022-9b504344e724",
-    "VoucherCode":   "Discount2042"
+    ]
 }
 ```
 
@@ -417,13 +421,19 @@ Gives a pricing information for the given configuration.
 | --- | --- | --- | --- |
 | `Client` | string | required | Identification of the client as described in [Authorization](#authorization). |
 | `HotelId` | string | required | Unique identifier of the hotel. |
-| `AdultCount` | number | required | Number of adults. |
-| `ChildCount` | number | required | Number of children. |
 | `StartUtc` | string | required | Start date of the reservation (arrival date). |
 | `EndUtc` | string | required | End date of the reservation (departure date). |
-| `ProductIds` | array of string | optional | Identifiers of the requested products. |
-| `RoomCategoryId` | string | required | Identifier of the requested room category. |
 | `VoucherCode` | string | optional | A voucher code. |
+| `RoomCategoryId` | string | required | Identifier of the requested room category. |
+| `Occupancies` | array of [Occupancy](#occupancy) | required | Occupancies of the reservations. |
+| `ProductIds` | array of string | optional | Identifiers of the requested products. |
+
+##### Occupancy
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AdultCount` | number | required | Number of adults. |
+| `ChildCount` | number | required | Number of children. |
 
 #### Response
 
