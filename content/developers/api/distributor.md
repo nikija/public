@@ -445,15 +445,16 @@ Gives a pricing information for the given configuration.
             "ChildCount": 0,
             "Pricing": [
                 {
-                "MaxPrice": {
-                    "AveragePerNight": {},
-                    "Total": {}
-                },
-                "Price": {
-                    "AveragePerNight": {},
-                    "Total": {}
-                },
-                "RateId": "b34330be-7e19-453e-8959-592c4e820f85"
+                    "MaxPrice": {
+                        "AveragePerNight": {},
+                        "Total": {}
+                    },
+                    "Price": {
+                        "AveragePerNight": {},
+                        "Total": {}
+                    },
+                    "RateId": "b34330be-7e19-453e-8959-592c4e820f85"
+                }
             ]
         }
     ]
