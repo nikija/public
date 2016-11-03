@@ -295,6 +295,7 @@ All events data are passed to Tag Manager through *dataLayer*. To use them in yo
 In addition, specific events has an additional data:
 
 **distributorBookingFinished**
+
 | Name | Description
 | --- | --- |
 | reservationGroupId | the id of reservation group |
@@ -303,6 +304,7 @@ In addition, specific events has an additional data:
 
 
 **distributorReservationCreated**
+
 | Name | Description
 | --- | --- |
 | reservationGroupId | id of reservation group |
