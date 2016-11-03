@@ -294,7 +294,7 @@ All events data are passed to Tag Manager through *dataLayer*. To use them in yo
 
 In addition, specific events has an additional data:
 
-**distributorBookingFinished**
+###### distributorBookingFinished
 
 | Name | Description
 | --- | --- |
@@ -302,8 +302,7 @@ In addition, specific events has an additional data:
 | totalCost | total cost of reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
-
-**distributorReservationCreated**
+###### distributorReservationCreated
 
 | Name | Description
 | --- | --- |
