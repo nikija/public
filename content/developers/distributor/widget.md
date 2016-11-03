@@ -295,15 +295,14 @@ All events data are passed to Tag Manager through *dataLayer*. To use them in yo
 In addition, specific events has an additional data:
 
 **distributorBookingFinished**
-
 | Name | Description
 | --- | --- |
 | reservationGroupId | the id of reservation group |
 | totalCost | total cost of reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
-**distributorReservationCreated**
 
+**distributorReservationCreated**
 | Name | Description
 | --- | --- |
 | reservationGroupId | id of reservation group |
