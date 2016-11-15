@@ -25,7 +25,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Update Rate Price](#update-rate-price)
     - Reservations
         - [Get All Reservations](#get-all-reservations)
-        - [Get All Reservations By Ids](#get-all-reservations)
+        - [Get All Reservations By Ids](#get-all-reservations-by-ids)
         - [Get All Reservation Items](#get-all-reservation-items)
         - [Start Reservation](#start-reservation)
         - [Process Reservation](#process-reservation)
@@ -766,7 +766,7 @@ Returns all reservations with the specified unique identifiers.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ReservationIds` | array of string | required | Unique identifier of [Reservation](#reservation)s to be returned. |
+| `ReservationIds` | array of string | required | Unique identifiers of [Reservation](#reservation)s to be returned. |
 
 #### Response
 
