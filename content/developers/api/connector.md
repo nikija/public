@@ -25,6 +25,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Update Rate Price](#update-rate-price)
     - Reservations
         - [Get All Reservations](#get-all-reservations)
+        - [Get All Reservations By Ids](#get-all-reservations)
         - [Get All Reservation Items](#get-all-reservation-items)
         - [Start Reservation](#start-reservation)
         - [Process Reservation](#process-reservation)
@@ -467,10 +468,12 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 {
     "Rates": [
         {
+            "BaseRateId": null,
             "GroupId": "c8b866b3-be2e-4a47-9486-034318e9f393",
             "Id": "ed4b660b-19d0-434b-9360-a4de2ea42eda",
             "IsActive": true,
-            "Name": "Fully Flexible"
+            "Name": "Fully Flexible",
+            "ShortName": "FF"
         }
     ],
     "RateGroups": [
@@ -494,8 +497,10 @@ Returns all rates (pricing setups) and rate groups (condition settings) of the d
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the rate. |
 | `GroupId` | string | required | Unique identifier of [Rate Group](#rate-group) where the rate belongs. |
+| `BaseRateId` | string | required | Unique identifier of the base [Rate](#rate). |
 | `IsActive` | boolean | required | Whether the rate is still active. |
 | `Name` | string | required | Name of the rate. |
+| `ShortName` | string | required | Short name of the rate. |
 
 ##### Rate Group
 
@@ -741,6 +746,31 @@ Returns all reservations that from the specified interval according to the time 
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the reservation group. |
 | `Name` | string | optional | Name of the reservation group, might be empty or same for multiple groups. |
+
+### Get All Reservations By Ids
+
+Returns all reservations with the specified unique identifiers.
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/getAllByIds`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationIds": [
+        "2b6212d4-55d5-47ba-b8d2-da07be15bce9",
+        "0e2983e9-5ac1-4fd9-9f76-76565c1a9b67"
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationIds` | array of string | required | Unique identifier of [Reservation](#reservation)s to be returned. |
+
+#### Response
+
+Same strucutre as in [Get All Reservations](#get-all-reservations) operation.
 
 ### Get All Reservation Items
 
@@ -1158,7 +1188,7 @@ The updated [Customer](#customer).
 
 ### Charge Customer
 
-Charges a customer, i.e. creates a new order attached to his profile with the specified items.
+Charges a customer, i.e. creates a new order attached to his profile with the specified items. Only positive charges are allowed by default, in order to post negative charges (rebates), the connector integration has to be configured in Mews to allow it.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/charge`
 
@@ -1605,6 +1635,11 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### Demo Environment
+
+- Added `BaseRateId` and `ShortName` to [Rate](#rate).
+- Added [Get All Reservations By Ids](#get-all-reservations-by-ids) operation.
 
 #### 17th October 2016 23:50 CET
 
