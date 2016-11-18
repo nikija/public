@@ -1636,12 +1636,12 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo Environment
+#### 15th November 2016 22:00 UTC
 
 - Added `BaseRateId` and `ShortName` to [Rate](#rate).
 - Added [Get All Reservations By Ids](#get-all-reservations-by-ids) operation.
 
-#### 17th October 2016 23:50 CET
+#### 17th October 2016 23:00 UTC
 
 - Removed the deprecated data fields and operations.
 - Added `Start` and `End` [Reservation Time Filter](#reservation-time-filter).
@@ -1653,7 +1653,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
 - Added [Get Rate Pricing](#get-rate-pricing) operation.
 - Generalized `Update Rate Base Price` to [Update Rate Price](#update-rate-price).
 
-#### 1st September 2016 23:00 CET
+#### 1st September 2016 22:00 UTC
 
 - Added operation [Update Rate Base Price](#update-rate-base-price) that allows e.g. revenue management systems to provide recommended rates to MEWS.
 - Added operation [Get All Reservation Items](#get-all-reservation-items) that returns revenue items of selected reservations.
