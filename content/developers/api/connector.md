@@ -812,6 +812,7 @@ Returns all revenue items associated with the specified reservations.
                     "ConsumptionUtc": "2016-03-10T13:00:00Z",
                     "Id": "784a29df-6196-4402-96a0-58695a881239",
                     "Name": "Night 3/10/2016",
+                    "Notes": null,
                     "OrderId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
                     "ProductId": null,
                     "Type": "ServiceRevenue"
@@ -1027,6 +1028,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                     "ConsumptionUtc": "2016-05-25T15:56:54Z",
                     "Id": "79aa7645-fe3a-4e9e-9311-e11df4686fca",
                     "Name": "Cash Payment EUR",
+                    "Notes": null,
                     "OrderId": null,
                     "ProductId": null,
                     "Type": "Payment"
@@ -1344,6 +1346,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
             "ConsumptionUtc": "2016-07-27T12:48:39Z",
             "Id": "89b93f7c-5c63-4de2-bd17-ec5fee5e3120",
             "Name": "Caramel, Pepper & Chilli Popcorn",
+            "Notes": null,
             "OrderId": "810b8c3a-d358-4378-84a9-534c830016fc",
             "ProductId": null,
             "Type": "ServiceRevenue"
@@ -1365,10 +1368,11 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
 | `BillId` | string | optional | Unique identifier of the bill the item is assigned to. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
+| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 | `Type` | string [Accounting Item Type](#accounting-item-type) | required | Type of the item. |
 | `Name` | string | required | Name of the item. |
+| `Notes` | string | optional | Additional notes. |
 | `ConsumptionUtc` | string | required | Date and time of the item consumption in UTC timezone in ISO 8601 format. |
-| `Amount` | [Currency Value](#currency-value) | required | Amount the item costs, negative amount represents either rebate or a payment. |
 
 ##### Accounting Item Type
 
@@ -1635,6 +1639,10 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### Demo Environment
+
+- Added `Notes` to [Accounting Item](#accounting-item).
 
 #### 15th November 2016 22:00 UTC
 
