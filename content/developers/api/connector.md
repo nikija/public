@@ -1447,16 +1447,7 @@ Adds a new credit card payment to a customer. Returns updated balance of the cus
 
 #### Response
 
-```json
-{
-    "Currency": "GBP",
-    "Tax": null,
-    "TaxRate": null,
-    "Value": 100
-}
-```
-
-Balance ([Currency Value](#customer)) of the customer after the payment is posted.
+Empty object.
 
 ### Get All Commands
 
@@ -1643,6 +1634,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
 #### Demo Environment
 
 - Added `Notes` to [Accounting Item](#accounting-item).
+- Deprecated response of [Add Credit Card Payment](#add-credit-card-payment).
 
 #### 15th November 2016 22:00 UTC
 
