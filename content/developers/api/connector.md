@@ -1631,7 +1631,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo Environment
+#### 22nd November 2016 23:15 UTC
 
 - Added `Notes` to [Accounting Item](#accounting-item).
 - Deprecated response of [Add Credit Card Payment](#add-credit-card-payment).
