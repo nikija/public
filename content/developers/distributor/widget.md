@@ -291,6 +291,7 @@ All events data are passed to Tag Manager through *dataLayer*. To use them in yo
 | --- | --- |
 | eventName | name of the event in readable form without prefix, i.e `Step Dates`. |
 | hotelName | name of the hotel |
+| hoteId | unique identifier of the hotel |
 
 In addition, specific events has an additional data:
 
@@ -298,23 +299,26 @@ In addition, specific events has an additional data:
 
 | Name | Description
 | --- | --- |
-| reservationGroupId | the id of reservation group |
-| totalCost | total cost of reservation group, in hotel's default currency |
+| reservationGroupId | id of the reservation group |
+| totalCost | total cost of the reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
 ###### distributorReservationCreated
 
 | Name | Description
 | --- | --- |
-| reservationGroupId | id of reservation group |
+| customerEmail | the customer's email |
+| customerName | the customer's name |
 | currencyCode | hotel's default currency code in ISO format |
-| reservation.id | id of reservation |
-| reservation.number | confirmation number of reservation |
+| reservationGroupId | id of the reservation group |
+| reservation.id | id of the reservation |
+| reservation.rateId | if of the rate of the reservation |
+| reservation.number | confirmation number of the reservation |
 | reservation.roomName | name of the room|
-| reservation.startDate | start date of reservation |
-| reservation.endDate | end date of reservation |
+| reservation.startDate | start date of the reservation |
+| reservation.endDate | end date of the reservation |
 | reservation.nights | total nights spent |
-| reservation.cost | cost of reservation in hotel's default currency |
+| reservation.cost | cost of the reservation in hotel's default currency |
 
 ##### Google Ecommerce
 
