@@ -564,7 +564,7 @@ Returns prices of a rate in the specified interval. Note that response contains 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `CategoryId` | string | required | Unique identifier of the [Space Category](#space-category). |
-| `Prices` | array of string | required | Prices of the rate for the space category in the covered dates. |
+| `Prices` | array of Number | required | Prices of the rate for the space category in the covered dates. |
 
 
 ### Update Rate Price
