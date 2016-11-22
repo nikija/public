@@ -925,7 +925,7 @@ Adds a customer as a companion to the reservation. Succeeds only if there is spa
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation). |
-| `CustomerId` | boolean | required | Unique identifier of the [Customer](#customer). |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 
 #### Response
 
