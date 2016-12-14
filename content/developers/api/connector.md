@@ -665,6 +665,7 @@ Returns all reservations that from the specified interval according to the time 
             "ChannelNumber": null,
             "ChannelManagerNumber": null,
             "ChannelManagerGroupNumber": null,
+            "ChannelManager": null,
             "ChildCount": 0,
             "CompanionIds": [
                 "35d4b117-4e60-44a3-9580-c582117eff98"
@@ -721,6 +722,7 @@ Returns all reservations that from the specified interval according to the time 
 | `ChannelNumber` | string | optional | Number of the reservation within the channel in case the reservation originates there (e.g. Booking.com confirmation number). |
 | `ChannelManagerNumber` | string | optional | Number of the reservation within a channel manager. |
 | `ChannelManagerGroupNumber` | string | optional | Number of the reservation group within a channel manager. |
+| `ChannelManager` | string | optional | Name of the channel manager. |
 | `State` | string [Reservation State](#reservation-state) | required | State of the reservation. |
 | `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
