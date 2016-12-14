@@ -32,6 +32,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Cancel Reservation](#cancel-reservation)
         - [Add Companion](#add-companion)
     - Customers
+        - [Get All Customers By Ids](#get-all-customers-by-ids)
         - [Search Customers](#search-customers)
         - [Get Customers Open Items](#get-customers-open-items)
         - [Add Customer](#add-customer)
@@ -931,6 +932,98 @@ Adds a customer as a companion to the reservation. Succeeds only if there is spa
 
 Empty object.
 
+### Get All Customers By Ids
+
+Returns all customers with the specified ids.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getAllByIds`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerIds": [
+        "35d4b117-4e60-44a3-9580-c582117eff98"
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerIds` | array of string | optional | Identifiers of [Customer](#customer)s. |
+
+#### Response
+
+```json
+{
+    "Customers": [
+        {
+            "Address": null,
+            "BirthDateUtc": null,
+            "CategoryId": null,
+            "Email": null,
+            "FirstName": "John",
+            "Gender": null,
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LastName": "Smith",
+            "NationalityCode": "US",
+            "Passport": null,
+            "Phone": "00420123456789",
+            "Title": null
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Customers` | array of [Customer](#customer) | required | The customers. |
+
+##### Customer
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the customer. |
+| `FirstName` | string | optional | First name of the customer. |
+| `LastName` | string | required | Last name of the customer. |
+| `Title` | string [Title](#title) | optional | Title prefix of the customer. |
+| `Gender` | string [Gender](#gender) | optional | Gender of the customer. |
+| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
+| `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
+| `Email` | string | optional | Email address of the customer. |
+| `Phone` | string | optional | Phone number of the customer (possibly mobile). |
+| `CategoryId` | string | optional | Unique identifier of the customer category. |
+| `Passport` | [Document](#document) | optional | Passport details of the customer. |
+| `Address` | [Address](#address) | optional | Address of the customer. |
+
+##### Title
+
+- `Mister`
+- `Miss`
+- `Misses`
+
+##### Gender
+
+- `Male`
+- `Female`
+
+##### Document
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Number` | string | optional | Number of the document (e.g. passport number). |
+| `ExpirationUtc` | string | optional | Expiration date in UTC timezone in ISO 8601 format. |
+
+##### Address
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Line1` | string | optional | First line of the address. |
+| `Line2` | string | optional | Second line of the address. |
+| `City` | string | optional | The city. |
+| `PostalCode` | string | optional | Postal code. |
+| `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
+
 ### Search Customers
 
 Searches for customers that are active at the moment in the enterprise (e.g. companions of on checked-in reservations or paymasters).
@@ -948,7 +1041,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Name` | string | optional | Name to search by (applies to first name, last name and full name). |
-| `SpaceId` | string | optional | Identifier of [Space](#space) to search by (members of [Reservation](#reservation) assigned there will be returned) . |
+| `SpaceId` | string | optional | Identifier of [Space](#space) to search by (members of [Reservation](#reservation) assigned there will be returned). |
 
 #### Response
 
@@ -1102,51 +1195,6 @@ When it comes to dates in the customer data (e.g. birth date or passport expirat
 ```
 
 The created [Customer](#customer) or an existing [Customer](#customer) with the specified email. 
-
-##### Customer
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the customer. |
-| `FirstName` | string | optional | First name of the customer. |
-| `LastName` | string | required | Last name of the customer. |
-| `Title` | string [Title](#title) | optional | Title prefix of the customer. |
-| `Gender` | string [Gender](#gender) | optional | Gender of the customer. |
-| `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
-| `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
-| `Email` | string | optional | Email address of the customer. |
-| `Phone` | string | optional | Phone number of the customer (possibly mobile). |
-| `CategoryId` | string | optional | Unique identifier of the customer category. |
-| `Passport` | [Document](#document) | optional | Passport details of the customer. |
-| `Address` | [Address](#address) | optional | Address of the customer. |
-
-##### Title
-
-- `Mister`
-- `Miss`
-- `Misses`
-
-##### Gender
-
-- `Male`
-- `Female`
-
-##### Document
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Number` | string | optional | Number of the document (e.g. passport number). |
-| `ExpirationUtc` | string | optional | Expiration date in UTC timezone in ISO 8601 format. |
-
-##### Address
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `Line1` | string | optional | First line of the address. |
-| `Line2` | string | optional | Second line of the address. |
-| `City` | string | optional | The city. |
-| `PostalCode` | string | optional | Postal code. |
-| `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
 
 ### Update Customer
 
