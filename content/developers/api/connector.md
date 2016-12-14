@@ -1693,6 +1693,13 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
+#### Demo environment
+
+- Added [Get All Customers By Ids](#get-all-customers-by-ids) operation.
+- Extended [Reservation](#reservation) with `ChannelManagerNumber`, `ChannelManagerGroupNumber` and `ChannelManager`.
+- Extended [Get All Products](#get-all-products) to return products of mulitple services at once.
+- Extended [Accounting Category](#accounting-category) with `Code` and `ExternalCode`.
+
 #### 22nd November 2016 23:15 UTC
 
 - Added `Notes` to [Accounting Item](#accounting-item).
