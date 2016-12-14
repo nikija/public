@@ -358,21 +358,23 @@ Raturns all services offered by the enterprise.
 
 ### Get All Products
 
-Raturns all products offered together with the specified service
+Raturns all products offered together with the specified services.
 
 #### Request `[PlatformAddress]/api/connector/v1/products/getAll`
 
 ```json
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94"
+    "ServiceIds": [
+        "bd26d8db-86da-4f96-9efc-e5a4654a4a94"
+    ]
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `ServiceId` | string | required | Unique identifier of the [Service](#service). |
+| `ServiceIds` | array of string | required | Unique identifiers of the [Service](#service)s. |
 
 #### Response
 
@@ -382,7 +384,8 @@ Raturns all products offered together with the specified service
         {
             "Id": "198bc308-c1f2-4a1c-a827-c41d99d52f3d",
             "IsActive": true,
-            "Name": "Breakfast"
+            "Name": "Breakfast",
+            "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94"
         }
     ]
 }
@@ -397,6 +400,7 @@ Raturns all products offered together with the specified service
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the product. |
+| `ServiceId` | string | required | Unique identifier of the [Service](#service). |
 | `IsActive` | boolean | required | Whether the product is still active. |
 | `Name` | string | required | Name of the product. |
 
@@ -658,8 +662,9 @@ Returns all reservations that from the specified interval according to the time 
             "AdultCount": 2,
             "AssignedSpaceId": "20e00c32-d561-4008-8609-82d8aa525714",
             "BusinessSegmentId": null,
-            "ChannelManagerId": null,
             "ChannelNumber": null,
+            "ChannelManagerNumber": null,
+            "ChannelManagerGroupNumber": null,
             "ChildCount": 0,
             "CompanionIds": [
                 "35d4b117-4e60-44a3-9580-c582117eff98"
@@ -713,8 +718,9 @@ Returns all reservations that from the specified interval according to the time 
 | `ServiceId` | string | required | Unique identifier of the [Service](#service) that is reserved. |
 | `GroupId` | string | required | Unique identifier of the [Reservation Group](#reservation-group). |
 | `Number` | string | required | Confirmation number of the reservation. |
-| `ChannelNumber` | string | optional | Confirmation number of the reservation within a channel in case the reservation originates there (e.g. Booking.com confirmation number). |
-| `ChannelManagerId` | string | optional | Identifier of the reservation within a channel manager in case the reservation came through it (e.g. Siteminder identifier). |
+| `ChannelNumber` | string | optional | Number of the reservation within the channel in case the reservation originates there (e.g. Booking.com confirmation number). |
+| `ChannelManagerNumber` | string | optional | Number of the reservation within a channel manager. |
+| `ChannelManagerGroupNumber` | string | optional | Number of the reservation group within a channel manager. |
 | `State` | string [Reservation State](#reservation-state) | required | State of the reservation. |
 | `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
@@ -1331,14 +1337,18 @@ Returns all accounting categories of the enterprise associated with the connecto
 {
     "AccountingCategories": [
         {
+            "Code": "345",
+            "ExternalCode": "3010",
+            "Id": "0cf7aa90-736f-43e9-a7dc-787704548d86",
+            "IsActive": true,
+            "Name": "Accommodation"
+        },
+        {
+            "Code": "100",
+            "ExternalCode": "ABVG",
             "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
             "IsActive": true,
             "Name": "Alcoholic Beverage"
-        },
-        {
-            "Id": "19ba0729-0e88-4354-9131-e5b6a1afba4f",
-            "IsActive": true,
-            "Name": "Beverage"
         }
     ]
 }
@@ -1355,6 +1365,8 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `Id` | string | required | Unique identifier of the category. |
 | `IsActive` | boolean | required | Whether the accounting category is still active. |
 | `Name` | string | required | Name of the category. |
+| `Code` | string | optional | Code of the category within Mews. |
+| `ExternalCode` | string | optional | code of the category in external systems. |
 
 ### Get All Accounting Items
 
