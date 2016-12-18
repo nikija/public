@@ -1693,7 +1693,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo environment
+#### 14th December 2016 21:50 UTC
 
 - Added [Get All Customers By Ids](#get-all-customers-by-ids) operation.
 - Extended [Reservation](#reservation) with `ChannelManagerNumber`, `ChannelManagerGroupNumber` and `ChannelManager`.
