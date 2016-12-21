@@ -662,10 +662,10 @@ Returns all reservations that from the specified interval according to the time 
             "AdultCount": 2,
             "AssignedSpaceId": "20e00c32-d561-4008-8609-82d8aa525714",
             "BusinessSegmentId": null,
-            "ChannelNumber": null,
-            "ChannelManagerNumber": null,
-            "ChannelManagerGroupNumber": null,
-            "ChannelManager": null,
+            "ChannelNumber": "1337614414",
+            "ChannelManagerNumber": "01",
+            "ChannelManagerGroupNumber": "JX8PA2",
+            "ChannelManager": "AvailPro",
             "ChildCount": 0,
             "CompanionIds": [
                 "35d4b117-4e60-44a3-9580-c582117eff98"
@@ -718,11 +718,11 @@ Returns all reservations that from the specified interval according to the time 
 | `Id` | string | required | Unique identifier of the reservation. |
 | `ServiceId` | string | required | Unique identifier of the [Service](#service) that is reserved. |
 | `GroupId` | string | required | Unique identifier of the [Reservation Group](#reservation-group). |
-| `Number` | string | required | Confirmation number of the reservation. |
-| `ChannelNumber` | string | optional | Number of the reservation within the channel in case the reservation originates there (e.g. Booking.com confirmation number). |
-| `ChannelManagerNumber` | string | optional | Number of the reservation within a channel manager. |
-| `ChannelManagerGroupNumber` | string | optional | Number of the reservation group within a channel manager. |
-| `ChannelManager` | string | optional | Name of the channel manager. |
+| `Number` | string | required | Confirmation number of the reservation in Mews. |
+| `ChannelNumber` | string | optional | Number of the reservation within the Channel (i.e. OTA, GDS, CRS, etc) in case the reservation group originates there (e.g. Booking.com confirmation number). |
+| `ChannelManagerNumber` | string | optional | Unique number of the reservation within the reservation group. |
+| `ChannelManagerGroupNumber` | string | optional | Number of the reservation group within a Channel manager that transferred the reservation from Channel to Mews. |
+| `ChannelManager` | string | optional | Name of the Channel manager (e.g. AvailPro, SiteMinder, TravelClick, etc). |
 | `State` | string [Reservation State](#reservation-state) | required | State of the reservation. |
 | `CreatedUtc` | string | required | Creation date and time of the reservation in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the reservation in UTC timezone in ISO 8601 format. |
