@@ -73,6 +73,9 @@ Initial call used to obtain all static data about hotel relevant for the client.
     "DefaultCurrencyCode": "EUR",
     "DefaultLanguageCode": "en-US",
     "DefaultRateCurrencyCode": "CZK",
+    "Description":{
+        "en-US": "Sample Hotel Description"
+    },
     "IanaTimeZoneIdentifier": "Europe/Prague",
     "ImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
     "IntroImageId": "1627aea5-8e0a-4371-9022-9b504344e724",
@@ -142,6 +145,7 @@ Initial call used to obtain all static data about hotel relevant for the client.
 | `IntroImageId` | string | optional | Unique identifier of hotel's intro image (usable as background image). |
 | `Languages` | array of [Language](#language) | required | Languages supported by the hotel. |
 | `Name` | [LocalizedText](#localizedtext) | required | Name of the hotel. |
+| `Description` | [LocalizedText](#localizedtext) | required | Description of the hotel. |
 | `PaymentGateway` | one of [PaymentGateway](#paymentgateway) types | optional | Info about payment gateway used by the hotel. |
 | `Products` | array of [Product](#product) | required | All products orderable with rooms. |
 | `RoomCategories` | array of [RoomCategory](#roomcategory) | required | All room categories offered by hotel. |
