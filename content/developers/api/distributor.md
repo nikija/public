@@ -726,6 +726,13 @@ The `Width` and `Height` parameters are optional. The `Mode` paramater can have 
 | `4` | Fit | The image is resized to fit within the specified dimensions while keeping the aspect ratio. So the result might be smaller than the specified size. The result is largest possible image the fits into the specified size. |
 | `5` | FitExact | The image is resized and padded to exactly fit within the specified dimensions while keeping the aspect ratio. So parts of the result image might be blank (black or transparent depending on the image format). |
 
+## Payment Gateway Data
+
+To obtain `PaymentGatewayData`, you have to use client side encryption library provided by given payment gateway. You can find them here: 
+
+- [Braintree](https://github.com/braintree/braintree-web)
+- [Adyen](https://github.com/Adyen/CSE-JS)
+
 ## Environments
 
 ### Test Environment
