@@ -19,6 +19,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
     - [Create Reservation Group](#create-reservation-group)
     - [Get Reservation Group](#get-reservation-group)
 - [Images](#images)
+- [Payment Gateway Data](#payment-gateway-data)
 - [Environments](#environments)
     - [Test Environment](#test-environment)
     - [Production Environment](#production-environment)
