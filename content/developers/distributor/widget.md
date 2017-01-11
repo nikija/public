@@ -323,3 +323,8 @@ In addition, specific events has an additional data:
 ##### Google Ecommerce
 
 You can track transactions with Google Universal Analytics on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer*.
+
+##### Tracking with Mews Merchant
+
+When you have a Mews Merchant set up, the payment by customer is legally required to happen on our domain. Therefore, if you want to leverage tracking with *Universal Analytics* with Mews Merchant, you have to set it up for *cross-domain tracking*. This is done by setting the `allowLinker` field to `true` in *Universal Analytics* tag configuration.
+
