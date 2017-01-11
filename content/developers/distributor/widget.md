@@ -328,3 +328,4 @@ You can track transactions with Google Universal Analytics on `distributorBookin
 
 When you have a Mews Merchant set up, the payment by customer is legally required to happen on our domain. Therefore, if you want to leverage tracking with *Universal Analytics* with Mews Merchant, you have to set it up for *cross-domain tracking*. This is done by setting the `allowLinker` field to `true` in *Universal Analytics* tag configuration.
 
+![allowLinker field](allowLinker.png)
