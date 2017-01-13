@@ -1,7 +1,7 @@
 ---
 title: Counters
 ---
-Every bill and invoice (as well as individual reservations and other services) needs to have unique number (identifier). There are three separate kinds of counters in Mews (listed below). If nothing is set up, the system automatically picks up numerical series starting with the number **1**. However, the accountants or internal operations may reuqire customized formatting.
+Every bill and invoice (as well as individual reservations and other services) needs to have a unique number (identifier). There are three separate kinds of counters in Mews (listed below). If nothing is set up, the system automatically picks up numerical series starting with the number **1**. However, the accountants or internal operations may reuqire customized formatting.
 
 ### Bill Counters
 - **Is Default:** This field indicates whether the counter is pre-selected by default when closing a bill. This is applicable when you operate with more than one bill counter. If so, you have the option to select the appropriate counter accordingly. **Default** counter always the one that was in the system automatically.
