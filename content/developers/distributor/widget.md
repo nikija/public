@@ -35,7 +35,7 @@ The overlay is not visible by default - to actually show it to your users, you s
 <!-- Distributor's initialization call, creating new instance of Distributor. Use id of your hotel. -->
 <script>
     Mews.Distributor({
-        hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
+        hotelIds: ['aaaa-bbbb-cccc-dddd-eeeeeeee'],
         openElements: '.open-distributor-button'
     });
 </script>
@@ -46,7 +46,7 @@ If you need more specific setup of opening Distributor, or you want to call some
 ~~~html
 <script>
     Mews.Distributor({
-        hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee'
+        hotelIds: ['aaaa-bbbb-cccc-dddd-eeeeeeee']
     }, function(distributor) {
         // you can call api functions on distributor instance here
     });
@@ -56,6 +56,22 @@ If you need more specific setup of opening Distributor, or you want to call some
 To see a list of all available api calls, please consult [API](#api) section.
 
 Closing of Distributor is provided in the overlay by default, so you don't have to worry about that.
+
+### Multihotel
+
+Distributor can run in two basic modes - *Singlehotel* or *Multihotel*. The mode is decided automatically during initialization based on number of hotel ids you provide in options. Whenever 2 or more hotels are loaded, the Distributor will be in *Multihotel* mode. To add more hotels, simple pass their ids into the `hotelIds` array option:
+
+~~~html
+<script>
+    Mews.Distributor({
+        hotelIds: [
+            'aaaa-bbbb-cccc-dddd-eeeeeeee',
+            'uuuu-vvvv-xxxx-yyyy-zzzzzzzz',
+            // and more...
+        ]
+    });
+</script>
+~~~
 
 #### Done!
 
@@ -73,10 +89,11 @@ Example with all possible options and their default values:
 <script>
 Mews.Distributor({
     // required
-    hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
+    hotelIds: ['aaaa-bbbb-cccc-dddd-eeeeeeee'],
 
     // optionals
     openElements: '',
+    cityId: null,
     language: null,
     currency: null,
     endDate: null,
@@ -101,13 +118,21 @@ Mews.Distributor({
         primaryColor: null
     }
 }, function(distributor) {
-    // Possible api calls
-
+    // Always available api calls
+    
     // distributor.open();
     // distributor.setStartDate(date);
     // distributor.setEndDate(date);
     // distributor.setVoucherCode(code);
     // distributor.setRooms(rooms);
+    
+    // Singlehotel mode api calls
+    // distributor.showRooms();
+    // distributor.showRates(roomId);
+    
+    // Multihotel mode api calls
+    // distributor.showHotels();
+    // distributor.showRooms(hotelId);
 });
 </script>
 ~~~
@@ -119,8 +144,9 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 
 | Name | Type | Default value | Description |
 | --- | --- | --- | --- |
-| <a name="hotelId"></a>hotelId (required) | `string` | `''` | Guid of hotel used for identification in API calls. <br><br> You can get guid of your hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
+| <a name="hotelIds"></a>hotelIds (required) | array of `string` | `''` | Guid of hotels used for identification in API calls. <br><br> You can get guid of a hotel from your hotel's detail page in Commander (under Settings > "Your hotel's name" ). The guid is shown under General Settings as Identifier. |
 | <a name="openElements"></a>openElements | `string` | `''` | List of comma separated css selectors of elements which will get automatically attached click event listeners for opening Distributor. The string is given as argument to `document.querySelectorAll` function, you get more info about its resemblance [here](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) for example. <br><br> The click event is being delegated, meaning that each element is being looked up in website dynamically after the click happens. This way you can pass selector to elements which don't exist yet during initialization. |
+| <a name="cityId"></a>cityId | `string` | `null` | Id of the preselected city in *Multihotel* mode. Invalid value will fallback to default language of your hotel.
 | <a name="language"></a>language | `string` | `null` | Language code for default selected language of localization. Supported values corresponds to codes of allowed languages for your hotel as set in Commander. Invalid value will fallback to default language of your hotel.
 | <a name="currency"></a>currency | `string` | `null` | Currency code for default selected currency of prices. Supported values corresponds to codes of allowed currencies for your hotel as set in Commander. Invalid value will fallback to currency of default rate of your hotel.
 | <a name="startDate"></a>startDate | `Date` | `today` | Default value for a reservation start date in ISO 8601 format.
@@ -150,7 +176,7 @@ API calls are defined on the Distributor instance, which is created with the ini
 ~~~html
 <script>
 Mews.Distributor({ 
-    hotelId: 'aaaa-bbbb-cccc-dddd-eeeeeeee',
+    hotelIds: ['aaaa-bbbb-cccc-dddd-eeeeeeee'],
 }, function(distributor) {
    $('.booking-button').click(function() {
      var start = new Date();
@@ -165,44 +191,56 @@ Mews.Distributor({
 </script>
 ~~~
 
-#### open()
+Beware that API is slightly different in *Singlehotel* and *Multihotel* mode. The list of all API calls follows:
+
+#### Always available API calls
+
+##### open()
 
 Opens Distributor in it's overlay.
 
-#### setStartDate(date)
+##### setStartDate(date)
 - `date` Type: `string` - The start date to set
 
 Sets start date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object or its value isn't allowed as start date, nothing happens.
 
-#### setEndDate(date)
+##### setEndDate(date)
 - `date` Type: `string` - The end date to set
 
 Sets end date for new availability query, currently loaded availability list is not affected. If `date` is not valid Date object, nothing happens.
 
-#### setVoucherCode(code)
+##### setVoucherCode(code)
 - `code` Type: `string` - The voucher code to set
 
 Sets a new voucher code value.
 
-#### setRooms(rooms)
+##### setRooms(rooms)
 - `rooms` Type: `Array` - The list of guids of rooms to be displayed (see [`rooms`](#rooms) option for more details)
 
 Sets new list of displayed room types, overwriting initial rooms option value. Currently loaded availability list is not affected.
 
-#### setStepRooms(startDate, endDate, voucherCode = null)
-- `startDate` Type: `string` - The start date to set
-- `endDate` Type: `string` - The end date to set
-- `voucherCode` (optional) Type: `string` - The voucher code to set
+#### Only Singlehotel mode API calls
 
-Sets Distributor to the second step (`Rooms`) as if you clicked the next button on first screen.
+##### showRooms()
 
-#### setStepRates(roomId, startDate = null, endDate = null, voucherCode = null)
+Sets Distributor to the `Rooms` step.
+
+##### showRates(roomId)
 - `roomId` Type: `string` - an ID of a room to be selected (see [`rooms`](#rooms) option for more details about those Ids)
-- `startDate` (optional) Type: `string` - The start date to set
-- `endDate` (optional) Type: `string` - The end date to set
-- `voucherCode` (optional) Type: `string` - The voucher code to set
 
 Sets Distributor to the third step (`Rates`) as if you selected a room on the second screen.
+
+#### Only Multihotel mode API calls
+
+##### showHotels()
+
+Sets Distributor to the `Hotels` step.
+
+##### showRooms(hotelId)
+- `hotelId` Type: `string` - and ID of a hotel which rooms you want to display
+
+Sets Distributor to the `Rooms` step.
+
 
 ### Deeplinks
 
@@ -212,21 +250,11 @@ Recognized parameters are:
 
 | Name | Description
 | --- | --- |
-| mewsEnterpriseId | a hotelID - Use the same value that you pass to Distributor initialization. This is used to identify concrete Distributor instance that should receive parameters.
+| mewsDistributorOpened | Tells the Distributor to open automatically.
 | mewsStart | an arrival date in ISO 8601 format |
 | mewsEnd | a departure date in ISO 8601 format |
-| mewsRoomTypeId | an ID of preselected room (More about those IDs is [here](#rooms))
 | mewsVoucherCode | a voucher code
 | language | a language code
-
-#### Link rules
-
-Deeplinks are validated with bunch of rules, resulting in different results:
-
-- `mewsStart`, `mewsEnd`, `mewsVoucherCode` and `language` are always parsed and used by every Distributor instance on website, given that passed value is valid.
-- if `mewsEnterpriseId` is provided, corresponding embeded Distributor opens automatically and:
-    - if both `mewsStart` and `mewsEnd` are set and valid, then this Distributor opens on the Rooms step (a list of rooms).
-    - if in addition `mewsRoomTypeId` is also set and valid, then this Distributor opens on the Rates step (a room detail).
 
 #### Examples
 
@@ -273,11 +301,12 @@ To integrate with Google Tag Manager, Distributor provides a set of *Custom Even
 - `distributorLoaded` - A website with Distributor was loaded.
 - `distributorOpened` - The Distributor was opened.
 - `distributorClosed` - The Distributor was closed.
-- `distributorStepDates` - A dates (first) step was displayed.
-- `distributorStepRooms` - A rooms (second) step was displayed.
-- `distributorStepRates` - A rates (third) step was displayed.
-- `distributorStepSummary` - A summary (fourth) step was displayed.
-- `distributorStepCheckout` - A checkout (fifth) step was displayed.
+- `distributorStepDates` - A dates step was displayed.
+- `distributorStepHotels` - A hotels step was displayed.
+- `distributorStepRooms` - A rooms step was displayed.
+- `distributorStepRates` - A rates step was displayed.
+- `distributorStepSummary` - A summary step was displayed.
+- `distributorStepCheckout` - A checkout step was displayed.
 - `distributorStepConfirmation` - A confirmation page was displayed.
 - `distributorOfferedDatesSelected` - Alternative dates when there is no availability selected.
 - `distributorBookingFinished` - A booking was made. This event triggers once per reservation group made.
@@ -290,6 +319,11 @@ All events data are passed to Tag Manager through *dataLayer*. To use them in yo
 | Name | Description
 | --- | --- |
 | eventName | name of the event in readable form without prefix, i.e `Step Dates`. |
+
+If a hotel is selected, information about it is also added to the event. (Note: The hotel is always selected in *Singlehotel* mode)
+
+| Name | Description
+| --- | --- |
 | hotelName | name of the hotel |
 | hoteId | unique identifier of the hotel |
 
