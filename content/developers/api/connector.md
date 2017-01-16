@@ -1345,7 +1345,7 @@ Returns all accounting categories of the enterprise associated with the connecto
             "IsActive": true,
             "Name": "Accommodation",
             "LedgerAccountCode": "311100",
-            "LedgerAccountCode": "602020"
+            "PostingAccountCode": "602020"
         },
         {
             "Code": "100",
@@ -1354,7 +1354,7 @@ Returns all accounting categories of the enterprise associated with the connecto
             "IsActive": true,
             "Name": "Alcoholic Beverage",
             "LedgerAccountCode": "311100",
-            "LedgerAccountCode": "602020"
+            "PostingAccountCode": "602020"
         }
     ]
 }
@@ -1373,6 +1373,8 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `Name` | string | required | Name of the category. |
 | `Code` | string | optional | Code of the category within Mews. |
 | `ExternalCode` | string | optional | code of the category in external systems. |
+| `LedgerAccountCode` | string | optional | code of the ledger account (double entry accounting). |
+| `PostingAccountCode` | string | optional | code of the posting account (double entry accounting). |
 
 ### Get All Accounting Items
 
