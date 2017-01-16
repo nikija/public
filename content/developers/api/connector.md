@@ -1345,7 +1345,8 @@ Returns all accounting categories of the enterprise associated with the connecto
             "IsActive": true,
             "Name": "Accommodation",
             "LedgerAccountCode": "311100",
-            "PostingAccountCode": "602020"
+            "PostingAccountCode": "602020",
+            "CostCenterCode": "2589"
         },
         {
             "Code": "100",
@@ -1354,7 +1355,8 @@ Returns all accounting categories of the enterprise associated with the connecto
             "IsActive": true,
             "Name": "Alcoholic Beverage",
             "LedgerAccountCode": "311100",
-            "PostingAccountCode": "602020"
+            "PostingAccountCode": "602020",
+            "CostCenterCode": "2589"
         }
     ]
 }
@@ -1375,6 +1377,7 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `ExternalCode` | string | optional | code of the category in external systems. |
 | `LedgerAccountCode` | string | optional | code of the ledger account (double entry accounting). |
 | `PostingAccountCode` | string | optional | code of the posting account (double entry accounting). |
+| `CostCenterCode` | string | optional | code of cost center. |
 
 ### Get All Accounting Items
 
