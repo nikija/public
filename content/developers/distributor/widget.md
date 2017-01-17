@@ -159,7 +159,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
 | <a name="competitors"></a>competitors | `Array of string` | `['Booking.com', 'Expedia.com', 'HRS.com']` | Array of competitor names to be shown in rate comparer. Max 3 names are used.
-| <a name="introVideoSrc"></a>introVideoSrc | `string` | null | An URL link to optional intro video, which will be displayed instead of the intro image. The video must be publicly available, and it should be in *MPEG4* format (`.mp4`) to work in most of the modern browsers ([example](http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4)).
+| <a name="introVideoSrc"></a>introVideoSrc | `string` | null | An URL link to optional intro video, which will be displayed instead of the intro image. The video must be publicly available, and it should be in *MPEG4* format (`.mp4`) to work in most of the modern browsers ([example](http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4)). The video will be displayed only on big enough screens. 
 | <a name="theme"></a>theme | `object` | `{}` | object used for setting custom theme values. See next [customization](#customization) for more info.
 | <a name="gtmContainerId"></a>gtmContainerId | `string` | `null` | A Google Tag Manager container id is string associated with your container in format `GTM-XXXX`. More about how to find it is [here](https://support.google.com/tagmanager/answer/6103696?hl=en#AddingTheContainerSnippet).
 
