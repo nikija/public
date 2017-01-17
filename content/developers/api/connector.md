@@ -1343,14 +1343,20 @@ Returns all accounting categories of the enterprise associated with the connecto
             "ExternalCode": "3010",
             "Id": "0cf7aa90-736f-43e9-a7dc-787704548d86",
             "IsActive": true,
-            "Name": "Accommodation"
+            "Name": "Accommodation",
+            "LedgerAccountCode": "311100",
+            "PostingAccountCode": "602020",
+            "CostCenterCode": "2589"
         },
         {
             "Code": "100",
             "ExternalCode": "ABVG",
             "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
             "IsActive": true,
-            "Name": "Alcoholic Beverage"
+            "Name": "Alcoholic Beverage",
+            "LedgerAccountCode": "311100",
+            "PostingAccountCode": "602020",
+            "CostCenterCode": "2589"
         }
     ]
 }
@@ -1369,6 +1375,9 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `Name` | string | required | Name of the category. |
 | `Code` | string | optional | Code of the category within Mews. |
 | `ExternalCode` | string | optional | code of the category in external systems. |
+| `LedgerAccountCode` | string | optional | code of the ledger account (double entry accounting). |
+| `PostingAccountCode` | string | optional | code of the posting account (double entry accounting). |
+| `CostCenterCode` | string | optional | code of cost center. |
 
 ### Get All Accounting Items
 
@@ -1692,6 +1701,10 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### 18th January 2017 21:50 UTC
+
+- Extended [Accounting category](#accounting-category) with `LedgerAccountCode` and `PostingAccountCode`.
 
 #### 14th December 2016 21:50 UTC
 
