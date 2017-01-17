@@ -1374,10 +1374,10 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `IsActive` | boolean | required | Whether the accounting category is still active. |
 | `Name` | string | required | Name of the category. |
 | `Code` | string | optional | Code of the category within Mews. |
-| `ExternalCode` | string | optional | code of the category in external systems. |
-| `LedgerAccountCode` | string | optional | code of the ledger account (double entry accounting). |
-| `PostingAccountCode` | string | optional | code of the posting account (double entry accounting). |
-| `CostCenterCode` | string | optional | code of cost center. |
+| `ExternalCode` | string | optional | Code of the category in external systems. |
+| `LedgerAccountCode` | string | optional | Code of the ledger account (double entry accounting). |
+| `PostingAccountCode` | string | optional | Code of the posting account (double entry accounting). |
+| `CostCenterCode` | string | optional | Code of cost center. |
 
 ### Get All Accounting Items
 
@@ -1702,7 +1702,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### 18th January 2017 21:50 UTC
+#### Demo Environment
 
 - Extended [Accounting category](#accounting-category) with `LedgerAccountCode` and `PostingAccountCode`.
 
