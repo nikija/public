@@ -695,6 +695,7 @@ Returns all reservations that from the specified interval according to the time 
             "FirstName": "John",
             "Gender": null,
             "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LanguageCode": null,
             "LastName": "Smith",
             "NationalityCode": "US",
             "Passport": null,
@@ -973,6 +974,7 @@ Returns all customers with the specified ids.
             "FirstName": "John",
             "Gender": null,
             "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LanguageCode": null,
             "LastName": "Smith",
             "NationalityCode": "US",
             "Passport": null,
@@ -997,6 +999,7 @@ Returns all customers with the specified ids.
 | `Title` | string [Title](#title) | optional | Title prefix of the customer. |
 | `Gender` | string [Gender](#gender) | optional | Gender of the customer. |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
+| `LanguageCode` | string | optional | Language and culture code of the customers preferred language. E.g. `en-US` or `fr-FR`. |
 | `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
@@ -1065,6 +1068,7 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
                 "FirstName": "Peter",
                 "Gender": null,
                 "Id": "794dbb77-0a9a-4170-9fa9-62ea4bf2a56e",
+                "LanguageCode": null,
                 "LastName": "Smith",
                 "NationalityCode": null,
                 "Passport": null,
@@ -1186,21 +1190,6 @@ When it comes to dates in the customer data (e.g. birth date or passport expirat
 | `Address` | [Address](#address) | optional | Address of the customer. |
 
 #### Response
-
-```json
-{
-    "BirthDateUtc": "2000-01-01T12:00:00Z",
-    "CategoryId": null,
-    "Email": "john@doe.com",
-    "FirstName": "John",
-    "Gender": "Male",
-    "Id": "5fca71c5-5f7a-4c30-b3cc-7d4679a79a44",
-    "LastName": "Doe",
-    "NationalityCode": "US",
-    "Phone": "00420123456789",
-    "Title": "Mister"
-}
-```
 
 The created [Customer](#customer) or an existing [Customer](#customer) with the specified email. 
 
@@ -1704,7 +1693,8 @@ The workflow can be similar as during the initial data pull, just applied to fut
 
 #### Demo Environment
 
-- Extended [Accounting category](#accounting-category) with `LedgerAccountCode` and `PostingAccountCode`.
+- Extended [Accounting category](#accounting-category) with `LedgerAccountCode`, `PostingAccountCode` and `CostCenterCode`.
+- Extended [Customer](#customer) with `LanguageCode`.
 
 #### 14th December 2016 21:50 UTC
 
