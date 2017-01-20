@@ -57,9 +57,9 @@ To see a list of all available api calls, please consult [API](#api) section.
 
 Closing of Distributor is provided in the overlay by default, so you don't have to worry about that.
 
-### Multihotel
+### Chain Distributor
 
-Distributor can run in two basic modes - *Singlehotel* or *Multihotel*. The mode is decided automatically during initialization based on number of hotel ids you provide in options. Whenever 2 or more hotels are loaded, the Distributor will be in *Multihotel* mode. To add more hotels, simple pass their ids into the `hotelIds` array option:
+Distributor can run in two basic modes - for *single* property or for *chain*. The mode is decided automatically during initialization based on the count of hotel IDs you provide in options. Whenever 2 or more hotels are loaded, the Distributor will be in *Chain* mode. That means that it will add one more step to the booking flow - hotel selection. To add more hotels, simple pass their ids into the `hotelIds` array option:
 
 ~~~html
 <script>
