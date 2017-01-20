@@ -1691,7 +1691,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### 18th January 2016 22:00 UTC
+#### 18th January 2017 22:00 UTC
 
 - Extended [Accounting category](#accounting-category) with `LedgerAccountCode`, `PostingAccountCode` and `CostCenterCode`.
 - Extended [Customer](#customer) with `LanguageCode`.
