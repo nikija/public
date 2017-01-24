@@ -12,7 +12,7 @@ title: Distributor Widget
 Include the following script with embed-ready version of Distributor into your website.
 
 ~~~html
-<script src="https://www.mews.li/distributor/edge/distributor.min.js"></script>
+<script src="https://www.mews.li/distributor/distributor.min.js"></script>
 ~~~
 
 The script should be included in `<head>` section and without `async` option. Size of the script is keeped as minimal as possible to allow quick initialization. A main widget script is then downloaded asynchronously and inserted automatically into your website afterwards.
