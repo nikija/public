@@ -1174,6 +1174,7 @@ When it comes to dates in the customer data (e.g. birth date or passport expirat
     "Title": "Mister",
     "NationalityCode": "US",
     "BirthDateUtc": "2000-01-01T12:00:00Z",
+    "BirthPlace": "Prague, Czech Republic",
     "Email": "john@doe.com",
     "Phone": "00420123456789"
 }
@@ -1187,6 +1188,7 @@ When it comes to dates in the customer data (e.g. birth date or passport expirat
 | `Title` | string [Title](#title) | optional | Title prefix of the customer. |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the nationality. |
 | `BirthDateUtc` | string | optional | Date of birth in UTC timezone in ISO 8601 format. |
+| `BirthPlace` | string | optional | Place of birth. |
 | `Email` | string | optional | Email address of the customer. |
 | `Phone` | string | optional | Phone number of the customer (possibly mobile). |
 | `Passport` | [Document](#document) | optional | Passport details of the customer. |
@@ -1698,7 +1700,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
 ## Changelog
 
 #### 25th January 2017 22:00 UTC
-- Extended [Customer](#customer) with `BirthPlace`.
+- Extended [Customer](#customer) with `BirthPlace` (affected update customer and add customer operations).
 - Extended [Document](#document) with `IssueDateUtc`.
 
 #### 18th January 2017 22:00 UTC
