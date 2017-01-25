@@ -1701,7 +1701,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
 
 #### 25th January 2017 22:00 UTC
 - Extended [Customer](#customer) with `BirthPlace` (affected update customer and add customer operations).
-- Extended [Document](#document) with `IssueDateUtc`.
+- Extended [Document](#document) with `IssuanceDateUtc`.
 
 #### 18th January 2017 22:00 UTC
 
