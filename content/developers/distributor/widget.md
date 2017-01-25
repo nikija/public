@@ -101,6 +101,7 @@ Mews.Distributor({
     voucherCode: null,
     adultCount: 2,
     childCount: 0,
+    daysInterval: 2,
     rooms: null,
     hideSpecialRequests: false,
     showRateCompare: false,
@@ -155,6 +156,7 @@ See that you have just one `<script>` tag containing `Mews.distributorEmbed` cal
 | <a name="voucherCode"></a>voucherCode | `string` | `''` | Default value for a voucher code.
 | <a name="adultCount"></a>adultCount | `number` | `2` | Default value for an adult count in rate selection.
 | <a name="childCount"></a>childCount | `number` | `0` | Default value for a child count in rate selection.
+| <a name="daysInterval"></a>daysInterval | `number` | `2` | Default interval (in days) between start date and end date.
 | <a name="rooms"></a>rooms | `Array` | `null` | List of guids of room types to display in Distributor. If not set, all rooms are displayed.<br><br> You can get guid of room type from room type's detail page in Commander. The page can be found from room criteria's page (under Settings > "Your hotel's name" > Room criteria ) by selecting Room type criterion, and then by selecting corresponding room type from side menu. The guid is listed there as Identifier.
 | <a name="hideSpecialRequests"></a>hideSpecialRequests | `boolean` | `false` | Hides special requests field in checkout form.
 | <a name="showRateCompare"></a>showRateCompare | `boolean` | `false` | Enables information bar on second page of booking that lists competitor prices.
