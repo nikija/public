@@ -31,7 +31,9 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Process Reservation](#process-reservation)
         - [Cancel Reservation](#cancel-reservation)
         - [Add Companion](#add-companion)
+        - [Delete Companion](#delete-companion)
     - Customers
+        - [Get All Customers](#get-all-customers)
         - [Get All Customers By Ids](#get-all-customers-by-ids)
         - [Search Customers](#search-customers)
         - [Get Customers Open Items](#get-customers-open-items)
@@ -619,7 +621,7 @@ Empty object.
 
 ### Get All Reservations
 
-Returns all reservations that from the specified interval according to the time filter (e.g. colliding with that interval or created in that interval).
+Returns all reservations from the specified interval according to the time filter (e.g. colliding with that interval or created in that interval).
 
 #### Request `[PlatformAddress]/api/connector/v1/reservations/getAll`
 
@@ -941,25 +943,56 @@ Adds a customer as a companion to the reservation. Succeeds only if there is spa
 
 Empty object.
 
-### Get All Customers By Ids
+### Delete Companion
 
-Returns all customers with the specified ids.
+Removes customer companionship from the reservation. Note that the customer profile stays untouched, only the relation between the customer and reservation is deleted. 
 
-#### Request `[PlatformAddress]/api/connector/v1/customers/getAllByIds`
+#### Request `[PlatformAddress]/api/connector/v1/reservations/deleteCompanion`
 
 ```json
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "CustomerIds": [
-        "35d4b117-4e60-44a3-9580-c582117eff98"
-    ]
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "CustomerId": "35d4b117-4e60-44a3-9580-c582117eff98"
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `CustomerIds` | array of string | optional | Identifiers of [Customer](#customer)s. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation). |
+| `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
+
+#### Response
+
+Empty object.
+
+### Get All Customers
+
+Returns all customers from the specified interval according to the time filter (e.g. customers created in that interval).
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getAll`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "TimeFilter": "Created",
+    "StartUtc": "2016-01-01T00:00:00Z",
+    "EndUtc": "2016-01-07T00:00:00Z"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `TimeFilter` | string [Customer Time Filter](#customer-time-filter) | required | Time filter of the interval. |
+| `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
+| `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
+
+##### Customer Time Filter
+
+- `Created` - customer created within the interval.
+- `Updated` - customer updated within the interval.
 
 #### Response
 
@@ -971,6 +1004,7 @@ Returns all customers with the specified ids.
             "BirthDateUtc": null,
             "BirthPlace": null,
             "CategoryId": null,
+            "CreatedUtc": "2016-01-01T00:00:00Z",
             "Email": null,
             "FirstName": "John",
             "Gender": null,
@@ -980,7 +1014,8 @@ Returns all customers with the specified ids.
             "NationalityCode": "US",
             "Passport": null,
             "Phone": "00420123456789",
-            "Title": null
+            "Title": null,
+            "UpdatedUtc": "2016-01-01T00:00:00Z"
         }
     ]
 }
@@ -1008,6 +1043,8 @@ Returns all customers with the specified ids.
 | `CategoryId` | string | optional | Unique identifier of the customer category. |
 | `Passport` | [Document](#document) | optional | Passport details of the customer. |
 | `Address` | [Address](#address) | optional | Address of the customer. |
+| `CreatedUtc` | string | required | Creation date and time of the customer in UTC timezone in ISO 8601 format. |
+| `UpdatedUtc` | string | required | Last update date and time of the customer in UTC timezone in ISO 8601 format. |
 
 ##### Title
 
@@ -1038,6 +1075,57 @@ Returns all customers with the specified ids.
 | `PostalCode` | string | optional | Postal code. |
 | `CountryCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code). |
 
+### Get All Customers By Ids
+
+Returns all customers with the specified ids.
+
+#### Request `[PlatformAddress]/api/connector/v1/customers/getAllByIds`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "CustomerIds": [
+        "35d4b117-4e60-44a3-9580-c582117eff98"
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `CustomerIds` | array of string | optional | Identifiers of [Customer](#customer)s. |
+
+#### Response
+
+```json
+{
+    "Customers": [
+        {
+            "Address": null,
+            "BirthDateUtc": null,
+            "BirthPlace": null,
+            "CategoryId": null,
+            "CreatedUtc": "2016-01-01T00:00:00Z",
+            "Email": null,
+            "FirstName": "John",
+            "Gender": null,
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LanguageCode": null,
+            "LastName": "Smith",
+            "NationalityCode": "US",
+            "Passport": null,
+            "Phone": "00420123456789",
+            "Title": null,
+            "UpdatedUtc": "2016-01-01T00:00:00Z"
+        }
+    ]
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Customers` | array of [Customer](#customer) | required | The customers. |
+
 ### Search Customers
 
 Searches for customers that are active at the moment in the enterprise (e.g. companions of on checked-in reservations or paymasters).
@@ -1064,19 +1152,22 @@ Searches for customers that are active at the moment in the enterprise (e.g. com
     "Customers": [
         {
             "Customer": {
-                "Address": null,
+                 "Address": null,
                 "BirthDateUtc": null,
+                "BirthPlace": null,
                 "CategoryId": null,
-                "Email": "john@smith.com",
-                "FirstName": "Peter",
+                "CreatedUtc": "2016-01-01T00:00:00Z",
+                "Email": null,
+                "FirstName": "John",
                 "Gender": null,
-                "Id": "794dbb77-0a9a-4170-9fa9-62ea4bf2a56e",
+                "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
                 "LanguageCode": null,
                 "LastName": "Smith",
-                "NationalityCode": null,
+                "NationalityCode": "US",
                 "Passport": null,
-                "Phone": "123456789",
-                "Title": null
+                "Phone": "00420123456789",
+                "Title": null,
+                "UpdatedUtc": "2016-01-01T00:00:00Z"
             },
             "Reservation": null
         }
@@ -1698,6 +1789,12 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### Demo Environment
+
+- Added [Delete Companion](#delete-companion) operation.
+- Added [Get All Customers](#get-all-customers) operation.
+- Extended [Customer](#customer) with `CreatedUtc` and `UpdatedUtc`.
 
 #### 26th January 2017 00:30 UTC
 
