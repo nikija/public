@@ -292,7 +292,7 @@ PCI Security Standard requires you to use **SSL Certificate** on you website in 
 
 #### Mews Merchant
 
-When using the Mews Merchant gateway integration in Distributor on your website, the customer will be redirected to a mirroring Distributor hosted at https://wwww.mews.li/ just before entering payment details. This is required when using the Mews Merchant. After booking is finished or when closing the Distributor, the customer will be redirected back to your website.
+When using the Mews Merchant gateway integration in Distributor on your website, the customer will be redirected to a mirroring Distributor hosted at https://wwww.mews.li/ just before entering payment details. This is required when using the Mews Merchant. When closing the Distributor, the customer will be redirected back to your website.
 
 ### Integrations
 
