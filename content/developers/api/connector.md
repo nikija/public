@@ -1790,7 +1790,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo Environment
+#### 9th February 2017 00:00 UTC
 
 - Added [Delete Companion](#delete-companion) operation.
 - Added [Get All Customers](#get-all-customers) operation.
