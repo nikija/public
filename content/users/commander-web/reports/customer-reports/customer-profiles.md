@@ -4,17 +4,8 @@ title: Customer Profiles
 
 In some countries, it is still important to report all guest information to the foreign police daily. In order to collect this information, it is important to complete the Foreign Police Report daily with all the arrival guests. The report shows the percentage of completion on the dashboard and at the top of the report.
 
-The report requires the following fields to be completed in order to achieve 100% completion:
-- Customer
-- Room
-- Arrival
-- Departure
-- Customer Type
-- Nationality
-- Birth date
-- Age
-- Address
-- Passport/ID number
+In order to achieve 100% completion, all legally required fields need to be filled in.
+
 
 If the Foreign Police allow it in the local country, Mews Systems is able to send the report extract automatically. The system will first send the report completion percentage to a manager 1 day after the arrival of guests, so that the hotel will have another 24 hours to finish mistakes and ensure 100% completion. After 24 hours the system sends the report automatically to the police.
 
