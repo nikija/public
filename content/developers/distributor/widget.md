@@ -306,6 +306,7 @@ In previous versions, Distributor supported direct integrations with Google Anal
 
 #### Google Tag Manager
 
+##### Triggers
 To integrate with Google Tag Manager, Distributor provides a set of *Custom Events*, that you can set up as *Triggers*. To setup a trigger for the event, match it with its name:
 
 ![trigger](trigger.png)
@@ -330,6 +331,8 @@ If you want to track multiple events with one trigger, you can easily use regex 
 
 ![regex trigger](triggerRegex.png)
 
+##### Data Layer
+
 All events data are passed to Tag Manager through *dataLayer*. To use it in your tags, set up *Variable* with proper name as variable of the data layer:
 
 ![variable](variable.png)
@@ -349,7 +352,7 @@ If a hotel is selected, information about it is also added to the event. (Note: 
 
 In addition, these events have an additional data:
 
-**distributorBookingFinished**
+- **distributorBookingFinished**
 
 | Name | Description
 | --- | --- |
@@ -357,7 +360,7 @@ In addition, these events have an additional data:
 | totalCost | total cost of the reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
-**distributorReservationCreated**
+- **distributorReservationCreated**
 
 | Name | Description
 | --- | --- |
