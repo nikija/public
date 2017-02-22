@@ -1427,24 +1427,26 @@ Returns all accounting categories of the enterprise associated with the connecto
 {
     "AccountingCategories": [
         {
+            "Classification": "Accommodation",
             "Code": "345",
+            "CostCenterCode": "2589",
             "ExternalCode": "3010",
             "Id": "0cf7aa90-736f-43e9-a7dc-787704548d86",
             "IsActive": true,
-            "Name": "Accommodation",
             "LedgerAccountCode": "311100",
-            "PostingAccountCode": "602020",
-            "CostCenterCode": "2589"
+            "Name": "Accommodation",
+            "PostingAccountCode": "602020"
         },
         {
+            "Classification": null,
             "Code": "100",
+            "CostCenterCode": "2589",
             "ExternalCode": "ABVG",
             "Id": "0b9560fb-055d-47d3-a6d4-e579c44ca558",
             "IsActive": true,
-            "Name": "Alcoholic Beverage",
             "LedgerAccountCode": "311100",
-            "PostingAccountCode": "602020",
-            "CostCenterCode": "2589"
+            "Name": "Alcoholic Beverage",
+            "PostingAccountCode": "602020"
         }
     ]
 }
@@ -1462,10 +1464,16 @@ Returns all accounting categories of the enterprise associated with the connecto
 | `IsActive` | boolean | required | Whether the accounting category is still active. |
 | `Name` | string | required | Name of the category. |
 | `Code` | string | optional | Code of the category within Mews. |
+| `Classification` | string [Accounting Category Classification](#accounting-category-classification) | optional | Classification of the accounting category allowing cross-enterprise reporting. |
 | `ExternalCode` | string | optional | Code of the category in external systems. |
 | `LedgerAccountCode` | string | optional | Code of the ledger account (double entry accounting). |
 | `PostingAccountCode` | string | optional | Code of the posting account (double entry accounting). |
 | `CostCenterCode` | string | optional | Code of cost center. |
+
+##### Accounting Category Classification
+
+- `Accommodation`
+- ...
 
 ### Get All Accounting Items
 
