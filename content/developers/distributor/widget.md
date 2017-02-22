@@ -352,7 +352,7 @@ If a hotel is selected, information about it is also added to the event. (Note: 
 
 In addition, these events have an additional data:
 
-- **distributorBookingFinished**
+**distributorBookingFinished**
 
 | Name | Description
 | --- | --- |
@@ -360,7 +360,7 @@ In addition, these events have an additional data:
 | totalCost | total cost of the reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
-- **distributorReservationCreated**
+**distributorReservationCreated**
 
 | Name | Description
 | --- | --- |
