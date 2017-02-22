@@ -376,7 +376,7 @@ In addition, these events have an additional data:
 
 ##### Google Ecommerce
 
-You can track transactions with Google Universal Analytics on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer*.
+You can track transactions with Google Universal Analytics on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer* and will be passed automatically.
 
 ##### Tracking with Mews Merchant
 
