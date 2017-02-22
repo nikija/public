@@ -1291,7 +1291,7 @@ The created [Customer](#customer) or an existing [Customer](#customer) with the 
 
 ### Update Customer
 
-Updates personal information of a customer. Note that all fields should be provided in the update request, leaving some of them empty would cause them to be cleared (deleting some information is considered a valid update). So if e.g. only last name should be updated and all other should remain the same, the request has to contain the new last name but all other fields have to be filled with the values received from the server.
+Updates personal information of a customer. Note that if any of the fields is left blank, it won't clear the field in Mews. The field will be left intact. In case of email update, the email will change in Mews only if there is no other customer profile in the hotel with such email. Otherwise the email is not updated and the customer in Mews is left without email.
 
 #### Request `[PlatformAddress]/api/connector/v1/customers/update`
 
@@ -1302,10 +1302,11 @@ Updates personal information of a customer. Note that all fields should be provi
     "FirstName": "John",
     "LastName": "Smith",
     "Title": "Mister",
-    "Phone": "00420123456789",
     "NationalityCode": "US",
     "BirthDateUtc": "2000-01-01T12:00:00Z",
     "BirthPlace": "Prague, Czech Republic",
+    "Email": "john.smith@gmail.com",
+    "Phone": "00420123456789",
     "Passport": {
         "Number": "123456",
         "ExpirationUtc": "2020-01-01T12:00:00Z",
@@ -1319,11 +1320,12 @@ Updates personal information of a customer. Note that all fields should be provi
 | `AccessToken` | string | required | Access token of the client application. |
 | `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
 | `FirstName` | string | optional | New first name. |
-| `LastName` | string | required | New last name. |
+| `LastName` | string | optional | New last name. |
 | `Title` | string [Title](#title) | optional | New title. |
 | `BirthDateUtc` | string | optional | New birth date in UTC timezone in ISO 8601 format. |
 | `BithPlace` | string | optional | New birth place. |
 | `NationalityCode` | string | optional | ISO 3166-1 alpha-2 country code (two letter country code) of the new nationality. |
+| `Email` | string | optional | New email address. |
 | `Phone` | string | optional | New phone number. |
 | `Passport` | [Document](#document) | optional | New passport details. |
 | `Address` | [Address](#address) | optional | New address details. |
@@ -1797,6 +1799,11 @@ Performed periodically after the connection is set up so that RMS has future res
 The workflow can be similar as during the initial data pull, just applied to future, not past. One can take advantage of the fact that reservations are usually booked a few weeks or months in advance. The further in future, the lower the occupancy, so the reservation batch length may increase with the distance to future from current date. E.g. weekly batches can be used only for the first three months of the future year when there is higher occupancy. And for the remaining 9 months, monthly batches would be sufficient. This would reduce the API call count from 52 to 21 (12 weekly batches + 9 monthly batches).   
     
 ## Changelog
+
+#### Demo Environment
+
+- Extended [Update Customer](#update-customer) operation parameters with `Email`.
+- Extended [Accounting Category](#accounting-category) with `Classification`.
 
 #### 9th February 2017 00:00 UTC
 
