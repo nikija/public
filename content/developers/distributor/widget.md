@@ -298,9 +298,19 @@ When using the Mews Merchant gateway integration in Distributor on your website,
 
 Main and only source of Distributor integrations with 3rd party tags and tracking services is [Google Tag Manager](https://www.google.com/analytics/tag-manager/). You can enable it by passing your container's id in [`gtmContainerId`](#gtmContainerId) option.
 
+#### Migrating to Google Tag Manager
+
+In previous versions, Distributor supported direct integrations with Google Analytics and Google AdWords. These legacy integrations still remain functional for backwards compatibility, but will be removed completely in near future. We strongly suggest you migrate them to Google Tag Manager.
+
+**Important: If you enable Google Tag Manager in Distributor, it will take precedence over any legacy integration, and those will not be triggered. These means that once you enable Google Tag Manager, you have to migrate all of your integrations to it!**
+
 #### Google Tag Manager
 
-To integrate with Google Tag Manager, Distributor provides a set of *Custom Events*, that you can set up as *Triggers*:
+To integrate with Google Tag Manager, Distributor provides a set of *Custom Events*, that you can set up as *Triggers*. To setup a trigger for the event, match it with its name:
+
+![trigger](trigger.png)
+
+List of all supported events:
 
 - `distributorLoaded` - A website with Distributor was loaded.
 - `distributorOpened` - The Distributor was opened.
@@ -316,9 +326,15 @@ To integrate with Google Tag Manager, Distributor provides a set of *Custom Even
 - `distributorBookingFinished` - A booking was made. This event triggers once per reservation group made.
 - `distributorReservationCreated` - A reservation was created. This event triggers for each reservation made in the reservation group.
 
-*Note: If you want to track multiple events with one trigger, you can easily use regex matching on Event Name. For example `^distributor` will track every distributor event, which can be useful for setting a trigger for Universal Analytics.*
+If you want to track multiple events with one trigger, you can easily use regex matching on event name. For example `^distributor` will track every distributor event, which can be useful for setting a trigger for Universal Analytics:
 
-All events data are passed to Tag Manager through *dataLayer*. To use them in your tags, set up custom variables with proper name as variables of the data layer. Each event is fired with standard set of data:
+![regex trigger](triggerRegex.png)
+
+All events data are passed to Tag Manager through *dataLayer*. To use it in your tags, set up *Variable* with proper name as variable of the data layer:
+
+![variable](variable.png)
+
+Each event is fired with standard set of data:
 
 | Name | Description
 | --- | --- |
@@ -331,9 +347,9 @@ If a hotel is selected, information about it is also added to the event. (Note: 
 | hotelName | name of the hotel |
 | hoteId | unique identifier of the hotel |
 
-In addition, specific events has an additional data:
+In addition, these events have an additional data:
 
-###### distributorBookingFinished
+**distributorBookingFinished**
 
 | Name | Description
 | --- | --- |
@@ -341,7 +357,7 @@ In addition, specific events has an additional data:
 | totalCost | total cost of the reservation group, in hotel's default currency |
 | currencyCode | hotel's default currency code in ISO format |
 
-###### distributorReservationCreated
+**distributorReservationCreated**
 
 | Name | Description
 | --- | --- |
