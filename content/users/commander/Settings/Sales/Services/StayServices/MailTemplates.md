@@ -10,20 +10,20 @@ Using HTML you can set up the following emails:
 This email is sent out to the customers who just proceeded with their check-out. This email can serve a purpose of a `Thank you email` offering the guest possibility to leave a review of your property (e.g. Tripadvisor).
 
 ### Cancellation email
-Cancellation email is sent when the reservation is cancelled to inform the customer ahout this event. You can always decide whether to send this email or not by ticking the option during the cancellation process in the Reservation module.
+Cancellation email is sent when the reservation is cancelled to inform the customer about this event. You can always decide whether to send this email or not by ticking the option during the cancellation process in the Reservation module.
 
 ### Confirmation email
 This email is sent out when the customer creates the **Confirmed reservation** using the Distributor or when the reservation is created manually through the New Reservation Screen.
 
 Confirmation email should always include the button for on-line check-in (see below the part about **Placeholders**). We also advise this email to include possible upsell possibilities as well recommendations, etc.
 
-In the New Reservation Screen, you have the possibility to either not send the email (when not desired to disclose the details to the customer) or to send it to a custom email.
+In the New Reservation Screen, you have the possibility to either not send the email (when desired not to disclose the details to the customer) or to send it to a custom email.
 
 ### Quotation email
 When creating **Optional reservation** you have the possibility to inform the customer about the details of the booking as well as about the date when the booking will be released. 
 
 ### Release date reminder
-Two days before the release date of the Optional reservation, you can kindly remind the customer about it so that the booking can either be confirmed or cancelled not to block your availability.
+Two days before the release date of the Optional reservation, you can kindly remind the customer about the reservation so that the booking can either be confirmed or cancelled not to block your availability.
 
 #### Good to know
 - Even when you haven't created any of the emails, the system sends them out for you with the most important information.
