@@ -19,8 +19,11 @@ Confirmation email should always include the button for on-line check-in. We als
 
 In the New Reservation Screen, you have the possibility to either not send the email (when not desired) or to send it to a custom email.
 
+### Release date reminder
 
+### Quotation email
 
+### Placeholders
 
 What is Placeholder? It is an "empty" part of the text that is explicitly given and in the email itself it is replaced by the specific information from the system.
 This is important e.g. for personalization of the emails by automatically adding the names of the guests or e.g. information about the booking.
