@@ -7,7 +7,7 @@ Mews offers you multiple options how to keep in touch with the customers and how
 Using the HTML you can set up the following emails:
 
 ### After end email
-- This email is sent out to the customers who just proceeded with their check-out. This email should be sort of a `Thank you email` offering the guest possibility to leave a review of your property (e.g. Tripadvisor).
+- This email is sent out to the customers who just proceeded with their check-out. This email can serve a purpose of a `Thank you email` offering the guest possibility to leave a review of your property (e.g. Tripadvisor).
 
 ### Cancellation email
 - Cancellation email is sent when the reservation is cancelled to inform the customer ahout this event. You can always decide whether to send this email or not by ticking the option during the cancellation process in the Reservation module.
