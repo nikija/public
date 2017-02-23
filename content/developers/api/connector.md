@@ -1800,7 +1800,7 @@ The workflow can be similar as during the initial data pull, just applied to fut
     
 ## Changelog
 
-#### Demo Environment
+#### 22nd February 2017 22:00 UTC
 
 - Extended [Update Customer](#update-customer) operation parameters with `Email`.
 - Extended [Accounting Category](#accounting-category) with `Classification`.
