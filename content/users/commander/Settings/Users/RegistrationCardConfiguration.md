@@ -1,5 +1,5 @@
 ---
-title: Departments
+title: Registration card configuration
 ---
 
 Hotels have possibility to adjust certain aspects of the layout of the registration cards.
