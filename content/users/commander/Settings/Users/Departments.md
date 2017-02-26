@@ -21,3 +21,6 @@ When a task is created, there is an option to specify which Department would be 
 #### Orders from guests
 For every service in the hotel, you can assign the **Responsible Department** who may either receive notification within the Commander or to receive an e-mail whenever this particular service is ordered. For example the Front Office department will be notified whenever a booking comes into the Distributor or the F&B department is notified whenever a lunch or dinner is booked.<br/>
 You can set up the responsible departments when you go to settings of each service under the tab **Responsibilities**. To decide whether notification should be send or just an email, you tick the respective option under the tab **Options**.
+
+#### Good to know
+- Watch our [video](https://vimeo.com/197306861) regarding departments which will help you to better understand how to set them up properly.
