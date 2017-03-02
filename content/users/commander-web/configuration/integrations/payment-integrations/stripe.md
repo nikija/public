@@ -14,6 +14,7 @@ This whole process needs to be done from global admin, as this is Merchant integ
 5. Fill in all informations including all owners of the account.
     - The link above states minimum required fields per country, but it can happen that Stripe will want more information for the account as the time goes, so it is recommended to obtaing and fill in as much information as possible at the begining.
     - You can obtain IP address from hotel (if they don't know how to get it) if you send them this link `https://www.google.com/search?q=what%20is%20my%20ip` and as them to give you the four numbers in `XXX.XXX.XXX.XXX` format.
+    - The main account owner should be selected as "Primary" and will be used as main representative of the company.
 6. When you have all `StripePaymentGatewayAccount`s created and filled in, you can enable them one by one.
    - Enabling `StripePaymentGatewayAccount` registerss the account in Stipe. Sripe verifies the account data and in case of an issue with privided data, Mews Support will receive an email with what to fix.
    - You should **not continue** until all `StripePaymentGatewayAccount`s are verifed by Stripe.
