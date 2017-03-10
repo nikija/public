@@ -1776,6 +1776,24 @@ Device type: `VisiOnlineKeyCutter`
 
 Not used.
 
+#### Hotek Key Cutters
+
+Device type: `HotekKeyCutter`
+
+##### Command Data
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `StartUtc` | string | required | Reservation start. |
+| `EndUtc` | string | required | Reservation end. |
+| `GuestName` | string | required | Guest username. Max length 30 chars. |
+| `LockIds` | array of string | required | Identifiers of locks/rooms the key should open. |
+
+
+##### Command Result
+
+Not used.
+
 ## Use Cases
 
 ### Revenue Management System
