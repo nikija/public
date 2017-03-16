@@ -313,7 +313,7 @@ To integrate with Google Tag Manager, Distributor provides a set of *Custom Even
 
 List of all supported events:
 
-- `distributorLoaded` - A website with Distributor was loaded.
+- `distributorLoaded` - The Distributor application was initialized (triggers once per session even with Merchant redirect).
 - `distributorOpened` - The Distributor was opened.
 - `distributorClosed` - The Distributor was closed.
 - `distributorStepDates` - A dates step was displayed.
