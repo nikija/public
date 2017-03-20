@@ -9,7 +9,7 @@ title: Distributor Widget
 
 ### Script
 
-Include the following script with embed-ready version of Distributor into your website.
+Include the following script with Distributor into your website:
 
 ~~~html
 <script src="https://www.mews.li/distributor/distributor.min.js"></script>
