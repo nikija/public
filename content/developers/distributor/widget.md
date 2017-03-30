@@ -323,7 +323,17 @@ List of all supported events:
 - `distributorStepSummary` - A summary step was displayed.
 - `distributorStepCheckout` - A checkout step was displayed.
 - `distributorStepConfirmation` - A confirmation page was displayed.
+- `distributorLanguageCodeChanged` - A language code was changed.
+- `distributorStartDateSelected` - A start date of reservation was selected.
+- `distributorEndDateSelected` - An end date of reservation was selected.
+- `distributorPromoCodeSelected` - A promo code was set.
 - `distributorOfferedDatesSelected` - Alternative dates when there is no availability selected.
+- `distributorRoomSelected` - A room (or other space type) was selected.
+- `distributorSpaceTypeCountChanged` - A number of selected "rooms" in order was changed.
+- `distributorRoomOccupancyChanged` - An occupation (adults and children counts) was changed for one room (or similar) space type.
+- `distributorBedOccupancyChanged` - An occupation (adults and children counts) was changed for bed space type.
+- `distributorProductAdded` - A product was added to an order.
+- `distributorProductRemoved` - A product was removed from an order.
 - `distributorBookingFinished` - A booking was made. This event triggers once per reservation group made.
 - `distributorReservationCreated` - A reservation was created. This event triggers for each reservation made in the reservation group.
 
@@ -341,7 +351,7 @@ Each event is fired with standard set of data:
 
 | Name | Description
 | --- | --- |
-| eventName | name of the event in readable form without prefix, i.e `Step Dates`. |
+| eventName | name of the event in readable form without prefix, i.e. `Step Dates`. |
 
 If a hotel is selected, information about it is also added to the event. (Note: The hotel is always selected in *Singlehotel* mode)
 
@@ -351,6 +361,73 @@ If a hotel is selected, information about it is also added to the event. (Note: 
 | hoteId | unique identifier of the hotel |
 
 In addition, these events have an additional data:
+
+**distributorLanguageCodeChanged**
+
+| Name | Description
+| --- | --- |
+| languageCode | Language code of selected language, i.e. `en-US`. |
+
+**distributorStartDateSelected**
+
+| Name | Description
+| --- | --- |
+| startDate | Selected start date in ISO 8601 format YYYY-MM-DD, i.e. `2017-01-20`. |
+
+**distributorEndDateSelected**
+
+| Name | Description
+| --- | --- |
+| endDate | Selected end date in ISO 8601 format YYYY-MM-DD, i.e. `2017-01-22`. |
+
+**distributorPromoCodeSelected**
+
+| Name | Description
+| --- | --- |
+| promoCode | Value of inserted promo code as string, i.e. `promo`. It is not validated. |
+
+**distributorRoomSelected**
+
+| Name | Description
+| --- | --- |
+| roomId | Guid of selected room. |
+| roomName | Name of selected room in hotel's default language. |
+| spaceType | Name of selected room's space type, one of `Room`, `Bed` or `Dorm`.  |
+
+**distributorSpaceTypeCountChanged**
+
+| Name | Description
+| --- | --- |
+| count | Number of selected space types. |
+
+**distributorRoomOccupancyChanged**
+
+| Name | Description
+| --- | --- |
+| roomIndex | Index of changed room. |
+| adultCount | Number of selected adults. |
+| childCount | Number of selected children. |
+
+**distributorBedOccupancyChanged**
+
+| Name | Description
+| --- | --- |
+| adultCount | Number of selected adults. |
+| childCount | Number of selected children. |
+
+**distributorProductAdded**
+
+| Name | Description
+| --- | --- |
+| productId | Guid of added product. |
+| productName | Name of product in hotel's default language. |
+
+**distributorProductRemoved**
+
+| Name | Description
+| --- | --- |
+| productId | Guid of removed product. |
+| productName | Name of product in hotel's default language. |
 
 **distributorBookingFinished**
 
