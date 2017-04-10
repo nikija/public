@@ -296,7 +296,11 @@ When using the Mews Merchant gateway integration in Distributor on your website,
 
 ### Integrations
 
-Main and only source of Distributor integrations with 3rd party tags and tracking services is [Google Tag Manager](https://www.google.com/analytics/tag-manager/). You can enable it by passing your container's id in [`gtmContainerId`](#gtmContainerId) option.
+Main and only source of Distributor integrations with 3rd party tags and tracking services is [Google Tag Manager](https://www.google.com/analytics/tag-manager/).
+
+#### Enabling Google Tag Manager in Distributor
+
+You can enable it by passing your container's id in [`gtmContainerId`](#gtmContainerId) option. The id has format `GTM-XXXXXX` and you can get it in Google Tag Manager.
 
 #### Migrating to Google Tag Manager
 
@@ -456,10 +460,24 @@ In addition, these events have an additional data:
 
 ##### Google Ecommerce
 
-You can track transactions with Google Universal Analytics on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer* and will be passed automatically.
+You can track transactions with Google Universal Analytics with `Transaction` track type  on `distributorBookingFinished` event. All the needed data for tracking are set in Tag Manager's *dataLayer* and will be passed automatically.
+
+![ecommerce_tag](ecommerceTag.png)
 
 ##### Tracking with Mews Merchant
 
 When you have a Mews Merchant set up, the payment by customer is legally required to happen on our domain. Therefore, if you want to leverage tracking with *Universal Analytics* with Mews Merchant, you have to set it up for *cross-domain tracking*. This is done by setting the `allowLinker` field to `true` in *Universal Analytics* tag configuration.
 
 ![allowLinker field](allowLinker.png)
+
+#### Troubleshooting
+
+##### There are no events nor ecommerce transactions tracked after redirect to Mews Merchant page
+
+You have probably included the container into your website, however you haven't set the container id into Distributor. This means that after the redirect, the Distributor will not know anything about your container. You should use [`gtmContainerId`](#gtmContainerId).
+
+##### I've set up the container correctly but there are still no events tracked
+
+If you've everything set up correctly and you still can't see events tracked, please ensure that you're not using any ads blocking or similar software in your browser. These tend to block out not only ads, but also tracking software like Google Tag Manager. Disabling the software for testing or adding your website to exceptions should solve the issue.
+
+**Important:** If you're using Mews Merchant, you need to disable the software for mews.li domain too.
