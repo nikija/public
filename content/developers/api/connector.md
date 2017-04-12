@@ -1033,7 +1033,7 @@ Updates reservation category requested by the customer to a different one.
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
-    "CategoryId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+    "CategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
     "Reprice": false
 }
 ```
