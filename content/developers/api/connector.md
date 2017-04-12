@@ -669,7 +669,12 @@ Returns all reservations from the specified interval according to the time filte
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "StartUtc": "2016-01-01T00:00:00Z",
-    "EndUtc": "2016-01-07T00:00:00Z"
+    "EndUtc": "2016-01-07T00:00:00Z",
+    "Extent": {
+        "Reservations": true,
+        "ReservationGroups": true,
+        "Customers": true
+    }
 }
 ```
 
@@ -680,6 +685,7 @@ Returns all reservations from the specified interval according to the time filte
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `States` | array of string [Reservation State](#reservation-state) | optional | States the reservations should be in. If not specified, reservations in `Confirmed`, `Started` or `Processed` states are returned. |
+| `Extent` | [Reservation Extent](#reservation-extent) | optional | Extent of data to be returned. E.g. it is possible to specify that together with the reservations, customers, groups and rates should be also returned. If not specified, `Reservations`, `Groups` and `Customers` is used as the default extent. |
 
 ##### Reservation Time Filter
 
@@ -689,10 +695,46 @@ Returns all reservations from the specified interval according to the time filte
 - `Start`- reservation start (= arrival) within the interval.
 - `End` - reservation end (= departure) within the interval.
 
+##### Reservation Extent
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `BusinessSegments` | bool | optional | Whether the response should contain business segmentation. |
+| `Customers` | bool | optional | Whether the response should contain customers of the reservations. |
+| `Items` | bool | optional | Whether the response should contain reservation items. |
+| `Products` | bool | optional | Whether the response should contain products orderable with the reservations. |
+| `Rates` | bool | optional | Whether the response should contain rates and rate groups. |
+| `Reservations` | bool | optional | Whether the response should contain reservations. |
+| `ReservationGroups` | bool | optional | Whether the response should contain groups of the reservations. |
+| `Services` | bool | optional | Whether the response should contain services reserved by the reservations. |
+| `Spaces` | bool | optional | Whether the response should contain spaces and space categories. |
+
 #### Response
 
 ```json
 {
+    "BusinessSegments": null,
+    "Customers": [
+        {
+            "Address": null,
+            "BirthDateUtc": null,
+            "CategoryId": null,
+            "Email": null,
+            "FirstName": "John",
+            "Gender": null,
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LanguageCode": null,
+            "LastName": "Smith",
+            "NationalityCode": "US",
+            "Passport": null,
+            "Phone": "00420123456789",
+            "Title": null
+        }
+    ],
+    "Items": null,
+    "Products": null,
+    "RateGroups": null,
+    "Rates": null,
     "ReservationGroups": [
         {
             "Id": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
@@ -728,31 +770,26 @@ Returns all reservations from the specified interval according to the time filte
             "UpdatedUtc": "2016-02-20T14:58:02Z"
         }
     ],
-    "Customers": [
-        {
-            "Address": null,
-            "BirthDateUtc": null,
-            "CategoryId": null,
-            "Email": null,
-            "FirstName": "John",
-            "Gender": null,
-            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
-            "LanguageCode": null,
-            "LastName": "Smith",
-            "NationalityCode": "US",
-            "Passport": null,
-            "Phone": "00420123456789",
-            "Title": null
-        }
-    ]
+    "Services": null,
+    "SpaceCategories": null,
+    "Spaces": null
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
-| `ReservationGroups` | array of [Reservation Group](#reservation-group) | required | Reservation groups that the reservations are members of. |
-| `Customers` | array of [Customer](#customer) | required | Customers that are members of the reservations. |
+| `BusinessSegments` | array of [Business Segment](#business-segment) | optional | Business segments of the reservations. |
+| `Customers` | array of [Customer](#customer) | optional | Customers that are members of the reservations. |
+| `Items` | array of [Accounting Item](#accounting-item) | optional | Revenue items of the reservations. |
+| `Products` | array of [Product](#product) | optional | Products orderable with reservations. |
+| `RateGroups` | array of [Rate Group](#rate-group) | optional | Rate groups of the reservation rates. |
+| `Rates` | array of [Rate](#rate) | optional | Rates of the reservations. |
+| `ReservationGroups` | array of [Reservation Group](#reservation-group) | optional | Reservation groups that the reservations are members of. |
+| `Reservations` | array of [Reservation](#reservation) | optional | The reservations that collide with the specified interval. |
+| `Services` | array of [Service](#service) | optional | Services that have been reserved. |
+| `SpaceCategories` | array of [Space Category](#space-category) | optional | Space categories of the spaces. |
+| `Spaces` | array of [Space](#spaces) | optional | Assigned spaces of the reservations. |
+
 
 ##### Reservation
 
