@@ -24,7 +24,7 @@ This user manual provides an insight into how an automatic generation of `Daily`
 
 Report Customer Profiles is accessible directly from *Dashboard* and it shows a list of customers that have arrived (or are In House) in the specified period - all based on the report's parameters. The proper filter for both reports is when one has selected to see "Arrivals" and selects the day/month period for `Daily`/`Monthly` reports.
 
-![Report Customer Profiles](../Images/Report.png)
+![Report Customer Profiles](img/Report.png)
 This is a sample screen shot of the report. It shows that there are 2 guests in the room `203` - `John Smith` and `Last Name` (first name is missing), in the room `206` there is `Mena Suvari`, in the room `106` there is `Nicolas Cage` and some other uneassigned guest (the reservation is for 2 guests). 
 
 The report states also:
@@ -52,7 +52,7 @@ A bit more difficult (at least for Mews newbies) is to solve the problem with un
 2. Create a new profile for the other guest and assign it to the reservation.
 3. First just note that there is a difference between an *Owner* and an actual *Guest*. A *Guest* is someone who will stay in one reservation. The *Owner* of the reservation is the person who has created the reservation (and may not arrive at all) or in case of a multiple reservation group Mews doesn't know in which room the Owner will stay (a person can't stay in 2 different rooms), see the following screenshot:
 
-![Group Modul](../Images/GroupModule.png)
+![Group Modul](img/GroupModule.png)
 The screenshot shows how to solve the room `206` case. `Nicolas Cage` is an *Owner* of the reservation. It is required to click on the `>` arrow (in red circle) to assign him to the reservation. It is up to reception durign check-in to assign the *Owner* to some reservation (make him a *Guest*).
 
 ## How it all works
