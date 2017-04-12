@@ -32,6 +32,8 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Start Reservation](#start-reservation)
         - [Process Reservation](#process-reservation)
         - [Cancel Reservation](#cancel-reservation)
+        - [Update Reservation Space](#update-reservation-space)
+        - [Update Reservation Requested Category](#update-reservation-requested-category)
         - [Add Companion](#add-companion)
         - [Delete Companion](#delete-companion)
     - Customers
@@ -694,6 +696,7 @@ Returns all reservations from the specified interval according to the time filte
 - `Updated` - reservation updated within the interval.
 - `Start`- reservation start (= arrival) within the interval.
 - `End` - reservation end (= departure) within the interval.
+- `Overlapping` - reservation interval contains the specified interval.
 
 ##### Reservation Extent
 
@@ -991,6 +994,56 @@ Cancels a reservation. Succeeds only if the reservation is cancellable.
 | `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to cancel. |
 | `ChargeCancellationFee` | boolean | required | Whether cancellation fees should be charged according to rate conditions. |
 | `Notes` | string | required | Addiotional notes describing the cancellation. |
+
+#### Response
+
+Empty object.
+
+### Update Reservation Space
+
+Updates reservation allocation to space, e.g. to different room.
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/updateSpace`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "SpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to be reassigned. |
+| `SpaceId` | string | required | Unique identifier of the [Space](#space) where the reservation should be assigned. |
+
+#### Response
+
+Empty object.
+
+### Update Reservation Requested Category
+
+Updates reservation category requested by the customer to a different one.
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/updateRequestedCategory`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
+    "CategoryId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+    "Reprice": false
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation) to be updated. |
+| `CategoryId` | string | required | Unique identifier of the [Space Category](#space-category). |
+| `Reprice` | bool | required | Whether reservation should be repriced according to new category pricing. |
 
 #### Response
 
@@ -1901,8 +1954,11 @@ We consider a space occupied if there is a reservation colliding with interval 1
 
 #### Demo Environment
 
-- Extended [Get All Reservations](#get-all-reservations) operation with `Extent` parameter. This simplifies some of the integrations, since now it is possible to fetch both reservations and their items at the same time. It is no longer necessary to first get all reservations and the obtain their items using [Get All Reservation Items](#get-all-reservation-items). Also clients that do not use reservation groups or reservation customers should specify the `Extent` to be only `Reservations` and nothing else in order to reduce unnecessary network traffic. On the other hand, if the client makes many successive calls to [Get All Reservations](#get-all-reservations) (e.g. week by week or month by month), it is not recommended to include things that do not vary into `Extent`. E.g. `Spaces` or `Rates` should still be fetched once, not together with every reservation fetch.
+- Extended [Get All Reservations](#get-all-reservations) operation with `Extent` parameter. This simplifies some of integrations, since now it is possible to fetch both reservations and their items at the same time. It is no longer necessary to first get all reservations and then obtain their items using [Get All Reservation Items](#get-all-reservation-items). Also clients that do not use reservation groups or reservation customers should specify the `Extent` to be only `Reservations` and nothing else in order to reduce unnecessary network traffic. On the other hand, if the client makes many successive calls to [Get All Reservations](#get-all-reservations) (e.g. week by week or month by month), it is not recommended to include things that do not vary into `Extent`. E.g. `Spaces` or `Rates` should still be fetched once, not together with every reservation fetch.
+- Added `Overlapping` time filter to [Get All Reservations](#get-all-reservations) operation.
 - Added [Get Configuration](#get-configuration) operation.
+- Added [Update Reservation Space](#update-reservation-space) operation.
+- Added [Update Reservation Requested Category](#update-reservation-requested-category) operation.
 
 #### 22nd February 2017 22:00 UTC
 
