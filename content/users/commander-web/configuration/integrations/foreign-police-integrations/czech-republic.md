@@ -139,6 +139,10 @@ Reporty vygenerované systémem Mews a zaslané hotelu na příslušnou adresu j
 <a name="jak-nahrat-report"></a>
 ### Jak nahrát report
 
+Nahrát report je jednoduchém stačí kliknout na toto tlačítko, vybrat správný report a nahrát jej.
+
+![UbyPort](img/UbyPort.png)
+
 <a name="stanoviska"></a>
 ### Stanoviska Policie ČR
 
