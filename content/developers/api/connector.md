@@ -11,6 +11,8 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Authorization](#authorization)
     - [Environments](#environments)
 - Operations
+    - Configuration
+        - [Get Configuration](#get-configuration)
     - Enterprises
         - [Get All Companies](#get-all-companies)
         - [Get All Spaces](#get-all-spaces)
@@ -76,6 +78,44 @@ The enterprise is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any
 - **Access Token** - Depends on the enterprise, should be provided to you by the enterprise admin.
 
 ## Operations
+
+### Get Configuration
+
+Returns configuration of the enterprise and the client.
+
+#### Request `[PlatformAddress]/api/connector/v1/configuration/get`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+{
+    "Enterprise": {
+        "Id": "851df8c8-90f2-4c4a-8e01-a4fc46b25178",
+        "Name": "Connector API Hotel"
+    }
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Enterprise` | [Enterprise](#enterprise) | required | The enterprise (e.g. hotel, hostel) associated with the access token. |
+
+##### Enterprise
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the enterprise. |
+| `Name` | string | required | Name of the enterprise. |
 
 ### Get All Companies
 
@@ -629,7 +669,12 @@ Returns all reservations from the specified interval according to the time filte
 {
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "StartUtc": "2016-01-01T00:00:00Z",
-    "EndUtc": "2016-01-07T00:00:00Z"
+    "EndUtc": "2016-01-07T00:00:00Z",
+    "Extent": {
+        "Reservations": true,
+        "ReservationGroups": true,
+        "Customers": true
+    }
 }
 ```
 
@@ -640,6 +685,7 @@ Returns all reservations from the specified interval according to the time filte
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
 | `States` | array of string [Reservation State](#reservation-state) | optional | States the reservations should be in. If not specified, reservations in `Confirmed`, `Started` or `Processed` states are returned. |
+| `Extent` | [Reservation Extent](#reservation-extent) | optional | Extent of data to be returned. E.g. it is possible to specify that together with the reservations, customers, groups and rates should be also returned. If not specified, `Reservations`, `Groups` and `Customers` is used as the default extent. |
 
 ##### Reservation Time Filter
 
@@ -649,10 +695,46 @@ Returns all reservations from the specified interval according to the time filte
 - `Start`- reservation start (= arrival) within the interval.
 - `End` - reservation end (= departure) within the interval.
 
+##### Reservation Extent
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `BusinessSegments` | bool | optional | Whether the response should contain business segmentation. |
+| `Customers` | bool | optional | Whether the response should contain customers of the reservations. |
+| `Items` | bool | optional | Whether the response should contain reservation items. |
+| `Products` | bool | optional | Whether the response should contain products orderable with the reservations. |
+| `Rates` | bool | optional | Whether the response should contain rates and rate groups. |
+| `Reservations` | bool | optional | Whether the response should contain reservations. |
+| `ReservationGroups` | bool | optional | Whether the response should contain groups of the reservations. |
+| `Services` | bool | optional | Whether the response should contain services reserved by the reservations. |
+| `Spaces` | bool | optional | Whether the response should contain spaces and space categories. |
+
 #### Response
 
 ```json
 {
+    "BusinessSegments": null,
+    "Customers": [
+        {
+            "Address": null,
+            "BirthDateUtc": null,
+            "CategoryId": null,
+            "Email": null,
+            "FirstName": "John",
+            "Gender": null,
+            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
+            "LanguageCode": null,
+            "LastName": "Smith",
+            "NationalityCode": "US",
+            "Passport": null,
+            "Phone": "00420123456789",
+            "Title": null
+        }
+    ],
+    "Items": null,
+    "Products": null,
+    "RateGroups": null,
+    "Rates": null,
     "ReservationGroups": [
         {
             "Id": "c704dff3-7811-4af7-a3a0-7b2b0635ac59",
@@ -688,31 +770,26 @@ Returns all reservations from the specified interval according to the time filte
             "UpdatedUtc": "2016-02-20T14:58:02Z"
         }
     ],
-    "Customers": [
-        {
-            "Address": null,
-            "BirthDateUtc": null,
-            "CategoryId": null,
-            "Email": null,
-            "FirstName": "John",
-            "Gender": null,
-            "Id": "35d4b117-4e60-44a3-9580-c582117eff98",
-            "LanguageCode": null,
-            "LastName": "Smith",
-            "NationalityCode": "US",
-            "Passport": null,
-            "Phone": "00420123456789",
-            "Title": null
-        }
-    ]
+    "Services": null,
+    "SpaceCategories": null,
+    "Spaces": null
 }
 ```
 
 | Property | Type | | Description |
 | --- | --- | --- | --- |
-| `Reservations` | array of [Reservation](#reservation) | required | The reservations that collide with the specified interval. |
-| `ReservationGroups` | array of [Reservation Group](#reservation-group) | required | Reservation groups that the reservations are members of. |
-| `Customers` | array of [Customer](#customer) | required | Customers that are members of the reservations. |
+| `BusinessSegments` | array of [Business Segment](#business-segment) | optional | Business segments of the reservations. |
+| `Customers` | array of [Customer](#customer) | optional | Customers that are members of the reservations. |
+| `Items` | array of [Accounting Item](#accounting-item) | optional | Revenue items of the reservations. |
+| `Products` | array of [Product](#product) | optional | Products orderable with reservations. |
+| `RateGroups` | array of [Rate Group](#rate-group) | optional | Rate groups of the reservation rates. |
+| `Rates` | array of [Rate](#rate) | optional | Rates of the reservations. |
+| `ReservationGroups` | array of [Reservation Group](#reservation-group) | optional | Reservation groups that the reservations are members of. |
+| `Reservations` | array of [Reservation](#reservation) | optional | The reservations that collide with the specified interval. |
+| `Services` | array of [Service](#service) | optional | Services that have been reserved. |
+| `SpaceCategories` | array of [Space Category](#space-category) | optional | Space categories of the spaces. |
+| `Spaces` | array of [Space](#space) | optional | Assigned spaces of the reservations. |
+
 
 ##### Reservation
 
@@ -1804,9 +1881,7 @@ Revenue management systems obtain information about reservations, revenue and pr
 
 Performed once when setting up the connection, because the RMS needs to obtain historical data.
     
-RMS should obtain the reservations in time-limitted batches using [Get All Reservations](#get-all-reservations) with [Reservation Time Filter](#reservation-time-filter) set to `Start`. Size of the batches depends on size of the hotel and its occupancy, but in general weekly batches are recommended and should work well even for big hotels (1000+ units). In order to get reservations e.g. in the past year, RMS should call [Get All Reservations](#get-all-reservations) sequentially 52 times (one call for each week in the past year). That would give RMS all reservations that have arrival within the past year.
-
-To obtain revenue items associated with reservations, [Get All Reservation Items](#get-all-reservation-items) can be used. In order to prevent both huge responses, long response times or thousands of API calls, it should be called for batches of reservations (using `ReservationIds` parameter). One approach might be to call it once for each reservation batch returned in the previous step and therefore 52 times at most (if there is a week when there are no reservations, it does not have to be called for that week).
+RMS should obtain the reservations in time-limitted batches using [Get All Reservations](#get-all-reservations) with [Reservation Time Filter](#reservation-time-filter) set to `Start`. Size of the batches depends on size of the hotel and its occupancy, but in general weekly batches are recommended and should work well even for big hotels (1000+ units). In order to get reservations e.g. in the past year, RMS should call [Get All Reservations](#get-all-reservations) sequentially 52 times (one call for each week in the past year). That would give RMS all reservations that have arrival within the past year. To obtain revenue items associated with reservations, `Items` should be set to `true` in the `Extent` parameter of the [Get All Reservations](#get-all-reservations) operation.
 
 Sometimes the data obtained through the previous two steps are not sufficient enough for RMS. So additionally, RMS can pull e.g. business segments via [Get All Business Segments](#get-all-business-segments) or rates via [Get All Rates](#get-all-rates). Note that it is important to get the reservations and revenue first and the additional data later after that. If done the other way around, it might happen that RMS would receive a reservation with e.g. `RateId` which does not correspond to any rate that was pulled beforehand. Rates, business segments etc. are dynamic and hotel employee could create a new one and assign it to a reservation right before the reservation gets pulled to RMS.
 
@@ -1823,6 +1898,11 @@ When calculating occupancy, it is important to take hierarchy of spaces into acc
 We consider a space occupied if there is a reservation colliding with interval 18:00 to 24:00 on that day. So e.g. reservation from 14:00 to 16:00 is not calculated towards occupancy.
     
 ## Changelog
+
+#### Demo Environment
+
+- Extended [Get All Reservations](#get-all-reservations) operation with `Extent` parameter. This simplifies some of the integrations, since now it is possible to fetch both reservations and their items at the same time. It is no longer necessary to first get all reservations and the obtain their items using [Get All Reservation Items](#get-all-reservation-items). Also clients that do not use reservation groups or reservation customers should specify the `Extent` to be only `Reservations` and nothing else in order to reduce unnecessary network traffic. On the other hand, if the client makes many successive calls to [Get All Reservations](#get-all-reservations) (e.g. week by week or month by month), it is not recommended to include things that do not vary into `Extent`. E.g. `Spaces` or `Rates` should still be fetched once, not together with every reservation fetch.
+- Added [Get Configuration](#get-configuration) operation.
 
 #### 22nd February 2017 22:00 UTC
 
