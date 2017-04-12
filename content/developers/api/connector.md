@@ -11,6 +11,8 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
 - [Authorization](#authorization)
     - [Environments](#environments)
 - Operations
+    - Configuration
+        - [Get Configuration](#get-configuration)
     - Enterprises
         - [Get All Companies](#get-all-companies)
         - [Get All Spaces](#get-all-spaces)
@@ -76,6 +78,44 @@ The enterprise is based in UK, it accepts `GBP`, `EUR` and `USD` currencies (any
 - **Access Token** - Depends on the enterprise, should be provided to you by the enterprise admin.
 
 ## Operations
+
+### Get Configuration
+
+Returns configuration of the enterprise and the client.
+
+#### Request `[PlatformAddress]/api/connector/v1/configuration/get`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+
+#### Response
+
+```json
+{
+    "Enterprise": {
+        "Id": "851df8c8-90f2-4c4a-8e01-a4fc46b25178",
+        "Name": "Connector API Hotel"
+    }
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Enterprise` | [Enterprise](#enterprise) | required | The enterprise (e.g. hotel, hostel) associated with the access token. |
+
+##### Enterprise
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `Id` | string | required | Unique identifier of the enterprise. |
+| `Name` | string | required | Name of the enterprise. |
 
 ### Get All Companies
 
@@ -1823,6 +1863,10 @@ When calculating occupancy, it is important to take hierarchy of spaces into acc
 We consider a space occupied if there is a reservation colliding with interval 18:00 to 24:00 on that day. So e.g. reservation from 14:00 to 16:00 is not calculated towards occupancy.
     
 ## Changelog
+
+#### Demo Environment
+
+- Added [Get Configuration](#get-configuration) operation.
 
 #### 22nd February 2017 22:00 UTC
 
