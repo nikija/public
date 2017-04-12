@@ -33,8 +33,8 @@ Hotel musí zařídit sám:
 V Mews v *Integraci s cizineckou policií* je potřeba:
 
 - Zadat `IDUB` a `krátké IDUB` - identifikátory hotelu v systému Policie ČR. 
-- Zadat `Email příjemce` - emailovou adresu, na kterou bude Mews denně posílat kopii odeslaného reportu. **Je proto potřeba tuto emailovou schránku denně kontrolovat!**
-- Zadat `Email manažera` - alespoň jednu emailovou adresu, na kterou bude Mews posílat připomínku pro kontrolu reportu [Profily hostů](#report-profily-hostu). **Je proto potřeba tuto emailovou schránku denně kontrolovat!** (Může to tedy být stejný email jako `Email příjemce`.)
+- Zadat `Email příjemce` - alespoň jednu emailovou adresu, na kterou bude Mews denně posílat kopii odeslaného reportu. **Je proto potřeba tyto emailové schránky denně kontrolovat!**
+- Zadat `Email manažera` - alespoň jednu emailovou adresu, na kterou bude Mews posílat připomínku pro kontrolu reportu [Profily hostů](#report-profily-hostu). **Je proto potřeba tyto emailové schránky denně kontrolovat!**
 - Nastavit čas generování reportu - doporučujeme nastavit 9:00, to poskytuje spoustu času vyřešit případné problémy s daty.
 
 <a name="nastaveni-priklad"></a>
@@ -42,8 +42,8 @@ V Mews v *Integraci s cizineckou policií* je potřeba:
 
 ![Příklad nastavení integrace](img/IntegrationDetail_cs.PNG)
 
-- Emailová adresa, na kterou bude Mews denně posílat report, je např. `recepce@hotel.cz`, tento email musí byt uveden v poli `Email příjemce`.
-- Emailové adresa, na které chodí upozornení na vyplnění hotelu jsou např. `recepce@hotel.cz` a `manager@hotel.cz` v poli `Email manažera`.
+- Emailové adresy, na které chodí upozornení na vyplnění hotelu jsou např. `recepce@hotel.cz` a `manager@hotel.cz` v poli `Email manažera`.
+- Emailové adresy, na které bude Mews denně posílat report, je např. `recepce@hotel.cz`, tento email musí byt uveden v poli `Email příjemce`.
    - Příjemci této zprávy jsou povinni **denně** kontrolovat, že data hostů v Mews jsou vyplněné.
    - Jednotlivé emailové adresy je třeba oddělit `;`.
 
@@ -139,7 +139,7 @@ Reporty vygenerované systémem Mews a zaslané hotelu na příslušnou adresu j
 <a name="jak-nahrat-report"></a>
 ### Jak nahrát report
 
-Nahrát report je jednoduchém stačí kliknout na toto tlačítko, vybrat správný report a nahrát jej.
+Nahrát report je jednoduché, stačí kliknout na toto tlačítko, vybrat správný report a nahrát jej.
 
 ![UbyPort](img/UbyPort.PNG)
 
