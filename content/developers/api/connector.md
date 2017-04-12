@@ -788,7 +788,7 @@ Returns all reservations from the specified interval according to the time filte
 | `Reservations` | array of [Reservation](#reservation) | optional | The reservations that collide with the specified interval. |
 | `Services` | array of [Service](#service) | optional | Services that have been reserved. |
 | `SpaceCategories` | array of [Space Category](#space-category) | optional | Space categories of the spaces. |
-| `Spaces` | array of [Space](#spaces) | optional | Assigned spaces of the reservations. |
+| `Spaces` | array of [Space](#space) | optional | Assigned spaces of the reservations. |
 
 
 ##### Reservation
@@ -1881,9 +1881,7 @@ Revenue management systems obtain information about reservations, revenue and pr
 
 Performed once when setting up the connection, because the RMS needs to obtain historical data.
     
-RMS should obtain the reservations in time-limitted batches using [Get All Reservations](#get-all-reservations) with [Reservation Time Filter](#reservation-time-filter) set to `Start`. Size of the batches depends on size of the hotel and its occupancy, but in general weekly batches are recommended and should work well even for big hotels (1000+ units). In order to get reservations e.g. in the past year, RMS should call [Get All Reservations](#get-all-reservations) sequentially 52 times (one call for each week in the past year). That would give RMS all reservations that have arrival within the past year.
-
-To obtain revenue items associated with reservations, [Get All Reservation Items](#get-all-reservation-items) can be used. In order to prevent both huge responses, long response times or thousands of API calls, it should be called for batches of reservations (using `ReservationIds` parameter). One approach might be to call it once for each reservation batch returned in the previous step and therefore 52 times at most (if there is a week when there are no reservations, it does not have to be called for that week).
+RMS should obtain the reservations in time-limitted batches using [Get All Reservations](#get-all-reservations) with [Reservation Time Filter](#reservation-time-filter) set to `Start`. Size of the batches depends on size of the hotel and its occupancy, but in general weekly batches are recommended and should work well even for big hotels (1000+ units). In order to get reservations e.g. in the past year, RMS should call [Get All Reservations](#get-all-reservations) sequentially 52 times (one call for each week in the past year). That would give RMS all reservations that have arrival within the past year. To obtain revenue items associated with reservations, `Items` should be set to `true` in the `Extent` parameter of the [Get All Reservations](#get-all-reservations) operation.
 
 Sometimes the data obtained through the previous two steps are not sufficient enough for RMS. So additionally, RMS can pull e.g. business segments via [Get All Business Segments](#get-all-business-segments) or rates via [Get All Rates](#get-all-rates). Note that it is important to get the reservations and revenue first and the additional data later after that. If done the other way around, it might happen that RMS would receive a reservation with e.g. `RateId` which does not correspond to any rate that was pulled beforehand. Rates, business segments etc. are dynamic and hotel employee could create a new one and assign it to a reservation right before the reservation gets pulled to RMS.
 
@@ -1903,6 +1901,7 @@ We consider a space occupied if there is a reservation colliding with interval 1
 
 #### Demo Environment
 
+- Extended [Get All Reservations](#get-all-reservations) operation with `Extent` parameter. This simplifies some of the integrations, since now it is possible to fetch both reservations and their items at the same time. It is no longer necessary to first get all reservations and the obtain their items using [Get All Reservation Items](#get-all-reservation-items). Also clients that do not use reservation groups or reservation customers should specify the `Extent` to be only `Reservations` and nothing else in order to reduce unnecessary network traffic. On the other hand, if the client makes many successive calls to [Get All Reservations](#get-all-reservations) (e.g. week by week or month by month), it is not recommended to include things that do not vary into `Extent`. E.g. `Spaces` or `Rates` should still be fetched once, not together with every reservation fetch.
 - Added [Get Configuration](#get-configuration) operation.
 
 #### 22nd February 2017 22:00 UTC
