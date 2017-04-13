@@ -1952,7 +1952,7 @@ We consider a space occupied if there is a reservation colliding with interval 1
     
 ## Changelog
 
-#### Demo Environment
+#### 12th April 2017 22:30 UTC
 
 - Extended [Get All Reservations](#get-all-reservations) operation with `Extent` parameter. This simplifies some of integrations, since now it is possible to fetch both reservations and their items at the same time. It is no longer necessary to first get all reservations and then obtain their items using [Get All Reservation Items](#get-all-reservation-items). Also clients that do not use reservation groups or reservation customers should specify the `Extent` to be only `Reservations` and nothing else in order to reduce unnecessary network traffic. On the other hand, if the client makes many successive calls to [Get All Reservations](#get-all-reservations) (e.g. week by week or month by month), it is not recommended to include things that do not vary into `Extent`. E.g. `Spaces` or `Rates` should still be fetched once, not together with every reservation fetch.
 - Added `Overlapping` time filter to [Get All Reservations](#get-all-reservations) operation.
