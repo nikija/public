@@ -31,3 +31,4 @@ Specific field for double-entry bookkeeping.
 - You can assign the Accounting category to services, products, refunds, cancellations, deposits, payment types, specific rates or specific room types.
 - When you change Accounting category of certain item, the new accounting category would apply to the items accounted in the past as well.
 - The last four fields are specific accounting fields that are only part of specific accounting exports (not the Accounting report excel). Your accountant will advise.
+- Watch our [video](https://vimeo.com/197489433) regarding the Accounting categories which will help you to better understand how to set them up properly and how they work.
