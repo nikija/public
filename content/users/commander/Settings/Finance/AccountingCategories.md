@@ -27,8 +27,11 @@ Specific field for double-entry bookkeeping.
 ### Posting account code
 Specific field for double-entry bookkeeping.
 
+### Classification
+Certain integration partners (e.g. Snapshot) need to have specified what the accounting category is used for. E.g. it needs to be defined which of the categories are linked to accommodation. You can run Accounting report and Manager report based on the classification too. However, if you weren't informed to use this field, you don't need to select anything.
+
 #### Good to know
 - You can assign the Accounting category to services, products, refunds, cancellations, deposits, payment types, specific rates or specific room types.
 - When you change Accounting category of certain item, the new accounting category would apply to the items accounted in the past as well.
-- The last four fields are specific accounting fields that are only part of specific accounting exports (not the Accounting report excel). Your accountant will advise.
+- The fields *External code*, *Cost centre code*, *Ledger account code* and *Posting account code* are specific accounting fields that are only part of specific accounting exports (not the Accounting report excel). Your accountant will advise.
 - Watch our [video](https://vimeo.com/197489433) regarding the Accounting categories which will help you to better understand how to set them up properly and how they work.
