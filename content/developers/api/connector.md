@@ -17,6 +17,7 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Get All Companies](#get-all-companies)
         - [Get All Spaces](#get-all-spaces)
         - [Get All Space Blocks](#get-all-space-blocks)
+        - [Update Space State](#update-space-state)
         - [Add Task](#add-task)
     - Services
         - [Get All Services](#get-all-services)
@@ -34,8 +35,9 @@ First of all, please have a look at [API Guidelines](../api.html) which describe
         - [Cancel Reservation](#cancel-reservation)
         - [Update Reservation Space](#update-reservation-space)
         - [Update Reservation Requested Category](#update-reservation-requested-category)
-        - [Add Companion](#add-companion)
-        - [Delete Companion](#delete-companion)
+        - [Add Reservation Companion](#add-reservation-companion)
+        - [Delete Reservation Companion](#delete-reservation-companion)
+        - [Add Reservation Product](#add-reservation-product)
     - Customers
         - [Get All Customers](#get-all-customers)
         - [Get All Customers By Ids](#get-all-customers-by-ids)
@@ -319,6 +321,30 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
 - `OutOfOrder`
 - `HouseUse`
 
+### Update Space State
+
+Updates state of the specified space. Note that the state is also updated on the child spaces of the specified space. So if e.g. dorm space is set to `Dirty`, ale subspaces (beds) are also set to `Dirty`.
+
+#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "SpaceId": "41b3e3a2-3400-4d72-86d4-1e341ccf8977",
+    "State": "Inspected"
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `SpaceId` | string | required | Unique identifier of the [Space](#space) to be updated. |
+| `State` | string [Space State](#space-state) | required | New state of the space (`Dirty`, `Clean`, `Inspected` or `OutOfService`). |
+
+#### Response
+
+Empty object.
+
 ### Add Task
 
 Adds a new task to the enterprise, optionally to a specified department.
@@ -338,7 +364,7 @@ Adds a new task to the enterprise, optionally to a specified department.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
+| `DepartmentId` | string | optional | Unique identifier of the [Department](#department) the task is addressed to. |
 | `Name` | string | required | Name (or title) of the task. |
 | `Description` | string | optional | Further decription of the task. |
 | `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
@@ -447,6 +473,7 @@ Raturns all products offered together with the specified services.
 | `ServiceId` | string | required | Unique identifier of the [Service](#service). |
 | `IsActive` | boolean | required | Whether the product is still active. |
 | `Name` | string | required | Name of the product. |
+| `ShortName` | string | required | Short name of the product. |
 
 ### Get All Business Segments
 
@@ -697,6 +724,7 @@ Returns all reservations from the specified interval according to the time filte
 - `Start`- reservation start (= arrival) within the interval.
 - `End` - reservation end (= departure) within the interval.
 - `Overlapping` - reservation interval contains the specified interval.
+- `Cancelled` - reservation cancelled within the specified interval.
 
 ##### Reservation Extent
 
@@ -1049,7 +1077,7 @@ Updates reservation category requested by the customer to a different one.
 
 Empty object.
 
-### Add Companion
+### Add Reservation Companion
 
 Adds a customer as a companion to the reservation. Succeeds only if there is space for the new companion (count of current companions is less than `AdultCount + ChildCount`).
 
@@ -1073,7 +1101,7 @@ Adds a customer as a companion to the reservation. Succeeds only if there is spa
 
 Empty object.
 
-### Delete Companion
+### Delete Reservation Companion
 
 Removes customer companionship from the reservation. Note that the customer profile stays untouched, only the relation between the customer and reservation is deleted. 
 
@@ -1092,6 +1120,32 @@ Removes customer companionship from the reservation. Note that the customer prof
 | `AccessToken` | string | required | Access token of the client application. |
 | `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation). |
 | `CustomerId` | string | required | Unique identifier of the [Customer](#customer). |
+
+#### Response
+
+Empty object.
+
+### Add Reservation Product
+
+Adds a new product order of the specified product to the reservation.
+
+#### Request `[PlatformAddress]/api/connector/v1/reservations/addProduct`
+
+```json
+{
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "ReservationId": "c2e37cec-11a0-4fe7-8467-fbc50b54722f",
+    "ProductId": "3dc5d79b-67ce-48ed-9238-47fcf5d1a59f",
+    "Count": 1
+}
+```
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `AccessToken` | string | required | Access token of the client application. |
+| `ReservationId` | string | required | Unique identifier of the [Reservation](#reservation). |
+| `ProductId` | string | required | Unique identifier of the [Product](#product). |
+| `Count` | int | required | The amount of the products to be added. Note that if the product is charged e.g. per night, count 1 means a single product every night. Count 2 means two products every night. |
 
 #### Response
 
@@ -1967,7 +2021,7 @@ We consider a space occupied if there is a reservation colliding with interval 1
 
 #### 9th February 2017 00:00 UTC
 
-- Added [Delete Companion](#delete-companion) operation.
+- Added [Delete Reservation Companion](#delete-reservation-companion) operation.
 - Added [Get All Customers](#get-all-customers) operation.
 - Extended [Customer](#customer) with `CreatedUtc` and `UpdatedUtc`.
 
