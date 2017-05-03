@@ -455,7 +455,8 @@ Raturns all products offered together with the specified services.
             "Id": "198bc308-c1f2-4a1c-a827-c41d99d52f3d",
             "IsActive": true,
             "Name": "Breakfast",
-            "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94"
+            "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
+            "ShortName": "BFST"
         }
     ]
 }
