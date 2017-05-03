@@ -364,7 +364,7 @@ Adds a new task to the enterprise, optionally to a specified department.
 | Property | Type | | Description |
 | --- | --- | --- | --- |
 | `AccessToken` | string | required | Access token of the client application. |
-| `DepartmentId` | string | optional | Unique identifier of the [Department](#department) the task is addressed to. |
+| `DepartmentId` | string | optional | Unique identifier of the department the task is addressed to. |
 | `Name` | string | required | Name (or title) of the task. |
 | `Description` | string | optional | Further decription of the task. |
 | `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
@@ -2005,6 +2005,13 @@ When calculating occupancy, it is important to take hierarchy of spaces into acc
 We consider a space occupied if there is a reservation colliding with interval 18:00 to 24:00 on that day. So e.g. reservation from 14:00 to 16:00 is not calculated towards occupancy.
     
 ## Changelog
+
+#### Demo Environment
+
+- Added [Update Space State](#update-space-state) oepration.
+- Added [Add Reservation Product](#add-reservation-product) operation.
+- Extended [Product](#product) with `ShortName`.
+- Extended [Reservation Time Filter](#reservation-time-filter) with `Cancelled` option.
 
 #### 12th April 2017 22:30 UTC
 
