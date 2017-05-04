@@ -2007,7 +2007,7 @@ We consider a space occupied if there is a reservation colliding with interval 1
     
 ## Changelog
 
-#### Demo Environment
+#### 3rd May 2017 21:30 UTC
 
 - Added [Update Space State](#update-space-state) oepration.
 - Added [Add Reservation Product](#add-reservation-product) operation.
