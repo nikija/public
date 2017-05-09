@@ -325,7 +325,7 @@ Returns all space blocks (out of order blocks or house use blocks) colliding wit
 
 Updates state of the specified space. Note that the state is also updated on the child spaces of the specified space. So if e.g. dorm space is set to `Dirty`, ale subspaces (beds) are also set to `Dirty`.
 
-#### Request `[PlatformAddress]/api/connector/v1/tasks/add`
+#### Request `[PlatformAddress]/api/connector/v1/spaces/updateState`
 
 ```json
 {
