@@ -13,7 +13,7 @@ In order to start using the Task Management, the hotel administrator will need t
 - Create as many or as few departments as you need
 - Go to the “Employees” settings, and in the profile of each employee you can now select to which department he/she belongs
 
-## Create, Assigning and Completing Tasks
+## Creating, Assigning and Completing Tasks
 
 On the main dashboard (left top tile) you will find a function called **Tasks**, when you click on it, it will take you to a new screen, where you can create tasks. Creating a task requires the following details:
 
