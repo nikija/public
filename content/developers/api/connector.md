@@ -936,6 +936,7 @@ Returns all revenue items associated with the specified reservations.
                     "Notes": null,
                     "OrderId": "e6ea708c-2a2a-412f-a152-b6c76ffad49b",
                     "ProductId": null,
+                    "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
                     "Type": "ServiceRevenue"
                 }
             ],
@@ -1415,6 +1416,7 @@ Returns all open items of the specified customers, i.e. all unpaid items and all
                     "Notes": null,
                     "OrderId": null,
                     "ProductId": null,
+                    "ServiceId": null,
                     "Type": "Payment"
                 }
             ]
@@ -1703,6 +1705,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
             "Notes": null,
             "OrderId": "810b8c3a-d358-4378-84a9-534c830016fc",
             "ProductId": null,
+            "ServiceId": "bd26d8db-86da-4f96-9efc-e5a4654a4a94",
             "Type": "ServiceRevenue"
         }
     ]
@@ -1719,6 +1722,7 @@ Returns all accounting items of the enterprise that were consumed (posted) or wi
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the item. |
 | `ProductId` | string | optional | Unique identifier of the [Product](#product). |
+| `ServiceId` | string | optional | Unique identifier of the [Service](#service) the item belongs to. |
 | `OrderId` | string | optional | Unique identifier of the order (or [Reservation](#reservation)) the item belongs to. |
 | `BillId` | string | optional | Unique identifier of the bill the item is assigned to. |
 | `AccountingCategoryId` | string | optional | Unique identifier of the [Accounting Category](#accounting-category) the item belongs to. |
@@ -2006,6 +2010,8 @@ When calculating occupancy, it is important to take hierarchy of spaces into acc
 We consider a space occupied if there is a reservation colliding with interval 18:00 to 24:00 on that day. So e.g. reservation from 14:00 to 16:00 is not calculated towards occupancy.
     
 ## Changelog
+
+- Added `ServiceId` to [Accounting Item](#accounting-item).
 
 #### 3rd May 2017 21:30 UTC
 
