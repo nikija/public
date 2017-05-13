@@ -2011,6 +2011,8 @@ We consider a space occupied if there is a reservation colliding with interval 1
     
 ## Changelog
 
+#### 10th May 2017 23:00 UTC
+
 - Added `ServiceId` to [Accounting Item](#accounting-item).
 
 #### 3rd May 2017 21:30 UTC
