@@ -1943,6 +1943,24 @@ Device type: `Printer`
 
 Not used.
 
+#### Key Cutters
+
+Device type: `KeyCutter`
+
+##### Command Data
+
+| Property | Type | | Description |
+| --- | --- | --- | --- |
+| `StartUtc` | string | required | Reservation start. |
+| `EndUtc` | string | required | Reservation end. |
+| `GuestName` | string | required | Name of the reservation owner. |
+| `LockIds` | array of string | required | Identifiers of locks/rooms the key should open. |
+
+
+##### Command Result
+
+Not used.
+
 #### VisiOnline Key Cutters
 
 Device type: `VisiOnlineKeyCutter`
@@ -1960,24 +1978,6 @@ Device type: `VisiOnlineKeyCutter`
 | `ValidityEndUtc` | string | required | End of the key validity interval in UTC timezone in ISO 8601 format. |
 | `KeyCount` | number | required | Count of keys to cut. |
 | `Reservation` | [Reservation](#reservation) | optional | Additional information about the reservation. |
-
-##### Command Result
-
-Not used.
-
-#### Hotek Key Cutters
-
-Device type: `HotekKeyCutter`
-
-##### Command Data
-
-| Property | Type | | Description |
-| --- | --- | --- | --- |
-| `StartUtc` | string | required | Reservation start. |
-| `EndUtc` | string | required | Reservation end. |
-| `GuestName` | string | required | Guest username. Max length 30 chars. |
-| `LockIds` | array of string | required | Identifiers of locks/rooms the key should open. |
-
 
 ##### Command Result
 
