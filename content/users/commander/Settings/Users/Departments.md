@@ -24,3 +24,4 @@ You can set up the responsible departments when you go to settings of each servi
 
 #### Good to know
 - Watch our [video](https://vimeo.com/197306861) regarding departments which will help you to better understand how to set them up properly.
+c1
